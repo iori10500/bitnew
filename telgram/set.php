@@ -71,13 +71,14 @@ function windowsinfo($chat_id,$title,$data,$button=false){
     $buttoninfo['parse_mode']='HTML';
     $text="<code style='background-color:#f80;color:#f80;width:100px'>$title                                            </code>";
     foreach($data as $one){
-        $flag=empty($one['title'])?"":":";
+        $flag=empty(trim($one['title']))?"":":";
         $text.=("<b>".$one['title']."</b>".$flag." ".$one['des'].'                                                                                        ');
     }
     $buttoninfo['text']=$text;
     if($button){
        $inline_keyboard=['inline_keyboard'=>$button]; 
     }
+    $buttoninfo['reply_markup']=$inline_keyboard;
     return $buttoninfo;
     
 }
