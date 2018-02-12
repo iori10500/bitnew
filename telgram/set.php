@@ -74,6 +74,7 @@ function windowsinfo($chat_id,$title,$data,$button=false){
     foreach($data as $one){
         $text.=("<b>".$one['title']."</b>: ".$one['des'].'                                                                                        ';
     }
+    $buttoninfo['text']=$text;
     if($button){
        $inline_keyboard=['inline_keyboard'=>$button]; 
     }
