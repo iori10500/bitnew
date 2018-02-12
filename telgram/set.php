@@ -77,6 +77,7 @@ function windowsinfo($chat_id,$title,$data,$button=false){
     if($button){
        $inline_keyboard=['inline_keyboard'=>$button]; 
     }
+    return $buttoninfo;
     
 }
 
