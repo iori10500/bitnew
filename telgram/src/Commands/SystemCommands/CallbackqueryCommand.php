@@ -68,8 +68,8 @@ class CallbackqueryCommand extends SystemCommand
     {
         self::$callbacks[] = $callback;
     }
-    public function procing($data,$user_id){
-        $data=explode("-", $data);
+    public function procing($dat,$user_id){
+        $data=explode("-", $dat);
         switch ($data[0]) {
             case 'button':
                  $datamessage=windowsinfo($user_id,'信息',[['title'=>'    ','des'=>$data[1]]]);
