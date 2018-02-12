@@ -46,15 +46,23 @@ class CallbackqueryCommand extends SystemCommand
      */
     public function execute()
     {
-        //$callback_query = $this->getUpdate()->getCallbackQuery();
-        //$user_id        = $callback_query->getFrom()->getId();
-        //$query_id       = $callback_query->getId();
-        //$query_data     = $callback_query->getData();
+        $callback_query = $this->getUpdate()->getCallbackQuery();
+        $user_id        = $callback_query->getFrom()->getId();
+        $query_id       = $callback_query->getId();
+        $query_data     = $callback_query->getData();
 
         // Call all registered callbacks.
         foreach (self::$callbacks as $callback) {
             $callback($this->getUpdate()->getCallbackQuery());
         }
+
+
+        $message = $this->getMessage();
+        $chat_id = $message->getChat()->getId();
+        $data=windowsinfo($chat_id,'邀请好友',[['title'=>'    ','des'=>'转发此消息,您好友从此链接进入机器人,并交易一笔,将获得奖励0.00001btc']],[[['text'=>'77','switch_inline_query'=>'t.me/bitokbitbot'],['text'=>'88','url'=>'http://www.baidu.com']],[['text'=>'99','switch_inline_query_current_chat'=>'sdf']]]);
+         Request::sendMessage($data);        // Send me
+
+
 
         return Request::answerCallbackQuery(['callback_query_id' => $this->getUpdate()->getCallbackQuery()->getId()]);
     }
