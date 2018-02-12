@@ -29,14 +29,9 @@ class BalanceCommand extends UserCommand
 
             $sth->bindValue(':id', $message->getFrom()->getId());
             $sth->execute();
-
             $walletId=$sth->fetchColumn();
             $yueinfo = yue($walletId);
-        $data = [                                  // Set up the new message data
-            'chat_id' => $chat_id,                 // Set Chat ID to send the message to
-            'text'    => json_encode($yueinfo), // Set message to send
-	 //   'reply_markup'=>['keyboard'=[[['text'=>'77']]]]   
-];
-        return Request::sendMessage($data);        // Send message!
+            $datamessage=windowsinfo($chat_id,'地址余额',[['title'=>'账户余额','des'=>$yueinfo['balance']],['title'=>'接收地址','des'=>$yueinfo['address']]]);
+        return Request::sendMessage($datamessage);        // Send message!
     }
 }
