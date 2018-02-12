@@ -1,0 +1,20 @@
+[26-Dec-2017 06:57:01 UTC] PHP Fatal error:  Call to undefined function Common\Ext\CoinClient() in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 168
+[26-Dec-2017 06:57:29 UTC] PHP Fatal error:  Call to undefined function Common\Ext\CoinClient() in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 168
+[26-Dec-2017 06:58:12 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement in the script in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 3
+[26-Dec-2017 06:58:18 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement in the script in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 3
+[26-Dec-2017 07:00:14 UTC] PHP Fatal error:  Call to undefined function CoinClient() in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 168
+[26-Dec-2017 07:02:22 UTC] PHP Fatal error:  Call to undefined function CoinClient() in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 171
+[26-Dec-2017 07:02:27 UTC] PHP Fatal error:  Call to undefined function CoinClient() in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 171
+[26-Dec-2017 07:05:02 UTC] PHP Fatal error:  Call to undefined function CoinClient() in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 171
+[26-Dec-2017 07:06:25 UTC] PHP Fatal error:  Call to undefined function CoinClient() in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 171
+[26-Dec-2017 07:06:35 UTC] PHP Fatal error:  Call to undefined function CoinClient() in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 171
+[26-Dec-2017 07:08:01 UTC] PHP Fatal error:  Call to undefined function CoinClient() in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 5
+[26-Dec-2017 07:08:10 UTC] PHP Fatal error:  Call to undefined function CoinClient() in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 5
+[26-Dec-2017 07:10:40 UTC] PHP Warning:  stream_get_meta_data() expects parameter 1 to be resource, boolean given in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 109
+[26-Dec-2017 07:10:40 UTC] PHP Warning:  stream_get_contents() expects parameter 1 to be resource, boolean given in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 111
+[26-Dec-2017 07:12:05 UTC] PHP Warning:  stream_get_meta_data() expects parameter 1 to be resource, boolean given in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 109
+[26-Dec-2017 07:12:05 UTC] PHP Warning:  stream_get_contents() expects parameter 1 to be resource, boolean given in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 111
+[26-Dec-2017 07:12:48 UTC] PHP Warning:  stream_get_meta_data() expects parameter 1 to be resource, boolean given in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 109
+[26-Dec-2017 07:12:48 UTC] PHP Warning:  stream_get_contents() expects parameter 1 to be resource, boolean given in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 111
+[26-Dec-2017 07:20:15 UTC] PHP Warning:  fopen(http://42.96.168.4:3000): failed to open stream: Connection refused in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 104
+[26-Dec-2017 07:20:39 UTC] PHP Warning:  fopen(http://42.96.168.4:3000): failed to open stream: Connection refused in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 104

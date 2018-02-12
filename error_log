@@ -1,0 +1,1036 @@
+[25-Dec-2017 18:32:31 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF), expecting ';' or '{' in /home/jack/public_html/Application/Home/Controller/LoginController.class.php on line 345
+[25-Dec-2017 18:33:04 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF), expecting ';' or '{' in /home/jack/public_html/Application/Home/Controller/LoginController.class.php on line 345
+[25-Dec-2017 18:33:42 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF), expecting ';' or '{' in /home/jack/public_html/Application/Home/Controller/LoginController.class.php on line 345
+[25-Dec-2017 18:33:55 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF), expecting ';' or '{' in /home/jack/public_html/Application/Home/Controller/LoginController.class.php on line 345
+[25-Dec-2017 18:34:51 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF), expecting ';' or '{' in /home/jack/public_html/Application/Home/Controller/LoginController.class.php on line 345
+[25-Dec-2017 21:55:24 PRC] PHP Parse error:  syntax error, unexpected ')', expecting variable (T_VARIABLE) in /home/jack/public_html/Application/Home/Controller/LoginController.class.php on line 355
+[25-Dec-2017 21:55:44 PRC] PHP Parse error:  syntax error, unexpected ')', expecting variable (T_VARIABLE) in /home/jack/public_html/Application/Home/Controller/LoginController.class.php on line 355
+[25-Dec-2017 21:57:52 PRC] PHP Parse error:  syntax error, unexpected ')', expecting variable (T_VARIABLE) in /home/jack/public_html/Application/Home/Controller/LoginController.class.php on line 355
+[25-Dec-2017 21:57:54 PRC] PHP Parse error:  syntax error, unexpected ')', expecting variable (T_VARIABLE) in /home/jack/public_html/Application/Home/Controller/LoginController.class.php on line 355
+[25-Dec-2017 21:58:34 PRC] PHP Parse error:  syntax error, unexpected '$e' (T_VARIABLE), expecting identifier (T_STRING) or namespace (T_NAMESPACE) or \\ (T_NS_SEPARATOR) in /home/jack/public_html/Application/Home/Controller/LoginController.class.php on line 355
+[26-Dec-2017 00:05:14 PRC] PHP Fatal error:  Class 'Common\Ext\CoinClient' not found in /home/jack/public_html/Application/Common/Common/function.php on line 312
+[26-Dec-2017 00:05:15 PRC] PHP Fatal error:  Class 'Common\Ext\CoinClient' not found in /home/jack/public_html/Application/Common/Common/function.php on line 312
+[26-Dec-2017 23:46:16 PRC] PHP Fatal error:  Class 'Common\Ext\CoinClient' not found in /home/jack/public_html/Application/Common/Common/function.php on line 312
+[27-Dec-2017 08:54:09 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/jack/public_html/Application/Home/Controller/FinanceController.class.php on line 760
+[27-Dec-2017 08:57:33 PRC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/jack/public_html/Application/Home/Controller/FinanceController.class.php on line 749
+[27-Dec-2017 09:01:20 PRC] PHP Parse error:  syntax error, unexpected ';' in /home/jack/public_html/Application/Common/Ext/CoinClient.class.php on line 102
+[27-Dec-2017 06:30:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:32:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:33:11 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:37:15 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:43:19 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:48:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:49:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:50:44 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:51:53 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:52:15 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:55:05 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:57:42 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 06:58:33 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 07:09:40 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 07:11:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 07:12:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 07:12:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 07:15:42 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 07:17:06 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 07:20:15 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 07:20:15 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 07:21:51 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 07:21:57 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 08:03:43 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 08:14:07 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 08:25:14 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 16:26:38 PRC] PHP Parse error:  syntax error, unexpected ';' in /home/jack/public_html/Application/Home/Controller/ChartController.class.php on line 169
+[27-Dec-2017 16:27:16 PRC] PHP Parse error:  syntax error, unexpected ';' in /home/jack/public_html/Application/Home/Controller/ChartController.class.php on line 169
+[27-Dec-2017 16:27:25 PRC] PHP Parse error:  syntax error, unexpected ';' in /home/jack/public_html/Application/Home/Controller/ChartController.class.php on line 169
+[27-Dec-2017 16:28:30 PRC] PHP Parse error:  syntax error, unexpected ';' in /home/jack/public_html/Application/Home/Controller/ChartController.class.php on line 169
+[27-Dec-2017 16:28:31 PRC] PHP Parse error:  syntax error, unexpected ';' in /home/jack/public_html/Application/Home/Controller/ChartController.class.php on line 169
+[27-Dec-2017 16:28:31 PRC] PHP Parse error:  syntax error, unexpected ';' in /home/jack/public_html/Application/Home/Controller/ChartController.class.php on line 169
+[27-Dec-2017 16:28:32 PRC] PHP Parse error:  syntax error, unexpected ';' in /home/jack/public_html/Application/Home/Controller/ChartController.class.php on line 169
+[27-Dec-2017 16:28:35 PRC] PHP Parse error:  syntax error, unexpected ';' in /home/jack/public_html/Application/Home/Controller/ChartController.class.php on line 169
+[27-Dec-2017 16:29:13 PRC] PHP Parse error:  syntax error, unexpected ';' in /home/jack/public_html/Application/Home/Controller/ChartController.class.php on line 169
+[27-Dec-2017 16:29:51 PRC] PHP Parse error:  syntax error, unexpected ';' in /home/jack/public_html/Application/Home/Controller/ChartController.class.php on line 169
+[27-Dec-2017 10:03:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 10:04:13 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 10:04:21 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 10:09:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 10:14:11 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 11:09:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 11:18:58 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 11:54:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:15:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:22:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:24:18 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:24:51 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:26:12 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:28:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:29:26 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:32:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:38:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:41:56 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:46:30 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:51:37 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:52:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:58:19 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 12:58:23 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:00:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:04:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:07:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:13:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:14:31 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:21:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:26:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:28:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:45:14 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:47:11 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:47:11 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:47:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:47:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 13:53:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:02:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:05:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:11:00 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:12:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:15:40 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:45:25 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:46:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:47:31 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:48:36 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:49:24 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:52:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 14:52:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 15:35:58 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 15:54:07 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 15:57:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 15:58:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 15:58:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 15:59:23 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 16:00:33 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 16:23:55 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 16:24:17 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 16:24:41 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 16:25:07 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 16:29:57 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 16:31:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 16:58:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 17:08:36 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 17:11:14 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 17:12:25 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 17:33:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 18:10:16 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 18:10:16 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 18:17:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 18:23:52 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 18:38:58 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 18:40:16 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 18:53:52 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 18:55:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 18:56:16 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 20:34:16 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 22:09:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 22:27:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 22:33:52 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 22:39:34 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 22:43:24 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 23:18:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Dec-2017 23:20:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 00:05:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 00:42:23 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 00:44:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 00:44:23 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 00:47:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 02:05:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 02:07:09 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 02:07:34 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 02:07:34 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 02:10:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 02:10:34 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 06:41:17 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 13:22:26 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 13:23:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 13:30:40 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 13:31:56 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 13:35:18 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 13:54:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 13:55:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 13:55:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 13:55:40 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 13:55:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 14:05:14 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 14:05:24 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 14:13:42 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 14:16:34 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 14:16:40 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 14:18:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 14:19:21 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 15:27:32 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Dec-2017 15:27:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 00:37:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 00:37:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 00:37:43 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 00:41:41 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 01:15:25 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 01:16:21 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 01:18:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 01:19:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 08:17:20 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 08:22:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 08:23:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 13:56:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 13:59:33 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 14:11:18 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 15:06:23 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 16:26:36 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/jack/public_html/ThinkPHP/Common/functions.php on line 1102
+[29-Dec-2017 16:26:47 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/jack/public_html/ThinkPHP/Common/functions.php on line 1550
+[30-Dec-2017 00:48:22 PRC] PHP Parse error:  syntax error, unexpected '}' in /home/jack/public_html/ThinkPHP/Library/Think/Cache/Driver/File.class.php on line 83
+[29-Dec-2017 17:51:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 17:51:18 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 17:51:25 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 17:53:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 17:54:05 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 17:54:12 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 17:54:37 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 17:54:41 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 17:55:50 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 17:56:37 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[29-Dec-2017 17:57:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 00:01:37 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 01:38:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 01:40:25 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 01:41:23 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 01:41:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 01:42:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 02:51:41 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 02:55:21 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 03:04:41 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 03:26:33 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 03:26:33 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 03:26:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 03:27:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 03:31:57 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 03:50:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 04:01:27 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 04:12:36 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:12:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:13:27 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:13:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:17:09 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:19:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:21:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:21:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:27:55 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:27:55 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:34:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:35:31 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:36:18 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:36:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:36:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:37:19 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:43:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:45:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:45:05 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:45:41 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:46:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:46:58 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:47:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:47:51 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 05:52:25 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 06:02:17 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 06:09:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 07:05:50 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 07:21:12 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 07:24:44 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 07:27:15 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 07:33:27 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 07:34:37 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 07:34:44 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 07:42:16 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 07:58:20 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 08:01:16 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 08:14:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 08:26:31 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 08:55:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 08:57:25 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 09:02:49 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 09:15:23 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 09:15:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 09:46:44 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 09:50:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 09:59:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 09:59:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 10:29:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 12:47:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 12:48:49 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 12:49:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 12:49:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 13:47:11 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 13:51:53 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[30-Dec-2017 14:09:34 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 02:14:56 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 03:59:27 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 03:59:50 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 04:04:21 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 04:05:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 04:05:44 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 04:07:51 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 05:06:09 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 05:09:34 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 05:09:37 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 05:09:44 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 05:10:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 05:13:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 05:57:32 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 05:58:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:00:15 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:00:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:00:52 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:02:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:03:24 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:03:30 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:05:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:07:40 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:07:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:13:07 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:13:48 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:14:19 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:21:42 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:24:56 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:27:18 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:27:41 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:46:51 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:52:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:53:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:55:06 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 06:55:06 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:01:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:01:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:14:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:15:43 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:15:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:16:07 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:17:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:18:09 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:19:37 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:19:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:23:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:24:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:25:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:27:20 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:39:18 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:40:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:40:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:40:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:41:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:41:51 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 07:46:51 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 08:17:18 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 08:17:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 08:17:53 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 08:17:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 08:22:20 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 08:23:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 10:01:51 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 10:04:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 10:06:50 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 10:37:27 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 10:59:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 12:18:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 12:21:37 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 13:35:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:20:11 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:20:21 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:20:42 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:21:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:22:32 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:22:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:23:52 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:25:20 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:26:36 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:31:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:32:31 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:39:52 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:40:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:41:18 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 15:49:26 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:01:42 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:02:30 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:05:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:07:42 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:10:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:11:58 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:12:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:15:37 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:15:56 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:55:19 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:55:52 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:56:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:56:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 16:59:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:00:23 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:02:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:03:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:04:36 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:48:36 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:48:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:49:24 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:49:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:49:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:49:55 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:50:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:51:42 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:53:11 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[31-Dec-2017 17:56:24 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 02:36:16 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 02:36:50 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 02:43:20 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 02:44:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 02:45:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 02:46:23 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 02:46:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 02:47:13 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 02:52:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 03:59:43 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 08:04:56 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 08:27:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 08:34:53 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 08:40:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 08:40:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 08:49:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 08:53:58 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 08:53:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 09:34:36 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 13:25:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 13:48:23 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 13:56:30 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 14:00:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 14:09:18 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 14:37:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Jan-2018 14:50:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 02:12:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 13:49:56 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:16:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:22:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:34:48 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:36:12 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:38:55 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:40:58 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:41:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:41:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:41:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:42:49 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:43:48 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:47:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:48:25 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:51:58 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 14:52:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[02-Jan-2018 15:01:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 04:19:13 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 04:22:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 04:24:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 04:25:11 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 04:26:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 04:27:15 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 04:27:15 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 04:30:14 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 04:30:21 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 04:30:41 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 04:39:12 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 05:37:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 13:42:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 13:43:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 13:43:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 13:44:12 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 13:52:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 13:52:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 13:57:30 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 15:20:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 15:23:05 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 15:26:12 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 15:28:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[03-Jan-2018 15:32:25 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Jan-2018 09:55:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[05-Jan-2018 07:08:20 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[06-Jan-2018 06:13:07 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[06-Jan-2018 06:13:34 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[06-Jan-2018 06:25:40 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[06-Jan-2018 06:26:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[06-Jan-2018 06:29:49 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[06-Jan-2018 06:29:49 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[06-Jan-2018 06:30:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[06-Jan-2018 06:31:36 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[06-Jan-2018 06:39:17 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[06-Jan-2018 06:39:17 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 01:41:05 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 01:41:27 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 01:43:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 01:47:33 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 01:48:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 01:54:17 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 01:54:56 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 01:56:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 01:59:26 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 03:12:05 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 03:14:07 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 03:50:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 04:25:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 11:19:34 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 11:21:26 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 11:22:31 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 11:22:31 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[07-Jan-2018 17:29:52 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[08-Jan-2018 18:49:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[08-Jan-2018 18:49:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[08-Jan-2018 21:57:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[09-Jan-2018 02:02:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[09-Jan-2018 02:20:31 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[09-Jan-2018 02:20:40 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[09-Jan-2018 02:53:21 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[10-Jan-2018 12:11:49 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[10-Jan-2018 12:12:43 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[10-Jan-2018 12:13:19 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[10-Jan-2018 12:41:13 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[10-Jan-2018 13:10:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[10-Jan-2018 13:24:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[10-Jan-2018 14:24:48 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[12-Jan-2018 06:29:07 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 06:48:55 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:08:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:15:12 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:15:44 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:27:09 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:30:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:30:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:36:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:37:34 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:38:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:42:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:45:41 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:48:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 07:51:00 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:09:18 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:12:07 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:14:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:15:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:20:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:21:31 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:26:17 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:35:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:35:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:38:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:38:57 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:39:55 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:43:06 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:46:31 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:51:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:51:50 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:52:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:52:52 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 08:53:00 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 09:04:56 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 09:06:32 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 09:06:53 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 09:10:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 09:10:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 09:26:00 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 10:23:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 10:27:06 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 10:27:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 10:29:24 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 10:34:51 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 10:38:24 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 11:30:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 12:06:06 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 12:06:58 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 12:22:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 12:24:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 12:24:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 12:25:44 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 13:30:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 14:04:57 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 23:03:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[13-Jan-2018 23:04:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 03:51:41 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 03:51:41 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 03:54:58 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 03:57:11 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 03:59:24 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 04:24:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 05:18:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 06:21:13 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 09:55:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 11:52:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 12:13:30 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 12:24:24 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 12:26:31 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 13:41:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 13:42:14 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 13:45:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 13:48:59 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 13:52:45 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 14:34:44 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 14:38:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[14-Jan-2018 14:39:30 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[17-Jan-2018 01:37:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[20-Jan-2018 03:25:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[20-Jan-2018 09:03:48 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[20-Jan-2018 09:07:05 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[23-Jan-2018 11:11:19 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[24-Jan-2018 02:49:47 Asia/Shanghai] PHP Warning:  file_get_contents(https://www.bdo.com.ph/sites/default/files/forex/forex.htm): failed to open stream: Connection timed out in /home/jack/public_html/getdata.php on line 4
+[24-Jan-2018 02:49:47 Asia/Shanghai] PHP Notice:  Undefined offset: 1 in /home/jack/public_html/getdata.php on line 9
+[24-Jan-2018 12:43:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[24-Jan-2018 12:43:38 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[26-Jan-2018 14:49:35 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 502 Bad Gateway
+ in /home/jack/public_html/getdata.php on line 24
+[26-Jan-2018 13:01:06 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[26-Jan-2018 13:09:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Jan-2018 10:33:48 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Jan-2018 10:40:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Jan-2018 10:40:10 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Jan-2018 10:42:25 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Jan-2018 10:46:01 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[27-Jan-2018 10:48:21 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[28-Jan-2018 16:01:59 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:04:06 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:06:09 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:08:13 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:10:17 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:12:21 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:14:24 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:16:27 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:18:30 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:20:32 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:22:35 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:24:37 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:26:40 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:28:42 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:30:45 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:32:48 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:34:51 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:36:53 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:38:55 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:40:59 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:43:02 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:45:06 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:47:09 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:49:12 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:51:15 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:53:18 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:55:21 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:57:25 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 16:59:28 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:01:32 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:03:35 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:05:38 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:07:42 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:09:44 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:11:48 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:13:50 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:15:53 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:17:56 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:20:00 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:22:03 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:24:06 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:26:09 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[28-Jan-2018 17:28:12 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable: Back-end server is at capacity
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 04:02:44 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 04:37:47 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 06:37:11 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 06:40:03 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 07:25:35 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 07:28:28 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 07:31:23 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 07:34:16 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 07:37:08 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 07:40:00 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 07:42:53 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 07:45:46 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 07:48:39 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 08:00:33 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 08:03:26 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 08:06:19 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 08:11:56 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[29-Jan-2018 08:14:49 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[31-Jan-2018 08:53:43 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 502 Bad Gateway
+ in /home/jack/public_html/getdata.php on line 24
+[31-Jan-2018 14:46:46 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ in /home/jack/public_html/getdata.php on line 24
+[31-Jan-2018 14:48:52 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ in /home/jack/public_html/getdata.php on line 24
+[31-Jan-2018 14:50:55 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ in /home/jack/public_html/getdata.php on line 24
+[31-Jan-2018 14:52:58 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ in /home/jack/public_html/getdata.php on line 24
+[31-Jan-2018 14:55:02 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ in /home/jack/public_html/getdata.php on line 24
+[31-Jan-2018 14:57:07 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ in /home/jack/public_html/getdata.php on line 24
+[31-Jan-2018 14:59:10 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ in /home/jack/public_html/getdata.php on line 24
+[31-Jan-2018 15:01:12 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ in /home/jack/public_html/getdata.php on line 24
+[31-Jan-2018 15:03:16 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ in /home/jack/public_html/getdata.php on line 24
+[31-Jan-2018 15:05:19 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 02:30:47 Asia/Shanghai] PHP Warning:  file_get_contents(https://quote.coins.ph/v1/markets/BTC-PHP): failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ in /home/jack/public_html/getdata.php on line 18
+[01-Feb-2018 01:41:00 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Feb-2018 01:44:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Feb-2018 03:16:11 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[01-Feb-2018 14:53:53 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:18:39 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:20:42 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:31:03 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:33:08 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:35:12 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:37:15 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:39:19 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:41:22 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:43:25 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:45:28 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:47:32 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:49:35 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:51:39 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[01-Feb-2018 15:53:42 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
+ in /home/jack/public_html/getdata.php on line 24
+[03-Feb-2018 06:21:28 Asia/Shanghai] PHP Warning:  file_get_contents(https://api.coinage.ph/trade/ticker): failed to open stream: HTTP request failed! HTTP/1.1 522 Origin Connection Time-out
+ in /home/jack/public_html/getdata.php on line 12
+[04-Feb-2018 04:29:05 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 04:29:11 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 04:44:29 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 04:46:21 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 04:47:03 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 05:44:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:06:26 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:06:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:06:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:12:50 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:12:50 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:15:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:15:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:15:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:19:46 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:20:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:23:04 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 06:33:52 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 15:58:24 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 15:59:17 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:00:07 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:01:39 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:05:48 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:06:56 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:07:22 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:07:26 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:07:35 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:07:52 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:08:08 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:09:44 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:10:27 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:11:28 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:12:33 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 16:12:47 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[04-Feb-2018 19:12:54 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[05-Feb-2018 18:47:56 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 18:58:27 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:01:22 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:04:15 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:07:11 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:10:06 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:13:00 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:15:53 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:18:46 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:21:39 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:24:34 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:39:28 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:42:23 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:45:17 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:48:11 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:51:04 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[05-Feb-2018 19:56:26 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[06-Feb-2018 00:36:28 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 00:36:28 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 00:48:50 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 00:48:50 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 01:07:33 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 01:07:33 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 01:17:55 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 01:17:55 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 02:03:12 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 02:03:12 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 02:17:41 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 02:17:41 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 02:44:31 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 02:44:31 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 02:54:48 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 02:54:48 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 03:44:26 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 03:44:26 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 03:46:28 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 03:46:28 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 04:07:04 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 04:07:04 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 04:09:07 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 04:09:07 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 04:21:25 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 04:21:25 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 04:46:09 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 04:46:09 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 04:48:13 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 04:48:13 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 05:14:54 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 05:14:54 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 05:31:19 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 05:31:19 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 05:33:22 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 05:33:22 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 05:45:41 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 05:45:41 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 06:06:17 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 06:06:17 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 06:08:19 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[06-Feb-2018 06:08:19 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[07-Feb-2018 02:32:06 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 02:34:58 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 02:37:51 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 02:40:46 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 02:43:39 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 02:46:33 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 02:49:25 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 03:50:12 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 03:53:05 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 03:55:58 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 03:58:53 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 04:01:46 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 04:08:51 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 04:11:43 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 04:14:35 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 04:17:29 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 04:20:21 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[07-Feb-2018 09:22:42 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[09-Feb-2018 00:13:18 Asia/Shanghai] PHP Warning:  file_get_contents(https://bitbit.cash/api/r2/rates?currencyPair=BTCPHP&amp;mode=buy): failed to open stream: HTTP request failed! HTTP/1.1 504 Gateway Timeout
+ in /home/jack/public_html/getdata.php on line 24
+[09-Feb-2018 12:56:36 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[09-Feb-2018 12:58:16 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[09-Feb-2018 12:59:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[09-Feb-2018 12:59:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[09-Feb-2018 12:59:02 UTC] PHP Fatal error:  Call to undefined function Think\C() in /home/jack/public_html/ThinkPHP/Library/Think/Think.class.php on line 335
+[11-Feb-2018 12:44:26 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 12:44:26 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 13:27:56 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 13:27:56 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 13:30:00 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 13:30:00 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 15:14:54 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 15:14:54 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 15:25:10 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 15:25:10 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 15:27:14 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 15:27:14 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 15:41:40 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 15:41:40 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 15:56:10 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 15:56:10 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 16:08:30 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 16:08:30 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 16:10:33 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 16:10:33 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 16:23:02 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 16:23:02 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 17:43:17 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 17:43:17 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 17:45:20 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 17:45:20 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 18:55:30 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 18:55:30 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:09:53 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:09:53 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:24:30 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:24:30 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:26:33 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:26:33 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:40:58 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:40:58 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:43:02 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:43:02 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:53:22 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 19:53:22 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 20:11:55 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 20:11:55 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 20:24:17 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 20:24:17 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 20:46:56 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 20:46:56 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 20:48:59 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 20:48:59 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 21:24:09 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 21:24:09 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 21:49:09 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 21:49:09 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 21:51:12 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 21:51:12 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 22:36:47 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 22:36:47 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 22:51:16 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 22:51:16 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 22:53:20 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[11-Feb-2018 22:53:20 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 01:05:24 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 01:05:24 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 02:52:42 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 02:52:42 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 03:25:38 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 03:25:38 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 03:27:41 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 03:27:41 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 03:42:05 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 03:42:05 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 03:54:23 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 03:54:23 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 04:27:13 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 04:27:13 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 06:10:00 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 06:10:00 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 06:12:04 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 06:12:04 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 06:26:27 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 06:26:27 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 06:28:33 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 06:28:33 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 07:21:54 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 07:21:54 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 07:36:29 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 07:36:29 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 08:56:52 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 08:56:52 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 08:58:56 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 08:58:56 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 09:29:48 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 09:29:48 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 09:46:21 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 09:46:21 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 09:48:24 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 09:48:24 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 10:23:33 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 10:23:33 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 10:36:00 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 10:36:00 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 11:01:05 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 11:01:05 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 11:03:10 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 11:03:10 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 11:17:47 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 11:17:47 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 12:55:23 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 12:55:23 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 13:08:01 Asia/Shanghai] PHP Notice:  Undefined offset: 0 in /home/jack/public_html/getdata.php on line 14
+[12-Feb-2018 13:08:01 Asia/Shanghai] PHP Warning:  Division by zero in /home/jack/public_html/getdata.php on line 14

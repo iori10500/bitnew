@@ -1,0 +1,1 @@
+KindEditor.plugin("autoheight",function(c){var e=this;if(!e.autoHeightMode){return}var b=e.edit;var a=b.doc.body;var d=c.removeUnit(e.height);b.iframe[0].scroll="no";a.style.overflowY="hidden";b.afterChange(function(){e.resize(null,Math.max((c.IE?a.scrollHeight:a.offsetHeight)+62,d))})});
