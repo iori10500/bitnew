@@ -20,7 +20,7 @@ class InputsellCommand extends UserCommand
         $message = $this->getMessage();            // Get Message object
         $chat_id = $message->getChat()->getId();   // Get the current Chat ID
         $text=json_decode(json_encode($message),true)['text'];
-        $text=trim(str_replace("/inputsell","","Hello world!",$text));
+        $text=trim(str_replace("/inputsell","",$text));
         if(empty($text)){
             $data=windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单：/inputsell 数量-单价-支付说明  (例如：  /inputsell 1.2-55432-支付宝账号 350177483@qq.com,谢谢！)']]);
         }else{
@@ -31,7 +31,7 @@ class InputsellCommand extends UserCommand
                 $allprice=$num*$price;
                 unset($text[0]);unset($text[1]);
                 $des="";
-                foreach ($variable as $key => $value) {
+                foreach ($text as $key => $value) {
                     $des.=$value;
                 }
                 $cancel['action']='button';
@@ -46,9 +46,15 @@ class InputsellCommand extends UserCommand
                 $orderinfo['allprice']=$allprice;
                 $orderinfo['des']=$des;
                 $orderinfo['chat_id']=$chat_id;
+                /*
+                orderinfo
+                入库
+
+                */
+                $orderid=1;
                 
                 
-                $data=windowsinfo($chat_id,'发布出售',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>$orderinfo],['text'=>'取消','callback_data'=>$cancel]]]);
+                $data=windowsinfo($chat_id,'发布出售',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>"inorder-$orderid"],['text'=>'取消','callback_data'=>"button-取消发布成功"]]]);
 
             }else{
                 $data=windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'格式不正确']]);

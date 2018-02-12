@@ -55,7 +55,7 @@ class CallbackqueryCommand extends SystemCommand
         foreach (self::$callbacks as $callback) {
             $callback($this->getUpdate()->getCallbackQuery());
         }
-        $this->procing(json_decode($query_data,true),$user_id);
+        $this->procing($query_data,$user_id);
         return Request::answerCallbackQuery(['callback_query_id' => $this->getUpdate()->getCallbackQuery()->getId()]);
     }
 
@@ -69,13 +69,15 @@ class CallbackqueryCommand extends SystemCommand
         self::$callbacks[] = $callback;
     }
     public function procing($data,$user_id){
-        switch ($data['action']) {
+        $data=explode("-", $data);
+        switch ($data[0]) {
             case 'button':
-                 $datamessage=windowsinfo($user_id,$data['title'],[['title'=>'    ','des'=>$data['message']]]);
+                 $datamessage=windowsinfo($user_id,'信息',[['title'=>'    ','des'=>$data[1]]);
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
-            case 'inputorder':
+            case 'inorder':
+                $orderid=$data[1];
                  $datamessage=windowsinfo($user_id,'发布出售',[['title'=>'    ','des'=>'出售订单发布成功，请在我的订单关注进度']]);
                 Request::sendMessage($datamessage);        // Send me
 
