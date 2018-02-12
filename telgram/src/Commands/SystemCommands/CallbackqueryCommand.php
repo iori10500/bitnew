@@ -70,11 +70,17 @@ class CallbackqueryCommand extends SystemCommand
     }
     public function procing($data,$user_id){
         switch ($data['action']) {
-            case 'value':
-                 $datamessage=windowsinfo($user_id,'邀请好友',[['title'=>'    ','des'=>'转发此消息,您好友从此链接进入机器人,并交易一笔,将获得奖励0.00001btc']],[[['text'=>'77','switch_inline_query'=>'t.me/bitokbitbot'],['text'=>'88','url'=>'http://www.baidu.com']],[['text'=>'99','switch_inline_query_current_chat'=>'sdf']]]);
+            case 'button':
+                 $datamessage=windowsinfo($user_id,$data['title'],[['title'=>'    ','des'=>$data['message']]]);
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
+            case 'inputorder':
+                 $datamessage=windowsinfo($user_id,'发布出售',[['title'=>'    ','des'=>'出售订单发布成功，请在我的订单关注进度']]);
+                Request::sendMessage($datamessage);        // Send me
+
+                break;
+
             
             default:
                 # code...
