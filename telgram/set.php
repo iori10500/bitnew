@@ -77,8 +77,9 @@ function windowsinfo($chat_id,$title,$data,$button=false){
     $buttoninfo['text']=$text;
     if($button){
        $inline_keyboard=['inline_keyboard'=>$button]; 
+        $buttoninfo['reply_markup']=$inline_keyboard;
     }
-    $buttoninfo['reply_markup']=$inline_keyboard;
+   
     return $buttoninfo;
     
 }
