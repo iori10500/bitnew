@@ -69,10 +69,9 @@ function yue($walletId){
 function windowsinfo($chat_id,$title,$data,$button=false){
     $buttoninfo['chat_id']=$chat_id;
     $buttoninfo['parse_mode']='HTML';
-    $buttoninfo['chat_id']=$chat_id;
     $text="<code style='background-color:#f80;color:#f80;width:100px'>$title                                            </code>";
     foreach($data as $one){
-        $text.=("<b>".$one['title']."</b>: ".$one['des'].'                                                                                        ';
+        $text.=("<b>".$one['title']."</b>: ".$one['des'].'                                                                                        ');
     }
     $buttoninfo['text']=$text;
     if($button){
