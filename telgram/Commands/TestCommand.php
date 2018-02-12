@@ -21,14 +21,7 @@ class TestCommand extends UserCommand
 
         $chat_id = $message->getChat()->getId();   // Get the current Chat ID
 
-        $data = [                                  // Set up the new message data
-            'chat_id' => $chat_id,                 // Set Chat ID to send the message to
-            'text'    => '<code style="background-color:#f80;color:#f80;width:100px">邀请好友                                            </code><em>转发此消息,您好友从此链接进入机器人,并交易一笔,将获得奖励0.00001btc</em>', // Set message to send
-	    'parse_mode' => 'HTML',
-	    'reply_markup'=>['inline_keyboard'=>[[['text'=>'77','switch_inline_query'=>'t.me/bitokbitbot'],['text'=>'88','url'=>'http://www.baidu.com']],[['text'=>'99','switch_inline_query_current_chat'=>'sdf']]]]   
-];
-
-
+        $data=windowsinfo($chat_id,'邀请好友',[['title'=>'    ','des'=>'转发此消息,您好友从此链接进入机器人,并交易一笔,将获得奖励0.00001btc']],[[['text'=>'77','switch_inline_query'=>'t.me/bitokbitbot'],['text'=>'88','url'=>'http://www.baidu.com']],[['text'=>'99','switch_inline_query_current_chat'=>'sdf']]]);
         return Request::sendMessage($data);        // Send message!
     }
 }
