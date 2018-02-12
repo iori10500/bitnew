@@ -78,7 +78,7 @@ class CallbackqueryCommand extends SystemCommand
                 break;
             case 'inorder':
                 $orderid=$data[1];
-                 $datamessage=windowsinfo($user_id,'发布出售',[['title'=>'    ','des'=>'出售订单发布成功，请在<我的订单>关注进度']]);
+                 $datamessage=windowsinfo($user_id,'发布出售',[['title'=>'    ','des'=>'出售订单发布成功，请在 我的订单 关注进度']]);
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
