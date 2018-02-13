@@ -173,7 +173,7 @@ function getorder($chat_id,$whorder,$limit){
                             
                             break;
                     }
-                }else if($one['seller'] == $chat_id){
+                }else if($one['seller_id'] == $chat_id){
                     $orderinfo['orderclass']='销售订单';
                     switch ($one['state']) {
                         case '0':
