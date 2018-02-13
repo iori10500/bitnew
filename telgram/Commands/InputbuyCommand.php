@@ -49,7 +49,7 @@ class InputbuyCommand extends UserCommand
                 $orderid=1;
                 
                 
-                $data=windowsinfo($chat_id,'发布购买',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice]],[[['text'=>'确认','callback_data'=>"inorder-$orderid"],['text'=>'取消','callback_data'=>"button-取消发布成功"]]]);
+                $data=windowsinfo($chat_id,'发布购买',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice]],[[['text'=>'确认','callback_data'=>"outorder-$orderid"],['text'=>'取消','callback_data'=>"button-取消发布成功"]]]);
 
             }else{
                 $data=windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'格式不正确']]);

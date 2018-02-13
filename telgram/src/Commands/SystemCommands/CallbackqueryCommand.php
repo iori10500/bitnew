@@ -82,7 +82,12 @@ class CallbackqueryCommand extends SystemCommand
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
+            case 'outorder':
+                $orderid=$data[1];
+                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
+                Request::sendMessage($datamessage);        // Send me
 
+                break;
             
             default:
                 # code...
