@@ -119,8 +119,7 @@ function getorder($chat_id,$whorder,$limit){
                 SELECT *
                 FROM `' . "bitorder" . '`
                 WHERE `owner` = :id or (`seller_id` = :id  and `state` =1 and :time-start_time<1800 ) or (`buyer_id` = :id  and `state` =1 and :time-start_time<1800  ) or (`seller_id` = :id  and `state` !=1) or (`buyer_id` = :id  and `state` !=1)
-                LIMIT 1
-            ');
+                LIMIT '.$limit.' , 1');
         $sth->bindValue(':time', $time);
         $sth->bindValue(':id', $chat_id);
         $sth->execute();
