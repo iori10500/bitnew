@@ -165,13 +165,18 @@ class CallbackqueryCommand extends SystemCommand
 
                 break;
             case 'canceltemporder':
-                $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id and processed=0');
+                $sth = DB::getPdo()->prepare('
+                    SELECT * from `' . "bitorder_temp" . '` where id=:id and processed=0 limit 1');
                 $sth->bindValue(':id', $data[1]);
                 $sth->execute();
-                if($sth){
-                    $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'订单取消成功']]);
+                $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                if(empty($tempinfo)){//处理过
+                    $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'订单已处理']]);
                 }else{
-                    $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'订单已取消']]);
+                    $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id and processed=0');
+                    $sth->bindValue(':id', $data[1]);
+                    $sth->execute();
+                    $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'订单取消成功']]);
                 }
                 
                 Request::sendMessage($datamessage);        // Send me
