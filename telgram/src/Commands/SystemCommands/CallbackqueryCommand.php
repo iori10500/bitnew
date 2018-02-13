@@ -128,6 +128,52 @@ class CallbackqueryCommand extends SystemCommand
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
+            case 'outorders'://确定发布订单  从临时表到正式表  processed
+                $result=false;
+                try {
+                    $sth = DB::getPdo()->prepare('
+                        SELECT * from `' . "bitorder_temp" . '` where id=:id and processed=0 limit 1');
+                    $sth->bindValue(':id', $data[1]);
+                    $sth->execute();
+                    $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                    if(!empty($tempinfo)){
+                        $tempinfo=$tempinfo[0];
+                        $sth = DB::getPdo()->prepare('
+                            INSERT INTO `' . "bitorder" . '`
+                            (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
+                            VALUES
+                            (:buy_sell, :buyer_id, :price, :num,:state, :create_time, :owner,:des)
+                        ');
+                        $sth->bindValue(':buy_sell', $tempinfo['buy_sell']);
+                        $sth->bindValue(':seller_id', $tempinfo['seller_id']);
+                        $sth->bindValue(':price', $tempinfo['price']);
+                        $sth->bindValue(':num', $tempinfo['num']);
+                        $sth->bindValue(':state', '0');
+                        $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
+                        $sth->bindValue(':owner', $tempinfo['owner']);
+                        $sth->bindValue(':des', $tempinfo['des']);
+                        $sth->execute();
+
+                        $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id');
+                        $sth->bindValue(':id', $data[1]);
+                        $sth->execute();
+                        $result=true;
+
+
+                    }
+
+                } catch (Exception $e) {
+                    throw new TelegramException($e->getMessage());
+                } 
+                if($result){
+                    $datamessage=windowsinfo($user_id,'发布销售',[['title'=>'    ','des'=>'销售订单发布成功，请在 我的订单 关注进度']]);
+                }else{
+                    $datamessage=windowsinfo($user_id,'发布销售',[['title'=>'    ','des'=>'订单已发布成功，请勿重复发布']]);
+                }
+                Request::sendMessage($datamessage);        // Send me
+
+                break;
+
             case 'nextmyorder':
                 $orderid=$data[1];
                  $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
@@ -182,6 +228,25 @@ class CallbackqueryCommand extends SystemCommand
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
+            case 'canceltemporders':
+                $sth = DB::getPdo()->prepare('
+                    SELECT * from `' . "bitorder_temp" . '` where id=:id and processed=0 limit 1');
+                $sth->bindValue(':id', $data[1]);
+                $sth->execute();
+                $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                if(empty($tempinfo)){//处理过
+                    $datamessage=windowsinfo($user_id,'发布销售',[['title'=>'    ','des'=>'订单已处理']]);
+                }else{
+                    $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id and processed=0');
+                    $sth->bindValue(':id', $data[1]);
+                    $sth->execute();
+                    $datamessage=windowsinfo($user_id,'发布销售',[['title'=>'    ','des'=>'订单取消成功']]);
+                }
+                
+                Request::sendMessage($datamessage);        // Send me
+
+                break;
+
 
                 
             
