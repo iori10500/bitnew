@@ -108,6 +108,11 @@ class CallbackqueryCommand extends SystemCommand
                         $sth->bindValue(':des', $tempinfo['des']);
                         $sth->execute();
 
+                        $sth = DB::getPdo()->prepare('update bitorder set processed=1 where id=:id');
+                        $sth->bindValue(':id', $data[1]);
+                        $sth->execute();
+
+
                     }
 
                 } catch (Exception $e) {
