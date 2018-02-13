@@ -84,6 +84,7 @@ class CallbackqueryCommand extends SystemCommand
 
                 break;
             case 'outorder'://确定发布订单  从临时表到正式表  processed
+                $result=false;
                 try {
                     $sth = DB::getPdo()->prepare('
                         SELECT * from `' . "bitorder_temp" . '` where id=:id and processed=0 limit 1');
@@ -111,6 +112,7 @@ class CallbackqueryCommand extends SystemCommand
                         $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id');
                         $sth->bindValue(':id', $data[1]);
                         $sth->execute();
+                        $result=true;
 
 
                     }
@@ -118,7 +120,11 @@ class CallbackqueryCommand extends SystemCommand
                 } catch (Exception $e) {
                     throw new TelegramException($e->getMessage());
                 } 
-                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
+                if($result){
+                    $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
+                }else{
+                    $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'订单已发布成功，请勿重复发布']]);
+                }
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
@@ -162,7 +168,12 @@ class CallbackqueryCommand extends SystemCommand
                 $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id');
                 $sth->bindValue(':id', $data[1]);
                 $sth->execute();
-                $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'订单取消成功']]);
+                if($sth){
+                    $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'订单取消成功']]);
+                }else{
+                    $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'订单已取消']]);
+                }
+                
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
