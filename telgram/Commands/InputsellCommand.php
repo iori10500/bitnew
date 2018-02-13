@@ -41,6 +41,7 @@ class InputsellCommand extends UserCommand
                 $cancel['chat_id']=$chat_id;
 
 
+
                 $orderinfo['action']='inputorder';
                 $orderinfo['num']=$num;
                 $orderinfo['price']=$price;
@@ -49,32 +50,53 @@ class InputsellCommand extends UserCommand
                 $orderinfo['chat_id']=$chat_id;
 
                 try {
+                    //余额检测
+
                     $sth = DB::getPdo()->prepare('
-                        INSERT INTO `' . "bitorder_temp" . '`
-                        (`buy_sell`, `seller_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
-                        VALUES
-                        (:buy_sell, :seller_id, :price, :num,:state, :create_time, :owner,:des)
+                        SELECT `walletId`,`socked`,`banlance`
+                        FROM `' . TB_USER . '`
+                        WHERE `id` = :id 
+                        LIMIT 1
                     ');
-                    $sth->bindValue(':buy_sell', '0');
-                    $sth->bindValue(':seller_id', $chat_id);
-                    $sth->bindValue(':price', $price);
-                    $sth->bindValue(':num', $num);
-                    $sth->bindValue(':state', '0');
-                    $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
-                    $sth->bindValue(':owner', $chat_id);
-                    $sth->bindValue(':des', $des);
 
+                    $sth->bindValue(':id', $message->getFrom()->getId());
                     $sth->execute();
+                    $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($tempinfo as $key => $one) {
+                        $yueinfo = yue($tempinfo['walletId']);
+                        $walletbanlance=$yueinfo['balance']+$one['banlance'];
+                        if($walletbanlance >= $num){
+                            $sth = DB::getPdo()->prepare('
+                                INSERT INTO `' . "bitorder_temp" . '`
+                                (`buy_sell`, `seller_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
+                                VALUES
+                                (:buy_sell, :seller_id, :price, :num,:state, :create_time, :owner,:des)
+                            ');
+                            $sth->bindValue(':buy_sell', '0');
+                            $sth->bindValue(':seller_id', $chat_id);
+                            $sth->bindValue(':price', $price);
+                            $sth->bindValue(':num', $num);
+                            $sth->bindValue(':state', '0');
+                            $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
+                            $sth->bindValue(':owner', $chat_id);
+                            $sth->bindValue(':des', $des);
 
-                    $sth = DB::getPdo()->prepare('SELECT LAST_INSERT_ID() as lastid ');
-                    $sth->execute();
-                    $lastid=$sth->fetchColumn();
+                            $sth->execute();
 
+                            $sth = DB::getPdo()->prepare('SELECT LAST_INSERT_ID() as lastid ');
+                            $sth->execute();
+                            $lastid=$sth->fetchColumn();
+                            $data=windowsinfo($chat_id,'发布出售',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>"outorders-$lastid"],['text'=>'取消','callback_data'=>"canceltemporders-$lastid"]]]);
+                        }else{
+                            $data=windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'销售数量大于账户余额']]);
+                        }
+                    }
+                   
                 } catch (Exception $e) {
                     throw new TelegramException($e->getMessage());
                 } 
      
-                $data=windowsinfo($chat_id,'发布出售',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>"outorders-$lastid"],['text'=>'取消','callback_data'=>"canceltemporders-$lastid"]]]);
+               
 
             }else{
                 $data=windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'格式不正确']]);
