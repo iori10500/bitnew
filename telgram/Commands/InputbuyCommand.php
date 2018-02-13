@@ -6,7 +6,7 @@ use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
 use Longman\TelegramBot\Entities\Keyboard;
 use Longman\TelegramBot\Entities\KeyboardButton;
-
+use Longman\TelegramBot\DB;
 
 class InputbuyCommand extends UserCommand
 {
@@ -46,6 +46,28 @@ class InputbuyCommand extends UserCommand
                 $orderinfo['allprice']=$allprice;
                 $orderinfo['des']=$des;
                 $orderinfo['chat_id']=$chat_id;
+
+                try {
+                    $sth = DB::getPdo()->prepare('
+                        INSERT INTO `' . "bitorder_temp" . '`
+                        (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
+                        VALUES
+                        (:buy_sell, :buyer_id, :price, :num,:state, :create_time, :owner,:des)
+                    ');
+                    $sth->bindValue(':buy_sell', '1');
+                    $sth->bindValue(':buyer_id', $chat_id);
+                    $sth->bindValue(':price', $price);
+                    $sth->bindValue(':num', $num);
+                    $sth->bindValue(':state', '0');
+                    $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
+                    $sth->bindValue(':owner', $chat_id);
+                    $sth->bindValue(':des', $des);
+
+                    $lastid=$sth->execute();
+                } catch (Exception $e) {
+                    throw new TelegramException($e->getMessage());
+                }
+
                 /*
                 orderinfo
                 入库
