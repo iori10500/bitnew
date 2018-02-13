@@ -165,7 +165,7 @@ class CallbackqueryCommand extends SystemCommand
 
                 break;
             case 'canceltemporder':
-                $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id');
+                $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id and processed=0');
                 $sth->bindValue(':id', $data[1]);
                 $sth->execute();
                 if($sth){
