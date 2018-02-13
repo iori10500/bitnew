@@ -71,6 +71,12 @@ class CallbackqueryCommand extends SystemCommand
     }
     public function procing($dat,$user_id){
         $data=explode("-", $dat);
+        $DESC=[
+            1=>"我的订单",
+            2=>"购买交易", 
+            3=>"销售交易"    
+        ];
+
         switch ($data[0]) {
             case 'button':
                  $datamessage=windowsinfo($user_id,'信息',[['title'=>'    ','des'=>$data[1]]]);
@@ -179,7 +185,8 @@ class CallbackqueryCommand extends SystemCommand
                 if(count($data)==3){
                    $datamessage = getorder($user_id,$data[1],$data[2]);
                    Request::sendMessage($datamessage);        // Send me
-
+                }else{
+                    $data=windowsinfo($chat_id,$DESC[$data[1]],[['title'=>'    ','des'=>'到顶啦']]);
                 }
                 
                 break;
