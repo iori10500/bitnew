@@ -86,13 +86,7 @@ function windowsinfo($chat_id,$title,$data,$button=false){
     return $buttoninfo;
     
 }
-$DESCREBACTION=[
-    '0'=>'等待交易',
-    '1'=>'等待付款',
-    '2'=>'等待放行',
-    '3'=>'交易完成',
-    '4'=>'投诉处理',
-];
+
 
 //echo newWallet('okok');
 //echo get("https://www.bitgo.com/api/v1/wallet",[]);
@@ -104,6 +98,13 @@ $DESCREBACTION=[
 
 //myorder=1 buy=2  sell=3
 function getorder($chat_id,$whorder,$limit){
+    $DESCREBACTION=[
+        '等待交易',
+        '1'=>'等待付款',
+        '2'=>'等待放行',
+        '3'=>'交易完成',
+        '4'=>'投诉处理',
+    ];
      $DESC=[
             1=>"我的订单",
             2=>"购买交易", 
