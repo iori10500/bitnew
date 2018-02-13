@@ -176,9 +176,12 @@ class CallbackqueryCommand extends SystemCommand
 
             case 'nextmyorder':
                 $orderid=$data[1];
-                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
-                Request::sendMessage($datamessage);        // Send me
+                if(count($data)==3){
+                   $datamessage = getorder($user_id,$data[1],$data[2]);
+                   Request::sendMessage($datamessage);        // Send me
 
+                }
+                
                 break;
             case 'cancelorder':
                 $orderid=$data[1];
