@@ -20,7 +20,7 @@ class MyorderCommand extends UserCommand
     {
         $message = $this->getMessage();            // Get Message object
         $chat_id = $message->getChat()->getId();   // Get the current Chat ID
-        getorder($chat_id,1,0);
+        $data = getorder($chat_id,1,0);
    
         return Request::sendMessage($data);        // Send message!
     }
