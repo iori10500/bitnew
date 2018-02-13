@@ -90,11 +90,30 @@ class CallbackqueryCommand extends SystemCommand
                     $sth->bindValue(':id', $data[1]);
                     $sth->execute();
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                    if(!empty($tempinfo)){
+                        $tempinfo=$tempinfo[0];
+                        $sth = DB::getPdo()->prepare('
+                            INSERT INTO `' . "bitorder" . '`
+                            (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
+                            VALUES
+                            (:buy_sell, :buyer_id, :price, :num,:state, :create_time, :owner,:des)
+                        ');
+                        $sth->bindValue(':buy_sell', $tempinfo['buy_sell']);
+                        $sth->bindValue(':buyer_id', $tempinfo['buyer_id']);
+                        $sth->bindValue(':price', $tempinfo['price']);
+                        $sth->bindValue(':num', $tempinfo['num']);
+                        $sth->bindValue(':state', '0');
+                        $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
+                        $sth->bindValue(':owner', $tempinfo['owner']);
+                        $sth->bindValue(':des', $tempinfo['des']);
+                        $sth->execute();
+
+                    }
 
                 } catch (Exception $e) {
                     throw new TelegramException($e->getMessage());
                 } 
-                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度'.json_encode($tempinfo)]]);
+                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
