@@ -29,6 +29,11 @@ class InputbuyCommand extends UserCommand
                 $num = (float)$text[0];
                 $price = (float)$text[1];
                 $allprice=$num*$price;
+                unset($text[0]);unset($text[1]);
+                $des="";
+                foreach ($text as $key => $value) {
+                    $des.=$value;
+                }
                 $cancel['action']='button';
                 $cancel['title']='发布购买';
                 $cancel['message']='取消发布';
@@ -49,7 +54,7 @@ class InputbuyCommand extends UserCommand
                 $orderid=1;
                 
                 
-                $data=windowsinfo($chat_id,'发布购买',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice]],[[['text'=>'确认','callback_data'=>"outorder-$orderid"],['text'=>'取消','callback_data'=>"button-取消发布成功"]]]);
+                $data=windowsinfo($chat_id,'发布购买',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>"outorder-$orderid"],['text'=>'取消','callback_data'=>"button-取消发布成功"]]]);
 
             }else{
                 $data=windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'格式不正确']]);
