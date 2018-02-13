@@ -140,9 +140,9 @@ class CallbackqueryCommand extends SystemCommand
                         $tempinfo=$tempinfo[0];
                         $sth = DB::getPdo()->prepare('
                             INSERT INTO `' . "bitorder" . '`
-                            (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
+                            (`buy_sell`, `seller_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
                             VALUES
-                            (:buy_sell, :buyer_id, :price, :num,:state, :create_time, :owner,:des)
+                            (:buy_sell, :seller_id, :price, :num,:state, :create_time, :owner,:des)
                         ');
                         $sth->bindValue(':buy_sell', $tempinfo['buy_sell']);
                         $sth->bindValue(':seller_id', $tempinfo['seller_id']);
