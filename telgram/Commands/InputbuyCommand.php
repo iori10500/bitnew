@@ -22,7 +22,7 @@ class InputbuyCommand extends UserCommand
         $text=json_decode(json_encode($message),true)['text'];
         $text=trim(str_replace("/inputbuy","",$text));
         if(empty($text)){
-            $data=windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'请按照格式输入发布订单：/inputsell 数量-单价-支付说明  (例如：  /inputsell 1.2-55432-支付宝账号 350177483@qq.com,谢谢！)']]);
+            $data=windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'请按照格式输入发布订单：/inputbuy 数量-单价-支付说明  (例如：  /inputbuy 1.2-55432)']]);
         }else{
             $text = explode('-',$text);
             if(count($text) >= 3){
@@ -35,7 +35,7 @@ class InputbuyCommand extends UserCommand
                     $des.=$value;
                 }
                 $cancel['action']='button';
-                $cancel['title']='发布出售';
+                $cancel['title']='发布购买';
                 $cancel['message']='取消发布';
                 $cancel['chat_id']=$chat_id;
 
