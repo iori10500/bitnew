@@ -51,9 +51,9 @@ class InputsellCommand extends UserCommand
                 try {
                     $sth = DB::getPdo()->prepare('
                         INSERT INTO `' . "bitorder_temp" . '`
-                        (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
+                        (`buy_sell`, `seller_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
                         VALUES
-                        (:buy_sell, :buyer_id, :price, :num,:state, :create_time, :owner,:des)
+                        (:buy_sell, :seller_id, :price, :num,:state, :create_time, :owner,:des)
                     ');
                     $sth->bindValue(':buy_sell', '0');
                     $sth->bindValue(':seller_id', $chat_id);
