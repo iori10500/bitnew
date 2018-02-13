@@ -12,7 +12,7 @@ namespace Longman\TelegramBot\Commands\SystemCommands;
 
 use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Request;
-
+use Longman\TelegramBot\DB;
 /**
  * Callback query command
  */
@@ -82,9 +82,18 @@ class CallbackqueryCommand extends SystemCommand
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
-            case 'outorder':
-                $orderid=$data[1];
-                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
+            case 'outorder'://确定发布订单  从临时表到正式表  processed
+                try {
+                    $sth = DB::getPdo()->prepare('
+                        SELECT * from `' . "bitorder_temp" . '` where id=:id and processed=0 limit 1');
+                    $sth->bindValue(':id', $data[1]);
+                    $sth->execute();
+                    $tempinfo=$sth->fetchColumn();
+
+                } catch (Exception $e) {
+                    throw new TelegramException($e->getMessage());
+                } 
+                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度'.json_encode($tempinfo)]]);
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
@@ -119,6 +128,12 @@ class CallbackqueryCommand extends SystemCommand
 
                 break;
             case 'fangxingorder':
+                $orderid=$data[1];
+                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
+                Request::sendMessage($datamessage);        // Send me
+
+                break;
+            case 'canceltemporder':
                 $orderid=$data[1];
                  $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
                 Request::sendMessage($datamessage);        // Send me

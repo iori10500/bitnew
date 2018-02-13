@@ -25,7 +25,7 @@ class InputbuyCommand extends UserCommand
             $data=windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'请按照格式输入发布订单：/inputbuy 数量-单价-支付说明  (例如：  /inputbuy 1.2-55432)']]);
         }else{
             $text = explode('-',$text);
-            if(count($text) >= 2){
+            if(count($text) >= 3){
                 $num = (float)$text[0];
                 $price = (float)$text[1];
                 $allprice=$num*$price;
@@ -63,20 +63,17 @@ class InputbuyCommand extends UserCommand
                     $sth->bindValue(':owner', $chat_id);
                     $sth->bindValue(':des', $des);
 
-                    $lastid=$sth->execute();
+                    $sth->execute();
+
+                    $sth = DB::getPdo()->prepare('SELECT LAST_INSERT_ID() as lastid ');
+                    $sth->execute();
+                    $lastid=$sth->fetchColumn();
+
                 } catch (Exception $e) {
                     throw new TelegramException($e->getMessage());
-                }
-
-                /*
-                orderinfo
-                入库
-
-                */
-                $orderid=1;
+                } 
                 
-                
-                $data=windowsinfo($chat_id,'发布购买',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>"outorder-$orderid"],['text'=>'取消','callback_data'=>"button-取消发布成功"]]]);
+                $data=windowsinfo($chat_id,'发布购买',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>"outorder-$lastid"],['text'=>'取消','callback_data'=>"canceltemporder-$lastid"]]]);
 
             }else{
                 $data=windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'格式不正确']]);
