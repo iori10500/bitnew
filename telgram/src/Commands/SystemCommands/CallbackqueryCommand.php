@@ -13,6 +13,7 @@ namespace Longman\TelegramBot\Commands\SystemCommands;
 use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Request;
 use Longman\TelegramBot\DB;
+use PDO;
 /**
  * Callback query command
  */
@@ -88,7 +89,7 @@ class CallbackqueryCommand extends SystemCommand
                         SELECT * from `' . "bitorder_temp" . '` where id=:id and processed=0 limit 1');
                     $sth->bindValue(':id', $data[1]);
                     $sth->execute();
-                    $tempinfo=$sth->fetchColumn();
+                    $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
 
                 } catch (Exception $e) {
                     throw new TelegramException($e->getMessage());
