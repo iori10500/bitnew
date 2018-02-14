@@ -72,10 +72,10 @@ function yue($walletId){
 function windowsinfo($chat_id,$title,$data,$button=false){
     $buttoninfo['chat_id']=$chat_id;
     $buttoninfo['parse_mode']='HTML';
-    $text="<code style='background-color:#f80;color:#ff7f17;width:100px'>$title                                            </code>";
+    $text="<code style='color:#ee772b;width:100px'>$title                                            </code>";
     foreach($data as $one){
         $flag=empty(trim($one['title']))?"":":";
-        $text.=("<code style='color:#ff7f17'>".$one['title']."</code>".$flag." ".$one['des'].'                                                                                        ');
+        $text.=("<code style='color:#00b5f6'>".$one['title']."</code>".$flag." ".$one['des'].'                                                                                        ');
     }
     $buttoninfo['text']=$text;
     if($button){
