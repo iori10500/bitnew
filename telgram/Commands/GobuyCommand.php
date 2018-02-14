@@ -11,9 +11,9 @@ use PDO;
 
 class GobuyCommand extends UserCommand
 {
-    protected $name = 'myorder';                      // Your command's name
-    protected $description = 'A command for myorder'; // Your command description
-    protected $usage = '/myorder';                    // Usage of your command
+    protected $name = 'gobuy';                      // Your command's name
+    protected $description = 'A command for gobuy'; // Your command description
+    protected $usage = '/gobuy';                    // Usage of your command
     protected $version = '1.0.0';                  // Version of your command
 
     public function execute()
