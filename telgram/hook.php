@@ -39,10 +39,10 @@ $chat_id=$message['message']['chat']['id'];
 $text=$message['message']['text'];
 switch ($text) {
   case 'ud83cudf88u53d1u5e03u51fau552eud83dudc49':   //inputsell
-    Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单：                             <strong>/inputsell 数量-单价-支付说明  </strong>(例如：  <em>/inputsell 1.2-55432-支付宝账号 350177483@qq.com,谢谢！</em>)']]));
+    Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单：                   <strong>/inputsell 数量-单价-支付说明  </strong>(例如：  <em>/inputsell 1.2-55432-支付宝账号 350177483@qq.com,谢谢！</em>)']]));
     break;
   case 'ud83cudf88u53d1u5e03u8d2du4e70ud83dudc48':  //inputbuy
-    Request::sendMessage(windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'请按照格式输入发布订单：                             <strong>/inputbuy 数量-单价-支付说明  </strong>(例如：  <em>/inputbuy 1.2-55432-本人只支持支付宝付款，请留意</em>)']]));
+    Request::sendMessage(windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'请按照格式输入发布订单：                   <strong>/inputbuy 数量-单价-支付说明  </strong>(例如：  <em>/inputbuy 1.2-55432-本人只支持支付宝付款，请留意</em>)']]));
     break;
   case 'ud83dudd04u6211u8981u51fau552eud83dudc49':   //gosell
     Request::sendMessage(getorder($chat_id,2,0));
