@@ -86,7 +86,18 @@ function windowsinfo($chat_id,$title,$data,$button=false){
     return $buttoninfo;
     
 }
-
+function startwindows($chat_id,$title,$button=false){
+    $buttoninfo['chat_id']=$chat_id;
+    $buttoninfo['parse_mode']='HTML';
+    $text="欢迎加入电币";
+    if($button){
+       $inline_keyboard=['keyboard'=>$button]; 
+        $buttoninfo['reply_markup']=$inline_keyboard;
+    }
+   
+    return $buttoninfo;
+    
+}
 
 //echo newWallet('okok');
 //echo get("https://www.bitgo.com/api/v1/wallet",[]);
