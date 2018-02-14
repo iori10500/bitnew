@@ -20,7 +20,7 @@ class GosellCommand extends UserCommand
     {
         $message = $this->getMessage();            // Get Message object
         $chat_id = $message->getChat()->getId();   // Get the current Chat ID
-        $data = getorder($chat_id,3,0);
+        $data = getorder($chat_id,2,0);
    
         return Request::sendMessage($data);        // Send message!
     }
