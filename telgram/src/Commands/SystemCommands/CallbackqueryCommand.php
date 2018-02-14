@@ -186,7 +186,7 @@ class CallbackqueryCommand extends SystemCommand
                    $datamessage = getorder($user_id,$data[1],$data[2]);
                    
                 }else{
-                    $data=windowsinfo($user_id,$DESC[$data[1]],[['title'=>'    ','des'=>'到顶啦']]);
+                    $datamessage=windowsinfo($user_id,$DESC[$data[1]],[['title'=>'    ','des'=>'到顶啦']]);
                 }
                 Request::sendMessage($datamessage);        // Send me
                 
