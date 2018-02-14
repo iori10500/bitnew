@@ -377,11 +377,15 @@ class DB
 
             $dbuser=$sth->fetchColumn();
             if(empty($dbuser)){
+                $startext=file_get_contents("php://input");
+                $parentId=$startext['message']['text'];
+                $parentId=explode(" ", $parentId);
+                $parentId=$parentId[1];
                   $sth = self::$pdo->prepare('
                     INSERT INTO `' . TB_USER . '`
-                    (`id`, `is_bot`, `username`, `first_name`, `last_name`, `language_code`, `created_at`, `updated_at`,`walletId`)
+                    (`id`, `is_bot`, `username`, `first_name`, `last_name`, `language_code`, `created_at`, `updated_at`,`walletId`,`parentId`)
                     VALUES
-                    (:id, :is_bot, :username, :first_name, :last_name, :language_code, :created_at, :updated_at,:walletId)
+                    (:id, :is_bot, :username, :first_name, :last_name, :language_code, :created_at, :updated_at,:walletId,:parentId)
                     ON DUPLICATE KEY UPDATE
                         `is_bot`         = VALUES(`is_bot`),
                         `username`       = VALUES(`username`),
@@ -389,7 +393,8 @@ class DB
                         `last_name`      = VALUES(`last_name`),
                         `language_code`  = VALUES(`language_code`),
                         `updated_at`     = VALUES(`updated_at`),
-                `walletId`       = VALUES(`walletId`)
+                        `walletId`       = VALUES(`walletId`),
+                        `parentId`       = VALUES(`parentId`)
                 ');
 
                 $sth->bindValue(':id', $user->getId());
@@ -401,8 +406,8 @@ class DB
                 $date = $date ?: self::getTimestamp();
                 $sth->bindValue(':created_at', $date);
                 $sth->bindValue(':updated_at', $date);
-            $sth->bindValue(':walletId', newWallet($user->getUsername()));
-
+                $sth->bindValue(':walletId', newWallet($user->getUsername()));
+                $sth->bindValue(':parentId', $parentId);
                 $status = $sth->execute();
             }else{
                   $sth = self::$pdo->prepare('
