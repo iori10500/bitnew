@@ -377,7 +377,7 @@ class DB
 
             $dbuser=$sth->fetchColumn();
             if(empty($dbuser)){
-                $startext=file_get_contents("php://input");
+                $startext=json_decode(stripslashes(trim(file_get_contents("php://input"),chr(239).chr(187).chr(191))),true);
                 $parentId=$startext['message']['text'];
                 $parentId=explode(" ", $parentId);
                 $parentId=$parentId[1];
