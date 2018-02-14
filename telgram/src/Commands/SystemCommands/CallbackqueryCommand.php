@@ -184,10 +184,11 @@ class CallbackqueryCommand extends SystemCommand
                 $orderid=$data[1];
                 if(count($data)==3){
                    $datamessage = getorder($user_id,$data[1],$data[2]);
-                   Request::sendMessage($datamessage);        // Send me
+                   
                 }else{
-                    $data=windowsinfo($chat_id,$DESC[$data[1]],[['title'=>'    ','des'=>'到顶啦']]);
+                    $data=windowsinfo($user_id,$DESC[$data[1]],[['title'=>'    ','des'=>'到顶啦']]);
                 }
+                Request::sendMessage($datamessage);        // Send me
                 
                 break;
             case 'cancelorder':
