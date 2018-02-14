@@ -53,13 +53,13 @@ class StartCommand extends SystemCommand
 
          $data = [                                  // Set up the new message data
                     'chat_id' => $chat_id,                 // Set Chat ID to send the message to
-                    'text'    => $message->getChat()->getUsername()//newWallet('test'), // Set message to send
+                    'text'    => "Hello !".$message->getChat()->getUsername()." 你好!"//newWallet('test'), // Set message to send
                  //   'reply_markup'=>['keyboard'=[[['text'=>'77']]]]   
         ];
          Request::sendMessage($data);        // Send message!
 
-
-        startwindows($chat_id,"start",[[['text'=>'交易市场','callback_data'=>"nextmyorder"]],[['text'=>'发布交易','callback_data'=>"nextmyorder"]],[['text'=>'个人中心','callback_data'=>"nextmyorder"]]]);
+        $data= startwindows($chat_id,"start",[[['text'=>'交易市场','callback_data'=>"nextmyorder"]],[['text'=>'发布交易','callback_data'=>"nextmyorder"]],[['text'=>'个人中心','callback_data'=>"nextmyorder"]]]);
+         Request::sendMessage($data);        // Send message!
 
         return parent::execute();
     }
