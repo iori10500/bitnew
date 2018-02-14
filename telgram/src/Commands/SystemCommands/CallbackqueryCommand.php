@@ -266,7 +266,7 @@ class CallbackqueryCommand extends SystemCommand
                     LIMIT 1
                 ');
 
-                $sth->bindValue(':id', $message->getFrom()->getId());
+                $sth->bindValue(':id', $user_id);
                 $sth->execute();
                 $walletId=$sth->fetchColumn();
                 $yueinfo = yue($walletId);
