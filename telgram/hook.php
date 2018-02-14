@@ -31,6 +31,32 @@ $telegram->enableMySql($mysql_credentials);
 $telegram->addCommandsPaths($commands_paths);
 
 $telegram->handle();
+$message=json_decode(stripslashes(trim(file_get_contents("php://input"),chr(239).chr(187).chr(191))),true);
+$chat_id=$message['message']['chat']['id'];
+$text=$message['message']['text'];
+switch ($text) {
+  case 'ud83cudf88u53d1u5e03u51fau552eud83dudc49':
+    Request::sendMessage(['chat_id' => $chat_id,'text'=> "/inputsell"]);
+    break;
+  case 'ud83cudf88u53d1u5e03u8d2du4e70ud83dudc48':
+    Request::sendMessage(['chat_id' => $chat_id,'text'=> "/inputbuy"]);
+    break;
+  case 'ud83dudd04u6211u8981u51fau552eud83dudc49':
+    Request::sendMessage(['chat_id' => $chat_id,'text'=> "/gosell"]);
+    break;
+  case 'ud83dudd04u6211u8981u8d2du4e70ud83dudc48':
+    Request::sendMessage(['chat_id' => $chat_id,'text'=> "/gobuy"]);
+    break;
+  case 'ud83dudc71u200du2642ufe0fu4e2au4ebau4e2du5fc3ud83dudc71u200du2642ufe0f':
+    Request::sendMessage(['chat_id' => $chat_id,'text'=> "/myinfo"]);
+    break;
+  default:
+    # code...
+    break;
+}
+
+
+
     // Set webhook
   //  $result = $telegram->setWebhook($hook_url);
   //   $result = $telegram->
