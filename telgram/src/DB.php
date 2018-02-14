@@ -380,7 +380,12 @@ class DB
                 $startext=json_decode(stripslashes(trim(file_get_contents("php://input"),chr(239).chr(187).chr(191))),true);
                 $parentId=$startext['message']['text'];
                 $parentId=explode(" ", $parentId);
-                $parentId=$parentId[1];
+                if(count($parentId)>=2 && !empty($parentId[1])){
+                    $parentId=$parentId[1];
+                }else{
+                    $parentId=0;
+                }
+                
                   $sth = self::$pdo->prepare('
                     INSERT INTO `' . TB_USER . '`
                     (`id`, `is_bot`, `username`, `first_name`, `last_name`, `language_code`, `created_at`, `updated_at`,`walletId`,`parentId`)
