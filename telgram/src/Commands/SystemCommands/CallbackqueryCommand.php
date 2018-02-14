@@ -180,7 +180,7 @@ class CallbackqueryCommand extends SystemCommand
 
                 break;
 
-            case 'nextmyorder':
+            case 'nextmyorder':  //下一个订单
                 $orderid=$data[1];
                 if(count($data)==3){
                    $datamessage = getorder($user_id,$data[1],$data[2]);
@@ -257,6 +257,47 @@ class CallbackqueryCommand extends SystemCommand
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
+
+            case 'balance'://接收比特币
+                $sth = DB::getPdo()->prepare('
+                    SELECT `walletId`
+                    FROM `' . TB_USER . '`
+                    WHERE `id` = :id 
+                    LIMIT 1
+                ');
+
+                $sth->bindValue(':id', $message->getFrom()->getId());
+                $sth->execute();
+                $walletId=$sth->fetchColumn();
+                $yueinfo = yue($walletId);
+                $datamessage=windowsinfo($user_id,'地址余额',[['title'=>'账户余额','des'=>$yueinfo['balance']],['title'=>'接收地址','des'=>$yueinfo['address']]]);    
+                Request::sendMessage($datamessage);        // Send me
+
+                break;
+            case 'sendbitcoin'://发送比特币
+
+                $datamessage=windowsinfo($user_id,'发送比特币',[['title'=>'    ','des'=>'发送比特币']]);
+                
+                
+                Request::sendMessage($datamessage);        // Send me
+
+                break;
+            case 'myorder'://我的订单
+
+                 $data = getorder($user_id,1,0);
+                Request::sendMessage($data);        // Send me
+
+                break;
+            case 'contentus'://联系我们
+
+                $datamessage=windowsinfo($user_id,'联系我们',[['title'=>'联系邮箱','des'=>'bitneworld@gmail.com']]);
+                
+                
+                Request::sendMessage($datamessage);        // Send me
+
+                break;
+
+
 
 
                 
