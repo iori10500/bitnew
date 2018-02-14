@@ -151,7 +151,7 @@ function getorder($chat_id,$whorder,$limit){
                 $orderinfo['remain_time']=(time()-$one['start_time'])/60;
 
                 if($one['buyer_id'] == $chat_id){
-                    $orderinfo['orderclass']='购买订单'
+                    $orderinfo['orderclass']='购买订单';
                     switch ($one['state']) {
                         case '0':
                             $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'建时','des'=>$orderinfo['create_time']]],[[['text'=>'取消订单','callback_data'=>"cancelorder-".$orderinfo['orderid']]],[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
