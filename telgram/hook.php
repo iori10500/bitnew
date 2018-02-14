@@ -54,22 +54,9 @@ switch ($text) {
     Request::sendMessage(windowsinfo($chat_id,'个人中心',[],[[['text'=>'接收比特币','callback_data'=>"nextmyorder"]],[['text'=>'发送比特币','callback_data'=>"nextmyorder"]],[['text'=>'订单中心','callback_data'=>"nextmyorder"]],[['text'=>'联系我们','callback_data'=>"nextmyorder"]]]));
     break;
   case 'ud83dude4du9080u8bf7u597du53cbud83dude4d':
-    
-      $data = [
-              'chat_id' => $chat_id,                 // Set Chat ID to send the message to
-              'text'    => '<code style="background-color:#f80;color:#0000FF;width:100px">邀请好友                                            </code><b>邀请好友加入,您的下级每发生一笔订单,您将获得0.00001btc奖励</b>', // Set message to send
-        'parse_mode' => 'HTML',
-  ];
-  Request::sendMessage($data);        // Send message!
-  $time=time();
-          $data = [                                  // Set up the new message data
-              'chat_id' => $chat_id,                 // Set Chat ID to send the message to
-              'text'    => "<code style='background-color:#f80;color:#f80;width:100px'>邀请链接                                            </code><a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>电报比特币c2c交易平台</a>", // Set message to send
-              'parse_mode' => 'HTML',
-             // 'reply_markup'=>['keyboard'=>[[['text'=>'获得邀请链接','switch_inline_query'=>'t.me/bitokbitbot']]]]     
-  ];
-          //return Request::sendMessage($data);        // Send message!
-  Request::sendMessage($data);        // Send message!
+  Request::sendMessage(windowsinfo($chat_id,'邀请好友',[['title'=>'    ','des'=>'邀请好友加入,您的下级每发生一笔订单,您将获得0.00001btc奖励']]));        // Send message!
+  $time=time(); 
+  Request::sendMessage( windowsinfo($chat_id,'邀请链接',[['title'=>'    ','des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>电币比特币c2c交易平台</a>"]]));        // Send message!
 
 
     break;
