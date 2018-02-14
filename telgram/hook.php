@@ -38,25 +38,49 @@ $message=json_decode(stripslashes(trim(file_get_contents("php://input"),chr(239)
 $chat_id=$message['message']['chat']['id'];
 $text=$message['message']['text'];
 switch ($text) {
-  case 'ud83cudf88u53d1u5e03u51fau552eud83dudc49':
-    Request::sendMessage(inputsell($message));
+  case 'ud83cudf88u53d1u5e03u51fau552eud83dudc49':   //inputsell
+    Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单：/inputsell 数量-单价-支付说明  (例如：  /inputsell 1.2-55432-支付宝账号 350177483@qq.com,谢谢！)']]));
     break;
-  case 'ud83cudf88u53d1u5e03u8d2du4e70ud83dudc48':
-    Request::sendMessage(['chat_id' => $chat_id,'text'=> "/inputbuy"]);
+  case 'ud83cudf88u53d1u5e03u8d2du4e70ud83dudc48':  //inputbuy
+    Request::sendMessage(windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'请按照格式输入发布订单：/inputbuy 数量-单价-支付说明  (例如：  /inputbuy 1.2-55432)']]));
     break;
-  case 'ud83dudd04u6211u8981u51fau552eud83dudc49':
-    Request::sendMessage(['chat_id' => $chat_id,'text'=> "/gosell"]);
+  case 'ud83dudd04u6211u8981u51fau552eud83dudc49':   //gosell
+    Request::sendMessage(getorder($chat_id,2,0));
     break;
-  case 'ud83dudd04u6211u8981u8d2du4e70ud83dudc48':
-    Request::sendMessage(['chat_id' => $chat_id,'text'=> "/gobuy"]);
+  case 'ud83dudd04u6211u8981u8d2du4e70ud83dudc48':    //gobuy
+    Request::sendMessage(getorder($chat_id,3,0));
     break;
   case 'ud83dudc71u200du2642ufe0fu4e2au4ebau4e2du5fc3ud83dudc71u200du2642ufe0f':
-    Request::sendMessage(['chat_id' => $chat_id,'text'=> "/myinfo"]);
+    Request::sendMessage(windowsinfo($chat_id,'个人中心',[],[[['text'=>'接收比特币','callback_data'=>"nextmyorder"]],[['text'=>'发送比特币','callback_data'=>"nextmyorder"]],[['text'=>'订单中心','callback_data'=>"nextmyorder"]],[['text'=>'联系我们','callback_data'=>"nextmyorder"]]]));
+    break;
+  case 'ud83dude4du9080u8bf7u597du53cbud83dude4d':
+    
+      $data = [
+              'chat_id' => $chat_id,                 // Set Chat ID to send the message to
+              'text'    => '<code style="background-color:#f80;color:#0000FF;width:100px">邀请好友                                            </code><b>邀请好友加入,您的下级每发生一笔订单,您将获得0.00001btc奖励</b>', // Set message to send
+        'parse_mode' => 'HTML',
+  ];
+  Request::sendMessage($data);        // Send message!
+  $time=time();
+          $data = [                                  // Set up the new message data
+              'chat_id' => $chat_id,                 // Set Chat ID to send the message to
+              'text'    => "<code style='background-color:#f80;color:#f80;width:100px'>邀请链接                                            </code><a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>电报比特币c2c交易平台</a>", // Set message to send
+              'parse_mode' => 'HTML',
+             // 'reply_markup'=>['keyboard'=>[[['text'=>'获得邀请链接','switch_inline_query'=>'t.me/bitokbitbot']]]]     
+  ];
+          //return Request::sendMessage($data);        // Send message!
+  Request::sendMessage($data);        // Send message!
+
+
     break;
   default:
     # code...
     break;
 }
+
+
+
+
 
 
 
@@ -69,94 +93,4 @@ switch ($text) {
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // log telegram errors
  //   echo $e->getMessage();
-}
-
-
-
-function inputsell($message){
-        $chat_id=$message['message']['chat']['id'];
-        $text=$message['message']['text'];
-        $text=trim(str_replace("/inputsell","",$text));
-        if(empty($text)){
-            $data=windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单：/inputsell 数量-单价-支付说明  (例如：  /inputsell 1.2-55432-支付宝账号 350177483@qq.com,谢谢！)']]);
-        }else{
-            $text = explode('-',$text);
-            if(count($text) >= 3){
-                $num = (float)$text[0];
-                $price = (float)$text[1];
-                $allprice=$num*$price;
-                unset($text[0]);unset($text[1]);
-                $des="";
-                foreach ($text as $key => $value) {
-                    $des.=$value;
-                }
-                $cancel['action']='button';
-                $cancel['title']='发布出售';
-                $cancel['message']='取消发布';
-                $cancel['chat_id']=$chat_id;
-
-
-
-                $orderinfo['action']='inputorder';
-                $orderinfo['num']=$num;
-                $orderinfo['price']=$price;
-                $orderinfo['allprice']=$allprice;
-                $orderinfo['des']=$des;
-                $orderinfo['chat_id']=$chat_id;
-
-                try {
-                    //余额检测
-
-                    $sth = DB::getPdo()->prepare('
-                        SELECT `walletId`,`socked`,`banlance`
-                        FROM `' . TB_USER . '`
-                        WHERE `id` = :id 
-                        LIMIT 1
-                    ');
-
-                    $sth->bindValue(':id', $chat_id);
-                    $sth->execute();
-                    $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($tempinfo as $key => $one) {
-                        $yueinfo = yue($tempinfo['walletId']);
-                        $walletbanlance=$yueinfo['balance']+$one['banlance'];
-                        if($walletbanlance >= $num){
-                            $sth = DB::getPdo()->prepare('
-                                INSERT INTO `' . "bitorder_temp" . '`
-                                (`buy_sell`, `seller_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
-                                VALUES
-                                (:buy_sell, :seller_id, :price, :num,:state, :create_time, :owner,:des)
-                            ');
-                            $sth->bindValue(':buy_sell', '0');
-                            $sth->bindValue(':seller_id', $chat_id);
-                            $sth->bindValue(':price', $price);
-                            $sth->bindValue(':num', $num);
-                            $sth->bindValue(':state', '0');
-                            $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
-                            $sth->bindValue(':owner', $chat_id);
-                            $sth->bindValue(':des', $des);
-
-                            $sth->execute();
-
-                            $sth = DB::getPdo()->prepare('SELECT LAST_INSERT_ID() as lastid ');
-                            $sth->execute();
-                            $lastid=$sth->fetchColumn();
-                            $data=windowsinfo($chat_id,'发布出售',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>"outorders-$lastid"],['text'=>'取消','callback_data'=>"canceltemporders-$lastid"]]]);
-                        }else{
-                            $data=windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'销售数量大于账户余额']]);
-                        }
-                    }
-                   
-                } catch (Exception $e) {
-                    throw new TelegramException($e->getMessage());
-                } 
-     
-               
-
-            }else{
-                $data=windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'格式不正确']]);
-            }
-            
-        }
-        return $data;
 }
