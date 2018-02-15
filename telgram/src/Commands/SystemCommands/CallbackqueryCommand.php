@@ -165,7 +165,7 @@ class CallbackqueryCommand extends SystemCommand
                         $sth->bindValue(':id', $data[1]);
                         $sth->execute();
 
-                        $sth = DB::getPdo()->prepare('update users set balance=balance-:num where id=:id');
+                        $sth = DB::getPdo()->prepare('update users set banlance=banlance-:num where id=:id');
                         $sth->bindValue(':id', $tempinfo['seller_id']);
                         $sth->bindValue(':num', $tempinfo['num']);
                         $sth->execute();
@@ -267,7 +267,7 @@ class CallbackqueryCommand extends SystemCommand
 
             case 'balance'://接收比特币
                 $sth = DB::getPdo()->prepare('
-                    SELECT `balance`,`socked`,`walletid` 
+                    SELECT `banlance`,`socked`,`walletid` 
                     FROM `' . TB_USER . '`
                     WHERE `id` = :id 
                     LIMIT 1

@@ -432,7 +432,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                 $buyer_id=$tempinfo['buyer_id'];
                 $seller_id=$tempinfo['seller_id'];
                 $num=$tempinfo['num'];
-                $sth = $pdo->prepare('update user set balance=balance+:num where id=:id');
+                $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
                 $sth->bindValue(':id', $buyer_id);
                 $sth->bindValue(':num', $num);
                 $sth->execute();
@@ -463,7 +463,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 $sth = $pdo->prepare('
-                    SELECT `balance`,`socked`,`walletid` 
+                    SELECT `banlance`,`socked`,`walletid` 
                     FROM `' . TB_USER . '`
                     WHERE `id` = :id 
                     LIMIT 1
@@ -473,7 +473,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                 $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                 $walletId=$userinfo[0]['walletid'];
                 $walletbalanc=json_decode(get("https://www.bitgo.com/api/v1/wallet/$walletId",[]),true)['balance'];
-                $balance=$userinfo[0]['balance']+$walletbalanc;
+                $balance=$userinfo[0]['banlance']+$walletbalanc;
                 $socked=$userinfo[0]['socked'];
                 $tempinfo=$tempinfo[0];
                 if($tempinfo['owner'] == $tempinfo['buyer_id']){  //卖出
@@ -483,7 +483,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth->bindValue(':chat_id', $chat_id);
                         $sth->bindValue(':time', $time);
                         $sth->execute();
-                        $sth = $pdo->prepare('update users set balance=balance-:num where id=:id');
+                        $sth = $pdo->prepare('update users set banlance=banlance-:num where id=:id');
                         $sth->bindValue(':id', $chat_id);
                         $sth->bindValue(':num', $tempinfo['num']);
                         $sth->execute();
