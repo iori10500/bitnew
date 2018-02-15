@@ -437,6 +437,105 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                 $sth->bindValue(':num', $num);
                 $sth->execute();
 
+                $sth = $pdo->prepare('
+                    SELECT `parentId`
+                    FROM `' . TB_USER . '`
+                    WHERE `id` = :id 
+                    LIMIT 1
+                ');
+                $sth->bindValue(':id', $seller_id);
+                $sth->execute();
+                $parentId_sell=$sth->fetchColumn();
+                if($parentId_sell && ($parentId_sell != $seller_id )){
+                     $sth = $pdo->prepare('
+                        SELECT `username`
+                        FROM `' . TB_USER . '`
+                        WHERE `id` = :id 
+                        LIMIT 1
+                    ');
+                    $sth->bindValue(':id', $seller_id);
+                    $sth->execute();
+                    $seller_name=$sth->fetchColumn();
+
+                    $sth = $pdo->prepare('
+                        INSERT INTO `' . "bitorder" . '`
+                        (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
+                        VALUES
+                        (:buy_sell, :buyer_id, :price, :num,:state, :create_time, :owner,:des)
+                    ');
+                    $sth->bindValue(':buy_sell', '2');
+                    $sth->bindValue(':buyer_id', $parentId_sell);
+                    $sth->bindValue(':price', "0");
+                    $sth->bindValue(':num', '0.00001');
+                    $sth->bindValue(':state', '3');
+                    $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
+                    $sth->bindValue(':owner', "0");
+                    $sth->bindValue(':des', $seller_name);
+                    $sth->execute();
+
+                    $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
+                    $sth->bindValue(':id', $parentId_sell);
+                    $sth->bindValue(':num', '0.00001');
+                    $sth->execute();
+                }
+
+
+                $sth = $pdo->prepare('
+                    SELECT `parentId`
+                    FROM `' . TB_USER . '`
+                    WHERE `id` = :id 
+                    LIMIT 1
+                ');
+                $sth->bindValue(':id', $buyer_id);
+                $sth->execute();
+                $parentId_buy=$sth->fetchColumn();
+                if($parentId_buy && ($parentId_buy != $buyer_id )){
+                     $sth = $pdo->prepare('
+                        SELECT `username`
+                        FROM `' . TB_USER . '`
+                        WHERE `id` = :id 
+                        LIMIT 1
+                    ');
+                    $sth->bindValue(':id', $buyer_id);
+                    $sth->execute();
+                    $buyer_name=$sth->fetchColumn();
+
+                    $sth = $pdo->prepare('
+                        INSERT INTO `' . "bitorder" . '`
+                        (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
+                        VALUES
+                        (:buy_sell, :buyer_id, :price, :num,:state, :create_time, :owner,:des)
+                    ');
+                    $sth->bindValue(':buy_sell', '2');
+                    $sth->bindValue(':buyer_id', $parentId_buy);
+                    $sth->bindValue(':price', "0");
+                    $sth->bindValue(':num', '0.00001');
+                    $sth->bindValue(':state', '3');
+                    $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
+                    $sth->bindValue(':owner', "0");
+                    $sth->bindValue(':des', $buyer_name);
+                    $sth->execute();
+
+                    $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
+                    $sth->bindValue(':id', $parentId_buy);
+                    $sth->bindValue(':num', '0.00001');
+                    $sth->execute();
+                }
+
+
+                $sth = $pdo->prepare('
+                    SELECT `username`
+                    FROM `' . TB_USER . '`
+                    WHERE `id` = :id 
+                    LIMIT 1
+                ');
+                $sth->bindValue(':id', $user->getId());
+                $sth->execute();
+                $dbuser=$sth->fetchColumn();
+
+
+
+
                 
                 $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单完成,账户余额将发生变化']]);
             }else{
