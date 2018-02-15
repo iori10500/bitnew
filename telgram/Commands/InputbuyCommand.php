@@ -26,9 +26,9 @@ class InputbuyCommand extends UserCommand
         }else{
             $text = explode('-',$text);
             if(count($text) >= 3){
-                $num = (float)$text[0];
-                $price = (float)$text[1];
-                $allprice=$num*$price;
+                $num = round((float)$text[0],8);
+                $price = round((float)$text[1],2);
+                $allprice=round($num*$price,2);
                 unset($text[0]);unset($text[1]);
                 $des="";
                 foreach ($text as $key => $value) {

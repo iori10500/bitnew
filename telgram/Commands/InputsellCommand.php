@@ -27,9 +27,9 @@ class InputsellCommand extends UserCommand
         }else{
             $text = explode('-',$text);
             if(count($text) >= 3){
-                $num = (float)$text[0];
-                $price = (float)$text[1];
-                $allprice=$num*$price;
+                $num = round((float)$text[0],8);
+                $price = round((float)$text[1],2);
+                $allprice=round($num*$price,2);
                 if($allprice <=0 ){
                     return Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'发布订单价格错误']]));
                 }
