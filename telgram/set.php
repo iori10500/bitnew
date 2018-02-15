@@ -264,7 +264,8 @@ function getorder($chat_id,$whorder,$limit){
         }
 
     }
-    return $data;
+
+    return empty($data)?windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'暂无可操作订单']]):$data;
 
 }
 
