@@ -107,8 +107,9 @@ function startwindows($chat_id,$title,$button=false){
 
 //myorder=1 buy=2  sell=3
 function getorder($chat_id,$whorder,$limit){
-    $DESCREBACTION=[
-        '等待交易',
+   $DESCREBACTION=[
+        '-1'=>'取消订单',
+        '0'=>'等待交易',
         '1'=>'等待付款',
         '2'=>'等待放行',
         '3'=>'交易完成',
@@ -255,6 +256,258 @@ function getorder($chat_id,$whorder,$limit){
     return $data;
 
 }
+
+
+
+/*
+cancelorder-123
+
+取消0状态的订单
+
+finishpay-123
+完成1状态付款   
+
+cancelpay-123
+取消1状态付款
+
+adminorder-23323
+申诉2状态订单
+
+fangxingorder-1213
+放行2状态订单
+
+
+
+gotorder-234
+卖出  买入 0状态订单
+*/
+
+
+function cancelorder($chat_id,$orderid){//取消0状态的订单
+        $pdo  = DB::getPdo();
+        try {
+            $pdo->beginTransaction();
+            $time=time();
+            $sth = $pdo->prepare('
+                SELECT * from `' . "bitorder" . '` where id=:id and owner=:ownerid and  (state=0 or (state=1 and  :time-start_time>1800))  limit 1');
+            $sth->bindValue(':id', $orderid);
+            $sth->bindValue(':time', $time);
+            $sth->bindValue(':ownerid', $chat_id);
+            $sth->execute();
+            $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+            if(!empty($tempinfo)){
+                $sth = $pdo->prepare('update bitorder set state=-1 where id=:id and owner=:ownerid');
+                $sth->bindValue(':id', $orderid);
+                $sth->bindValue(':ownerid', $chat_id);
+                $sth->execute();
+                $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单取消成功']]);
+            }else{
+                $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单不存在,或者订单在非可取消状态']]);
+            }
+            $pdo->commit();     // commit changes to the database and end transaction
+        } catch (PDOException $e) {
+            $pdo->rollBack();   
+            $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
+            throw new TelegramException($e->getMessage());
+        }
+    return $data;
+}
+
+
+function finishpay($chat_id,$orderid){//完成1状态付款  
+  $pdo  = DB::getPdo();
+        try {
+            $pdo->beginTransaction();
+            $time=time();
+            $sth = $pdo->prepare('
+                SELECT * from `' . "bitorder" . '` where id=:id and buyer_id=:buyer_id and state=1 and ( :time-start_time<1800 )  limit 1');
+            $sth->bindValue(':id', $orderid);
+            $sth->bindValue(':time', $time);
+            $sth->bindValue(':buyer_id', $chat_id);
+            $sth->execute();
+            $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+            if(!empty($tempinfo)){
+                $sth = $pdo->prepare('update bitorder set state=2 where id=:id and buyer_id=:buyer_id and state=1');
+                $sth->bindValue(':id', $orderid);
+                $sth->bindValue(':buyer_id', $chat_id);
+                $sth->execute();
+                $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);
+            }else{
+                $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'订单不存在,或者订单超过30分钟付款时间']]);
+            }
+            $pdo->commit();     // commit changes to the database and end transaction
+        } catch (PDOException $e) {
+            $pdo->rollBack();   
+            $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
+            throw new TelegramException($e->getMessage());
+        }
+    return $data;
+}
+
+
+function cancelpay($chat_id,$orderid){//取消1状态付款
+        $pdo  = DB::getPdo();
+        try {
+            $pdo->beginTransaction();
+            $time=time();
+            $sth = $pdo->prepare('
+                SELECT * from `' . "bitorder" . '` where id=:id and buyer_id=:buyer_id and state=1 and ( :time-start_time<1800 )  limit 1');
+            $sth->bindValue(':id', $orderid);
+            $sth->bindValue(':time', $time);
+            $sth->bindValue(':buyer_id', $chat_id);
+            $sth->execute();
+            $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+            if(!empty($tempinfo)){
+                $sth = $pdo->prepare('update bitorder set state=0 where id=:id and buyer_id=:buyer_id and state=1');
+                $sth->bindValue(':id', $orderid);
+                $sth->bindValue(':buyer_id', $chat_id);
+                $sth->execute();
+                $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'已取消订单']]);
+            }else{
+                $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'订单不存在,或者订单超过30分钟付款时间']]);
+            }
+            $pdo->commit();     // commit changes to the database and end transaction
+        } catch (PDOException $e) {
+            $pdo->rollBack();   
+            $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
+            throw new TelegramException($e->getMessage());
+        }
+        return $data;
+}
+
+function adminorder($chat_id,$orderid){//申诉2状态订单
+        $pdo  = DB::getPdo();
+        try {
+            $pdo->beginTransaction();
+            $time=time();
+            $sth = $pdo->prepare('
+                SELECT * from `' . "bitorder" . '` where id=:id  and state=2 limit 1');
+            $sth->bindValue(':id', $orderid);
+            $sth->execute();
+            $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+            if(!empty($tempinfo)){
+                $sth = $pdo->prepare('update bitorder set state=4 where id=:id and state=2');
+                $sth->bindValue(':id', $orderid);
+                $sth->execute();
+                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'申诉成功,请通过邮件告知我们申诉理由']]);
+            }else{
+                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可申诉状态']]);
+            }
+            $pdo->commit();     // commit changes to the database and end transaction
+        } catch (PDOException $e) {
+            $pdo->rollBack();   
+            $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
+            throw new TelegramException($e->getMessage());
+        }
+        return $data;
+}
+
+function fangxingorder($chat_id,$orderid){//放行2状态订单
+        $pdo  = DB::getPdo();
+        try {
+            $pdo->beginTransaction();
+            $time=time();
+            $sth = $pdo->prepare('
+                SELECT * from `' . "bitorder" . '` where id=:id  and state=2 limit 1');
+            $sth->bindValue(':id', $orderid);
+            $sth->execute();
+            $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+            if(!empty($tempinfo)){
+                $sth = $pdo->prepare('update bitorder set state=3 where id=:id and state=2');
+                $sth->bindValue(':id', $orderid);
+                $sth->execute();
+                $buyer_id=$tempinfo['buyer_id'];
+                $seller_id=$tempinfo['seller_id'];
+                $num=$tempinfo['num'];
+                $sth = $pdo->prepare('update users set balance=balance+:num where id=:id');
+                $sth->bindValue(':id', $buyer_id);
+                $sth->bindValue(':num', $num);
+                $sth->execute();
+
+                
+                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单完成,账户余额将发生变化']]);
+            }else{
+                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可放行状态']]);
+            }
+            $pdo->commit();     // commit changes to the database and end transaction
+        } catch (PDOException $e) {
+            $pdo->rollBack();   
+            $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
+            throw new TelegramException($e->getMessage());
+        }
+        return $data;
+}
+function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
+      $pdo  = DB::getPdo();
+        try {
+            $pdo->beginTransaction();
+            $time=time();
+            $sth = $pdo->prepare('
+                SELECT * from `' . "bitorder" . '` where id=:id  and (state=0 or (state=1 and :time-start_time>1800 ) )  limit 1');
+            $sth->bindValue(':id', $orderid);
+            $sth->bindValue(':time', $time);
+            $sth->execute();
+            $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+            if(!empty($tempinfo)){
+                $sth = $pdo->prepare('
+                    SELECT `balance`,`socked`,`walletid` 
+                    FROM `' . TB_USER . '`
+                    WHERE `id` = :id 
+                    LIMIT 1
+                ');
+                $sth->bindValue(':id', $chat_id);
+                $sth->execute();
+                $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                $walletId=$userinfo[0]['walletid'];
+                $walletbalanc=json_decode(get("https://www.bitgo.com/api/v1/wallet/$walletId",[]),true)['balance'];
+                $balance=$userinfo[0]['balance']+$walletbalanc;
+                $socked=$userinfo[0]['socked'];
+                if($tempinfo['owner'] == $tempinfo['buyer_id']){  //卖出
+                    if($balance>$tempinfo['num']){
+                        $sth = $pdo->prepare('update bitorder set state=1,seller_id=:chat_id,start_time=:time where id=:id ');
+                        $sth->bindValue(':id', $orderid);
+                        $sth->bindValue(':chat_id', $chat_id);
+                        $sth->bindValue(':time', $time);
+                        $sth->execute();
+                        $sth = $pdo->prepare('update users set balance=balance-:num where id=:id');
+                        $sth->bindValue(':id', $chat_id);
+                        $sth->bindValue(':num', $tempinfo['num']);
+                        $sth->execute();
+                    }else{
+                        return windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'你的余额不足,无法卖出']]);
+                    }
+                   
+                }else{//买入
+                    if(!$socked){
+                        $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time where id=:id ');
+                        $sth->bindValue(':id', $orderid);
+                        $sth->bindValue(':chat_id', $chat_id);
+                        $sth->bindValue(':time', $time);
+                        $sth->execute();
+
+                        $sth = $pdo->prepare('update users set socked=1 where id=:id');
+                        $sth->bindValue(':id', $chat_id);
+                        $sth->execute();
+                    }else{
+                        return windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'你有一个买入订单需要处理']]);
+                    }
+                   
+                }
+                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'下单成功']]);
+            }else{
+                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单不存在,或者订单正在交易状态']]);
+            }
+            $pdo->commit();     // commit changes to the database and end transaction
+        } catch (PDOException $e) {
+            $pdo->rollBack();   
+            $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
+            throw new TelegramException($e->getMessage());
+        }
+        return $data;
+}
+
+
+
 
 
 

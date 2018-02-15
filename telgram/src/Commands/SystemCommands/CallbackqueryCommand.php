@@ -89,6 +89,7 @@ class CallbackqueryCommand extends SystemCommand
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
+//-------------------------------------------------------订单发布----------------------------------------------
             case 'outorder'://确定发布订单  从临时表到正式表  processed
                 $result=false;
                 try {
@@ -163,6 +164,11 @@ class CallbackqueryCommand extends SystemCommand
                         $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id');
                         $sth->bindValue(':id', $data[1]);
                         $sth->execute();
+
+                        $sth = DB::getPdo()->prepare('update users set balance=balance-:num where id=:id');
+                        $sth->bindValue(':id', $tempinfo['seller_id']);
+                        $sth->bindValue(':num', $tempinfo['num']);
+                        $sth->execute();
                         $result=true;
 
 
@@ -179,7 +185,7 @@ class CallbackqueryCommand extends SystemCommand
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
-
+//-------------------------------------------------------下一个订单----------------------------------------------
             case 'nextmyorder':  //下一个订单
                 $orderid=$data[1];
                 if(count($data)==3){
@@ -191,36 +197,33 @@ class CallbackqueryCommand extends SystemCommand
                 Request::sendMessage($datamessage);        // Send me
                 
                 break;
+//-------------------------------------------------------订单市场处理模块----------------------------------------------
             case 'cancelorder':
                 $orderid=$data[1];
-                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
-                Request::sendMessage($datamessage);        // Send me
+
+                Request::sendMessage(cancelorder($user_id,$orderid));        // Send me
 
                 break;
             case 'cancelpay':
                 $orderid=$data[1];
-                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
-                Request::sendMessage($datamessage);        // Send me
+                Request::sendMessage(cancelpay($user_id,$orderid));        // Send me
 
                 break;
             case 'finishpay':
                 $orderid=$data[1];
-                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
-                Request::sendMessage($datamessage);        // Send me
+                Request::sendMessage(finishpay($user_id,$orderid));        // Send me me
 
                 break;
             case 'adminorder':
                 $orderid=$data[1];
-                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
-                Request::sendMessage($datamessage);        // Send me
+                Request::sendMessage(adminorder($user_id,$orderid));        // Send me
 
                 break;
             case 'fangxingorder':
                 $orderid=$data[1];
-                 $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'购买订单发布成功，请在 我的订单 关注进度']]);
-                Request::sendMessage($datamessage);        // Send me
-
+               Request::sendMessage(fangxingorder($user_id,$orderid));        // Send me
                 break;
+//-------------------------------------------------------发布temp取消订单----------------------------------------------
             case 'canceltemporder':
                 $sth = DB::getPdo()->prepare('
                     SELECT * from `' . "bitorder_temp" . '` where id=:id and processed=0 limit 1');
@@ -259,18 +262,18 @@ class CallbackqueryCommand extends SystemCommand
                 break;
 
             case 'balance'://接收比特币
-                $sth = DB::getPdo()->prepare('
-                    SELECT `walletId`
+                $sth = $pdo->prepare('
+                    SELECT `balance`,`socked`,`walletid` 
                     FROM `' . TB_USER . '`
                     WHERE `id` = :id 
                     LIMIT 1
                 ');
-
                 $sth->bindValue(':id', $user_id);
                 $sth->execute();
-                $walletId=$sth->fetchColumn();
+                $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                $walletId=$userinfo[0]['walletid'];
                 $yueinfo = yue($walletId);
-                $datamessage=windowsinfo($user_id,'地址余额',[['title'=>'账户余额','des'=>$yueinfo['balance']],['title'=>'接收地址','des'=>$yueinfo['address']]]);    
+                $datamessage=windowsinfo($user_id,'地址余额',[['title'=>'账户余额','des'=>$yueinfo['balance']+$userinfo[0]['balance']],['title'=>'接收地址','des'=>$yueinfo['address']]]);    
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
