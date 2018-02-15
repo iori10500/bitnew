@@ -266,7 +266,7 @@ class CallbackqueryCommand extends SystemCommand
                 break;
 
             case 'balance'://接收比特币
-                $sth = $pdo->prepare('
+                $sth = DB::getPdo()->prepare('
                     SELECT `balance`,`socked`,`walletid` 
                     FROM `' . TB_USER . '`
                     WHERE `id` = :id 

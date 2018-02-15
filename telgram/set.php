@@ -152,13 +152,13 @@ function getorder($chat_id,$whorder,$limit){
                 
                 $orderinfo['price']=$one['price'];
                 $orderinfo['num']=$one['num'];
-                $orderinfo['allprice']=$one['price']*$one['num'];
+                $orderinfo['allprice']=round($one['price']*$one['num'],2);
                 $orderinfo['statedec']=$DESCREBACTION[$one['state']];
                 $orderinfo['mark']=$one['des'];
 
                 $orderinfo['create_time']=$one['create_time'];
                 $orderinfo['start_buy']=date("Y-m-d H:i:s",$one['start_time']);
-                $orderinfo['remain_time']=(time()-$one['start_time'])/60;
+                $orderinfo['remain_time']=30-((time()-$one['start_time'])/60);
 
                 if($one['buyer_id'] == $chat_id){
                     $orderinfo['orderclass']='购买订单';
@@ -227,7 +227,7 @@ function getorder($chat_id,$whorder,$limit){
         $sth = DB::getPdo()->prepare('
                 SELECT *
                 FROM `' . "bitorder" . '`
-                WHERE `state` =0 and buy_sell=1 and owner!=:chat_id and :time-start_time>1800 
+                WHERE  buy_sell=1 and owner!=:chat_id and (`state` =0 or  (`state`=1 and  :time-start_time>1800 ))
                 order by id desc   LIMIT '.$limit." , 1");
         $sth->bindValue(':time', $time);
         $sth->bindValue(':chat_id', $chat_id);
@@ -237,7 +237,7 @@ function getorder($chat_id,$whorder,$limit){
              $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'到底啦']]);
         }else{
             $orderinfo=$order[0];
-            $orderinfo['allprice']=$orderinfo['num']*$orderinfo['price'];
+            $orderinfo['allprice']=round($orderinfo['num']*$orderinfo['price'],2);  
             $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$DESCREBACTION[$orderinfo['state']]],['title'=>'支付','des'=>$orderinfo['des']],['title'=>'建时','des'=>$orderinfo['create_time']]],[[['text'=>'卖出','callback_data'=>"gotorder-".$orderinfo['id']]],[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
 
         }
@@ -248,7 +248,7 @@ function getorder($chat_id,$whorder,$limit){
         $sth = DB::getPdo()->prepare('
                 SELECT *
                 FROM `' . "bitorder" . '`
-                WHERE `state` =0 and buy_sell=0 and owner!=:chat_id and :time-start_time>1800 
+                WHERE  buy_sell=0 and owner!=:chat_id and  (`state` =0 or (`state`=1 and :time-start_time>1800 ))
                 order by id desc  LIMIT '.$limit." , 1");
         $sth->bindValue(':time', $time);
          $sth->bindValue(':chat_id', $chat_id);
@@ -258,7 +258,7 @@ function getorder($chat_id,$whorder,$limit){
              $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'到底啦']]);
         }else{
             $orderinfo=$order[0];
-            $orderinfo['allprice']=$orderinfo['num']*$orderinfo['price'];
+            $orderinfo['allprice']=round($orderinfo['num']*$orderinfo['price'],2);
             $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$DESCREBACTION[$orderinfo['state']]],['title'=>'支付','des'=>$orderinfo['des']],['title'=>'建时','des'=>$orderinfo['create_time']]],[[['text'=>'买入','callback_data'=>"gotorder-".$orderinfo['id']]],[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
 
         }
@@ -424,13 +424,14 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
             $sth->execute();
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
+                $tempinfo=$tempinfo[0];
                 $sth = $pdo->prepare('update bitorder set state=3 where id=:id and state=2');
                 $sth->bindValue(':id', $orderid);
                 $sth->execute();
                 $buyer_id=$tempinfo['buyer_id'];
                 $seller_id=$tempinfo['seller_id'];
                 $num=$tempinfo['num'];
-                $sth = $pdo->prepare('update users set balance=balance+:num where id=:id');
+                $sth = $pdo->prepare('update user set balance=balance+:num where id=:id');
                 $sth->bindValue(':id', $buyer_id);
                 $sth->bindValue(':num', $num);
                 $sth->execute();
@@ -473,6 +474,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                 $walletbalanc=json_decode(get("https://www.bitgo.com/api/v1/wallet/$walletId",[]),true)['balance'];
                 $balance=$userinfo[0]['balance']+$walletbalanc;
                 $socked=$userinfo[0]['socked'];
+                $tempinfo=$tempinfo[0];
                 if($tempinfo['owner'] == $tempinfo['buyer_id']){  //卖出
                     if($balance>$tempinfo['num']){
                         $sth = $pdo->prepare('update bitorder set state=1,seller_id=:chat_id,start_time=:time where id=:id ');
@@ -504,7 +506,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                     }
                    
                 }
-                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'下单成功']]);
+                $data=getorder($chat_id,1,0);
             }else{
                 $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单不存在,或者订单正在交易状态']]);
             }
