@@ -129,7 +129,7 @@ function getorder($chat_id,$whorder,$limit){
         $sth = DB::getPdo()->prepare('
                 SELECT *
                 FROM `' . "bitorder" . '`
-                WHERE `owner` = :id or (`seller_id` = :id  and `state` =1 and :time-start_time<1800 ) or (`buyer_id` = :id  and `state` =1 and :time-start_time<1800  ) or (`seller_id` = :id  and `state` !=1) or (`buyer_id` = :id  and `state` !=1)
+                WHERE `owner` = :id or (`seller_id` = :id  and `state` =1 and :time-start_time<1800 ) or (`buyer_id` = :id  and `state` =1 and :time-start_time<1800  ) or (`seller_id` = :id  and `state` in (0,2,3,4)) or (`buyer_id` = :id  and `state` in (0,2,3,4))
                 order by id desc LIMIT '.$limit.' , 1');
         $sth->bindValue(':time', $time);
         $sth->bindValue(':id', $chat_id);
@@ -180,7 +180,7 @@ function getorder($chat_id,$whorder,$limit){
                             $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
                             
                             break;
-                        case '-1':
+                        case '4':
                             $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'订单处于申诉状态']]);
                             
                             break;
@@ -208,7 +208,7 @@ function getorder($chat_id,$whorder,$limit){
                             $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
                             
                             break;
-                        case '-1':
+                        case '4':
                             $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'订单处于申诉状态']]);
                             
                             break;
