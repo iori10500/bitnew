@@ -30,6 +30,9 @@ class InputsellCommand extends UserCommand
                 $num = (float)$text[0];
                 $price = (float)$text[1];
                 $allprice=$num*$price;
+                if($allprice <=0 ){
+                    return Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'发布订单价格错误']]));
+                }
                 unset($text[0]);unset($text[1]);
                 $des="";
                 foreach ($text as $key => $value) {

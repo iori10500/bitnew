@@ -156,7 +156,7 @@ function getorder($chat_id,$whorder,$limit){
                 $orderinfo['statedec']=$DESCREBACTION[$one['state']];
                 $orderinfo['mark']=$one['des'];
 
-                $orderinfo['create_time']=date("Y-m-d H:i:s",$one['create_time']);
+                $orderinfo['create_time']=$one['create_time'];
                 $orderinfo['start_buy']=date("Y-m-d H:i:s",$one['start_time']);
                 $orderinfo['remain_time']=(time()-$one['start_time'])/60;
 
@@ -178,6 +178,10 @@ function getorder($chat_id,$whorder,$limit){
                             break;
                         case '3':
                             $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            
+                            break;
+                        case '-1':
+                            $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'订单处于申诉状态']]);
                             
                             break;
                         default:
@@ -204,6 +208,11 @@ function getorder($chat_id,$whorder,$limit){
                             $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
                             
                             break;
+                        case '-1':
+                            $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'订单处于申诉状态']]);
+                            
+                            break;
+
                         default:
                             
                             break;
@@ -218,9 +227,10 @@ function getorder($chat_id,$whorder,$limit){
         $sth = DB::getPdo()->prepare('
                 SELECT *
                 FROM `' . "bitorder" . '`
-                WHERE `state` =0 and buy_sell=1 and :time-start_time>1800 
+                WHERE `state` =0 and buy_sell=1 and owner!=:chat_id and :time-start_time>1800 
                 order by id desc   LIMIT '.$limit." , 1");
         $sth->bindValue(':time', $time);
+        $sth->bindValue(':chat_id', $chat_id);
         $sth->execute();
         $order = $sth->fetchAll(PDO::FETCH_ASSOC);
         if(empty($order)){
@@ -238,9 +248,10 @@ function getorder($chat_id,$whorder,$limit){
         $sth = DB::getPdo()->prepare('
                 SELECT *
                 FROM `' . "bitorder" . '`
-                WHERE `state` =0 and buy_sell=0 and :time-start_time>1800 
+                WHERE `state` =0 and buy_sell=0 and owner!=:chat_id and :time-start_time>1800 
                 order by id desc  LIMIT '.$limit." , 1");
         $sth->bindValue(':time', $time);
+         $sth->bindValue(':chat_id', $chat_id);
         $sth->execute();
         $order = $sth->fetchAll(PDO::FETCH_ASSOC);
         if(empty($order)){
