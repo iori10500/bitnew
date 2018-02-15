@@ -223,6 +223,10 @@ class CallbackqueryCommand extends SystemCommand
                 $orderid=$data[1];
                Request::sendMessage(fangxingorder($user_id,$orderid));        // Send me
                 break;
+            case 'gotorder':
+                $orderid=$data[1];
+               Request::sendMessage(gotorder($user_id,$orderid));        // Send me
+                break;
 //-------------------------------------------------------发布temp取消订单----------------------------------------------
             case 'canceltemporder':
                 $sth = DB::getPdo()->prepare('
