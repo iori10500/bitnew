@@ -366,7 +366,7 @@ class DB
 
         try {
               $sth = self::$pdo->prepare('
-                SELECT `username`
+                SELECT *
                 FROM `' . TB_USER . '`
                 WHERE `id` = :id 
                 LIMIT 1
@@ -374,9 +374,9 @@ class DB
 
             $sth->bindValue(':id', $user->getId());
             $sth->execute();
-
-            $dbuser=$sth->fetchColumn();
+            $dbuser = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(empty($dbuser)){
+                $dbuser=$dbuser[0];
                 $startext=json_decode(stripslashes(trim(file_get_contents("php://input"),chr(239).chr(187).chr(191))),true);
                 $parentId=$startext['message']['text'];
                 $parentId=explode(" ", $parentId);
@@ -415,18 +415,23 @@ class DB
                 $sth->bindValue(':parentId', $parentId);
                 $status = $sth->execute();
             }else{
+                $dbuser=$dbuser[0];
                   $sth = self::$pdo->prepare('
                     INSERT INTO `' . TB_USER . '`
-                    (`id`, `is_bot`, `username`, `first_name`, `last_name`, `language_code`, `created_at`, `updated_at`)
+                    (`id`, `is_bot`, `username`, `first_name`, `last_name`, `language_code`, `created_at`, `updated_at`,`walletId`,`socked`,`banlance`,`parentId`)
                     VALUES
-                    (:id, :is_bot, :username, :first_name, :last_name, :language_code, :created_at, :updated_at)
+                    (:id, :is_bot, :username, :first_name, :last_name, :language_code, :created_at, :updated_at,:walletId,:socked,:banlance,:parentId)
                     ON DUPLICATE KEY UPDATE
                         `is_bot`         = VALUES(`is_bot`),
                         `username`       = VALUES(`username`),
                         `first_name`     = VALUES(`first_name`),
                         `last_name`      = VALUES(`last_name`),
                         `language_code`  = VALUES(`language_code`),
-                        `updated_at`     = VALUES(`updated_at`)
+                        `updated_at`     = VALUES(`updated_at`),
+                        `walletId`  = VALUES(`walletId`),
+                        `socked`     = VALUES(`socked`)
+                        `banlance`  = VALUES(`banlance`),
+                        `parentId`     = VALUES(`parentId`)
                 ');
 
                 $sth->bindValue(':id', $user->getId());
@@ -438,6 +443,11 @@ class DB
                 $date = $date ?: self::getTimestamp();
                 $sth->bindValue(':created_at', $date);
                 $sth->bindValue(':updated_at', $date);
+
+                $sth->bindValue(':walletId', $dbuser['walletId']);
+                $sth->bindValue(':socked', $dbuser['socked']);
+                $sth->bindValue(':banlance', $dbuser['banlance']);
+                $sth->bindValue(':parentId', $dbuser['parentId']);
 
                 $status = $sth->execute();
             }
