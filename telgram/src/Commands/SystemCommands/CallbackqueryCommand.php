@@ -168,13 +168,11 @@ class CallbackqueryCommand extends SystemCommand
                         $sth->bindValue(':id', $data[1]);
                         $sth->execute();
 
-                        $sth = $pdo->prepare('update users set banlance=banlance-:num where id=:id');
+                        $sth = $pdo->prepare('update user set banlance=banlance-:num where id=:id');
                         $sth->bindValue(':id', $tempinfo['seller_id']);
                         $sth->bindValue(':num', $tempinfo['num']);
                         $sth->execute();
                         $result=true;
-
-
                     }
                      $pdo->commit();   
 
