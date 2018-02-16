@@ -364,6 +364,7 @@ function finishpay($chat_id,$orderid){//完成1状态付款
             $sth->execute();
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
+                $tempinfo=$tempinfo[0];
                 $sth = $pdo->prepare('update bitorder set state=2 where id=:id and buyer_id=:buyer_id and state=1');
                 $sth->bindValue(':id', $orderid);
                 $sth->bindValue(':buyer_id', $chat_id);
