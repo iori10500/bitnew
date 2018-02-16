@@ -97,6 +97,7 @@ switch ($text) {
       if(!$iscommend){
          $sth = $pdo->prepare('update user set collections_bak=:collections where id=:id ');
           $sth->bindValue(':id', $chat_id);
+          $sth->bindValue(':collections', $text);
           $sth->execute();
 
           Request::sendMessage(windowsinfo($chat_id,'设置收款信息',[['title'=>'    ','des'=>$text]],[[['text'=>'确认','callback_data'=>"setcollections-1"],['text'=>'取消','callback_data'=>"setcollections-0"]]]));

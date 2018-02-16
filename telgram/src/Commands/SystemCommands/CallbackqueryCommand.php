@@ -318,7 +318,8 @@ class CallbackqueryCommand extends SystemCommand
                     if($okcancel){
                         $sth = DB::getPdo()->prepare('update user set collections=collections_bak,col_flag=0 where id=:id');
                         $sth->bindValue(':id', $user_id);
-                        $sth->execute();     
+                        $sth->execute();  
+                        $text= DB::getPdo()->query('SELECT `collections` from user where id='.$user_id)->fetchColumn();   
                         Request::sendMessage(windowsinfo($user_id,'收款信息',[['title'=>'      ','des'=>'收款信息设置成功---'.$text]]));
 
                     }else{
