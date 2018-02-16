@@ -104,10 +104,6 @@ class InputsellCommand extends UserCommand
                             $sth = $pdo->prepare('SELECT LAST_INSERT_ID() as lastid ');
                             $sth->execute();
                             $lastid=$sth->fetchColumn();
-                            $sth = $pdo->prepare('update user set banlance=banlance-:num where id=:id ');
-                            $sth->bindValue(':id', $chat_id);
-                            $sth->bindValue(':num', $num);
-                            $sth->execute();
 
                             $data=windowsinfo($chat_id,'发布出售',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>"outorders-$lastid"],['text'=>'取消','callback_data'=>"canceltemporders-$lastid"]]]);
                         }else{
