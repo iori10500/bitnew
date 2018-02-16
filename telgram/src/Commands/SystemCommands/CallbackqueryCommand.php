@@ -312,7 +312,7 @@ class CallbackqueryCommand extends SystemCommand
                     $sth = DB::getPdo()->prepare('update user set col_flag=1 where id=:id');
                     $sth->bindValue(':id', $user_id);
                     $sth->execute();  
-                    Request::sendMessage(windowsinfo($user_id,'设置收款',[['title'=>'      ','des'=>'请输入收款信息（如：支付宝 1234567@qq.com  银行卡号1234567891234 账户名字是 张三）']]));   
+                    Request::sendMessage(windowsinfo($user_id,'设置收款',[['title'=>'      ','des'=>'请输入收款信息（如：支付宝 XXXXX  银行卡号XXXXXXXXXXX 账户名字是 XX）']]));   
                 }else{
                     $okcancel=$data[1];
                     if($okcancel){
