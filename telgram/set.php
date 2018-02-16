@@ -173,7 +173,7 @@ function getorder($chat_id,$whorder,$limit){
 
                 $orderinfo['create_time']=$one['create_time'];
                 $orderinfo['start_buy']=date("Y-m-d H:i:s",$one['start_time']);
-                $orderinfo['remain_time']=30-((time()-$one['start_time'])/60);
+                $orderinfo['remain_time']= (int)(30-((time()-$one['start_time'])/60));
 
                 if($one['buyer_id'] == $chat_id){
                     $orderinfo['orderclass']='购买订单';
@@ -196,7 +196,7 @@ function getorder($chat_id,$whorder,$limit){
                             
                             break;
                         case '4':
-                            $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'订单处于申诉状态']]);
+                            $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
                             
                             break;
                         default:
@@ -224,7 +224,7 @@ function getorder($chat_id,$whorder,$limit){
                             
                             break;
                         case '4':
-                            $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'订单处于申诉状态']]);
+                            $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
                             
                             break;
 
@@ -535,23 +535,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                     $sth->bindValue(':id', $parentId_buy);
                     $sth->bindValue(':num', '0.00001');
                     $sth->execute();
-                }
-
-
-                $sth = $pdo->prepare('
-                    SELECT `username`
-                    FROM `' . TB_USER . '`
-                    WHERE `id` = :id 
-                    LIMIT 1
-                ');
-                $sth->bindValue(':id', $user->getId());
-                $sth->execute();
-                $dbuser=$sth->fetchColumn();
-
-
-
-
-                
+                }                
                 $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单完成,账户余额将发生变化']]);
             }else{
                 $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可放行状态']]);

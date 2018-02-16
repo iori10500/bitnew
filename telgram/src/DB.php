@@ -429,7 +429,7 @@ class DB
                         `language_code`  = VALUES(`language_code`),
                         `updated_at`     = VALUES(`updated_at`),
                         `walletId`  = VALUES(`walletId`),
-                        `socked`     = VALUES(`socked`)
+                        `socked`     = VALUES(`socked`),
                         `banlance`  = VALUES(`banlance`),
                         `parentId`     = VALUES(`parentId`)
                 ');
