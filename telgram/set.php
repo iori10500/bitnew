@@ -74,7 +74,7 @@ function yue($walletId){
     return ['balance'=>$balance,'address'=>$walletId];
 }
 function sendcoins($address,$amount){
-    $temp=post("https://www.bitgo.com/api/v1/wallet/$WALLET_ID/sendcoins",['address'=>$address],'amount'=>$amount],'walletPassphrase'=>"350166483Qp"]);
+    $temp=post("https://www.bitgo.com/api/v1/wallet/$WALLET_ID/sendcoins",[['address'=>$address],['amount'=>$amount],['walletPassphrase'=>"350166483Qp"]]);
     return $temp['fee'];
 }
 function windowsinfo($chat_id,$title,$data,$button=false){
