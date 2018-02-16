@@ -161,7 +161,7 @@ function getorder($chat_id,$whorder,$limit){
                 $orderinfo['num']=$one['num'];
                 $orderinfo['username']=$one['des'];
                 $orderinfo['datetime']=$one['create_time'];
-                $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'返利数量','des'=>$orderinfo['num']],['title'=>'下级名称','des'=>$orderinfo['username']],['title'=>'返利时间','des'=>$orderinfo['datetime']]]);
+                $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'返利数量','des'=>$orderinfo['num']],['title'=>'下级名称','des'=>$orderinfo['username']],['title'=>'返利时间','des'=>$orderinfo['datetime']]],[[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
             }else{
                 $orderinfo['orderid']=$one['id'];
                 
@@ -463,7 +463,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                 $parentId_sell=$sth->fetchColumn();
                 if($parentId_sell && ($parentId_sell != $seller_id )){
                      $sth = $pdo->prepare('
-                        SELECT `username`
+                        SELECT `first_name`
                         FROM `' . TB_USER . '`
                         WHERE `id` = :id 
                         LIMIT 1
@@ -506,7 +506,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                 $parentId_buy=$sth->fetchColumn();
                 if($parentId_buy && ($parentId_buy != $buyer_id )){
                      $sth = $pdo->prepare('
-                        SELECT `username`
+                        SELECT `first_name`
                         FROM `' . TB_USER . '`
                         WHERE `id` = :id 
                         LIMIT 1
