@@ -54,8 +54,23 @@ class InputsellCommand extends UserCommand
 
                 try {
                     //余额检测
+                    $pdo  = DB::getPdo();
 
-                    $sth = DB::getPdo()->prepare('
+                    $sth = $pdo->prepare('
+                        SELECT `id` 
+                        FROM `' . "bitorder" . '`
+                        WHERE `seller_id` = :id and state=2  
+                        LIMIT 1
+                    ');
+
+                    $sth->bindValue(':id', $message->getFrom()->getId());
+                    $sth->execute();
+                    $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                    if(!empty($tempinfo)){
+                        return Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'你存在未放行订单,请放行之后再发布']]));
+                    }
+
+                    $sth = $pdo->prepare('
                         SELECT `walletId`,`socked`,`banlance`
                         FROM `' . TB_USER . '`
                         WHERE `id` = :id 
@@ -69,7 +84,7 @@ class InputsellCommand extends UserCommand
                         $yueinfo = yue($tempinfo['walletId']);
                         $walletbanlance=$yueinfo['balance']+$one['banlance'];
                         if($walletbanlance >= $num){
-                            $sth = DB::getPdo()->prepare('
+                            $sth = $pdo->prepare('
                                 INSERT INTO `' . "bitorder_temp" . '`
                                 (`buy_sell`, `seller_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
                                 VALUES
@@ -86,16 +101,23 @@ class InputsellCommand extends UserCommand
 
                             $sth->execute();
 
-                            $sth = DB::getPdo()->prepare('SELECT LAST_INSERT_ID() as lastid ');
+                            $sth = $pdo->prepare('SELECT LAST_INSERT_ID() as lastid ');
                             $sth->execute();
                             $lastid=$sth->fetchColumn();
+                            $sth = $pdo->prepare('update user set banlance=banlance-:num where id=:id ');
+                            $sth->bindValue(':id', $chat_id);
+                            $sth->bindValue(':num', $num);
+                            $sth->execute();
+
                             $data=windowsinfo($chat_id,'发布出售',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>"outorders-$lastid"],['text'=>'取消','callback_data'=>"canceltemporders-$lastid"]]]);
                         }else{
                             $data=windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'销售数量大于账户余额']]);
                         }
                     }
                    
+                    $pdo->commit();    
                 } catch (Exception $e) {
+                    $pdo->rollBack();   
                     throw new TelegramException($e->getMessage());
                 } 
      
@@ -106,7 +128,6 @@ class InputsellCommand extends UserCommand
             }
             
         }
-        
         return Request::sendMessage($data);        // Send message!
     }
 }
