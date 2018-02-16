@@ -119,6 +119,7 @@ class CallbackqueryCommand extends SystemCommand
                         $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id');
                         $sth->bindValue(':id', $data[1]);
                         $sth->execute();
+
                         $result=true;
 
 
@@ -137,15 +138,17 @@ class CallbackqueryCommand extends SystemCommand
                 break;
             case 'outorders'://确定发布订单  从临时表到正式表  processed
                 $result=false;
+                $pdo  = DB::getPdo();
                 try {
-                    $sth = DB::getPdo()->prepare('
+                    $pdo->beginTransaction();
+                    $sth = $pdo->prepare('
                         SELECT * from `' . "bitorder_temp" . '` where id=:id and processed=0 limit 1');
                     $sth->bindValue(':id', $data[1]);
                     $sth->execute();
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     if(!empty($tempinfo)){
                         $tempinfo=$tempinfo[0];
-                        $sth = DB::getPdo()->prepare('
+                        $sth = $pdo->prepare('
                             INSERT INTO `' . "bitorder" . '`
                             (`buy_sell`, `seller_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
                             VALUES
@@ -161,11 +164,11 @@ class CallbackqueryCommand extends SystemCommand
                         $sth->bindValue(':des', $tempinfo['des']);
                         $sth->execute();
 
-                        $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id');
+                        $sth = $pdo->prepare('update bitorder_temp set processed=1 where id=:id');
                         $sth->bindValue(':id', $data[1]);
                         $sth->execute();
 
-                        $sth = DB::getPdo()->prepare('update users set banlance=banlance-:num where id=:id');
+                        $sth = $pdo->prepare('update users set banlance=banlance-:num where id=:id');
                         $sth->bindValue(':id', $tempinfo['seller_id']);
                         $sth->bindValue(':num', $tempinfo['num']);
                         $sth->execute();
@@ -173,8 +176,10 @@ class CallbackqueryCommand extends SystemCommand
 
 
                     }
+                     $pdo->commit();   
 
                 } catch (Exception $e) {
+                     $pdo->rollBack();  
                     throw new TelegramException($e->getMessage());
                 } 
                 if($result){
