@@ -61,7 +61,7 @@ switch ($text) {
   default:
     $pdo  = DB::getPdo();
     $col_flag=$pdo->query('SELECT `col_flag` from user where id='.$chat_id)->fetchColumn();
-    if($col_flag){
+    if($col_flag){  
       $systemcommde[]="invitenote";
       $systemcommde[]="inputsell";
       $systemcommde[]="inputbuy";
@@ -95,12 +95,15 @@ switch ($text) {
         }
       }
       if(!$iscommend){
-          Request::sendMessage(windowsinfo($chat_id,'设置收款信息',[['title'=>'    ','des'=>$text]],[[['text'=>'确认','callback_data'=>"setcollections-1-$text"],['text'=>'取消','callback_data'=>"setcollections-0"]]]));
+         $sth = $pdo->prepare('update user set collections_bak=:collections where id=:id ');
+          $sth->bindValue(':id', $chat_id);
+          $sth->execute();
+
+          Request::sendMessage(windowsinfo($chat_id,'设置收款信息',[['title'=>'    ','des'=>$text]],[[['text'=>'确认','callback_data'=>"setcollections-1"],['text'=>'取消','callback_data'=>"setcollections-0"]]]));
       }
      
 
     }
-    # code...
     break;
 }
 
