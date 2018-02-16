@@ -144,7 +144,7 @@ function getorder($chat_id,$whorder,$limit){
         $sth = DB::getPdo()->prepare('
                 SELECT *
                 FROM `' . "bitorder" . '`
-                WHERE `owner` = :id or (`seller_id` = :id  and `state` =1 and :time-start_time<1800 ) or (`buyer_id` = :id  and `state` =1 and :time-start_time<1800  ) or (`seller_id` = :id  and `state` in (0,2,3,4)) or (`buyer_id` = :id  and `state` in (0,2,3,4))
+                WHERE `owner` = :id or (`seller_id` = :id  and `state` =1 and :time-start_time<1800 ) or (`buyer_id` = :id  and `state` =1 and :time-start_time<1800  ) or (`seller_id` = :id  and `state` in (2,3,4)) or (`buyer_id` = :id  and `state` in (2,3,4))
                 order by id desc LIMIT '.$limit.' , 1');
         $sth->bindValue(':time', $time);
         $sth->bindValue(':id', $chat_id);
