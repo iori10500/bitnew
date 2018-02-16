@@ -324,10 +324,18 @@ function cancelorder($chat_id,$orderid){//取消0状态的订单
             $sth->execute();
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
+                $tempinfo=$tempinfo[0];
                 $sth = $pdo->prepare('update bitorder set state=-1 where id=:id and owner=:ownerid');
                 $sth->bindValue(':id', $orderid);
                 $sth->bindValue(':ownerid', $chat_id);
                 $sth->execute();
+                if($tempinfo['owner']== $chat_id && $tempinfo['buy_sell']==0){
+                    $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id ');
+                    $sth->bindValue(':id', $chat_id);
+                    $sth->execute();
+                }
+               
+
                 $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单取消成功']]);
             }else{
                 $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单不存在,或者订单在非可取消状态']]);
