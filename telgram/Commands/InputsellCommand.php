@@ -51,11 +51,11 @@ class InputsellCommand extends UserCommand
                 $orderinfo['allprice']=$allprice;
                 $orderinfo['des']=$des;
                 $orderinfo['chat_id']=$chat_id;
-
+                $pdo  = DB::getPdo();
                 try {
                     //余额检测
-                    $pdo  = DB::getPdo();
-
+                   
+                    $pdo->beginTransaction();
                     $sth = $pdo->prepare('
                         SELECT `id` 
                         FROM `' . "bitorder" . '`
