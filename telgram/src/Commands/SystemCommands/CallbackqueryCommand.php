@@ -307,6 +307,25 @@ class CallbackqueryCommand extends SystemCommand
 
                 break;
 
+            case 'setcollections':
+                $okcancel=$data[1];
+                if($okcancel){
+                    $text=$data[2];
+                    $sth = DB::getPdo()->prepare('update user set collections=:text,col_flag=0 where id=:id');
+                    $sth->bindValue(':id', $user_id);
+                    $sth->bindValue(':text', $text);
+                    $sth->execute();     
+                    Request::sendMessage(windowsinfo($user_id,'收款信息',[['title'=>'      ','des'=>'收款信息设置成功---'.$text]]));
+
+                }else{
+                    $sth = DB::getPdo()->prepare('update user set col_flag=0 where id=:id');
+                    $sth->bindValue(':id', $data[1]);
+                    $sth->execute();
+                    Request::sendMessage(windowsinfo($user_id,'收款信息',[['title'=>'      ','des'=>'已取消设置收款信息']]));
+
+                }
+                break;
+
 
 
 

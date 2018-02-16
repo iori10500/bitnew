@@ -54,13 +54,52 @@ switch ($text) {
     Request::sendMessage(windowsinfo($chat_id,'个人中心',[],[[['text'=>'接收比特币','callback_data'=>"balance"]],[['text'=>'发送比特币','callback_data'=>"sendbitcoin"]],[['text'=>'订单中心','callback_data'=>"myorder"]],[['text'=>'联系我们','callback_data'=>"contentus"]]]));
     break;
   case 'ud83dude4du9080u8bf7u597du53cbud83dude4d':
-  Request::sendMessage(windowsinfo($chat_id,'邀请好友',[['title'=>'    ','des'=>'邀请好友加入,您的下级每发生一笔订单,您将获得0.00001btc奖励']]));        // Send message!
-  $time=time(); 
-  Request::sendMessage( windowsinfo($chat_id,'邀请链接',[['title'=>$message['message']['chat']['username'],'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>电币比特币c2c交易平台</a>"]]));        // Send message!
-
-
+    Request::sendMessage(windowsinfo($chat_id,'邀请好友',[['title'=>'    ','des'=>'邀请好友加入,您的下级每发生一笔订单,您将获得0.00001btc奖励']]));        // Send message!
+    $time=time(); 
+    Request::sendMessage( windowsinfo($chat_id,'邀请链接',[['title'=>$message['message']['chat']['username'],'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>电币比特币c2c交易平台</a>"]]));        // Send message!
     break;
   default:
+    $pdo  = DB::getPdo();
+    $col_flag=$pdo->query('SELECT `col_flag` from user where id='.$chat_id)->fetchColumn();
+    if($col_flag){
+      $systemcommde[]="invitenote";
+      $systemcommde[]="inputsell";
+      $systemcommde[]="inputbuy";
+      $systemcommde[]="balance";
+      $systemcommde[]="gobuy";
+      $systemcommde[]="gosell";
+      $systemcommde[]="invitenote";
+      $systemcommde[]="myinfo";
+      $systemcommde[]="myorder";
+      $systemcommde[]="button";
+      $systemcommde[]="inorder";
+      $systemcommde[]="outorder";
+      $systemcommde[]="outorders";
+      $systemcommde[]="nextmyorder";
+      $systemcommde[]="cancelorder";
+      $systemcommde[]="cancelpay";
+      $systemcommde[]="finishpay";
+      $systemcommde[]="adminorder";
+      $systemcommde[]="fangxingorder";
+      $systemcommde[]="gotorder";
+      $systemcommde[]="canceltemporder";
+      $systemcommde[]="canceltemporders";
+      $systemcommde[]="sendbitcoin";
+      $systemcommde[]="setcollections";
+      $systemcommde[]="contentus";
+      $iscommend=false;
+      foreach ($systemcommde as $key => $value) {
+        if(strpos($text,$value)){
+            $iscommend=true;
+            break;
+        }
+      }
+      if(!$iscommend){
+          Request::sendMessage(windowsinfo($chat_id,'设置收款信息',[['title'=>'    ','des'=>$text]],[[['text'=>'确认','callback_data'=>"setcollections-1-$text"],['text'=>'取消','callback_data'=>"setcollections-0"]]]));
+      }
+     
+
+    }
     # code...
     break;
 }

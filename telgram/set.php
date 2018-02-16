@@ -594,7 +594,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 $sth = $pdo->prepare('
-                    SELECT `banlance`,`socked`,`walletid` 
+                    SELECT `banlance`,`socked`,`walletid`,`collections` 
                     FROM `' . TB_USER . '`
                     WHERE `id` = :id 
                     LIMIT 1
@@ -609,6 +609,9 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                 $tempinfo=$tempinfo[0];
                 if($tempinfo['owner'] == $tempinfo['buyer_id']){  //卖出
                     if($balance>$tempinfo['num']){
+                        if(!$userinfo[0]['collections']){
+                             return Request::sendMessage(windowsinfo($chat_id,'收款信息',[['title'=>'    ','des'=>'卖出失败，请先设置收款信息,再交易。个人中心->收款信息']]));
+                        }
                         $sth = $pdo->prepare('update bitorder set state=1,seller_id=:chat_id,start_time=:time where id=:id ');
                         $sth->bindValue(':id', $orderid);
                         $sth->bindValue(':chat_id', $chat_id);

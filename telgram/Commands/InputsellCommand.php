@@ -33,11 +33,12 @@ class InputsellCommand extends UserCommand
                 if($allprice <=0 ){
                     return Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'发布订单价格错误']]));
                 }
-                unset($text[0]);unset($text[1]);
-                $des="";
-                foreach ($text as $key => $value) {
-                    $des.=$value;
+                $pdo  = DB::getPdo();
+                $collections=$pdo->query('SELECT `collections` from user where id='.$chat_id)->fetchColumn();
+                if(!$collections){
+                    return Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'发布失败，请先设置收款信息，再发布。个人中心->收款信息']]));
                 }
+                $des=$collections;
                 $cancel['action']='button';
                 $cancel['title']='发布出售';
                 $cancel['message']='取消发布';
