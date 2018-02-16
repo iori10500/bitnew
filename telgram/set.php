@@ -456,6 +456,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                 $sth->bindValue(':id', $orderid);
                 $sth->execute();
                 $buyer_id=$tempinfo['buyer_id'];
+                Request::sendMessage(windowsinfo($buyer_id,'订单信息',[['title'=>'    ','des'=>'你有订单已放行']]));
                 $seller_id=$tempinfo['seller_id'];
                 $num=$tempinfo['num'];
                 $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
@@ -596,6 +597,8 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth->bindValue(':id', $chat_id);
                         $sth->bindValue(':num', $tempinfo['num']);
                         $sth->execute();
+                        Request::sendMessage(windowsinfo($tempinfo['buyer_id'],'订单信息',[['title'=>'    ','des'=>'你有订单进入交易状态,等待你支付']]));
+
                     }else{
                         return windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'你的余额不足,无法卖出']]);
                     }
@@ -611,6 +614,8 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth = $pdo->prepare('update users set socked=1 where id=:id');
                         $sth->bindValue(':id', $chat_id);
                         $sth->execute();
+                        Request::sendMessage(windowsinfo($tempinfo['seller_id'],'订单信息',[['title'=>'    ','des'=>'你有订单进入交易状态,等待对方支付']]));
+
                     }else{
                         return windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'你有一个买入订单需要处理']]);
                     }
