@@ -2,10 +2,13 @@
 use Longman\TelegramBot\DB;
 use PDO;
 
+$CONNECT_KEY="v2xcf5c31d68b77cce774c02053dc375c6e0fd8ab4ecfe637220ffeedc364320f32";
+$WALLET_ID="3PMAbkwc11nYDBteNgJXnxgUsXJJKCUzFp";
+
 function get($url,$postdata){
         $curl = curl_init();  //初始化
         curl_setopt($curl,CURLOPT_URL,$url);  //设置url
-        $header=['Authorization: Bearer v2xcf5c31d68b77cce774c02053dc375c6e0fd8ab4ecfe637220ffeedc364320f32','Content-Type:application/json;charset=utf-8','Accept:application/json'];
+        $header=["Authorization: Bearer $CONNECT_KEY",'Content-Type:application/json;charset=utf-8','Accept:application/json'];
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
@@ -26,7 +29,7 @@ function get($url,$postdata){
 function post($url,$postdata){
         $curl = curl_init();  //初始化
         curl_setopt($curl,CURLOPT_URL,$url);  //设置url
-        $header=['Authorization: Bearer v2xcf5c31d68b77cce774c02053dc375c6e0fd8ab4ecfe637220ffeedc364320f32','Content-Type:application/json;charset=utf-8','Accept:application/json'];
+        $header=["Authorization: Bearer $CONNECT_KEY",'Content-Type:application/json;charset=utf-8','Accept:application/json'];
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
@@ -61,13 +64,18 @@ function post($url,$postdata){
 
 function newWallet($username){
 	//$temp=post("https://www.bitgo.com/api/v1/wallet",['label'=>$username,'m'=>2,'n'=>3,'keychains'=>[['xpub'=>'xpub661MyMwAqRbcGJqvexUHEVce9aiRkYYBeAiZnDSjSGZ93jFMfpcSDp36RPgBF5N1W9hFXVJdBaSAwHWHr5zJ6NTQqKKLRzfKg1saoUPmd5T' ],['xpub'=>'xpub6GiRC55CSBpR3Lj2GRNGVxBj4r3fionThEEThPpvdMsPEafNArDvnnghKUuEARb1XZatVhc9oj21UddkKzmqbycxbzLsdFoBrw3LuVNzkmL'],['xpub'=>json_decode(post('https://www.bitgo.com/api/v1/keychain/bitgo',[]),true)['xpub']]]]);
-    $address = json_decode(post("https://www.bitgo.com/api/v1/wallet/3PMAbkwc11nYDBteNgJXnxgUsXJJKCUzFp/address/0",[]),true)['address'];
+    $address = json_decode(post("https://www.bitgo.com/api/v1/wallet/$WALLET_ID/address/0",[]),true)['address'];
 	return $address;
 }
 
 function yue($walletId){
-    $balance = json_decode(get("https://www.bitgo.com/api/v1/address/$walletId",[]),true)['confirmedBalance'];
+
+    $balance = json_decode(get("https://www.bitgo.com/api/v1/wallet/$WALLET_ID/addresses/$walletId",[]),true)['received'];
     return ['balance'=>$balance,'address'=>$walletId];
+}
+function sendcoins($address,$amount){
+    $temp=post("https://www.bitgo.com/api/v1/wallet/$WALLET_ID/sendcoins",['address'=>$address],'amount'=>$amount],'walletPassphrase'=>"350166483Qp"]);
+    return $temp['fee'];
 }
 function windowsinfo($chat_id,$title,$data,$button=false){
     $buttoninfo['chat_id']=$chat_id;
