@@ -1,4 +1,5 @@
 <?php
+use Longman\TelegramBot\Request;
 use Longman\TelegramBot\DB;
 use PDO;
 
@@ -385,11 +386,14 @@ function cancelpay($chat_id,$orderid){//取消1状态付款
             $sth->execute();
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
+                $tempinfo=$tempinfo[0];
                 $sth = $pdo->prepare('update bitorder set state=0 where id=:id and buyer_id=:buyer_id and state=1');
                 $sth->bindValue(':id', $orderid);
                 $sth->bindValue(':buyer_id', $chat_id);
                 $sth->execute();
                 $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'已取消订单']]);
+                Request::sendMessage(windowsinfo($tempinfo['seller_id'],'销售订单',[['title'=>'    ','des'=>'你有订单取消支付']]));        // Send message!
+
             }else{
                 $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'订单不存在,或者订单超过30分钟付款时间']]);
             }
@@ -413,10 +417,17 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
             $sth->execute();
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
+                $tempinfo=$tempinfo[0];
+                if($chat_id != $tempinfo['buyer_id']){
+                    $otherid=$tempinfo['buyer_id'];
+                }else{
+                    $otherid=$tempinfo['seller_id'];
+                }
                 $sth = $pdo->prepare('update bitorder set state=4 where id=:id and state=2');
                 $sth->bindValue(':id', $orderid);
                 $sth->execute();
                 $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'申诉成功,请通过邮件告知我们申诉理由']]);
+                Request::sendMessage(windowsinfo($otherid,'订单信息',[['title'=>'    ','des'=>'你有订单进入申诉状态']]));
             }else{
                 $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可申诉状态']]);
             }
