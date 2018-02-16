@@ -10,9 +10,9 @@ use Longman\TelegramBot\DB;
 
 class LetgoCommand extends UserCommand
 {
-    protected $name = 'balance';                      // Your command's name
-    protected $description = '余额查询,接收地址'; // Your command description
-    protected $usage = '/balance';                    // Usage of your command
+    protected $name = 'letgo';                      // Your command's name
+    protected $description = '开始交易'; // Your command description
+    protected $usage = '/letgo';                    // Usage of your command
     protected $version = '1.0.0';                  // Version of your command
 
     public function execute()
