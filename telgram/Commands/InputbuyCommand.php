@@ -47,8 +47,26 @@ class InputbuyCommand extends UserCommand
                 $orderinfo['des']=$des;
                 $orderinfo['chat_id']=$chat_id;
 
+                $pdo  = DB::getPdo();
                 try {
-                    $sth = DB::getPdo()->prepare('
+
+                    $pdo->beginTransaction();
+                    $sth = $pdo->prepare('
+                        SELECT `id` 
+                        FROM `' . "bitorder" . '`
+                        WHERE `buyer_id` = :id and state=1 and  :time-start_time<1800 
+                        LIMIT 1
+                    ');
+                    $time=time();
+                    $sth->bindValue(':id', $chat_id);
+                    $sth->bindValue(':time', $time);
+                    $sth->execute();
+                    $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                    if(!empty($tempinfo)){
+                        return Request::sendMessage(windowsinfo($chat_id,'购买订单',[['title'=>'    ','des'=>'你存在未支付订单,请支付或者取消订单']]));
+                    }
+
+                    $sth = $pdo->prepare('
                         INSERT INTO `' . "bitorder_temp" . '`
                         (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
                         VALUES
@@ -65,11 +83,13 @@ class InputbuyCommand extends UserCommand
 
                     $sth->execute();
 
-                    $sth = DB::getPdo()->prepare('SELECT LAST_INSERT_ID() as lastid ');
+                    $sth = $pdo->prepare('SELECT LAST_INSERT_ID() as lastid ');
                     $sth->execute();
                     $lastid=$sth->fetchColumn();
 
+                    $pdo->commit();   
                 } catch (Exception $e) {
+                     $pdo->rollBack();   
                     throw new TelegramException($e->getMessage());
                 } 
                 
