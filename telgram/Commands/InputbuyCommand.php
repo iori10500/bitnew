@@ -7,6 +7,7 @@ use Longman\TelegramBot\Request;
 use Longman\TelegramBot\Entities\Keyboard;
 use Longman\TelegramBot\Entities\KeyboardButton;
 use Longman\TelegramBot\DB;
+use PDO;
 
 class InputbuyCommand extends UserCommand
 {
