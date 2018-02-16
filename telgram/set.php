@@ -576,6 +576,16 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
             $pdo->beginTransaction();
             $time=time();
             $sth = $pdo->prepare('
+                SELECT * from `' . "bitorder" . '` where  state=1 and :time-start_time<1800 and buyer_id=:buyer_id   limit 1');
+            $sth->bindValue(':buyer_id', $chat_id);
+            $sth->bindValue(':time', $time);
+            $sth->execute();
+            $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+            if(!empty($tempinfo)){
+                return windowsinfo($chat_id,"订单信息",[['title'=>'    ','des'=>'你存在未支付订单，请支付或者取消订单']]);
+            }
+
+            $sth = $pdo->prepare('
                 SELECT * from `' . "bitorder" . '` where id=:id  and (state=0 or (state=1 and :time-start_time>1800 ) )  limit 1');
             $sth->bindValue(':id', $orderid);
             $sth->bindValue(':time', $time);
