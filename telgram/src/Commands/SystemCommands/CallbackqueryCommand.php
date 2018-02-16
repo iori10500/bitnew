@@ -308,21 +308,28 @@ class CallbackqueryCommand extends SystemCommand
                 break;
 
             case 'setcollections':
-                $okcancel=$data[1];
-                if($okcancel){
-                    $text=$data[2];
-                    $sth = DB::getPdo()->prepare('update user set collections=:text,col_flag=0 where id=:id');
+                if(count($data) == 1){
+                    $sth = DB::getPdo()->prepare('update user set col_flag=1 where id=:id');
                     $sth->bindValue(':id', $user_id);
-                    $sth->bindValue(':text', $text);
-                    $sth->execute();     
-                    Request::sendMessage(windowsinfo($user_id,'收款信息',[['title'=>'      ','des'=>'收款信息设置成功---'.$text]]));
-
+                    $sth->execute();  
+                    Request::sendMessage(windowsinfo($user_id,'设置收款',[['title'=>'      ','des'=>'请输入收款信息（如：支付宝 1234567@qq.com  银行卡号1234567891234 账户名字是 张三）']]));   
                 }else{
-                    $sth = DB::getPdo()->prepare('update user set col_flag=0 where id=:id');
-                    $sth->bindValue(':id', $data[1]);
-                    $sth->execute();
-                    Request::sendMessage(windowsinfo($user_id,'收款信息',[['title'=>'      ','des'=>'已取消设置收款信息']]));
+                    $okcancel=$data[1];
+                    if($okcancel){
+                        $text=$data[2];
+                        $sth = DB::getPdo()->prepare('update user set collections=:text,col_flag=0 where id=:id');
+                        $sth->bindValue(':id', $user_id);
+                        $sth->bindValue(':text', $text);
+                        $sth->execute();     
+                        Request::sendMessage(windowsinfo($user_id,'收款信息',[['title'=>'      ','des'=>'收款信息设置成功---'.$text]]));
 
+                    }else{
+                        $sth = DB::getPdo()->prepare('update user set col_flag=0 where id=:id');
+                        $sth->bindValue(':id', $data[1]);
+                        $sth->execute();
+                        Request::sendMessage(windowsinfo($user_id,'收款信息',[['title'=>'      ','des'=>'已取消设置收款信息']]));
+
+                    }
                 }
                 break;
 
