@@ -332,6 +332,7 @@ function cancelorder($chat_id,$orderid){//取消0状态的订单
                 if($tempinfo['owner']== $chat_id && $tempinfo['buy_sell']==0){
                     $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id ');
                     $sth->bindValue(':id', $chat_id);
+                    $sth->bindValue(':num', $tempinfo['num']);
                     $sth->execute();
                 }
                
