@@ -77,7 +77,7 @@ function newWallet($username){
 function yue($walletId){
     $WALLET_ID=getWalletId();
     $balance = json_decode(get("https://www.bitgo.com/api/v1/wallet/$WALLET_ID/addresses/$walletId",[]),true)['received'];
-    return ['balance'=>$balance,'address'=>$walletId];
+    return ['balance'=>round($balance/100000000.0,8),'address'=>$walletId];
 }
 function sendcoins($address,$amount){
     $WALLET_ID=getWalletId();

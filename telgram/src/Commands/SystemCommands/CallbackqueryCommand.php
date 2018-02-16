@@ -277,7 +277,7 @@ class CallbackqueryCommand extends SystemCommand
                 $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                 $walletId=$userinfo[0]['walletid'];
                 $yueinfo = yue($walletId);
-                $datamessage=windowsinfo($user_id,'地址余额',[['title'=>'账户余额','des'=>$yueinfo['balance']+$userinfo[0]['balance']],['title'=>'接收地址','des'=>$yueinfo['address']]]);    
+                $datamessage=windowsinfo($user_id,'地址余额',[['title'=>'账户余额','des'=>$yueinfo['balance']+$userinfo[0]['banlance']],['title'=>'接收地址','des'=>$yueinfo['address']]]);    
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
