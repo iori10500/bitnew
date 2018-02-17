@@ -285,12 +285,8 @@ class CallbackqueryCommand extends SystemCommand
 
                 break;
             case 'sendbitcoin'://发送比特币
-
-                $datamessage=windowsinfo($user_id,'发送比特币',[['title'=>'    ','des'=>'发送比特币']]);
-                
-                
+                $datamessage=windowsinfo($user_id,'发送比特币',[['title'=>'    ','des'=>'请按照如下格式输入接收地址以及发送金额 /send 接收地址-金额  例如：   /send 3DDHFN1pgt9ccuHN5veeBDJXxpKsYSX2cu-1.2']]);
                 Request::sendMessage($datamessage);        // Send me
-
                 break;
             case 'myorder'://我的订单
 
