@@ -651,7 +651,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $tempinfo_ = $sth->fetchAll(PDO::FETCH_ASSOC);
                         if(!empty($tempinfo_)){
                             Request::sendMessage(getorder($chat_id,1,0,$tempinfo_[0]['id']));
-                            return Request::sendMessage(windowsinfo($chat_id,'我要出售',[['title'=>'    ','des'=>'你存在未放行订单,请放行之后再发布']]));
+                            return Request::sendMessage(windowsinfo($chat_id,'我要出售',[['title'=>'    ','des'=>'你存在未放行订单,请放行之后再卖出']]));
                         }
 
 

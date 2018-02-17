@@ -98,7 +98,7 @@ class InputbuyCommand extends UserCommand
                     throw new TelegramException($e->getMessage());
                 } 
                 
-                $data=windowsinfo($chat_id,'发布购买',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>"outorder-$lastid"],['text'=>'取消','callback_data'=>"canceltemporder-$lastid"]]]);
+                $data=windowsinfo($chat_id,'发布购买',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice]],[[['text'=>'确认','callback_data'=>"outorder-$lastid"],['text'=>'取消','callback_data'=>"canceltemporder-$lastid"]]]);
 
             }else{
                 $data=windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'格式不正确']]);
