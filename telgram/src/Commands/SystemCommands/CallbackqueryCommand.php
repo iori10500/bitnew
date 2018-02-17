@@ -285,9 +285,6 @@ class CallbackqueryCommand extends SystemCommand
                 $buttoninfo['chat_id']=$user_id;
                 $buttoninfo['photo']='http://chart.apis.google.com/chart?chs=150x150&cht=qr&chld=L|0&chl='.urlencode($yueinfo['address']);
                 Request::sendPhoto($buttoninfo);        // Send me
-
-                sendPhoto
-
                 break;
             case 'sendbitcoin'://发送比特币
                 $datamessage=windowsinfo($user_id,'发送比特币',[['title'=>'    ','des'=>'请按照如下格式输入接收地址以及发送金额 /send 接收地址-金额  例如：   /send 3DDHFN1pgt9ccuHN5veeBDJXxpKsYSX2cu-1.2']]);
