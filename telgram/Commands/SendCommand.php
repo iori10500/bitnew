@@ -15,7 +15,7 @@ class SendCommand extends UserCommand
     protected $description = '发送'; // Your command description
     protected $usage = '/send';                    // Usage of your command
     protected $version = '1.0.0';                  // Version of your command
-    protected $minerfee=0.001;
+    protected $minerfee=0;
 
     public function execute()
     {
@@ -27,7 +27,7 @@ class SendCommand extends UserCommand
         $text=json_decode(json_encode($message),true)['text'];
         $text=trim(str_replace("/send","",$text));
         if(empty($text)){
-            $data=windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'请按照如下格式输入接收地址以及发送金额(旷工费 0.001) /send 接收地址-金额  例如：   /send 3DDHFN1pgt9ccuHN5veeBDJXxpKsYSX2cu-1.2']]);
+            $data=windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'请按照如下格式输入接收地址以及发送金额 /send 接收地址-金额  例如：   /send 3DDHFN1pgt9ccuHN5veeBDJXxpKsYSX2cu-1.2']]);
         }else{
             $text = explode('-',$text);
             if(count($text) >= 2){

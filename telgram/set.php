@@ -465,6 +465,7 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 $sth->execute();
                 $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'申诉成功,请通过邮件告知我们申诉理由']]);
                 Request::sendMessage(windowsinfo($otherid,'我的订单',[['title'=>'    ','des'=>'你有订单进入申诉状态']]));
+                Request::sendMessage(windowsinfo('484534434','用户订单申诉',[['title'=>'    ','des'=>$chat_id."发起申诉".$otherid]]));
             }else{
                 $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可申诉状态']]);
             }
