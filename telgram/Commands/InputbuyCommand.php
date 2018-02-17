@@ -35,7 +35,7 @@ class InputbuyCommand extends UserCommand
                 }
 
                 unset($text[0]);unset($text[1]);
-                $des="";
+                $des="      ";
                 foreach ($text as $key => $value) {
                     $des.=$value;
                 }

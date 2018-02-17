@@ -7,6 +7,7 @@ use PDO;
 
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__. '/set.php';
+ini_set('date.timezone','Asia/Shanghai');
 //phpinfo();die;
 $bot_api_key  = '518376306:AAGsQp7cBACvPfUjtWRMVAkVF6JTRjT9MV4';
 $bot_username ="bitokbitbot";
