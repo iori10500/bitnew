@@ -50,7 +50,7 @@ class SendCommand extends UserCommand
                 $yueinfo = yue($walletId);
                 if(($yueinfo['balance']+ $userinfo[0]['banlance'])>=($remote+$this->minerfee)){
                     //发送
-                    $verifyaddress = json_decode(post("https://www.bitgo.com/api/v1/verifyaddress",['address'=>$address]),true);
+                    $verifyaddress = json_decode(post("https://www.bitgo.com:3080/api/v1/verifyaddress",['address'=>$address]),true);
                     if(!$verifyaddress){
                         return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效地址']]));   
                     }
