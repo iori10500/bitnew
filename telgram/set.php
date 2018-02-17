@@ -620,21 +620,22 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
             $sth->execute();
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
-                $sth = $pdo->prepare('
-                    SELECT `banlance`,`socked`,`walletid`,`collections` 
-                    FROM `' . TB_USER . '`
-                    WHERE `id` = :id 
-                    LIMIT 1
-                ');
-                $sth->bindValue(':id', $chat_id);
-                $sth->execute();
-                $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
-                $walletId=$userinfo[0]['walletid'];
-                $walletbalanc=json_decode(get("https://www.bitgo.com/api/v1/wallet/$walletId",[]),true)['balance'];
-                $balance=$userinfo[0]['banlance']+$walletbalanc;
-                $socked=$userinfo[0]['socked'];
                 $tempinfo=$tempinfo[0];
                 if($tempinfo['owner'] == $tempinfo['buyer_id']){  //卖出
+                    $sth = $pdo->prepare('
+                        SELECT `banlance`,`socked`,`walletid`,`collections` 
+                        FROM `' . TB_USER . '`
+                        WHERE `id` = :id 
+                        LIMIT 1
+                    ');
+                    $sth->bindValue(':id', $chat_id);
+                    $sth->execute();
+                    $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                    $walletId=$userinfo[0]['walletid'];
+                    $walletbalanc=json_decode(get("https://www.bitgo.com/api/v1/wallet/$walletId",[]),true)['balance'];
+                    $balance=$userinfo[0]['banlance']+$walletbalanc;
+                    $socked=$userinfo[0]['socked'];
+
                     if($balance>$tempinfo['num']){
                         if(!$userinfo[0]['collections']){
                              return Request::sendMessage(windowsinfo($chat_id,'收款信息',[['title'=>'    ','des'=>'卖出失败，请先设置收款信息,再交易。个人中心->收款信息']]));
