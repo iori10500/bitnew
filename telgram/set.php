@@ -633,7 +633,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth->bindValue(':des', $userinfo[0]['collections']);
                         $sth->bindValue(':time', $time);
                         $sth->execute();
-                        $sth = $pdo->prepare('update users set banlance=banlance-:num where id=:id');
+                        $sth = $pdo->prepare('update user set banlance=banlance-:num where id=:id');
                         $sth->bindValue(':id', $chat_id);
                         $sth->bindValue(':num', $tempinfo['num']);
                         $sth->execute();
