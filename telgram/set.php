@@ -133,8 +133,8 @@ function getorder($chat_id,$whorder,$limit){
     ];
      $DESC=[
             1=>"我的订单",
-            2=>"购买交易", 
-            3=>"销售交易"    
+            2=>"我要出售", 
+            3=>"我要购买"    
         ];
     if($limit<0){
         return  $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'到顶啦']]);
