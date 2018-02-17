@@ -369,10 +369,10 @@ function finishpay($chat_id,$orderid){//完成1状态付款
                 $sth->bindValue(':id', $orderid);
                 $sth->bindValue(':buyer_id', $chat_id);
                 $sth->execute();
-                $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);
-                Request::sendMessage(windowsinfo($tempinfo['seller_id'],'销售订单',[['title'=>'    ','des'=>'你有订单完成支付,请放行']]));
+                $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);
+                Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单完成支付,请放行']]));
             }else{
-                $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'订单不存在,或者订单超过30分钟付款时间']]);
+                $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'订单不存在,或者订单超过30分钟付款时间']]);
             }
             $pdo->commit();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
@@ -404,16 +404,16 @@ function cancelpay($chat_id,$orderid){//取消1状态付款
                     $sth->bindValue(':time', $time);
                     $sth->bindValue(':buyer_id', $chat_id);
                     $sth->execute();
-                    $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'已取消订单']]);
-                    Request::sendMessage(windowsinfo($tempinfo['seller_id'],'销售订单',[['title'=>'    ','des'=>'你有订单取消支付']]));
+                    $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'已取消订单']]);
+                    Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单取消支付']]));
 
                 }else{//取消从市场上买入的订单
                     $sth = $pdo->prepare('update bitorder set state=0 where id=:id and buyer_id=:buyer_id and state=1');
                     $sth->bindValue(':id', $orderid);
                     $sth->bindValue(':buyer_id', $chat_id);
                     $sth->execute();
-                    $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'已取消支付']]);
-                    Request::sendMessage(windowsinfo($tempinfo['seller_id'],'销售订单',[['title'=>'    ','des'=>'你有订单取消支付']]));
+                    $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'已取消支付']]);
+                    Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单取消支付']]));
                 }
                        // Send message!
 
@@ -449,10 +449,10 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 $sth = $pdo->prepare('update bitorder set state=4 where id=:id and state=2');
                 $sth->bindValue(':id', $orderid);
                 $sth->execute();
-                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'申诉成功,请通过邮件告知我们申诉理由']]);
-                Request::sendMessage(windowsinfo($otherid,'订单信息',[['title'=>'    ','des'=>'你有订单进入申诉状态']]));
+                $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'申诉成功,请通过邮件告知我们申诉理由']]);
+                Request::sendMessage(windowsinfo($otherid,'我的订单',[['title'=>'    ','des'=>'你有订单进入申诉状态']]));
             }else{
-                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可申诉状态']]);
+                $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可申诉状态']]);
             }
             $pdo->commit();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
@@ -479,7 +479,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                 $sth->bindValue(':id', $orderid);
                 $sth->execute();
                 $buyer_id=$tempinfo['buyer_id'];
-                Request::sendMessage(windowsinfo($buyer_id,'订单信息',[['title'=>'    ','des'=>'你有订单已放行']]));
+                Request::sendMessage(windowsinfo($buyer_id,'我要购买',[['title'=>'    ','des'=>'你有订单已放行']]));
                 $seller_id=$tempinfo['seller_id'];
                 $num=$tempinfo['num'];
                 $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
@@ -571,9 +571,9 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                     $sth->bindValue(':num', '0.00001');
                     $sth->execute();
                 }                
-                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单完成,账户余额将发生变化']]);
+                $data=windowsinfo($chat_id,"我要出售",[['title'=>'    ','des'=>'订单完成,账户余额将发生变化']]);
             }else{
-                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可放行状态']]);
+                $data=windowsinfo($chat_id,"我要出售",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可放行状态']]);
             }
             $pdo->commit();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
@@ -595,7 +595,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
             $sth->execute();
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
-                return windowsinfo($chat_id,"订单信息",[['title'=>'    ','des'=>'你存在未支付订单，请支付或者取消订单']]);
+                return windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'你存在未支付订单，请支付或者取消订单']]);
             }
 
             $sth = $pdo->prepare('
@@ -635,7 +635,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth->execute();
                         $tempinfo_ = $sth->fetchAll(PDO::FETCH_ASSOC);
                         if(!empty($tempinfo_)){
-                            return Request::sendMessage(windowsinfo($chat_id,'卖出信息',[['title'=>'    ','des'=>'你存在未放行订单,请放行之后再发布']]));
+                            return Request::sendMessage(windowsinfo($chat_id,'我要出售',[['title'=>'    ','des'=>'你存在未放行订单,请放行之后再发布']]));
                         }
 
 
@@ -649,10 +649,10 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth->bindValue(':id', $chat_id);
                         $sth->bindValue(':num', $tempinfo['num']);
                         $sth->execute();
-                        Request::sendMessage(windowsinfo($tempinfo['buyer_id'],'订单信息',[['title'=>'    ','des'=>'你有订单进入交易状态,等待你支付']]));
+                        Request::sendMessage(windowsinfo($tempinfo['buyer_id'],'我要购买',[['title'=>'    ','des'=>'你有订单进入交易状态,等待你支付']]));
 
                     }else{
-                        return windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'你的余额不足,无法卖出']]);
+                        return windowsinfo($chat_id,"我要出售",[['title'=>'    ','des'=>'你的余额不足,无法卖出']]);
                     }
                    
                 }else{//买入
@@ -666,7 +666,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth = $pdo->prepare('update users set socked=1 where id=:id');
                         $sth->bindValue(':id', $chat_id);
                         $sth->execute();
-                        Request::sendMessage(windowsinfo($tempinfo['seller_id'],'订单信息',[['title'=>'    ','des'=>'你有订单进入交易状态,等待对方支付']]));
+                        Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单进入交易状态,等待对方支付']]));
 
                     }else{
                         return windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'你有一个买入订单需要处理']]);
