@@ -23,10 +23,10 @@ class InputbuyCommand extends UserCommand
         $text=json_decode(json_encode($message),true)['text'];
         $text=trim(str_replace("/inputbuy","",$text));
         if(empty($text)){
-            $data=windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'请按照格式输入发布订单：/inputbuy 数量-单价-支付说明  (例如：  /inputbuy 1.2-55432)']]);
+            $data=windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'请按照格式输入发布订单：/inputbuy 数量-单价  (例如：  /inputbuy 1.2-55432)']]);
         }else{
             $text = explode('-',$text);
-            if(count($text) >= 3){
+            if(count($text) >= 2){
                 $num = round((float)$text[0],8);
                 $price = round((float)$text[1],2);
                 $allprice=round($num*$price,2);

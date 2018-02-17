@@ -612,9 +612,10 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         if(!$userinfo[0]['collections']){
                              return Request::sendMessage(windowsinfo($chat_id,'收款信息',[['title'=>'    ','des'=>'卖出失败，请先设置收款信息,再交易。个人中心->收款信息']]));
                         }
-                        $sth = $pdo->prepare('update bitorder set state=1,seller_id=:chat_id,start_time=:time where id=:id ');
+                        $sth = $pdo->prepare('update bitorder set state=1,seller_id=:chat_id,start_time=:time,des=:des where id=:id ');
                         $sth->bindValue(':id', $orderid);
                         $sth->bindValue(':chat_id', $chat_id);
+                        $sth->bindValue(':des', $userinfo[0]['collections']);
                         $sth->bindValue(':time', $time);
                         $sth->execute();
                         $sth = $pdo->prepare('update users set banlance=banlance-:num where id=:id');
