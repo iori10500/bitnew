@@ -194,7 +194,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                     $orderinfo['orderclass']='我要购买';
                     switch ($one['state']) {
                         case '0':
-                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'建时','des'=>$orderinfo['create_time']]],[[['text'=>'取消订单','callback_data'=>"cancelorder-".$orderinfo['orderid']]],[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark'],['title'=>'联系','des'=>"@JJJJJack"],['title'=>'建时','des'=>$orderinfo['create_time']]],[[['text'=>'取消订单','callback_data'=>"cancelorder-".$orderinfo['orderid']]],[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
                             
                             break;
                         case '1':
@@ -353,7 +353,7 @@ function cancelorder($chat_id,$orderid){//取消0状态的订单
 
                 $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单取消成功']]);
             }else{
-                $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单不存在,或者订单在非可取消状态']]);
+                $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单在非可取消状态']]);
             }
             $pdo->commit();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
@@ -386,7 +386,7 @@ function finishpay($chat_id,$orderid){//完成1状态付款
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);
                 Request::sendMessage(getorder($tempinfo['seller_id'],1,0,$tempinfo['id']));
             }else{
-                $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'订单不存在,或者订单超过30分钟付款时间']]);
+                $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'订单超过30分钟付款时间']]);
             }
             $pdo->commit();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
@@ -432,7 +432,7 @@ function cancelpay($chat_id,$orderid){//取消1状态付款
                        // Send message!
 
             }else{
-                $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'订单不存在,或者订单超过30分钟付款时间']]);
+                $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'订单超过30分钟付款时间']]);
             }
             $pdo->commit();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
