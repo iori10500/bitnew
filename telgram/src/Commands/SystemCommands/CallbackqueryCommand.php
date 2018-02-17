@@ -283,7 +283,7 @@ class CallbackqueryCommand extends SystemCommand
                 $datamessage=windowsinfo($user_id,'地址余额',[['title'=>'账户余额','des'=>$yueinfo['balance']+$userinfo[0]['banlance']],['title'=>'接收地址','des'=>$yueinfo['address']]]);    
                 Request::sendMessage($datamessage);        // Send me
                 $buttoninfo['chat_id']=$user_id;
-                $buttoninfo['photo']='http://www.bitneworld.com/setcode.php?address='.$yueinfo['address'];
+                $buttoninfo['photo']='http://chart.apis.google.com/chart?chs=150x150&cht=qr&chld=L|0&chl='.urlencode($yueinfo['address']);
                 Request::sendPhoto($buttoninfo);        // Send me
 
                 sendPhoto
