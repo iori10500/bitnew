@@ -621,7 +621,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 $tempinfo=$tempinfo[0];
-                if($tempinfo['owner'] == $tempinfo['buyer_id']){  //卖出
+                if($tempinfo['buy_sell'] == 1]){  //卖出
                     $sth = $pdo->prepare('
                         SELECT `banlance`,`socked`,`walletid`,`collections` 
                         FROM `' . TB_USER . '`
