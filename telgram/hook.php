@@ -95,11 +95,11 @@ switch ($text) {
         }
       }
       if(!$iscommend){
+        $text=json_decode(file_get_contents("php://input"),true)['message']['text'];
          $sth = $pdo->prepare('update user set collections_bak=:collections where id=:id ');
           $sth->bindValue(':id', $chat_id);
           $sth->bindValue(':collections', $text);
           $sth->execute();
-          $text=json_decode(file_get_contents("php://input"),true)['message']['text'];
           Request::sendMessage(windowsinfo($chat_id,'设置收款信息',[['title'=>'    ','des'=>$text]],[[['text'=>'确认','callback_data'=>"setcollections-1"],['text'=>'取消','callback_data'=>"setcollections-0"]]]));
       }
      
