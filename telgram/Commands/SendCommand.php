@@ -50,10 +50,10 @@ class SendCommand extends UserCommand
                 $yueinfo = yue($walletId);
                 if(($yueinfo['balance']+ $userinfo[0]['banlance'])>=($remote+$this->minerfee)){
                     //发送
-                    $verifyaddress = json_decode(post("https://www.bitgo.com:3080/api/v1/verifyaddress",['address'=>$address]),true);
-                    //if(!$verifyaddress){
-                        //return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效地址']]));   
-                   // }
+                    //$verifyaddress = json_decode(post("https://www.bitgo.com:3080/api/v1/verifyaddress",['address'=>$address]),true);
+                    if(0 && !$verifyaddress){//地址验证
+                        return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效地址']]));   
+                    }
                     $sth = DB::getPdo()->prepare('update user set banlance=banlance-:fee where id=:id ');
                     $sth->bindValue(':id', $message->getFrom()->getId());
                     $fee=$remote+$this->minerfee;
@@ -71,6 +71,7 @@ class SendCommand extends UserCommand
                     $sth->bindValue(':userid', $message->getFrom()->getId());
                     $sth->execute();
                     $data=windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'发送成功，预计20分钟内到账']]);
+                    Request::sendMessage(windowsinfo($chat_id,'提款申请',[['title'=>'    ','des'=>$address."   ".$fee]]));  
 
                 }else{
                     $data=windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'余额不足']]); 
