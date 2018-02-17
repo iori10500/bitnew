@@ -30,6 +30,10 @@ class InputbuyCommand extends UserCommand
                 $num = round((float)$text[0],8);
                 $price = round((float)$text[1],2);
                 $allprice=round($num*$price,2);
+                if($allprice <=0 ){
+                    return Request::sendMessage(windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'发布订单价格错误']]));
+                }
+
                 unset($text[0]);unset($text[1]);
                 $des="";
                 foreach ($text as $key => $value) {
