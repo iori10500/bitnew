@@ -36,7 +36,7 @@ class SendCommand extends UserCommand
                     return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效金额']]));   
                 }
                 $sth = DB::getPdo()->prepare('
-                    SELECT `walletId`
+                    SELECT `walletId`,`banlance` 
                     FROM `' . TB_USER . '`
                     WHERE `id` = :id 
                     LIMIT 1
@@ -44,9 +44,10 @@ class SendCommand extends UserCommand
 
                 $sth->bindValue(':id', $message->getFrom()->getId());
                 $sth->execute();
-                $walletId=$sth->fetchColumn();
+                $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                $walletId=$userinfo[0]['walletId'];
                 $yueinfo = yue($walletId);
-                if($yueinfo['balance'] >=($remote+$this->minerfee)){
+                if(($yueinfo['balance']+ $userinfo[0]['banlance'])>=($remote+$this->minerfee)){
                     //发送
                     $verifyaddress = json_decode(post("https://www.bitgo.com/api/v1/verifyaddress",['address'=>$address]),true);
                     if(!$verifyaddress){
