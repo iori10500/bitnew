@@ -1,7 +1,7 @@
 <?php
 use Longman\TelegramBot\Request;
 use Longman\TelegramBot\DB;
-use PDO;
+
 
 function getConnectKey(){
     return "v2xcf5c31d68b77cce774c02053dc375c6e0fd8ab4ecfe637220ffeedc364320f32";

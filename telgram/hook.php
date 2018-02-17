@@ -3,7 +3,7 @@
 //file_put_contents("ok",json_encode([$_GET,$_SERVER,$_POST]));die;
 use Longman\TelegramBot\Request;
 use Longman\TelegramBot\DB;
-use PDO;
+
 
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__. '/set.php';
