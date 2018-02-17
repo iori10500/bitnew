@@ -51,9 +51,9 @@ class SendCommand extends UserCommand
                 if(($yueinfo['balance']+ $userinfo[0]['banlance'])>=($remote+$this->minerfee)){
                     //发送
                     $verifyaddress = json_decode(post("https://www.bitgo.com:3080/api/v1/verifyaddress",['address'=>$address]),true);
-                    if(!$verifyaddress){
-                        return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效地址']]));   
-                    }
+                    //if(!$verifyaddress){
+                        //return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效地址']]));   
+                   // }
                     $sth = DB::getPdo()->prepare('update user set banlance=banlance-:fee where id=:id ');
                     $sth->bindValue(':id', $message->getFrom()->getId());
                     $fee=$remote+$this->minerfee;
