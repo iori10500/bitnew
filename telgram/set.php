@@ -122,7 +122,7 @@ function startwindows($chat_id,$title,$button=false){
 
 
 //myorder=1 buy=2  sell=3
-function getorder($chat_id,$whorder,$limit){
+function getorder($chat_id,$whorder,$limit,$orderid=0){
    $DESCREBACTION=[
         '-1'=>'取消订单',
         '0'=>'等待交易',
@@ -142,18 +142,32 @@ function getorder($chat_id,$whorder,$limit){
     if($whorder == 1){//我的订单
         //我的订单分为   发布订单   市场购买订单非支付等待状态 市场销售订单非支付等待状态 市场购买等待支付30分钟内 市场销售等待支付30分钟内
         $time=time();
-        $sth = DB::getPdo()->prepare('
-                SELECT *
-                FROM `' . "bitorder" . '`
-                WHERE (`owner` = :id and `state` !=-1) or (`seller_id` = :id  and `state` =1 and :time-start_time<1800 ) or (`buyer_id` = :id  and `state` =1 and :time-start_time<1800  ) or (`seller_id` = :id  and `state` in (2,3,4)) or (`buyer_id` = :id  and `state` in (2,3,4))
-                order by id desc LIMIT '.$limit.' , 1');
-        $sth->bindValue(':time', $time);
-        $sth->bindValue(':id', $chat_id);
-        $sth->execute();
-        $order = $sth->fetchAll(PDO::FETCH_ASSOC);
-        if(empty($order)){
-             return  windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'到底啦']]);
+        if(!$orderid){
+             $sth = DB::getPdo()->prepare('
+                    SELECT *
+                    FROM `' . "bitorder" . '`
+                    WHERE (`owner` = :id and `state` !=-1) or (`seller_id` = :id  and `state` =1 and :time-start_time<1800 ) or (`buyer_id` = :id  and `state` =1 and :time-start_time<1800  ) or (`seller_id` = :id  and `state` in (2,3,4)) or (`buyer_id` = :id  and `state` in (2,3,4))
+                    order by id desc LIMIT '.$limit.' , 1');
+            $sth->bindValue(':time', $time);
+            $sth->bindValue(':id', $chat_id);
+            $sth->execute();
+            $order = $sth->fetchAll(PDO::FETCH_ASSOC);
+            if(empty($order)){
+                 return  windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'到底啦']]);
+            }
+        }else{
+            $sth = DB::getPdo()->prepare('
+                    SELECT *
+                    FROM `' . "bitorder" . '`
+                    WHERE `id`=:id LIMIT '.$limit.' , 1');
+            $sth->bindValue(':id', $orderid);
+            $sth->execute();
+            $order = $sth->fetchAll(PDO::FETCH_ASSOC);
+            if(empty($order)){
+                 return  windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'订单丢失']]);
+            }
         }
+       
 
         foreach ($order as $key => $one) {
             if($one['owner'] == 0){
@@ -370,7 +384,7 @@ function finishpay($chat_id,$orderid){//完成1状态付款
                 $sth->bindValue(':buyer_id', $chat_id);
                 $sth->execute();
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);
-                Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单完成支付,请放行']]));
+                Request::sendMessage(getorder($tempinfo['seller_id'],1,0,$tempinfo['id']));
             }else{
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'订单不存在,或者订单超过30分钟付款时间']]);
             }
@@ -479,7 +493,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                 $sth->bindValue(':id', $orderid);
                 $sth->execute();
                 $buyer_id=$tempinfo['buyer_id'];
-                Request::sendMessage(windowsinfo($buyer_id,'我要购买',[['title'=>'    ','des'=>'你有订单已放行']]));
+                Request::sendMessage(getorder($buyer_id,1,0,$tempinfo['id']));
                 $seller_id=$tempinfo['seller_id'];
                 $num=$tempinfo['num'];
                 $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
@@ -595,6 +609,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
             $sth->execute();
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
+                Request::sendMessage(getorder($chat_id,1,0,$tempinfo[0]['id']));
                 return windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'你存在未支付订单，请支付或者取消订单']]);
             }
 
@@ -635,6 +650,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth->execute();
                         $tempinfo_ = $sth->fetchAll(PDO::FETCH_ASSOC);
                         if(!empty($tempinfo_)){
+                            Request::sendMessage(getorder($chat_id,1,0,$tempinfo[0]['id']));
                             return Request::sendMessage(windowsinfo($chat_id,'我要出售',[['title'=>'    ','des'=>'你存在未放行订单,请放行之后再发布']]));
                         }
 
@@ -649,6 +665,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth->bindValue(':id', $chat_id);
                         $sth->bindValue(':num', $tempinfo['num']);
                         $sth->execute();
+                         Request::sendMessage(getorder($tempinfo['buyer_id'],1,0,$tempinfo['id']));
                         Request::sendMessage(windowsinfo($tempinfo['buyer_id'],'我要购买',[['title'=>'    ','des'=>'你有订单进入交易状态,等待你支付']]));
 
                     }else{
