@@ -68,6 +68,7 @@ class InputsellCommand extends UserCommand
                     $sth->execute();
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     if(!empty($tempinfo)){
+                        Request::sendMessage(getorder($chat_id,1,0,$tempinfo[0]['id']));
                         return Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'你存在未放行订单,请放行之后再发布']]));
                     }
 
