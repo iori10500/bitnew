@@ -398,12 +398,24 @@ function cancelpay($chat_id,$orderid){//取消1状态付款
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 $tempinfo=$tempinfo[0];
-                $sth = $pdo->prepare('update bitorder set state=0 where id=:id and buyer_id=:buyer_id and state=1');
-                $sth->bindValue(':id', $orderid);
-                $sth->bindValue(':buyer_id', $chat_id);
-                $sth->execute();
-                $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'已取消订单']]);
-                Request::sendMessage(windowsinfo($tempinfo['seller_id'],'销售订单',[['title'=>'    ','des'=>'你有订单取消支付']]));        // Send message!
+                if($tempinfo['owner'] == $chat_id){//取消自己发起购买的订单支付
+                    $sth = $pdo->prepare('update bitorder set state=-1 where id=:id and buyer_id=:buyer_id and state=1 and ( :time-start_time<1800 ) ');
+                    $sth->bindValue(':id', $orderid);
+                    $sth->bindValue(':time', $time);
+                    $sth->bindValue(':buyer_id', $chat_id);
+                    $sth->execute();
+                    $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'已取消订单']]);
+                    Request::sendMessage(windowsinfo($tempinfo['seller_id'],'销售订单',[['title'=>'    ','des'=>'你有订单取消支付']]));
+
+                }else{//取消从市场上买入的订单
+                    $sth = $pdo->prepare('update bitorder set state=0 where id=:id and buyer_id=:buyer_id and state=1');
+                    $sth->bindValue(':id', $orderid);
+                    $sth->bindValue(':buyer_id', $chat_id);
+                    $sth->execute();
+                    $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'已取消支付']]);
+                    Request::sendMessage(windowsinfo($tempinfo['seller_id'],'销售订单',[['title'=>'    ','des'=>'你有订单取消支付']]));
+                }
+                       // Send message!
 
             }else{
                 $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'订单不存在,或者订单超过30分钟付款时间']]);
