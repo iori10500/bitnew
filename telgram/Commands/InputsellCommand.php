@@ -26,7 +26,7 @@ class InputsellCommand extends UserCommand
             $data=windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单：/inputsell 数量-单价  (例如：  /inputsell 1.2-55432)']]);
         }else{
             $text = explode('-',$text);
-            if(count($text) >= 3){
+            if(count($text) >= 2){
                 $num = round((float)$text[0],8);
                 $price = round((float)$text[1],2);
                 $allprice=round($num*$price,2);
