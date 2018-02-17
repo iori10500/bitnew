@@ -68,7 +68,7 @@ class InputbuyCommand extends UserCommand
                     $sth->execute();
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     if(!empty($tempinfo)){
-                        return Request::sendMessage(windowsinfo($chat_id,'购买订单',[['title'=>'    ','des'=>'你存在未支付订单,请支付或者取消订单']]));
+                        return Request::sendMessage(windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'你存在未支付订单,请支付或者取消订单']]));
                     }
 
                     $sth = $pdo->prepare('
