@@ -80,7 +80,7 @@ try {
         $temp['buy_sell']=1;
         $temp['seller_id']=528254045;
         $temp['price']=rand((int)($price-500),(int)($price+500));
-        $temp['num']=rand(1,1000)/1000;
+        $temp['num']=rand(1,10)/100;
         $temp['state']=0;
         $temp['owner']=528254045;
         $temp['des']=$shoukuanmark[rand(0,10)];
@@ -104,7 +104,7 @@ try {
         $temp['buy_sell']=0;
         $temp['seller_id']=528254045;
         $temp['price']=rand((int)($price-500),(int)($price+500));
-        $temp['num']=rand(1,1000)/1000;
+        $temp['num']=rand(1,10)/100;
         $temp['state']=0;
         $temp['owner']=528254045;
         $temp['des']="     ";
