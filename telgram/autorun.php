@@ -1,4 +1,5 @@
 <?php
+ini_set('date.timezone','Asia/Shanghai');
 $servername = "localhost";
 $username = "jack";
 $password = "350166483Qp!";
