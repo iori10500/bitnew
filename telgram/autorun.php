@@ -91,9 +91,9 @@ try {
     foreach ($buyorder as $key => $value) {
         mysqli_query($conn,'
                 INSERT INTO `' . "bitorder" . '`
-                (`buy_sell`, `price`,`buyer_id`, `num`,`state`,`owner`,`des`,`istest`)
+                (`buy_sell`, `price`,`buyer_id`, `num`,`state`,`owner`,`des`,`istest`,`create_time`)
                 VALUES
-                ('.$value['buy_sell'].', '.$value['price'].', '.$value['buyer_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].')
+                ('.$value['buy_sell'].', '.$value['price'].', '.$value['buyer_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].',"'.date("Y-m-d H:i:s",time()).'")
             ');
     }
 
@@ -115,9 +115,9 @@ try {
     foreach ($buyorder as $key => $value) {
         mysqli_query($conn,'
                 INSERT INTO `' . "bitorder" . '`
-                (`buy_sell`, `price`,`seller_id`, `num`,`state`,`owner`,`des`,`istest`)
+                (`buy_sell`, `price`,`seller_id`, `num`,`state`,`owner`,`des`,`istest`,`create_time`)
                 VALUES
-                ('.$value['buy_sell'].', '.$value['price'].', '.$value['seller_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].')
+                ('.$value['buy_sell'].', '.$value['price'].', '.$value['seller_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].',"'.date("Y-m-d H:i:s",time()).'")
             ');
     }
     //--------------------------------------------------------------------------------------
