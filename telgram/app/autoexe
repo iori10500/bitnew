@@ -1,0 +1,8 @@
+#!/bin/bash
+while true
+do
+php ../autorun.php
+echo "\n"
+
+sleep 180
+done
