@@ -72,58 +72,50 @@ try {
     $conn->query('BEGIN');
     $conn->query('set names utf8');
     //--------------------------------------------------------------------------------------
-    $result = $conn->query('SELECT count(*) as number from bitorder where state=0 and istest=1 and buy_sell=1');
 
-    while($row = $result->fetch_assoc()) {
-        if(1|| $row['number'] < 10){
-            mysqli_query($conn,'DELETE FROM bitorder WHERE state=0 and istest=1 and buy_sell=1'); 
-            $buyorder=[];
-            unset($temp);
-            for($i=0;$i<10;$i++){
-                $temp['buy_sell']=1;
-                $temp['seller_id']=528254045;
-                $temp['price']=rand((int)($price-1000),(int)($price-500));
-                $temp['num']=rand(1,1000)/1000;
-                $temp['state']=0;
-                $temp['owner']=528254045;
-                $temp['des']=$shoukuanmark[rand(0,10)];
-                $temp['istest']=1;    
-            }
-            foreach ($buyorder as $key => $value) {
-                mysqli_query($conn,'
-                        INSERT INTO `' . "bitorder" . '`
-                        (`buy_sell`, `price`,`seller_id`, `num`,`state`,`owner`,`des`,`istest`)
-                        VALUES
-                        (1, '.$value['price'].', '.$value['seller_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].')
-                    ');
-            }
-        }
+    mysqli_query($conn,'DELETE FROM bitorder WHERE state=0 and istest=1 and buy_sell=1'); 
+    $buyorder=[];
+    unset($temp);
+    for($i=0;$i<10;$i++){
+        $temp['buy_sell']=1;
+        $temp['seller_id']=528254045;
+        $temp['price']=rand((int)($price-1000),(int)($price-500));
+        $temp['num']=rand(1,1000)/1000;
+        $temp['state']=0;
+        $temp['owner']=528254045;
+        $temp['des']=$shoukuanmark[rand(0,10)];
+        $temp['istest']=1;    
     }
-     $result = $conn->query('SELECT count(*) as number from bitorder where state=0 and istest=1 and buy_sell=0');
-     while($row = $result->fetch_assoc()) {
-        if(1 || $row['number'] < 10){
-            mysqli_query($conn,'DELETE FROM bitorder WHERE state=0 and istest=1 and buy_sell=1'); 
-            $buyorder=[];
-            unset($temp);
-            for($i=0;$i<10;$i++){
-                $temp['buy_sell']=0;
-                $temp['seller_id']=528254045;
-                $temp['price']=rand((int)($price-500),(int)($price+500));
-                $temp['num']=rand(1,1000)/1000;
-                $temp['state']=0;
-                $temp['owner']=528254045;
-                $temp['des']="     ";
-                $temp['istest']=1;    
-            }
-            foreach ($buyorder as $key => $value) {
-                mysqli_query($conn,'
-                        INSERT INTO `' . "bitorder" . '`
-                        (`buy_sell`, `price`,`seller_id`, `num`,`state`,`owner`,`des`,`istest`)
-                        VALUES
-                        (1, '.$value['price'].', '.$value['seller_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].')
-                    ');
-            }
-        }
+    foreach ($buyorder as $key => $value) {
+        mysqli_query($conn,'
+                INSERT INTO `' . "bitorder" . '`
+                (`buy_sell`, `price`,`seller_id`, `num`,`state`,`owner`,`des`,`istest`)
+                VALUES
+                (1, '.$value['price'].', '.$value['seller_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].')
+            ');
+    }
+
+
+    mysqli_query($conn,'DELETE FROM bitorder WHERE state=0 and istest=1 and buy_sell=1'); 
+    $buyorder=[];
+    unset($temp);
+    for($i=0;$i<10;$i++){
+        $temp['buy_sell']=0;
+        $temp['seller_id']=528254045;
+        $temp['price']=rand((int)($price-500),(int)($price+500));
+        $temp['num']=rand(1,1000)/1000;
+        $temp['state']=0;
+        $temp['owner']=528254045;
+        $temp['des']="     ";
+        $temp['istest']=1;    
+    }
+    foreach ($buyorder as $key => $value) {
+        mysqli_query($conn,'
+                INSERT INTO `' . "bitorder" . '`
+                (`buy_sell`, `price`,`seller_id`, `num`,`state`,`owner`,`des`,`istest`)
+                VALUES
+                (1, '.$value['price'].', '.$value['seller_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].')
+            ');
     }
     //--------------------------------------------------------------------------------------
     $conn->query('COMMIT');
