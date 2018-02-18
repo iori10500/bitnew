@@ -1,10 +1,39 @@
 <?php
+// Load composer
+//file_put_contents("ok",json_encode([$_GET,$_SERVER,$_POST]));die;
 use Longman\TelegramBot\Request;
 use Longman\TelegramBot\DB;
-require __DIR__. '/set.php';
 
+
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__. '/set.php';
+ini_set('date.timezone','Asia/Shanghai');
+//phpinfo();die;
+$bot_api_key  = '518376306:AAGsQp7cBACvPfUjtWRMVAkVF6JTRjT9MV4';
+$bot_username ="bitokbitbot";
+$hook_url = 'https://telgram.bitneworld.com/hook.php';
 $pdo  = DB::getPdo();
 try {
+    // Create Telegram API object
+    $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
+
+    // Define all paths for your custom commands in this array (leave as empty array if not used)
+    $commands_paths = [
+        __DIR__ . '/Commands',
+        __DIR__.'/src/Commands'
+    ];
+    // Add this line inside the try{}
+    $mysql_credentials = [
+       'host'     => 'localhost',
+       'user'     => 'jack',
+       'password' => '350166483Qp!',
+       'database' => 'bitcoin',
+    ];
+
+    $telegram->enableMySql($mysql_credentials);
+    $telegram->addCommandsPaths($commands_paths);
+    $telegram->handle();
+
     $pdo->beginTransaction();
     $time=time();
     $sth = $pdo->prepare('
@@ -16,11 +45,15 @@ try {
             fangxingbysys($value['seller_id'],$value['id']);
         }
     }
-}catch(PDOException $e){
-    $pdo->rollBack();   
-    $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
-    throw new TelegramException($e->getMessage());
+} catch (Longman\TelegramBot\Exception\TelegramException $e) {
+    // log telegram errors
+ //   echo $e->getMessage();
 }
+
+
+
+
+
 function fangxingbysys($chat_id,$orderid){//放行2状态订单
         $pdo  = DB::getPdo();
         try {
