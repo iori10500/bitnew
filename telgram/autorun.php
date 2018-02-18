@@ -91,7 +91,7 @@ try {
     foreach ($buyorder as $key => $value) {
         mysqli_query($conn,'
                 INSERT INTO `' . "bitorder" . '`
-                (`buy_sell`, `price`,`seller_id`, `num`,`state`,`owner`,`des`,`istest`)
+                (`buy_sell`, `price`,`buyer_id`, `num`,`state`,`owner`,`des`,`istest`)
                 VALUES
                 ('.$value['buy_sell'].', '.$value['price'].', '.$value['buyer_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].')
             ');
