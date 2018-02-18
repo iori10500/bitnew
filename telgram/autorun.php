@@ -7,7 +7,7 @@ $dbname = "bitcoin";
 // 创建连接
 $con = new mysqli($servername, $username, $password, $dbname);
 // 检测连接
-if ($con) {
+if ($con->connect_error) {
     die("连接失败: " . $con->connect_error);
 } 
 $time=time();
