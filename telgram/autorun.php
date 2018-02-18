@@ -1,176 +1,42 @@
 <?php
-// Load composer
-//file_put_contents("ok",json_encode([$_GET,$_SERVER,$_POST]));die;
-use Longman\TelegramBot\Request;
-use Longman\TelegramBot\DB;
+$servername = "localhost";
+$username = "jack";
+$password = "350166483Qp!";
+$dbname = "bitcoin";
 
-
-require __DIR__ . '/vendor/autoload.php';
-require __DIR__. '/set.php';
-ini_set('date.timezone','Asia/Shanghai');
-//phpinfo();die;
-$bot_api_key  = '518376306:AAGsQp7cBACvPfUjtWRMVAkVF6JTRjT9MV4';
-$bot_username ="bitokbitbot";
-$hook_url = 'https://telgram.bitneworld.com/hook.php';
-$pdo  = DB::getPdo();
+// 创建连接
+$conn = new mysqli($servername, $username, $password, $dbname);
+// 检测连接
+if ($conn->connect_error) {
+    die("连接失败: " . $conn->connect_error);
+} 
+$time=time();
 try {
-    // Create Telegram API object
-    $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
+    mysqli_query($con,'BEGIN');
+    mysqli_query($con,'set names utf8');
+    $result = mysqli_query($con,'SELECT id,num from `' . "bitorder" . '` where state=2 and '.$time.'-start_time>=1800  limit 5');
 
-    // Define all paths for your custom commands in this array (leave as empty array if not used)
-    $commands_paths = [
-        __DIR__ . '/Commands',
-        __DIR__.'/src/Commands'
-    ];
-    // Add this line inside the try{}
-    $mysql_credentials = [
-       'host'     => 'localhost',
-       'user'     => 'jack',
-       'password' => '350166483Qp!',
-       'database' => 'bitcoin',
-    ];
+    while($row = mysqli_fetch_array($result))
+    {
+        $result = mysqli_query($con,'update bitorder set state=3 where id='.$row['id'].' and state=2');
+        $result = mysqli_query($con,'update user set banlance=banlance+'.$row['num'].' where id='.$row['id']);
+        $result2 = mysqli_query($con,'SELECT parentId,id,first_name from `' . "user" . '` where id in ('.$row['buyer_id'].",".$row['seller_id'].')');
+        while($row2 = mysqli_fetch_array($result2))
+        {
+            mysqli_query('
+                            INSERT INTO `' . "bitorder" . '`
+                            (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`owner`,`des`)
+                            VALUES
+                            (2, '.$row2['parentId'].', 0, 0.00001,3, 0,'.$row2['first_name'].')
+                        ');
+            mysqli_query('update user set banlance=banlance+0.00001 where id='.$row2['parentId']
 
-    $telegram->enableMySql($mysql_credentials);
-    $telegram->addCommandsPaths($commands_paths);
-    $telegram->handle();
-
-    $pdo->beginTransaction();
-    $time=time();
-    $sth = $pdo->prepare('
-        SELECT id,seller_id from `' . "bitorder" . '` where state=2 limit 5');
-    $sth->execute();
-    $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
-    if(!empty($tempinfo)){
-        foreach ($tempinfo as $key => $value) {
-            fangxingbysys($value['seller_id'],$value['id']);
         }
+        
     }
-} catch (Longman\TelegramBot\Exception\TelegramException $e) {
-    // log telegram errors
- //   echo $e->getMessage();
+    mysqli_query($con,'COMMIT');
+    
+} catch (Exception $e) {
+    mysqli_query($con,'ROLLBACK');
 }
-
-
-
-
-
-function fangxingbysys($chat_id,$orderid){//放行2状态订单
-        $pdo  = DB::getPdo();
-        try {
-            $pdo->beginTransaction();
-            $time=time();
-            $sth = $pdo->prepare('
-                SELECT * from `' . "bitorder" . '` where id=:id  and state=2 and :time-start_time>=1800 limit 1');
-            $sth->bindValue(':id', $orderid);
-            $sth->bindValue(':time', $time);
-            $sth->execute();
-            $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
-            if(!empty($tempinfo)){
-                $tempinfo=$tempinfo[0];
-                $sth = $pdo->prepare('update bitorder set state=3 where id=:id and state=2');
-                $sth->bindValue(':id', $orderid);
-                $sth->execute();
-                $buyer_id=$tempinfo['buyer_id'];
-                Request::sendMessage(getorder($buyer_id,1,0,$tempinfo['id']));
-                $seller_id=$tempinfo['seller_id'];
-                $num=$tempinfo['num'];
-                $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
-                $sth->bindValue(':id', $buyer_id);
-                $sth->bindValue(':num', $num);
-                $sth->execute();
-
-                $sth = $pdo->prepare('
-                    SELECT `parentId`
-                    FROM `' . TB_USER . '`
-                    WHERE `id` = :id 
-                    LIMIT 1
-                ');
-                $sth->bindValue(':id', $seller_id);
-                $sth->execute();
-                $parentId_sell=$sth->fetchColumn();
-                if($parentId_sell && ($parentId_sell != $seller_id )){
-                     $sth = $pdo->prepare('
-                        SELECT `first_name`
-                        FROM `' . TB_USER . '`
-                        WHERE `id` = :id 
-                        LIMIT 1
-                    ');
-                    $sth->bindValue(':id', $seller_id);
-                    $sth->execute();
-                    $seller_name=$sth->fetchColumn();
-
-                    $sth = $pdo->prepare('
-                        INSERT INTO `' . "bitorder" . '`
-                        (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
-                        VALUES
-                        (:buy_sell, :buyer_id, :price, :num,:state, :create_time, :owner,:des)
-                    ');
-                    $sth->bindValue(':buy_sell', '2');
-                    $sth->bindValue(':buyer_id', $parentId_sell);
-                    $sth->bindValue(':price', "0");
-                    $sth->bindValue(':num', '0.00001');
-                    $sth->bindValue(':state', '3');
-                    $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
-                    $sth->bindValue(':owner', "0");
-                    $sth->bindValue(':des', $seller_name);
-                    $sth->execute();
-
-                    $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
-                    $sth->bindValue(':id', $parentId_sell);
-                    $sth->bindValue(':num', '0.00001');
-                    $sth->execute();
-                }
-
-
-                $sth = $pdo->prepare('
-                    SELECT `parentId`
-                    FROM `' . TB_USER . '`
-                    WHERE `id` = :id 
-                    LIMIT 1
-                ');
-                $sth->bindValue(':id', $buyer_id);
-                $sth->execute();
-                $parentId_buy=$sth->fetchColumn();
-                if($parentId_buy && ($parentId_buy != $buyer_id )){
-                     $sth = $pdo->prepare('
-                        SELECT `first_name`
-                        FROM `' . TB_USER . '`
-                        WHERE `id` = :id 
-                        LIMIT 1
-                    ');
-                    $sth->bindValue(':id', $buyer_id);
-                    $sth->execute();
-                    $buyer_name=$sth->fetchColumn();
-
-                    $sth = $pdo->prepare('
-                        INSERT INTO `' . "bitorder" . '`
-                        (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
-                        VALUES
-                        (:buy_sell, :buyer_id, :price, :num,:state, :create_time, :owner,:des)
-                    ');
-                    $sth->bindValue(':buy_sell', '2');
-                    $sth->bindValue(':buyer_id', $parentId_buy);
-                    $sth->bindValue(':price', "0");
-                    $sth->bindValue(':num', '0.00001');
-                    $sth->bindValue(':state', '3');
-                    $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
-                    $sth->bindValue(':owner', "0");
-                    $sth->bindValue(':des', $buyer_name);
-                    $sth->execute();
-
-                    $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
-                    $sth->bindValue(':id', $parentId_buy);
-                    $sth->bindValue(':num', '0.00001');
-                    $sth->execute();
-                }                
-                Request::sendMessage(windowsinfo($chat_id,"我要出售",[['title'=>'    ','des'=>'你有订单因超过30分钟主动放行时间，现已自动放行']]));
-            }else{
-               // Request::sendMessage(windowsinfo($chat_id,"我要出售",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可放行状态']]));
-            }
-            $pdo->commit();     // commit changes to the database and end transaction
-        } catch (PDOException $e) {
-            $pdo->rollBack();   
-            Request::sendMessage(windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]));
-            throw new TelegramException($e->getMessage());
-        }
-}
+$conn->close();
