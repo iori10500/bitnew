@@ -19,7 +19,7 @@ try {
     while($row = $result->fetch_assoc())
     {
         $result = mysqli_query($con,'update bitorder set state=3 where id='.$row['id'].' and state=2');
-        $result = mysqli_query($con,'update user set banlance=banlance+'.$row['num'].' where id='.$row['id']);
+        $result = mysqli_query($con,'update user set banlance=banlance+'.$row['num'].' where id='.$row['buyer_id']);
         $result2 = mysqli_query($con,'SELECT parentId,id,first_name from `' . "user" . '` where id in ('.$row['buyer_id'].",".$row['seller_id'].')');
         while($row2 = $result2->fetch_assoc())
         {
