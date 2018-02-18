@@ -484,7 +484,7 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 $sth->execute();
                 $username1=$sth->fetchColumn();
                 $mark="";
-                if(!empty($username1)){
+                if(0&&!empty($username1)){
                     $mark=", 或者你可以主动联系对方 @".$username1." ,客服将在3个工作日内主动联系双方协调解决";
                 }
                 $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'申诉成功,请通过邮件告知我们申诉理由'.$mark]]);
@@ -495,7 +495,7 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 $sth->execute();
                 $username2=$sth->fetchColumn();
                 $mark="";
-                if(!empty($username2)){
+                if(0&&!empty($username2)){
                     $mark=", 或者你可以主动联系对方 @".$username2." ,客服将在3个工作日内主动联系双方协调解决";
                 }
 
