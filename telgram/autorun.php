@@ -16,12 +16,12 @@ try {
     mysqli_query($con,'set names utf8');
     $result = mysqli_query($con,'SELECT id,num from `' . "bitorder" . '` where state=2 and '.$time.'-start_time>=1800  limit 5');
 
-    while($row = mysqli_fetch_array($result))
+    while($row = $result->fetch_assoc())
     {
         $result = mysqli_query($con,'update bitorder set state=3 where id='.$row['id'].' and state=2');
         $result = mysqli_query($con,'update user set banlance=banlance+'.$row['num'].' where id='.$row['id']);
         $result2 = mysqli_query($con,'SELECT parentId,id,first_name from `' . "user" . '` where id in ('.$row['buyer_id'].",".$row['seller_id'].')');
-        while($row2 = mysqli_fetch_array($result2))
+        while($row2 = $result2->fetch_assoc())
         {
             mysqli_query('
                             INSERT INTO `' . "bitorder" . '`
