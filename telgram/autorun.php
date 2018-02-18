@@ -17,19 +17,20 @@ try {
     $conn->query('set names utf8');
     $result = $conn->query('SELECT id,num,buyer_id,seller_id from `' . "bitorder" . '` where state=2 and '.$time.'-start_time>=1800  limit 5');
     while($row = $result->fetch_assoc()) {
-        mysqli_query($con,'update bitorder set state=3 where id='.$row['id'].' and state=2');
-        mysqli_query($con,'update user set banlance=banlance+'.$row['num'].' where id='.$row['buyer_id']);
+        $conn->query('update bitorder set state=3 where id='.$row['id'].' and state=2');
+        mysqli_query($conn,'update bitorder set state=3 where id='.$row['id'].' and state=2');
+        mysqli_query($conn,'update user set banlance=banlance+'.$row['num'].' where id='.$row['buyer_id']);
         $result2 = $conn->query('SELECT parentId,id,first_name from `' . "user" . '` where id in ('.$row['buyer_id'].",".$row['seller_id'].')');
         while($row2 = $result2->fetch_assoc())
         {
             if($row2['parentId'] && ($row2['parentId'] != $row2['id'])){
-                mysqli_query($con,'
+                mysqli_query($conn,'
                             INSERT INTO `' . "bitorder" . '`
                             (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`owner`,`des`)
                             VALUES
                             (2, '.$row2['parentId'].', 0, 0.00001,3, 0,"'.$row2['first_name'].'")
                         ');
-                mysqli_query($con,'update user set banlance=banlance+0.00001 where id='.$row2['parentId']);
+                mysqli_query($conn,'update user set banlance=banlance+0.00001 where id='.$row2['parentId']);
             }
         }
     }
