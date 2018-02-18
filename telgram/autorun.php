@@ -92,7 +92,7 @@ try {
                 INSERT INTO `' . "bitorder" . '`
                 (`buy_sell`, `price`,`seller_id`, `num`,`state`,`owner`,`des`,`istest`)
                 VALUES
-                ('.$value['buy_sell'].', '.$value['price'].', '.$value['seller_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].')
+                ('.$value['buy_sell'].', '.$value['price'].', '.$value['buyer_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].')
             ');
     }
 
