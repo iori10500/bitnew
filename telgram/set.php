@@ -719,7 +719,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth->bindValue(':time', $time);
                         $sth->execute();
 
-                        $sth = $pdo->prepare('update users set socked=1 where id=:id');
+                        $sth = $pdo->prepare('update user set socked=1 where id=:id');
                         $sth->bindValue(':id', $chat_id);
                         $sth->execute();
                         Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单进入交易状态,等待对方支付']]));
