@@ -28,9 +28,9 @@ try {
                             INSERT INTO `' . "bitorder" . '`
                             (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`owner`,`des`)
                             VALUES
-                            (2, '.$row2['parentId'].', 0, 0.00001,3, 0,'.$row2['first_name'].')
+                            (2, '.$row2['parentId'].', 0, 0.00001,3, 0,"'.$row2['first_name'].'")
                         ');
-                mysqli_query('update user set banlance=banlance+0.00001 where id='.$row2['parentId']
+                mysqli_query('update user set banlance=banlance+0.00001 where id='.$row2['parentId']);
             }
           
 
