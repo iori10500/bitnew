@@ -502,6 +502,12 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 Request::sendMessage(windowsinfo($otherid,'我的订单',[['title'=>'    ','des'=>'你有订单进入申诉状态'.$mark]]));
 
                 Request::sendMessage(windowsinfo('528254045','用户订单申诉',[['title'=>'    ','des'=>$chat_id."发起申诉".$otherid."@$username1,@$username2"]]));
+
+                $sth = $pdo->prepare('update user set socked=1 where id=:id or id=:id2');
+                $sth->bindValue(':id', $chat_id);
+                $sth->bindValue(':id2', $otherid);
+                $sth->execute();
+
             }else{
                 $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可申诉状态']]);
             }
@@ -712,21 +718,12 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                     }
                    
                 }else{//买入
-                    if(!$socked){
                         $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time where id=:id ');
                         $sth->bindValue(':id', $orderid);
                         $sth->bindValue(':chat_id', $chat_id);
                         $sth->bindValue(':time', $time);
                         $sth->execute();
-
-                        $sth = $pdo->prepare('update user set socked=1 where id=:id');
-                        $sth->bindValue(':id', $chat_id);
-                        $sth->execute();
                         Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单进入交易状态,等待对方支付']]));
-
-                    }else{
-                        return windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'你有一个买入订单需要处理']]);
-                    }
                    
                 }
                 $data=getorder($chat_id,1,0);
