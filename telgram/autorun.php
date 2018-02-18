@@ -5,7 +5,7 @@ $password = "350166483Qp!";
 $dbname = "bitcoin";
 
 // 创建连接
-$con = mysqli_connect($servername, $username, $password, $dbname);
+$con = new mysqli($servername, $username, $password, $dbname);
 // 检测连接
 if ($con) {
     die("连接失败: " . $con->connect_error);
