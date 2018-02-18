@@ -78,12 +78,12 @@ try {
     unset($temp);
     for($i=0;$i<10;$i++){
         $temp['buy_sell']=1;
-        $temp['seller_id']=528254045;
+        $temp['buyer_id']=528254045;
         $temp['price']=rand((int)($price-500),(int)($price+500));
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
         $temp['owner']=528254045;
-        $temp['des']=$shoukuanmark[rand(0,10)];
+        $temp['des']='     ';
         $temp['istest']=1;  
         $buyorder[]=$temp;   
     }
@@ -107,7 +107,7 @@ try {
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
         $temp['owner']=528254045;
-        $temp['des']="     ";
+        $temp['des']=$shoukuanmark[rand(0,10)];
         $temp['istest']=1;   
         $buyorder[]=$temp; 
     }
