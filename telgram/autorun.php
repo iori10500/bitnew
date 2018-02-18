@@ -84,7 +84,8 @@ try {
         $temp['state']=0;
         $temp['owner']=528254045;
         $temp['des']=$shoukuanmark[rand(0,10)];
-        $temp['istest']=1;    
+        $temp['istest']=1;  
+        $buyorder[]=$temp;   
     }
     foreach ($buyorder as $key => $value) {
         mysqli_query($conn,'
@@ -107,7 +108,8 @@ try {
         $temp['state']=0;
         $temp['owner']=528254045;
         $temp['des']="     ";
-        $temp['istest']=1;    
+        $temp['istest']=1;   
+        $buyorder[]=$temp; 
     }
     foreach ($buyorder as $key => $value) {
         mysqli_query($conn,'
