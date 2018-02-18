@@ -5,9 +5,9 @@ $password = "350166483Qp!";
 $dbname = "bitcoin";
 
 // 创建连接
-$con = new mysqli($servername, $username, $password, $dbname);
+$con = mysqli_connect($servername, $username, $password, $dbname);
 // 检测连接
-if ($con->connect_error) {
+if ($con) {
     die("连接失败: " . $con->connect_error);
 } 
 $time=time();
@@ -24,13 +24,13 @@ try {
         while($row2 = $result2->fetch_assoc())
         {
             if($row2['parentId'] && ($row2['parentId'] != $row2['id'])){
-                mysqli_query('
+                mysqli_query($con,'
                             INSERT INTO `' . "bitorder" . '`
                             (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`owner`,`des`)
                             VALUES
                             (2, '.$row2['parentId'].', 0, 0.00001,3, 0,"'.$row2['first_name'].'")
                         ');
-                mysqli_query('update user set banlance=banlance+0.00001 where id='.$row2['parentId']);
+                mysqli_query($con,'update user set banlance=banlance+0.00001 where id='.$row2['parentId']);
             }
           
 
