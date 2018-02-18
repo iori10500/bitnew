@@ -79,7 +79,7 @@ try {
     for($i=0;$i<10;$i++){
         $temp['buy_sell']=1;
         $temp['seller_id']=528254045;
-        $temp['price']=rand((int)($price-1000),(int)($price-500));
+        $temp['price']=rand((int)($price-500),(int)($price+500));
         $temp['num']=rand(1,1000)/1000;
         $temp['state']=0;
         $temp['owner']=528254045;
@@ -97,7 +97,7 @@ try {
     }
 
 
-    mysqli_query($conn,'DELETE FROM bitorder WHERE state=0 and istest=1 and buy_sell=1'); 
+    mysqli_query($conn,'DELETE FROM bitorder WHERE state=0 and istest=1 and buy_sell=0'); 
     $buyorder=[];
     unset($temp);
     for($i=0;$i<10;$i++){
