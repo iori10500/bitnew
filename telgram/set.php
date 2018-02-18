@@ -270,7 +270,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                 SELECT *
                 FROM `' . "bitorder" . '`
                 WHERE  buy_sell=1 and owner!=:chat_id and (`state` =0 or  (`state`=1 and  :time-start_time>1800 ))
-                order by id desc   LIMIT '.$limit." , 1");
+                order by price desc,id desc   LIMIT '.$limit." , 1");
         $sth->bindValue(':time', $time);
         $sth->bindValue(':chat_id', $chat_id);
         $sth->execute();
@@ -291,7 +291,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                 SELECT *
                 FROM `' . "bitorder" . '`
                 WHERE  buy_sell=0 and owner!=:chat_id and  (`state` =0 or (`state`=1 and :time-start_time>1800 ))
-                order by id desc  LIMIT '.$limit." , 1");
+                order by price desc,id desc  LIMIT '.$limit." , 1");
         $sth->bindValue(':time', $time);
          $sth->bindValue(':chat_id', $chat_id);
         $sth->execute();
