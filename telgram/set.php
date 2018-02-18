@@ -478,9 +478,30 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 $sth = $pdo->prepare('update bitorder set state=4 where id=:id and state=2');
                 $sth->bindValue(':id', $orderid);
                 $sth->execute();
-                $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'申诉成功,请通过邮件告知我们申诉理由']]);
-                Request::sendMessage(windowsinfo($otherid,'我的订单',[['title'=>'    ','des'=>'你有订单进入申诉状态']]));
-                Request::sendMessage(windowsinfo('484534434','用户订单申诉',[['title'=>'    ','des'=>$chat_id."发起申诉".$otherid]]));
+
+                $sth = $pdo->prepare('SELECT `username` FROM `' . TB_USER . '` WHERE `id` = :id ');
+                $sth->bindValue(':id', $otherid);
+                $sth->execute();
+                $username1=$sth->fetchColumn();
+                $mark="";
+                if($username1){
+                    $mark=", 或者你可以主动联系对方 @$username1，客服将在3个工作日内主动联系双方协调解决";
+                }
+                $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'申诉成功,请通过邮件告知我们申诉理由'.$mark]]);
+
+
+                $sth = $pdo->prepare('SELECT `username` FROM `' . TB_USER . '` WHERE `id` = :id ');
+                $sth->bindValue(':id', $chat_id);
+                $sth->execute();
+                $username2=$sth->fetchColumn();
+                $mark="";
+                if($username2){
+                    $mark=", 或者你可以主动联系对方 @$username2，客服将在3个工作日内主动联系双方协调解决";
+                }
+
+                Request::sendMessage(windowsinfo($otherid,'我的订单',[['title'=>'    ','des'=>'你有订单进入申诉状态'.$mark]]));
+
+                Request::sendMessage(windowsinfo('528254045','用户订单申诉',[['title'=>'    ','des'=>$chat_id."发起申诉".$otherid."@$username1,@$username2"]]));
             }else{
                 $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可申诉状态']]);
             }
