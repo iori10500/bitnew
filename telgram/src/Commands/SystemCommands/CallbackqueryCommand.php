@@ -278,10 +278,6 @@ class CallbackqueryCommand extends SystemCommand
                 $sth->bindValue(':id', $user_id);
                 $sth->execute();
                 $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
-                if($userinfo[0]['socked']){
-                     $datamessage=windowsinfo($user_id,'发送比特币',[['title'=>'    ','des'=>'对不起您有投诉订单等待处理，暂时无法提币']]);
-                    Request::sendMessage($datamessage);        // Send me
-                }
                 $walletId=$userinfo[0]['walletid'];
                 $yueinfo = yue($walletId);
                 $datamessage=windowsinfo($user_id,'地址余额',[['title'=>'账户余额','des'=>$yueinfo['balance']+$userinfo[0]['banlance']],['title'=>'接收地址','des'=>$yueinfo['address']]]);    

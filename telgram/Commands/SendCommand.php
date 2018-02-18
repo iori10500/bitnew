@@ -37,7 +37,7 @@ class SendCommand extends UserCommand
                     return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效金额']]));   
                 }
                 $sth = DB::getPdo()->prepare('
-                    SELECT `walletId`,`banlance` 
+                    SELECT `walletId`,`banlance`,`socked` 
                     FROM `' . TB_USER . '`
                     WHERE `id` = :id 
                     LIMIT 1
@@ -46,6 +46,13 @@ class SendCommand extends UserCommand
                 $sth->bindValue(':id', $message->getFrom()->getId());
                 $sth->execute();
                 $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+                if($userinfo[0]['socked']){
+                     $datamessage=windowsinfo($message->getFrom()->getId(),'发送比特币',[['title'=>'    ','des'=>'对不起您有投诉订单等待处理，暂时无法提币']]);
+                    return Request::sendMessage($datamessage);        // Send me
+                }
+
+
                 $walletId=$userinfo[0]['walletId'];
                 $yueinfo = yue($walletId);
                 if(($yueinfo['balance']+ $userinfo[0]['banlance'])>=($remote+$this->minerfee)){
