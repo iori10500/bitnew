@@ -47,7 +47,7 @@ $conn->close();
 
 $tempbuy=file_get_contents("https://api-otc.huobi.pro/v1/otc/trade/list/public?coinId=1&tradeType=1&currentPage=1&payWay=&country=&merchant=1&online=1&range=0");
 $temp=json_decode($tempbuy,true);
-$price=$temp['data']['price'];
+$price=$temp['data'][0]['price'];
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 // 检测连接
