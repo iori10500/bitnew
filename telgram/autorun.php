@@ -74,7 +74,7 @@ try {
     $conn->query('set names utf8');
     //--------------------------------------------------------------------------------------
 
-    mysqli_query($conn,'DELETE FROM bitorder WHERE state=0 and istest=1 and buy_sell=1'); 
+    mysqli_query($conn,'DELETE FROM bitorder WHERE (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=1'); 
     $buyorder=[];
     unset($temp);
     for($i=0;$i<10;$i++){
@@ -97,8 +97,8 @@ try {
             ');
     }
 
-
-    mysqli_query($conn,'DELETE FROM bitorder WHERE state=0 and istest=1 and buy_sell=0'); 
+    $time=time();
+    mysqli_query($conn,'DELETE FROM bitorder WHERE (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=0'); 
     $buyorder=[];
     unset($temp);
     for($i=0;$i<10;$i++){

@@ -140,11 +140,11 @@ class CallbackqueryCommand extends SystemCommand
                 $result=false;
                 $pdo  = DB::getPdo();
                 try {
-                    $pdo->beginTransaction();
+                    $pdo->beginTransaction();$code="0000";
                     $sth = $pdo->prepare('
                         SELECT * from `' . "bitorder_temp" . '` where id=:id and processed=0 limit 1');
                     $sth->bindValue(':id', $data[1]);
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     if(!empty($tempinfo)){
                         $tempinfo=$tempinfo[0];
@@ -162,19 +162,19 @@ class CallbackqueryCommand extends SystemCommand
                         $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
                         $sth->bindValue(':owner', $tempinfo['owner']);
                         $sth->bindValue(':des', $tempinfo['des']);
-                        $sth->execute();
+                        $sth->execute();$code=($code | $sth->errorCode());
 
                         $sth = $pdo->prepare('update bitorder_temp set processed=1 where id=:id');
                         $sth->bindValue(':id', $data[1]);
-                        $sth->execute();
+                        $sth->execute();$code=($code | $sth->errorCode());
 
                         $sth = $pdo->prepare('update user set banlance=banlance-:num where id=:id');
                         $sth->bindValue(':id', $tempinfo['seller_id']);
                         $sth->bindValue(':num', $tempinfo['num']);
-                        $sth->execute();
+                        $sth->execute();$code=($code | $sth->errorCode());
                         $result=true;
                     }
-                     $pdo->commit();   
+                     ($code=="0000")?$pdo->commit():$pdo->rollBack();   
 
                 } catch (Exception $e) {
                      $pdo->rollBack();  

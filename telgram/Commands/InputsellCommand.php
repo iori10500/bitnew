@@ -56,7 +56,7 @@ class InputsellCommand extends UserCommand
                 try {
                     //余额检测
                    
-                    $pdo->beginTransaction();
+                    $pdo->beginTransaction();$code="0000";
                     $sth = $pdo->prepare('
                         SELECT `id` 
                         FROM `' . "bitorder" . '`
@@ -65,7 +65,7 @@ class InputsellCommand extends UserCommand
                     ');
 
                     $sth->bindValue(':id', $message->getFrom()->getId());
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     if(!empty($tempinfo)){
                         Request::sendMessage(getorder($chat_id,1,0,$tempinfo[0]['id']));
@@ -80,7 +80,7 @@ class InputsellCommand extends UserCommand
                     ');
 
                     $sth->bindValue(':id', $message->getFrom()->getId());
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($tempinfo as $key => $one) {
                         $yueinfo = yue($tempinfo['walletId']);
@@ -101,10 +101,10 @@ class InputsellCommand extends UserCommand
                             $sth->bindValue(':owner', $chat_id);
                             $sth->bindValue(':des', $des);
 
-                            $sth->execute();
+                            $sth->execute();$code=($code | $sth->errorCode());
 
                             $sth = $pdo->prepare('SELECT LAST_INSERT_ID() as lastid ');
-                            $sth->execute();
+                            $sth->execute();$code=($code | $sth->errorCode());
                             $lastid=$sth->fetchColumn();
 
                             $data=windowsinfo($chat_id,'发布出售',[['title'=>'单价','des'=>$price],['title'=>'数量','des'=>$num],['title'=>'总价','des'=>$allprice],['title'=>'支付','des'=>$des]],[[['text'=>'确认','callback_data'=>"outorders-$lastid"],['text'=>'取消','callback_data'=>"canceltemporders-$lastid"]]]);
@@ -113,7 +113,7 @@ class InputsellCommand extends UserCommand
                         }
                     }
                    
-                    $pdo->commit();    
+                    ($code=="0000")?$pdo->commit():$pdo->rollBack();    
                 } catch (Exception $e) {
                     $pdo->rollBack();   
                     throw new TelegramException($e->getMessage());

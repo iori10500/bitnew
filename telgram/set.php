@@ -294,7 +294,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                 SELECT *
                 FROM `' . "bitorder" . '`
                 WHERE  buy_sell=0 and owner!=:chat_id and  (`state` =0 or (`state`=1 and :time-start_time>1800 ))
-                order by price desc,id desc  LIMIT '.$limit." , 1");
+                order by price ,id desc  LIMIT '.$limit." , 1");
         $sth->bindValue(':time', $time);
          $sth->bindValue(':chat_id', $chat_id);
         $sth->execute();
@@ -343,26 +343,26 @@ gotorder-234
 function cancelorder($chat_id,$orderid){//取消0状态的订单
         $pdo  = DB::getPdo();
         try {
-            $pdo->beginTransaction();
+            $pdo->beginTransaction();$code="0000";
             $time=time();
             $sth = $pdo->prepare('
                 SELECT * from `' . "bitorder" . '` where id=:id and owner=:ownerid and  (state=0 or (state=1 and  :time-start_time>1800))  limit 1');
             $sth->bindValue(':id', $orderid);
             $sth->bindValue(':time', $time);
             $sth->bindValue(':ownerid', $chat_id);
-            $sth->execute();
+            $sth->execute();$code=($code | $sth->errorCode());
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 $tempinfo=$tempinfo[0];
                 $sth = $pdo->prepare('update bitorder set state=-1 where id=:id and owner=:ownerid');
                 $sth->bindValue(':id', $orderid);
                 $sth->bindValue(':ownerid', $chat_id);
-                $sth->execute();
+                $sth->execute();$code=($code | $sth->errorCode());
                 if($tempinfo['owner']== $chat_id && $tempinfo['buy_sell']==0){
                     $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id ');
                     $sth->bindValue(':id', $chat_id);
                     $sth->bindValue(':num', $tempinfo['num']);
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
                 }
                
 
@@ -370,7 +370,7 @@ function cancelorder($chat_id,$orderid){//取消0状态的订单
             }else{
                 $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单在非可取消状态']]);
             }
-            $pdo->commit();     // commit changes to the database and end transaction
+            ($code=="0000")?$pdo->commit():$pdo->rollBack();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
             $pdo->rollBack();   
             $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
@@ -383,27 +383,27 @@ function cancelorder($chat_id,$orderid){//取消0状态的订单
 function finishpay($chat_id,$orderid){//完成1状态付款  
   $pdo  = DB::getPdo();
         try {
-            $pdo->beginTransaction();
+            $pdo->beginTransaction();$code="0000";
             $time=time();
             $sth = $pdo->prepare('
                 SELECT * from `' . "bitorder" . '` where id=:id and buyer_id=:buyer_id and state=1 and ( :time-start_time<1800 )  limit 1');
             $sth->bindValue(':id', $orderid);
             $sth->bindValue(':time', $time);
             $sth->bindValue(':buyer_id', $chat_id);
-            $sth->execute();
+            $sth->execute();$code=($code | $sth->errorCode());
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 $tempinfo=$tempinfo[0];
                 $sth = $pdo->prepare('update bitorder set state=2 where id=:id and buyer_id=:buyer_id and state=1');
                 $sth->bindValue(':id', $orderid);
                 $sth->bindValue(':buyer_id', $chat_id);
-                $sth->execute();
+                $sth->execute();$code=($code | $sth->errorCode());
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);
                 Request::sendMessage(getorder($tempinfo['seller_id'],1,0,$tempinfo['id']));
             }else{
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'订单超过30分钟付款时间']]);
             }
-            $pdo->commit();     // commit changes to the database and end transaction
+            ($code=="0000")?$pdo->commit():$pdo->rollBack();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
             $pdo->rollBack();   
             $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
@@ -416,14 +416,14 @@ function finishpay($chat_id,$orderid){//完成1状态付款
 function cancelpay($chat_id,$orderid){//取消1状态付款
         $pdo  = DB::getPdo();
         try {
-            $pdo->beginTransaction();
+            $pdo->beginTransaction();$code="0000";
             $time=time();
             $sth = $pdo->prepare('
                 SELECT * from `' . "bitorder" . '` where id=:id and buyer_id=:buyer_id and state=1 and ( :time-start_time<1800 )  limit 1');
             $sth->bindValue(':id', $orderid);
             $sth->bindValue(':time', $time);
             $sth->bindValue(':buyer_id', $chat_id);
-            $sth->execute();
+            $sth->execute();$code=($code | $sth->errorCode());
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 $tempinfo=$tempinfo[0];
@@ -432,7 +432,7 @@ function cancelpay($chat_id,$orderid){//取消1状态付款
                     $sth->bindValue(':id', $orderid);
                     $sth->bindValue(':time', $time);
                     $sth->bindValue(':buyer_id', $chat_id);
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
                     $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'已取消订单']]);
                     Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单取消支付']]));
 
@@ -440,7 +440,7 @@ function cancelpay($chat_id,$orderid){//取消1状态付款
                     $sth = $pdo->prepare('update bitorder set state=0 where id=:id and buyer_id=:buyer_id and state=1');
                     $sth->bindValue(':id', $orderid);
                     $sth->bindValue(':buyer_id', $chat_id);
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
                     $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'已取消支付']]);
                     Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单取消支付']]));
                 }
@@ -449,7 +449,7 @@ function cancelpay($chat_id,$orderid){//取消1状态付款
             }else{
                 $data=windowsinfo($chat_id,"销售交易",[['title'=>'    ','des'=>'订单超过30分钟付款时间']]);
             }
-            $pdo->commit();     // commit changes to the database and end transaction
+            ($code=="0000")?$pdo->commit():$pdo->rollBack();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
             $pdo->rollBack();   
             $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
@@ -461,12 +461,12 @@ function cancelpay($chat_id,$orderid){//取消1状态付款
 function adminorder($chat_id,$orderid){//申诉2状态订单
         $pdo  = DB::getPdo();
         try {
-            $pdo->beginTransaction();
+            $pdo->beginTransaction();$code="0000";
             $time=time();
             $sth = $pdo->prepare('
                 SELECT * from `' . "bitorder" . '` where id=:id  and state=2 limit 1');
             $sth->bindValue(':id', $orderid);
-            $sth->execute();
+            $sth->execute();$code=($code | $sth->errorCode());
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 $tempinfo=$tempinfo[0];
@@ -477,11 +477,11 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 }
                 $sth = $pdo->prepare('update bitorder set state=4 where id=:id and state=2');
                 $sth->bindValue(':id', $orderid);
-                $sth->execute();
+                $sth->execute();$code=($code | $sth->errorCode());
 
                 $sth = $pdo->prepare('SELECT `username` FROM `' . TB_USER . '` WHERE `id` = :id ');
                 $sth->bindValue(':id', $otherid);
-                $sth->execute();
+                $sth->execute();$code=($code | $sth->errorCode());
                 $username1=$sth->fetchColumn();
                 $mark="";
                 if(0&&!empty($username1)){
@@ -492,7 +492,7 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
 
                 $sth = $pdo->prepare('SELECT `username` FROM `' . TB_USER . '` WHERE `id` = :id ');
                 $sth->bindValue(':id', $chat_id);
-                $sth->execute();
+                $sth->execute();$code=($code | $sth->errorCode());
                 $username2=$sth->fetchColumn();
                 $mark="";
                 if(0&&!empty($username2)){
@@ -506,12 +506,12 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 $sth = $pdo->prepare('update user set socked=1 where id=:id or id=:id2');
                 $sth->bindValue(':id', $chat_id);
                 $sth->bindValue(':id2', $otherid);
-                $sth->execute();
+                $sth->execute();$code=($code | $sth->errorCode());
 
             }else{
                 $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可申诉状态']]);
             }
-            $pdo->commit();     // commit changes to the database and end transaction
+            ($code=="0000")?$pdo->commit():$pdo->rollBack();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
             $pdo->rollBack();   
             $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
@@ -523,19 +523,19 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
 function fangxingorder($chat_id,$orderid){//放行2状态订单
         $pdo  = DB::getPdo();
         try {
-            $pdo->beginTransaction();
+            $pdo->beginTransaction();$code="0000";
             $time=time();
             $sth = $pdo->prepare('
                 SELECT * from `' . "bitorder" . '` where id=:id  and state=2 and :time-start_time<1800 limit 1');
             $sth->bindValue(':id', $orderid);
             $sth->bindValue(':time', $time);
-            $sth->execute();
+            $sth->execute();$code=($code | $sth->errorCode());
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 $tempinfo=$tempinfo[0];
                 $sth = $pdo->prepare('update bitorder set state=3 where id=:id and state=2');
                 $sth->bindValue(':id', $orderid);
-                $sth->execute();
+                $sth->execute();$code=($code | $sth->errorCode());
                 $buyer_id=$tempinfo['buyer_id'];
                 Request::sendMessage(getorder($buyer_id,1,0,$tempinfo['id']));
                 $seller_id=$tempinfo['seller_id'];
@@ -543,7 +543,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                 $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
                 $sth->bindValue(':id', $buyer_id);
                 $sth->bindValue(':num', $num);
-                $sth->execute();
+                $sth->execute();$code=($code | $sth->errorCode());
 
                 $sth = $pdo->prepare('
                     SELECT `parentId`
@@ -552,7 +552,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                     LIMIT 1
                 ');
                 $sth->bindValue(':id', $seller_id);
-                $sth->execute();
+                $sth->execute();$code=($code | $sth->errorCode());
                 $parentId_sell=$sth->fetchColumn();
                 if($parentId_sell && ($parentId_sell != $seller_id )){
                      $sth = $pdo->prepare('
@@ -562,7 +562,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                         LIMIT 1
                     ');
                     $sth->bindValue(':id', $seller_id);
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
                     $seller_name=$sth->fetchColumn();
 
                     $sth = $pdo->prepare('
@@ -579,12 +579,12 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                     $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
                     $sth->bindValue(':owner', "0");
                     $sth->bindValue(':des', $seller_name);
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
 
                     $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
                     $sth->bindValue(':id', $parentId_sell);
                     $sth->bindValue(':num', '0.00001');
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
                 }
 
 
@@ -595,7 +595,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                     LIMIT 1
                 ');
                 $sth->bindValue(':id', $buyer_id);
-                $sth->execute();
+                $sth->execute();$code=($code | $sth->errorCode());
                 $parentId_buy=$sth->fetchColumn();
                 if($parentId_buy && ($parentId_buy != $buyer_id )){
                      $sth = $pdo->prepare('
@@ -605,7 +605,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                         LIMIT 1
                     ');
                     $sth->bindValue(':id', $buyer_id);
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
                     $buyer_name=$sth->fetchColumn();
 
                     $sth = $pdo->prepare('
@@ -622,18 +622,18 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                     $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
                     $sth->bindValue(':owner', "0");
                     $sth->bindValue(':des', $buyer_name);
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
 
                     $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
                     $sth->bindValue(':id', $parentId_buy);
                     $sth->bindValue(':num', '0.00001');
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
                 }                
                 $data=windowsinfo($chat_id,"我要出售",[['title'=>'    ','des'=>'订单完成,账户余额将发生变化']]);
             }else{
                 $data=windowsinfo($chat_id,"我要出售",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可放行状态']]);
             }
-            $pdo->commit();     // commit changes to the database and end transaction
+            ($code=="0000")?$pdo->commit():$pdo->rollBack();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
             $pdo->rollBack();   
             $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
@@ -644,13 +644,13 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
 function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
       $pdo  = DB::getPdo();
         try {
-            $pdo->beginTransaction();
+            $pdo->beginTransaction();$code="0000";
             $time=time();
             $sth = $pdo->prepare('
                 SELECT * from `' . "bitorder" . '` where  state=1 and :time-start_time<1800 and buyer_id=:buyer_id   limit 1');
             $sth->bindValue(':buyer_id', $chat_id);
             $sth->bindValue(':time', $time);
-            $sth->execute();
+            $sth->execute();$code=($code | $sth->errorCode());
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 Request::sendMessage(getorder($chat_id,1,0,$tempinfo[0]['id']));
@@ -661,7 +661,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                 SELECT * from `' . "bitorder" . '` where id=:id  and (state=0 or (state=1 and :time-start_time>1800 ) )  limit 1');
             $sth->bindValue(':id', $orderid);
             $sth->bindValue(':time', $time);
-            $sth->execute();
+            $sth->execute();$code=($code | $sth->errorCode());
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 $tempinfo=$tempinfo[0];
@@ -673,7 +673,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         LIMIT 1
                     ');
                     $sth->bindValue(':id', $chat_id);
-                    $sth->execute();
+                    $sth->execute();$code=($code | $sth->errorCode());
                     $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     $walletId=$userinfo[0]['walletid'];
                     $walletbalanc=json_decode(get("https://www.bitgo.com/api/v1/wallet/$walletId",[]),true)['balance'];
@@ -692,7 +692,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         ');
 
                         $sth->bindValue(':id', $chat_id);
-                        $sth->execute();
+                        $sth->execute();$code=($code | $sth->errorCode());
                         $tempinfo_ = $sth->fetchAll(PDO::FETCH_ASSOC);
                         if(!empty($tempinfo_)){
                             Request::sendMessage(getorder($chat_id,1,0,$tempinfo_[0]['id']));
@@ -705,11 +705,11 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth->bindValue(':chat_id', $chat_id);
                         $sth->bindValue(':des', $userinfo[0]['collections']);
                         $sth->bindValue(':time', $time);
-                        $sth->execute();
+                        $sth->execute();$code=($code | $sth->errorCode());
                         $sth = $pdo->prepare('update user set banlance=banlance-:num where id=:id');
                         $sth->bindValue(':id', $chat_id);
                         $sth->bindValue(':num', $tempinfo['num']);
-                        $sth->execute();
+                        $sth->execute();$code=($code | $sth->errorCode());
                          Request::sendMessage(getorder($tempinfo['buyer_id'],1,0,$tempinfo['id']));
                         Request::sendMessage(windowsinfo($tempinfo['buyer_id'],'我要购买',[['title'=>'    ','des'=>'你有订单进入交易状态,等待你支付']]));
 
@@ -722,7 +722,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth->bindValue(':id', $orderid);
                         $sth->bindValue(':chat_id', $chat_id);
                         $sth->bindValue(':time', $time);
-                        $sth->execute();
+                        $sth->execute();$code=($code | $sth->errorCode());
                         Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单进入交易状态,等待对方支付']]));
                    
                 }
@@ -730,7 +730,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
             }else{
                 $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单不存在,或者订单正在交易状态']]);
             }
-            $pdo->commit();     // commit changes to the database and end transaction
+            ($code=="0000")?$pdo->commit():$pdo->rollBack();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
             $pdo->rollBack();   
             $data=windowsinfo($chat_id,"系统信息",[['title'=>'    ','des'=>'出错了']]);
