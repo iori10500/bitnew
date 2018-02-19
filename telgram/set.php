@@ -396,8 +396,9 @@ function finishpay($chat_id,$orderid){//完成1状态付款
             $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($tempinfo)){
                 $tempinfo=$tempinfo[0];
-                $sth = $pdo->prepare('update bitorder set state=2 where id=:id and buyer_id=:buyer_id and state=1');
+                $sth = $pdo->prepare('update bitorder set state=2,start_time=:time where id=:id and buyer_id=:buyer_id and state=1');
                 $sth->bindValue(':id', $orderid);
+                $sth->bindValue(':time', $time);
                 $sth->bindValue(':buyer_id', $chat_id);
                 $sth->execute();$code=($code | $sth->errorCode());
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);
