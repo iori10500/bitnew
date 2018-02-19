@@ -75,9 +75,9 @@ function newWallet($username){
 	return $address;
 }
 
-function yue($walletId){
+function yue($address){
     $WALLET_ID=getWalletId();
-    $balance = json_decode(get("https://www.bitgo.com/api/v1/wallet/$WALLET_ID/addresses/$walletId",[]),true)['received'];
+    $balance = json_decode(get("https://www.bitgo.com/api/v1/wallet/$WALLET_ID/addresses/$address",[]),true)['received'];
     return ['balance'=>round($balance/100000000.0,8),'address'=>$walletId];
 }
 function sendcoins($address,$amount){
@@ -682,7 +682,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                     $sth->execute();$code=($code | $sth->errorCode());
                     $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     $walletId=$userinfo[0]['walletid'];
-                    $walletbalanc=json_decode(get("https://www.bitgo.com/api/v1/wallet/$walletId",[]),true)['balance'];
+                    $walletbalanc=yue($walletId)['balance'];
                     $balance=$userinfo[0]['banlance']+$walletbalanc;
                     $socked=$userinfo[0]['socked'];
 
