@@ -726,7 +726,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单进入交易状态,等待对方支付']]));
                    
                 }
-                $data=getorder($chat_id,1,0);
+                $data=getorder($chat_id,1,0,$tempinfo['id']);
             }else{
                 $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单不存在,或者订单正在交易状态']]);
             }
