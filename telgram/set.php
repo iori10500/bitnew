@@ -446,7 +446,7 @@ function cancelpay($chat_id,$orderid){//取消1状态付款
                     $sth->bindValue(':id', $orderid);
                     $sth->bindValue(':num', $tempinfo['num']);
                     $sth->execute();$code=($code | $sth->errorCode());
-                    
+
                     $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'已取消支付']]);
                     Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单取消支付']]));
                 }
@@ -688,7 +688,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
 
                     if($balance>$tempinfo['num']){
                         if(!$userinfo[0]['collections']){
-                             return Request::sendMessage(windowsinfo($chat_id,'收款信息',[['title'=>'    ','des'=>'卖出失败，请先设置收款信息,再交易。个人中心->收款信息']]));
+                             return windowsinfo($chat_id,'收款信息',[['title'=>'    ','des'=>'卖出失败，请先设置收款信息,再交易。个人中心->收款信息']]);
                         }
                         $sth = $pdo->prepare('
                             SELECT `id` 
@@ -702,7 +702,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $tempinfo_ = $sth->fetchAll(PDO::FETCH_ASSOC);
                         if(!empty($tempinfo_)){
                             Request::sendMessage(getorder($chat_id,1,0,$tempinfo_[0]['id']));
-                            return Request::sendMessage(windowsinfo($chat_id,'我要出售',[['title'=>'    ','des'=>'你存在未放行订单,请放行之后再卖出']]));
+                            return windowsinfo($chat_id,'我要出售',[['title'=>'    ','des'=>'你存在未放行订单,请放行之后再卖出']]);
                         }
 
 
