@@ -318,7 +318,7 @@ class CallbackqueryCommand extends SystemCommand
 
                     }else{
                         $sth = DB::getPdo()->prepare('update user set col_flag=0 where id=:id');
-                        $sth->bindValue(':id', $data[1]);
+                        $sth->bindValue(':id', $user_id);
                         $sth->execute();
                         Request::sendMessage(windowsinfo($user_id,'收款信息',[['title'=>'      ','des'=>'已取消设置收款信息']]));
 
