@@ -132,6 +132,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
         '2'=>'等待放行',
         '3'=>'交易完成',
         '4'=>'投诉处理',
+        '5'=>'已处理',
     ];
      $DESC=[
             1=>"我的订单",
@@ -218,6 +219,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                             
                             break;
                         case '3':
+                        case '5':
                             $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
                             
                             break;
@@ -252,6 +254,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                             
                             break;
                         case '3':
+                        case '5':
                             $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
                             
                             break;
