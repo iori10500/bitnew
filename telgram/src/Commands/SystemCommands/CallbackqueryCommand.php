@@ -245,9 +245,7 @@ class CallbackqueryCommand extends SystemCommand
                     $sth->execute();
                     $datamessage=windowsinfo($user_id,'发布购买',[['title'=>'    ','des'=>'订单取消成功']]);
                 }
-                
                 Request::sendMessage($datamessage);        // Send me
-
                 break;
             case 'canceltemporders':
                 $sth = DB::getPdo()->prepare('
@@ -298,7 +296,7 @@ class CallbackqueryCommand extends SystemCommand
                 break;
             case 'contentus'://联系我们
 
-                $datamessage=windowsinfo($user_id,'联系我们',[['title'=>'联系邮箱','des'=>'bitneworld@gmail.com'],['title'=>'联系客服','des'=>'@dianbicusto']]);
+                $datamessage=windowsinfo($user_id,'联系我们',[['title'=>'联系邮箱','des'=>'bitneworld@gmail.com'],['title'=>'联系客服','des'=>'@dianbicusto '],['title'=>'联系客服1','des'=>'@dianbicusto1   满 '],['title'=>'联系客服2','des'=>'@dianbicusto2   满 '],['title'=>'联系客服3','des'=>'@dianbicusto3   满 ']]);
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
@@ -326,13 +324,7 @@ class CallbackqueryCommand extends SystemCommand
 
                     }
                 }
-                break;
-
-
-
-
-                
-            
+                break;     
             default:
                 # code...
                 break;
