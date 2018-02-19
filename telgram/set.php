@@ -441,6 +441,12 @@ function cancelpay($chat_id,$orderid){//取消1状态付款
                     $sth->bindValue(':id', $orderid);
                     $sth->bindValue(':buyer_id', $chat_id);
                     $sth->execute();$code=($code | $sth->errorCode());
+
+                    $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
+                    $sth->bindValue(':id', $orderid);
+                    $sth->bindValue(':num', $tempinfo['num']);
+                    $sth->execute();$code=($code | $sth->errorCode());
+                    
                     $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'已取消支付']]);
                     Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单取消支付']]));
                 }
