@@ -42,10 +42,10 @@ if(!empty($message['message'])){
       $text=$message['message']['text'];
       switch ($text) {
         case 'ud83cudf88u53d1u5e03u51fau552eud83dudc49':   //inputsell
-          Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单：                   <strong>/inputsell 数量-单价</strong>(例如：  <em>/inputsell 1.2-55432</em>)']]));
+          Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单'],['title'=>'格式','des'=>'/inputsell 数量-单价'],['title'=>'例如','des'=>'/inputsell 1.2-55432']]));
           break;
         case 'ud83cudf88u53d1u5e03u8d2du4e70ud83dudc48':  //inputbuy
-          Request::sendMessage(windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'请按照格式输入发布订单：                   <strong>/inputbuy 数量-单价  </strong>(例如：  <em>/inputbuy 1.2-55432</em>)']]));
+          Request::sendMessage(windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'请按照格式输入发布订单'],['title'=>'格式','des'=>'/inputbuy 数量-单价'],['title'=>'例如','des'=>'/inputbuy 1.2-55432)']]));
           break;
         case 'ud83dudd04u6211u8981u51fau552eud83dudc49':   //gosell
           Request::sendMessage(getorder($chat_id,2,0));

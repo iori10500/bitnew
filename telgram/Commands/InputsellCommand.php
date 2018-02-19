@@ -23,7 +23,7 @@ class InputsellCommand extends UserCommand
         $text=json_decode(json_encode($message),true)['text'];
         $text=trim(str_replace("/inputsell","",$text));
         if(empty($text)){
-            $data=windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单：/inputsell 数量-单价  (例如：  /inputsell 1.2-55432)']]);
+            $data=windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单'],['title'=>'格式','des'=>'/inputsell 数量-单价'],['title'=>'例如','des'=>'/inputsell 1.2-55432']]);
         }else{
             $text = explode('-',$text);
             if(count($text) >= 2){
