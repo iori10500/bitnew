@@ -88,7 +88,7 @@ function sendcoins($address,$amount){
 function windowsinfo($chat_id,$title,$data,$button=false){
     $buttoninfo['chat_id']=$chat_id;
     $buttoninfo['parse_mode']='HTML';
-    $text="<code style='color:#ee772b;width:100px'><b>$title</b></code><pre>
+    $text="<b>$title</b><pre>
     \n</pre>";
     foreach($data as $one){
         $flag=empty(trim($one['title']))?"":":";
