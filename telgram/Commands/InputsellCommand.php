@@ -83,7 +83,7 @@ class InputsellCommand extends UserCommand
                     $sth->execute();$code=($code | $sth->errorCode());
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($tempinfo as $key => $one) {
-                        $yueinfo = yue($tempinfo['walletId']);
+                        $yueinfo = yue($tempinfo[0]['walletId']);
                         $walletbanlance=$yueinfo['balance']+$one['banlance'];
                         if($walletbanlance >= $num){
                             $sth = $pdo->prepare('
