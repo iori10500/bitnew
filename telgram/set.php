@@ -92,7 +92,7 @@ function windowsinfo($chat_id,$title,$data,$button=false){
     \n</pre>";
     foreach($data as $one){
         $flag=empty(trim($one['title']))?"":":";
-        $text.=("<code style='color:#00b5f6'>".$one['title']."</code>".$flag." ".$one['des']."<pre>
+        $text.=("<code style='color:#00b5f6'>".$one['title']."</code>".$flag."<pre> </pre>".$one['des']."<pre>
     \n</pre>");
     }
     $buttoninfo['text']=$text;
