@@ -90,9 +90,12 @@ if(!empty($message['message'])){
             $systemcommde[]="sendbitcoin";
             $systemcommde[]="setcollections";
             $systemcommde[]="contentus";
+            $systemcommde[]="send";
+            $systemcommde[]="start";
+            $systemcommde[]="letgo";
             $iscommend=false;
             foreach ($systemcommde as $key => $value) {
-              if(strpos($text,$value)){
+              if(strpos(strtolower($text),$value)){
                   $iscommend=true;
                   break;
               }
