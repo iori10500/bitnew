@@ -27,17 +27,17 @@ class InvitenoteCommand extends UserCommand
 	    'parse_mode' => 'HTML',
 	   // 'reply_markup'=>['keyboard'=>[[['text'=>'获得邀请链接','switch_inline_query'=>'t.me/bitokbitbot']]]]   
 ];
-Request::sendMessage($data);        // Send message!
-$time=time();
-$userid =  $message->getFrom()->getId();
-        $data = [                                  // Set up the new message data
-            'chat_id' => $chat_id,                 // Set Chat ID to send the message to
-            'text'    => "<code style='background-color:#f80;color:#f80;width:100px'>邀请链接                                            </code><a href='https://t.me/bitokbitbot?start=$userid&time=$time'>电报比特币c2c交易平台</a>", // Set message to send
-            'parse_mode' => 'HTML',
-           // 'reply_markup'=>['keyboard'=>[[['text'=>'获得邀请链接','switch_inline_query'=>'t.me/bitokbitbot']]]]     
-];
-        //return Request::sendMessage($data);        // Send message!
-Request::sendMessage($data);        // Send message!
-return ture; 
+        Request::sendMessage($data);        // Send message!
+        $time=time();
+        $userid =  $message->getFrom()->getId();
+                $data = [                                  // Set up the new message data
+                    'chat_id' => $chat_id,                 // Set Chat ID to send the message to
+                    'text'    => "<code style='background-color:#f80;color:#f80;width:100px'>邀请链接                                            </code><a href='https://t.me/bitokbitbot?start=$userid&time=$time'>电报比特币c2c交易平台</a>", // Set message to send
+                    'parse_mode' => 'HTML',
+                   // 'reply_markup'=>['keyboard'=>[[['text'=>'获得邀请链接','switch_inline_query'=>'t.me/bitokbitbot']]]]     
+        ];
+                //return Request::sendMessage($data);        // Send message!
+        return Request::sendMessage($data);        // Send message!
+ 
    }
 }
