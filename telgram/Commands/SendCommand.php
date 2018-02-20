@@ -29,7 +29,7 @@ class SendCommand extends UserCommand
         if(empty($text)){
             $data=windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'请按照如下格式输入接收地址以及发送金额'],['title'=>'格式','des'=>'/send 接收地址-金额'],['title'=>'例如','des'=>'/send 3DDHFN1pgt9ccuHN5veeBDJXxpKsYSX2cu-1.2']]);
           $buttoninfo['chat_id']=$chat_id;
-          $buttoninfo['photo']='https://telgram.bitneworld.com/app/send.png';
+          $buttoninfo['photo']='http://telgram.bitneworld.com/app/send.png';
           Request::sendPhoto($buttoninfo);        // Send me
 
         }else{

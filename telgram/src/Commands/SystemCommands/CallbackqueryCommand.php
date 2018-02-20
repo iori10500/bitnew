@@ -308,7 +308,7 @@ class CallbackqueryCommand extends SystemCommand
                     $sth->execute();  
                     Request::sendMessage(windowsinfo($user_id,'设置收款',[['title'=>'      ','des'=>'请输入收款信息（如：支付宝 XXXXX  银行卡号XXXXXXXXXXX 姓名 XX）']]));  
                   $buttoninfo['chat_id']=$user_id;
-                  $buttoninfo['photo']='https://telgram.bitneworld.com/app/shoukuan.png';
+                  $buttoninfo['photo']='http://telgram.bitneworld.com/app/shoukuan.png';
                   Request::sendPhoto($buttoninfo);        // Send me 
                 }else{
                     $okcancel=$data[1];
