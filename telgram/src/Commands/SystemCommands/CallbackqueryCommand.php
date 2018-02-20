@@ -287,6 +287,10 @@ class CallbackqueryCommand extends SystemCommand
             case 'sendbitcoin'://发送比特币
                 $datamessage=windowsinfo($user_id,'发送比特币',[['title'=>'    ','des'=>'请按照如下格式输入接收地址以及发送金额'],['title'=>'格式','des'=>'/send 接收地址-金额'],['title'=>'例如','des'=>'/send 3DDHFN1pgt9ccuHN5veeBDJXxpKsYSX2cu-1.2']]);
                 Request::sendMessage($datamessage);        // Send me
+                $buttoninfo['chat_id']=$user_id;
+                $buttoninfo['photo']='http://telgram.bitneworld.com/app/send.png';
+                Request::sendPhoto($buttoninfo);        // Send me
+
                 break;
             case 'myorder'://我的订单
 
