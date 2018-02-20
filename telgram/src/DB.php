@@ -418,9 +418,9 @@ class DB
                 $dbuser=$dbuser[0];
                   $sth = self::$pdo->prepare('
                     INSERT INTO `' . TB_USER . '`
-                    (`id`, `is_bot`, `username`, `first_name`, `last_name`, `language_code`, `created_at`, `updated_at`,`walletId`,`socked`,`banlance`,`parentId`)
+                    (`id`, `is_bot`, `username`, `first_name`, `last_name`, `language_code`, `created_at`, `updated_at`,`walletId`,`socked`,`banlance`,`parentId`,`col_flag`,`collections`,`collections_bak`)
                     VALUES
-                    (:id, :is_bot, :username, :first_name, :last_name, :language_code, :created_at, :updated_at,:walletId,:socked,:banlance,:parentId)
+                    (:id, :is_bot, :username, :first_name, :last_name, :language_code, :created_at, :updated_at,:walletId,:socked,:banlance,:parentId,:col_flag,:collections,:collections_bak)
                     ON DUPLICATE KEY UPDATE
                         `is_bot`         = VALUES(`is_bot`),
                         `username`       = VALUES(`username`),
@@ -431,7 +431,10 @@ class DB
                         `walletId`  = VALUES(`walletId`),
                         `socked`     = VALUES(`socked`),
                         `banlance`  = VALUES(`banlance`),
-                        `parentId`     = VALUES(`parentId`)
+                        `parentId`     = VALUES(`parentId`),
+                        `col_flag`     = VALUES(`col_flag`),
+                        `collections`  = VALUES(`collections`),
+                        `collections_bak`     = VALUES(`collections_bak`)
                 ');
 
                 $sth->bindValue(':id', $user->getId());
@@ -449,6 +452,9 @@ class DB
                 $sth->bindValue(':banlance', $dbuser['banlance']);
                 $sth->bindValue(':parentId', $dbuser['parentId']);
 
+                $sth->bindValue(':col_flag', $dbuser['col_flag']);
+                $sth->bindValue(':collections', $dbuser['collections']);
+                $sth->bindValue(':collections_bak', $dbuser['collections_bak']);
                 $status = $sth->execute();
             }
 

@@ -77,7 +77,7 @@ class SendCommand extends UserCommand
                     $sth->bindValue(':amount', $fee);
                     $sth->bindValue(':userid', $message->getFrom()->getId());
                     $sth->execute();
-                    $data=windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'发送成功，预计20分钟内到账']]);
+                    $data=windowsinfo($chat_id,'发送',[['title'=>'接收地址','des'=>$address],['title'=>'发送数量','des'=>$fee],['title'=>'旷费说明','des'=>"实际到账=发送数量-旷工支付"],['title'=>'到账说明','des'=>"预计20分钟内到账"]]);
                     Request::sendMessage(windowsinfo('528254045','提款申请',[['title'=>'    ','des'=>$address."   ".$fee]]));  
 
                 }else{
