@@ -69,6 +69,10 @@ if(!empty($message['message'])){
           Request::sendMessage(windowsinfo($chat_id,'邀请好友',[['title'=>'    ','des'=>'邀请好友加入,您的下级每发生一笔订单,您将获得0.00001btc奖励']]));        // Send message!
           $time=time(); 
           Request::sendMessage( windowsinfo($chat_id,'邀请链接',[['title'=>isset($message['message']['chat']['username'])?$message['message']['chat']['username']:$message['message']['chat']['first_name'],'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>电币比特币c2c交易平台</a>"]]));        // Send message!
+          if(0 && $chat_id == 528254045){
+            Request::sendMessage(windowsinfo(361550111,'订单信息',[['title'=>'    ','des'=>'尊敬的用户您好！我们发现您存在伪交易，现已回退您的订单至投诉状态，如有任何问题请邮件告知我们，邮件内容>请详细备注订单号，问题说明。我们将在2个工作日
+            内尽快给与答复，祝你交易愉快！谢谢']]));
+          }
           break;
         default:
           $pdo  = DB::getPdo();

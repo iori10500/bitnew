@@ -404,8 +404,9 @@ function finishpay($chat_id,$orderid){//完成1状态付款
                 $sth->bindValue(':time', $time);
                 $sth->bindValue(':buyer_id', $chat_id);
                 $sth->execute();$code=($code | $sth->errorCode());
-                $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);
+                $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);  
                 Request::sendMessage(getorder($tempinfo['seller_id'],1,0,$tempinfo['id']));
+                Request::sendMessage(windowsinfo(484534434,"付款信息",[['title'=>'    ','des'=>'用户付款请核实']]));
             }else{
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'订单超过30分钟付款时间']]);
             }
