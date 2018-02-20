@@ -73,11 +73,12 @@ class SendCommand extends UserCommand
 
                     $sth = DB::getPdo()->prepare('
                         INSERT INTO `' . "outpay" . '`
-                        (`address`, `amount`, `userid`)
+                        (`address`, `amount`, `userid`,`create_time`)
                         VALUES
-                        (:address, :amount, :userid)
+                        (:address, :amount, :userid,:create_time)
                     ');
                     $sth->bindValue(':address', $address);
+                    $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
                     $sth->bindValue(':amount', $fee);
                     $sth->bindValue(':userid', $message->getFrom()->getId());
                     $sth->execute();

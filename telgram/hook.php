@@ -79,7 +79,7 @@ if(!empty($message['message'])){
             $users = $sth->fetchAll(PDO::FETCH_ASSOC);
             $news=file_get_contents("news");
             foreach ($users as $key => $value) {
-              Request::sendMessage(windowsinfo(361550111,'比特快讯',[['title'=>'    ','des'=>$news]]));
+              Request::sendMessage(windowsinfo($value['id'],'比特快讯',[['title'=>'    ','des'=>$news]]));
             }
           }
           break;
