@@ -33,7 +33,9 @@ class InputbuyCommand extends UserCommand
                 if($allprice <=0 ){
                     return Request::sendMessage(windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'发布订单价格错误']]));
                 }
-
+                if($num <=0.0001 ){
+                    return Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'最低交易金额0.0001btc']]));
+                }
                 unset($text[0]);unset($text[1]);
                 $des="      ";
                 foreach ($text as $key => $value) {
