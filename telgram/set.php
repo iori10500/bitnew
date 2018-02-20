@@ -212,7 +212,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                             break;
                         case '2':
                             if($orderinfo['remain_time']<0){
-                                 $fangxingmark="3分钟内系统将自动放行";
+                                 $fangxingmark="放行超时请申诉";//"3分钟内系统将自动放行";
                             }else{
                                 $fangxingmark="放行将在 ".$orderinfo['remain_time']." 分钟内完成";
                             }
