@@ -51,6 +51,12 @@ class StartCommand extends SystemCommand
         //$user_id = $message->getFrom()->getId();
 	   //newWallet($user_id);
 
+          $buttoninfo['chat_id']=$chat_id;
+          $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
+          Request::sendPhoto($buttoninfo);        // Send me
+
+
+
          $data = [                                  // Set up the new message data
                     'chat_id' => $chat_id,                 // Set Chat ID to send the message to
                     'text'    => "Hello !".$message->getChat()->getUsername()." 你好!"//newWallet('test'), // Set message to send

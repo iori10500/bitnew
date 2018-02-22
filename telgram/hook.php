@@ -79,7 +79,12 @@ if(!empty($message['message'])){
             $users = $sth->fetchAll(PDO::FETCH_ASSOC);
             $news=file_get_contents("news");
             foreach ($users as $key => $value) {
-              Request::sendMessage(windowsinfo($value['id'],'比特快讯',[['title'=>'    ','des'=>$news]]));
+              /*        $buttoninfo['chat_id']=$value['id'];
+                  $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
+                  Request::sendPhoto($buttoninfo);        // Send me
+        */
+                  Request::sendMessage(windowsinfo($value['id'],'比特快讯',[['title'=>'    ','des'=>$news]]));
+                  
             }
           }
           break;
