@@ -199,7 +199,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                 $orderinfo['remain_time']= (int)(30-((time()-$one['start_time'])/60));
 
                 if($one['buyer_id'] == $chat_id){
-                    $orderinfo['orderclass']='我要购买';
+                    $orderinfo['orderclass']='我要购买Bitcoin';
                     switch ($one['state']) {
                         case '0':
                             $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'建时','des'=>$orderinfo['create_time']]],[[['text'=>'取消订单','callback_data'=>"cancelorder-".$orderinfo['orderid']]],[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
@@ -234,7 +234,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                             break;
                     }
                 }else if($one['seller_id'] == $chat_id){
-                    $orderinfo['orderclass']='我要出售';
+                    $orderinfo['orderclass']='我要出售Bitcoin';
                     switch ($one['state']) {
                         case '0':
                             $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']],['title'=>'总价','des'=>$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'建时','des'=>$orderinfo['create_time']]],[[['text'=>'取消订单','callback_data'=>"cancelorder-".$orderinfo['orderid']]],[['text'=>'上一条','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
