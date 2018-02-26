@@ -331,7 +331,20 @@ class CallbackqueryCommand extends SystemCommand
 
                     }
                 }
-                break;     
+                break;   
+            case 'suborder':
+                $sth = DB::getPdo()->prepare('
+                    SELECT id,first_name from `' . "user" . '` where parentId=:id limit 20');
+                $sth->bindValue(':id', $user_id);
+                $sth->execute();
+                $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($tempinfo as $key => &$value) {
+                    $value['title']=$value['first_name'];
+                    $id=$value['id'];
+                    $value['des']=DB::getPdo()->query("SELECT count(*) as num from bitorder where state=3 and (owner=$id  or buyer_id=$id or seller_id=$id")->fetchColumn().'单'; 
+                }
+                Request::sendMessage(windowsinfo($user_id,'下级订单',$tempinfo));
+                break;  
             default:
                 # code...
                 break;
