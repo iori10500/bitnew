@@ -341,7 +341,7 @@ class CallbackqueryCommand extends SystemCommand
                 foreach ($tempinfo as $key => &$value) {
                     $value['title']=$value['first_name'];
                     $id=$value['id'];
-                    $num=DB::getPdo()->query("SELECT count(*) as num from bitorder where state=3 and (owner=$id  or buyer_id=$id or seller_id=$id")->fetchColumn();
+                    $num=DB::getPdo()->query("SELECT count(*) as num from bitorder where state=3 and (owner=$id  or buyer_id=$id or seller_id=$id)")->fetchColumn();
                     $value['des']=(empty($num)?0:$num).'单'; 
                 }
                 Request::sendMessage(windowsinfo($user_id,'下级订单',$tempinfo));
