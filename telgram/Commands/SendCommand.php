@@ -59,7 +59,8 @@ class SendCommand extends UserCommand
 
                 $walletId=$userinfo[0]['walletId'];
                 $yueinfo = yue($walletId);
-                if(($yueinfo['balance']+ $userinfo[0]['banlance'])>=($remote+$this->minerfee)){
+                $yuefromwallet=(float)$yueinfo['balance'];
+                if(($yuefromwallet + $userinfo[0]['banlance'])>=($remote+$this->minerfee)){
                     //发送
                     //$verifyaddress = json_decode(post("https://www.bitgo.com:3080/api/v1/verifyaddress",['address'=>$address]),true);
                     if(0 && !$verifyaddress){//地址验证
