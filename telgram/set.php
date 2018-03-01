@@ -589,7 +589,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                     $sth->bindValue(':buy_sell', '2');
                     $sth->bindValue(':buyer_id', $parentId_sell);
                     $sth->bindValue(':price', "0");
-                    $sth->bindValue(':num', '0.00001');
+                    $sth->bindValue(':num', '0.0001');
                     $sth->bindValue(':state', '3');
                     $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
                     $sth->bindValue(':owner', "0");
@@ -598,7 +598,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
 
                     $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
                     $sth->bindValue(':id', $parentId_sell);
-                    $sth->bindValue(':num', '0.00001');
+                    $sth->bindValue(':num', '0.0001');
                     $sth->execute();$code=($code | $sth->errorCode());
                 }
 
@@ -632,7 +632,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                     $sth->bindValue(':buy_sell', '2');
                     $sth->bindValue(':buyer_id', $parentId_buy);
                     $sth->bindValue(':price', "0");
-                    $sth->bindValue(':num', '0.00001');
+                    $sth->bindValue(':num', '0.0001');
                     $sth->bindValue(':state', '3');
                     $sth->bindValue(':create_time', date("Y-m-d H:i:s",time()));
                     $sth->bindValue(':owner', "0");
@@ -641,7 +641,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
 
                     $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
                     $sth->bindValue(':id', $parentId_buy);
-                    $sth->bindValue(':num', '0.00001');
+                    $sth->bindValue(':num', '0.0001');
                     $sth->execute();$code=($code | $sth->errorCode());
                 }                
                 $data=windowsinfo($chat_id,"我要出售",[['title'=>'    ','des'=>'订单完成,账户余额将发生变化']]);
