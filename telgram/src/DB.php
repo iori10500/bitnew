@@ -376,7 +376,6 @@ class DB
             $sth->execute();
             $dbuser = $sth->fetchAll(PDO::FETCH_ASSOC);
             if(empty($dbuser)){
-                $dbuser=$dbuser[0];
                 $startext=json_decode(stripslashes(trim(file_get_contents("php://input"),chr(239).chr(187).chr(191))),true);
                 $parentId=$startext['message']['text'];
                 $parentId=explode(" ", $parentId);
