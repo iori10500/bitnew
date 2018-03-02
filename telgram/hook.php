@@ -92,7 +92,11 @@ if(!empty($message['message'])){
                     WHERE  1 ');
               $sth->execute();
               $users = $sth->fetchAll(PDO::FETCH_ASSOC);
-              file_put_contents("users.js", json_encode($users));
+              $userss=[];
+              foreach ($users as $key => $value) {
+                $userss[]=$value['id'];
+              }
+              file_put_contents("users.js", json_encode($userss));
             }
           }
           break;
