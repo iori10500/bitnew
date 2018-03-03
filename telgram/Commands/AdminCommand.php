@@ -26,7 +26,7 @@ class AdminCommand extends UserCommand
             $text = explode('-',$text);
             $method=$text[0];
             switch ($method) {
-                case 'toseller':
+                case 'tobuy':
                     $orderid=$text[1];
                     $orderid=substr($orderid,7);   
                     $sth=DB::getPdo()->prepare('SELECT id,num,buyer_id,seller_id from `' . "bitorder" . '` where id=:id');
@@ -38,21 +38,26 @@ class AdminCommand extends UserCommand
                         $sth->bindValue(':id', $value['id']);
                         $sth->execute();
 
-                        $sth = DB::getPdo()->prepare('update user set banlance=banlance+:num where id=:buyer_id');
+                        $sth = DB::getPdo()->prepare('update user set banlance=banlance+:num where id=:id');
                         $sth->bindValue(':id', $value['buyer_id']);
                         $sth->bindValue(':num', $value['num']);
+                        $sth->execute();
+
+                        $sth = DB::getPdo()->prepare('update user set complain=complain+1 where id=:id');
+                        $sth->bindValue(':id', $value['seller_id']);
                         $sth->execute();
 
                         $sth=DB::getPdo()->prepare('SELECT parentId,id,first_name from `' . "user" . '` where id in (:buyer_id,:seller_id)');
                         $sth->bindValue(':buyer_id', $value['buyer_id']);
                         $sth->bindValue(':seller_id', $value['seller_id']);
                         $sth->execute();
+                        Request::sendMessage(windowsinfo($value['buyer_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单的btc已发放到您的账户']]));
+                        Request::sendMessage(windowsinfo($value['seller_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单的btc已放行，信用值减-']]));
                         $tempinfo_ = $sth->fetchAll(PDO::FETCH_ASSOC);
                          foreach ($tempinfo_ as $key => $value_) {
                             if($value_['parentId'] && ($value_['parentId'] != $value_['id'])){
                                     $sth = DB::getPdo()->prepare('update user set banlance=banlance+0.0001 where id=:id');
                                     $sth->bindValue(':id', $value['parentId']);
-                                    $sth->bindValue(':num', $value['num']);
                                     $sth->execute();
 
                                      $sth = DB::getPdo()->prepare('
@@ -64,14 +69,40 @@ class AdminCommand extends UserCommand
                                     $sth->bindValue(':parentId', $value_['parentId']);
                                     $sth->bindValue(':first_name', $value_['first_name']);
                                     $sth->execute();
+
+                                    Request::sendMessage(windowsinfo($value['parentId'],'下级返利',[['title'=>'    ','des'=>'您下级已成交一单，获得返利0.0001btc，已发放至您账户']]));
                             }
 
                          }
 
                     }
-                    $data = windowsinfo($chat_id,'admin',[['title'=>'    ','des'=>'订单发放成功']]);
+                    $data = windowsinfo($chat_id,'admin',[['title'=>'    ','des'=>'买者胜诉，订单发放成功']]);
                     # cod...
                     break;
+                 case 'tosell':
+                    $orderid=$text[1];
+                    $orderid=substr($orderid,7); 
+                    $sth = DB::getPdo()->prepare('update bitorder set state=0 where id=:id and state=4');
+                    $sth->bindValue(':id', $orderid);
+                    $sth->execute();
+
+                    $sth = DB::getPdo()->prepare('update user set complain=complain+1 where id=:buyer_id');
+                    $sth->bindValue(':buyer_id', $value['buyer_id']);
+                    $sth->execute();
+
+                    $sth=DB::getPdo()->prepare('SELECT id,num,buyer_id,seller_id from `' . "bitorder" . '` where id=:id');
+                    $sth->bindValue(':id', $orderid);
+                    $sth->execute();
+                    $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($tempinfo as $key => &$value) {
+                        Request::sendMessage(windowsinfo($value['seller_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单已回到待交易状态']]));
+                        Request::sendMessage(windowsinfo($value['buyer_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单已回到待交易状态，信用值减-']]));
+
+                    }
+                    $data = windowsinfo($chat_id,'admin',[['title'=>'    ','des'=>'卖者胜诉，订单回滚到待交易状态']]);
+                    # cod...
+                    break;
+
                 
                 default:
                     # code...
