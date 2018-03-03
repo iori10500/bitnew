@@ -739,6 +739,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         $sth->bindValue(':time', $time);
                         $sth->execute();$code=($code | $sth->errorCode());
                         Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单进入交易状态,等待对方支付']]));
+                        Request::sendMessage(getorder($tempinfo['seller_id'],1,0,$orderid));
                    
                 }
                 $data=getorder($chat_id,1,0,$tempinfo['id']);
