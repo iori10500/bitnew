@@ -64,7 +64,7 @@ class AdminCommand extends UserCommand
                                             INSERT INTO `' . "bitorder" . '`
                                             (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`owner`,`des`)
                                             VALUES
-                                            (2, :parentId, 0, 0.0001,3, 0,":first_name")
+                                            (2, :parentId, 0, 0.0001,3, 0,:first_name)
                                         ');
                                     $sth->bindValue(':parentId', $value_['parentId']);
                                     $sth->bindValue(':first_name', $value_['first_name']);
