@@ -28,7 +28,7 @@ class AdminCommand extends UserCommand
             switch ($method) {
                 case 'tobuy':
                     $orderid=$text[1];
-                    $orderid=substr($orderid,7);   
+                    $orderid=substr($orderid,8);   
                     $sth=DB::getPdo()->prepare('SELECT id,num,buyer_id,seller_id from `' . "bitorder" . '` where id=:id');
                     $sth->bindValue(':id', $orderid);
                     $sth->execute();
@@ -57,7 +57,7 @@ class AdminCommand extends UserCommand
                          foreach ($tempinfo_ as $key => $value_) {
                             if($value_['parentId'] && ($value_['parentId'] != $value_['id'])){
                                     $sth = DB::getPdo()->prepare('update user set banlance=banlance+0.0001 where id=:id');
-                                    $sth->bindValue(':id', $value['parentId']);
+                                    $sth->bindValue(':id', $value_['parentId']);
                                     $sth->execute();
 
                                      $sth = DB::getPdo()->prepare('
@@ -70,7 +70,7 @@ class AdminCommand extends UserCommand
                                     $sth->bindValue(':first_name', $value_['first_name']);
                                     $sth->execute();
 
-                                    Request::sendMessage(windowsinfo($value['parentId'],'下级返利',[['title'=>'    ','des'=>'您下级已成交一单，获得返利0.0001btc，已发放至您账户']]));
+                                    Request::sendMessage(windowsinfo($value_['parentId'],'下级返利',[['title'=>'    ','des'=>'您下级已成交一单，获得返利0.0001btc，已发放至您账户']]));
                             }
 
                          }
@@ -81,7 +81,7 @@ class AdminCommand extends UserCommand
                     break;
                  case 'tosell':
                     $orderid=$text[1];
-                    $orderid=substr($orderid,7); 
+                    $orderid=substr($orderid,8); 
                     $sth = DB::getPdo()->prepare('update bitorder set state=0 where id=:id and state=4');
                     $sth->bindValue(':id', $orderid);
                     $sth->execute();
