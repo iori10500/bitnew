@@ -26,19 +26,15 @@ class AdminCommand extends UserCommand
             $text = explode('-',$text);
             $method=$text[0];
             switch ($method) {
-                case 'shifangorder':
+                case 'toseller':
                     $orderid=$text[1];
-                    $orderid=substr($orderid,7);
+                    $orderid=substr($orderid,7);   
                     $sth=DB::getPdo()->prepare('SELECT id,num,buyer_id,seller_id from `' . "bitorder" . '` where id=:id');
                     $sth->bindValue(':id', $orderid);
                     $sth->execute();
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($tempinfo as $key => &$value) {
-                        $sth = DB::getPdo()->prepare('update bitorder set state=3 where id=:id and state=2');
-                        $sth->bindValue(':id', $value['id']);
-                        $sth->execute();
-
-                        $sth = DB::getPdo()->prepare('update bitorder set state=3 where id=:id and state=2');
+                        $sth = DB::getPdo()->prepare('update bitorder set state=3 where id=:id and state=4');
                         $sth->bindValue(':id', $value['id']);
                         $sth->execute();
 
@@ -54,7 +50,7 @@ class AdminCommand extends UserCommand
                         $tempinfo_ = $sth->fetchAll(PDO::FETCH_ASSOC);
                          foreach ($tempinfo_ as $key => $value_) {
                             if($value_['parentId'] && ($value_['parentId'] != $value_['id'])){
-                                    $sth = DB::getPdo()->prepare('update user set banlance=banlance+0.00001 where id=:id');
+                                    $sth = DB::getPdo()->prepare('update user set banlance=banlance+0.0001 where id=:id');
                                     $sth->bindValue(':id', $value['parentId']);
                                     $sth->bindValue(':num', $value['num']);
                                     $sth->execute();
@@ -63,7 +59,7 @@ class AdminCommand extends UserCommand
                                             INSERT INTO `' . "bitorder" . '`
                                             (`buy_sell`, `buyer_id`, `price`, `num`,`state`,`owner`,`des`)
                                             VALUES
-                                            (2, :parentId, 0, 0.00001,3, 0,":first_name")
+                                            (2, :parentId, 0, 0.0001,3, 0,":first_name")
                                         ');
                                     $sth->bindValue(':parentId', $value_['parentId']);
                                     $sth->bindValue(':first_name', $value_['first_name']);

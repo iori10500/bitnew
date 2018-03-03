@@ -515,6 +515,7 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 }
 
                 Request::sendMessage(windowsinfo($otherid,'我的订单',[['title'=>'    ','des'=>'你有订单进入申诉状态'.$mark]]));
+                Request::sendMessage(getorder($otherid,1,0,$orderid));
 
                 Request::sendMessage(windowsinfo('528254045','用户订单申诉',[['title'=>'    ','des'=>$chat_id."发起申诉".$otherid." , @$username1,@$username2"]]));
 
