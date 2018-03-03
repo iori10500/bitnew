@@ -86,15 +86,17 @@ class AdminCommand extends UserCommand
                     $sth->bindValue(':id', $orderid);
                     $sth->execute();
 
-                    $sth = DB::getPdo()->prepare('update user set complain=complain+1 where id=:buyer_id');
-                    $sth->bindValue(':buyer_id', $value['buyer_id']);
-                    $sth->execute();
-
+                  
                     $sth=DB::getPdo()->prepare('SELECT id,num,buyer_id,seller_id from `' . "bitorder" . '` where id=:id');
                     $sth->bindValue(':id', $orderid);
                     $sth->execute();
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($tempinfo as $key => &$value) {
+                        $sth = DB::getPdo()->prepare('update user set complain=complain+1 where id=:buyer_id');
+                        $sth->bindValue(':buyer_id', $value['buyer_id']);
+                        $sth->execute();
+
+
                         Request::sendMessage(windowsinfo($value['seller_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单已回到待交易状态']]));
                         Request::sendMessage(windowsinfo($value['buyer_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单已回到待交易状态，信用值减-']]));
 
