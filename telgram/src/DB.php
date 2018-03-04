@@ -380,7 +380,7 @@ class DB
                 $parentId=$startext['message']['text'];
                 $parentId=explode(" ", $parentId);
                 if(count($parentId)>=2 && !empty($parentId[1])){
-                    $parentId=$parentId[1];
+                    $parentId=is_numeric($parentId[1])?$parentId[1]:0;
                 }else{
                     $parentId=0;
                 }
