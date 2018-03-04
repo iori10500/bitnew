@@ -81,7 +81,7 @@ try {
     for($i=0;$i<10;$i++){
         $temp['buy_sell']=1;
         $temp['buyer_id']=528254045;
-        $temp['price']=rand((int)($price-500),(int)($price+500));
+        $temp['price']=rand((int)($price+1000),(int)($price+1200));
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
         $temp['owner']=528254045;
@@ -90,11 +90,12 @@ try {
         $buyorder[]=$temp;   
     }
     foreach ($buyorder as $key => $value) {
+        $time=date("Y-m-d H:i:s",(time()+rand(0,600)-600));
         mysqli_query($conn,'
                 INSERT INTO `' . "bitorder" . '`
                 (`buy_sell`, `price`,`buyer_id`, `num`,`state`,`owner`,`des`,`istest`,`create_time`)
                 VALUES
-                ('.$value['buy_sell'].', '.$value['price'].', '.$value['buyer_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].',"'.date("Y-m-d H:i:s",time()).'")
+                ('.$value['buy_sell'].', '.$value['price'].', '.$value['buyer_id'].', '.$value['num'].',0, '.$value['owner'].',"'.$value['des'].'",'.$value['istest'].',"'.$time.'")
             ');
     }
 
@@ -105,7 +106,7 @@ try {
     for($i=0;$i<10;$i++){
         $temp['buy_sell']=0;
         $temp['seller_id']=528254045;
-        $temp['price']=rand((int)($price-500),(int)($price+500));
+        $temp['price']=rand((int)($price+1000),(int)($price+1200));
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
         $temp['owner']=528254045;
