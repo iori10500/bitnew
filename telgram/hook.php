@@ -66,9 +66,11 @@ if(!empty($message['message'])){
           Request::sendMessage(windowsinfo($chat_id,'个人中心',[],[[['text'=>'接收比特币','callback_data'=>"balance"]],[['text'=>'发送比特币','callback_data'=>"sendbitcoin"]],[['text'=>'订单中心','callback_data'=>"myorder"]],[['text'=>'下级订单','callback_data'=>"suborder"]],[['text'=>'设置收款','callback_data'=>"setcollections"]],[['text'=>'联系我们','callback_data'=>"contentus"]],[['text'=>'交易说明','callback_data'=>"jiaoyimark"]]]));
           break;
         case 'ud83dude4du9080u8bf7u597du53cbud83dude4d':
+         $username = $pdo->prepare('SELECT `first_name` FROM `' . TB_USER . '` WHERE `id` ='.$chat_id)->execute()->fetchColumn();
+
           Request::sendMessage(windowsinfo($chat_id,'邀请好友',[['title'=>'    ','des'=>'邀请好友加入,您的下级每发生一笔订单,您将获得0.0001btc奖励']]));        // Send message!
           $time=time(); 
-          Request::sendMessage( windowsinfo($chat_id,'邀请链接    @bitokbitbot',[['title'=>isset($message['message']['chat']['username'])?$message['message']['chat']['username']:$message['message']['chat']['first_name'],'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>电币比特币c2c交易平台</a>"]]));        // Send message!
+          Request::sendMessage( windowsinfo($chat_id,'邀请链接    @bitokbitbot',[['title'=>$username,'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>电币比特币c2c交易平台</a>"]]));        // Send message!
           if(0 && $chat_id == 528254045){
            // Request::sendMessage(windowsinfo(361550111,'订单信息',[['title'=>'    ','des'=>'尊敬的用户您好！我们发现您存在伪交易，现已回退您的订单至投诉状态，如有任何问题请邮件告知我们，邮件内容>请详细备注订单号，问题说明。我们将在2个工作日内尽快给与答复，祝你交易愉快！谢谢']]));
             if(file_exists("users.js")){
