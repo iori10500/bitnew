@@ -48,7 +48,8 @@ class CallbackqueryCommand extends SystemCommand
     public function execute()
     {
         $callback_query = $this->getUpdate()->getCallbackQuery();
-        $user_id        = $callback_query->getFrom()->getId();
+        //$user_id        = $callback_query->getFrom()->getId();
+        $user_id        = $callback_query->getChat()->getId();
         $query_id       = $callback_query->getId();
         $query_data     = $callback_query->getData();
 
