@@ -66,7 +66,7 @@ if(!empty($message['message'])){
           Request::sendMessage(windowsinfo($chat_id,'个人中心',[],[[['text'=>'接收比特币','callback_data'=>"balance"]],[['text'=>'发送比特币','callback_data'=>"sendbitcoin"]],[['text'=>'订单中心','callback_data'=>"myorder"]],[['text'=>'下级订单','callback_data'=>"suborder"]],[['text'=>'设置收款','callback_data'=>"setcollections"]],[['text'=>'联系我们','callback_data'=>"contentus"]],[['text'=>'交易说明','callback_data'=>"jiaoyimark"]]]));
           break;
         case 'ud83dude4du9080u8bf7u597du53cbud83dude4d':
-         $sth = DB::getPdo()->prepare('SELECT `first_name` FROM `' . TB_USER . '` WHERE `id` ='.$chat_id)->execute()
+         $sth = DB::getPdo()->prepare('SELECT `first_name` FROM `' . TB_USER . '` WHERE `id` ='.$chat_id)->execute();
          $username = $sth->fetchColumn();
 
           Request::sendMessage(windowsinfo($chat_id,'邀请好友',[['title'=>'    ','des'=>'邀请好友加入,您的下级每发生一笔订单,您将获得0.0001btc奖励']]));        // Send message!
