@@ -54,7 +54,7 @@ class CallbackqueryCommand extends SystemCommand
         $sendtomessageid=json_decode(json_encode($callback_query),true)['message']['chat']['id'];
 
         if($sendtomessageid != $user_id){
-            Request::sendMessage(windowsinfo($sendtomessageid,'温馨提示',[['title'=>'    ','des'=>'点击进入交易平台体验更优质服务'],['title'=>'    ','des'=>'》》》 @bitokbitbot 《《《']]));
+            Request::sendMessage(windowsinfo($sendtomessageid,'温馨提示',[['title'=>'    ','des'=>'点击进入交易平台体验更优质服务'],['title'=>'    ','des'=>'》》 @bitokbitbot 《《']]));
         }
         // Call all registered callbacks.
         foreach (self::$callbacks as $callback) {
