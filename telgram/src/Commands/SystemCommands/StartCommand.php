@@ -51,9 +51,9 @@ class StartCommand extends SystemCommand
         //$user_id = $message->getFrom()->getId();
 	   //newWallet($user_id);
 
-          $buttoninfo['chat_id']=$chat_id;
-          $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
-          Request::sendPhoto($buttoninfo);        // Send me
+       //   $buttoninfo['chat_id']=$chat_id;
+       //   $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
+       //   Request::sendPhoto($buttoninfo);        // Send me
 
 
 
@@ -63,6 +63,11 @@ class StartCommand extends SystemCommand
                  //   'reply_markup'=>['keyboard'=[[['text'=>'77']]]]   
         ];
          Request::sendMessage($data);        // Send message!
+
+        $data['text']="   /start@bitokbitbot";
+
+        Request::sendMessage($data);        // Send message!
+
 
         $data= startwindows($chat_id,"start",[[['text'=>'🎈发布出售👉','callback_data'=>"nextmyorder"],['text'=>'🎈发布购买👈','callback_data'=>"nextmyorder"]],[['text'=>'🔄我要出售👉','callback_data'=>"nextmyorder"],['text'=>'🔄我要购买👈','callback_data'=>"nextmyorder"]],[['text'=>'👱‍♂️个人中心👱‍♂️','callback_data'=>"nextmyorder"],['text'=>'🙍邀请好友🙍','callback_data'=>"nextmyorder"]]]);
          Request::sendMessage($data);        // Send message!
