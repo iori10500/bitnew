@@ -55,6 +55,7 @@ class CallbackqueryCommand extends SystemCommand
 
         if($sendtomessageid != $user_id){
             Request::sendMessage(windowsinfo($sendtomessageid,'温馨提示',[['title'=>'    ','des'=>'点击进入交易平台体验更优质服务'],['title'=>'','des'=>'《 @bitokbitbot 》']]));
+            exit;
         }
         // Call all registered callbacks.
         foreach (self::$callbacks as $callback) {
