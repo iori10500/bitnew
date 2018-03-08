@@ -78,7 +78,8 @@ try {
     mysqli_query($conn,'DELETE FROM bitorder WHERE (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=1'); 
     $buyorder=[];
     unset($temp);
-    for($i=0;$i<10;$i++){
+    $maxprice=0;
+    for($i=0;$i<10;$i++){//低
         $temp['buy_sell']=1;
         $temp['buyer_id']=528254045;
         $temp['price']=rand((int)($price+1000),(int)($price+1200));
@@ -87,7 +88,10 @@ try {
         $temp['owner']=528254045;
         $temp['des']='     ';
         $temp['istest']=1;  
-        $buyorder[]=$temp;   
+        $buyorder[]=$temp;  
+        if($temp['price']>$maxprice){
+            $maxprice=$temp['price'];
+        } 
     }
     foreach ($buyorder as $key => $value) {
         $time=date("Y-m-d H:i:s",(time()+rand(0,600)-600));
@@ -103,10 +107,10 @@ try {
     mysqli_query($conn,'DELETE FROM bitorder WHERE (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=0'); 
     $buyorder=[];
     unset($temp);
-    for($i=0;$i<10;$i++){
+    for($i=0;$i<10;$i++){//高
         $temp['buy_sell']=0;
         $temp['seller_id']=528254045;
-        $temp['price']=rand((int)($price+1000),(int)($price+1200));
+        $temp['price']=rand((int)($maxprice),(int)($maxprice+300));
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
         $temp['owner']=528254045;
