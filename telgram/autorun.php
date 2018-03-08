@@ -64,6 +64,8 @@ $shoukuanmark=[
     '支付宝：15072466127  张武宗',
     '支付宝：18190117297  吴文丰',
     '支付宝：350166483@qq.com  谯鹏',
+    '招商银行  南京月牙湖支行  谯(qiao)鹏  6214830256968529',
+    '中国银行  南京梅花山庄支行  谯（qiao)鹏  4563511200015916852',
     '微信：id_tianming',//谢天明
     '微信：zy940814',//杨青山
     '微信：zwz_07',//张武宗
@@ -114,7 +116,7 @@ try {
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
         $temp['owner']=528254045;
-        $temp['des']=$shoukuanmark[rand(0,10)];
+        $temp['des']=$shoukuanmark[rand(0,8)];
         $temp['istest']=1;   
         $buyorder[]=$temp; 
     }
