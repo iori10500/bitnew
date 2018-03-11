@@ -43,7 +43,7 @@ class NewsCommand extends UserCommand
            if($i==50){
                 $buttoninfo['chat_id']=$chat_id;
                 $buttoninfo['parse_mode']='HTML';
-                $buttoninfo['text']="/newsreply@newsdianbibot";
+                $buttoninfo['text']="/news@bitokbitbot";
                 Request::sendMessage($buttoninfo);        // Send message!
            }
 
