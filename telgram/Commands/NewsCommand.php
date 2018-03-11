@@ -26,6 +26,7 @@ class NewsCommand extends UserCommand
           $users=file_get_contents("users.js");
           $users=json_decode($users,true);
            $news=file_get_contents("news");
+           $sendresult=[];
            for($i=0;$i<50;$i++){
                 $tempuser = array_pop($users);
                 if($tempuser){
@@ -33,7 +34,8 @@ class NewsCommand extends UserCommand
                       $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
                       Request::sendPhoto($buttoninfo);        // Send me
                     */
-                    Request::sendMessage(windowsinfo(528254045,'比特快讯',[['title'=>'    ','des'=>$news]]));
+                    $temp = Request::sendMessage(windowsinfo(528254045,'比特快讯',[['title'=>'    ','des'=>$news]]));
+                    $sendresult[]=$temp->ok;
                 }else{
                     break;
                 }
@@ -48,6 +50,7 @@ class NewsCommand extends UserCommand
            }
 
         }else{
+            $sendresult="init news users";
            $sth = DB::getPdo()->prepare('
                 SELECT id
                 FROM `' . "user" . '`
@@ -60,6 +63,9 @@ class NewsCommand extends UserCommand
           }
           file_put_contents("users.js", json_encode($userss));
         }
-        return true;
+        $buttoninfo['chat_id']=$chat_id;
+        $buttoninfo['parse_mode']='HTML';
+        $buttoninfo['text']=$sendresult;
+        return  Request::sendMessage($buttoninfo);
     }
 }
