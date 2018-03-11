@@ -48,7 +48,7 @@ class NewsCommand extends UserCommand
                 $buttoninfo['text']="/news@bitokbitbot";
                 Request::sendMessage($buttoninfo);        // Send message!
            }
-
+           $sendresult=json_encode($sendresult);
         }else{
             $sendresult="init news users";
            $sth = DB::getPdo()->prepare('
