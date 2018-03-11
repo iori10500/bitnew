@@ -8,11 +8,11 @@ use Longman\TelegramBot\Entities\Keyboard;
 use Longman\TelegramBot\Entities\KeyboardButton;
 
 
-class TestCommand extends UserCommand
+class NewsCommand extends UserCommand
 {
-    protected $name = 'test';                      // Your command's name
+    protected $name = 'news';                      // Your command's name
     protected $description = 'A command for test'; // Your command description
-    protected $usage = '/test';                    // Usage of your command
+    protected $usage = '/news';                    // Usage of your command
     protected $version = '1.0.0';                  // Version of your command
 
     public function execute()
@@ -27,14 +27,24 @@ class TestCommand extends UserCommand
            $news=file_get_contents("news");
            for($i=0;$i<50;$i++){
                 $tempuser = array_pop($users);
-                 /*        $buttoninfo['chat_id']=$tempuser;
-                  $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
-                  Request::sendPhoto($buttoninfo);        // Send me
-                */
-                Request::sendMessage(windowsinfo(528254045,'比特快讯',[['title'=>'    ','des'=>$news]]));
+                if($tempuser){
+                     /*        $buttoninfo['chat_id']=$tempuser;
+                      $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
+                      Request::sendPhoto($buttoninfo);        // Send me
+                    */
+                    Request::sendMessage(windowsinfo(528254045,'比特快讯',[['title'=>'    ','des'=>$news]]));
+                }else{
+                    break;
+                }
+                
            }
            file_put_contents("users.js", json_encode($users));
-
+           if($i==50){
+                $buttoninfo['chat_id']=$chat_id;
+                $buttoninfo['parse_mode']='HTML';
+                $buttoninfo['text']="/newsreply@newsdianbibot";
+                Request::sendMessage($buttoninfo);        // Send message!
+           }
 
         }else{
            $sth = DB::getPdo()->prepare('
@@ -49,14 +59,6 @@ class TestCommand extends UserCommand
           }
           file_put_contents("users.js", json_encode($userss));
         }
-
-
-
-    $buttoninfo['chat_id']=$chat_id;
-    $buttoninfo['parse_mode']='HTML';
-    $buttoninfo['text']="/news@bitokbitbot";
-
-
-        return Request::sendMessage($buttoninfo);        // Send message!
+        return true;
     }
 }
