@@ -36,7 +36,7 @@ class NewsCommand extends UserCommand
                           $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
                           Request::sendPhoto($buttoninfo);        // Send me
                         */
-                        $temp = Request::sendMessage(windowsinfo(546950599,'比特快讯',[['title'=>'    ','des'=>$news]]));
+                        $temp = Request::sendMessage(windowsinfo($tempuser,'比特快讯',[['title'=>'    ','des'=>$news]]));
                         $sendresult[]=$temp->ok;
                         $failresult[]=$temp->description;
                     }else{
