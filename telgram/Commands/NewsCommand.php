@@ -28,14 +28,15 @@ class NewsCommand extends UserCommand
               $users=json_decode($users,true);
                $news=file_get_contents("news");
                $sendresult=[];
-               for($i=0;$i<50;$i++){
+               for($i=0;$i<20;$i++){
                     $tempuser = array_pop($users);
                     if($tempuser){
+                        sleep(1);
                          /*        $buttoninfo['chat_id']=$tempuser;
                           $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
                           Request::sendPhoto($buttoninfo);        // Send me
                         */
-                        $temp = Request::sendMessage(windowsinfo(528254045,'比特快讯',[['title'=>'    ','des'=>$news]]));
+                        $temp = Request::sendMessage(windowsinfo(546950599,'比特快讯',[['title'=>'    ','des'=>$news]]));
                         $sendresult[]=$temp->ok;
                     }else{
                         break;
@@ -43,7 +44,7 @@ class NewsCommand extends UserCommand
                     
                }
                file_put_contents("users.js", json_encode($users));
-               if($i==50){
+               if($i==20){
                     $buttoninfo['chat_id']=$chat_id;
                     $buttoninfo['parse_mode']='HTML';
                     $buttoninfo['text']="/news@bitokbitbot";
