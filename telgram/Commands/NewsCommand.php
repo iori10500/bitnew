@@ -38,11 +38,13 @@ class NewsCommand extends UserCommand
                         */
                         $temp = Request::sendMessage(windowsinfo(546950599,'比特快讯',[['title'=>'    ','des'=>$news]]));
                         $sendresult[]=$temp->ok;
+                        $failresult[]=$temp->description;
                     }else{
                         break;
                     }
                     
                }
+               file_put_contents("failresult", json_encode($failresult));
                file_put_contents("users.js", json_encode($users));
                if($i==20){
                     $buttoninfo['chat_id']=$chat_id;
