@@ -22,7 +22,7 @@ class NewsCommand extends UserCommand
 
         $chat_id = $message->getChat()->getId();   // Get the current Chat ID
         $userid =  $message->getFrom()->getId();
-        if($userid == 528254045){
+        if($userid == 538108959){
             if(file_exists("users.js")){
               $users=file_get_contents("users.js");
               $users=json_decode($users,true);

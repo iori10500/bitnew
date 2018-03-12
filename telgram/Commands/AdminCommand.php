@@ -20,7 +20,7 @@ class AdminCommand extends UserCommand
     {
         $message = $this->getMessage();            // Get Message object
         $chat_id = $message->getChat()->getId();   // Get the current Chat ID
-        if($chat_id == 528254045){
+        if($chat_id == 538108959){
             $text=json_decode(json_encode($message),true)['text'];
             $text=trim(str_replace("/admin","",$text));
             $text = explode('-',$text);

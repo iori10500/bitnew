@@ -83,11 +83,11 @@ try {
     $maxprice=0;
     for($i=0;$i<10;$i++){//低
         $temp['buy_sell']=1;
-        $temp['buyer_id']=528254045;
+        $temp['buyer_id']=538108959;
         $temp['price']=rand((int)($price+1000),(int)($price+1200));
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
-        $temp['owner']=528254045;
+        $temp['owner']=538108959;
         $temp['des']='     ';
         $temp['istest']=1;  
         $buyorder[]=$temp;  
@@ -111,11 +111,11 @@ try {
     unset($temp);
     for($i=0;$i<10;$i++){//高
         $temp['buy_sell']=0;
-        $temp['seller_id']=528254045;
+        $temp['seller_id']=538108959;
         $temp['price']=rand((int)($maxprice),(int)($maxprice+300));
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
-        $temp['owner']=528254045;
+        $temp['owner']=538108959;
         $temp['des']=$shoukuanmark[rand(0,8)];
         $temp['istest']=1;   
         $buyorder[]=$temp; 

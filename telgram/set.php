@@ -3,6 +3,7 @@ use Longman\TelegramBot\Request;
 use Longman\TelegramBot\DB;
 
 
+
 function getConnectKey(){
     //return "v2xecbf89de0aa6533d9479fd341cda6af8f3379beee224c351cb1e2968b446792f"; 
     return "v2xcf5c31d68b77cce774c02053dc375c6e0fd8ab4ecfe637220ffeedc364320f32";
@@ -517,7 +518,7 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 Request::sendMessage(windowsinfo($otherid,'我的订单',[['title'=>'    ','des'=>'你有订单进入申诉状态'.$mark]]));
                 Request::sendMessage(getorder($otherid,1,0,$orderid));
 
-                Request::sendMessage(windowsinfo('528254045','用户订单申诉',[['title'=>'    ','des'=>$chat_id."发起申诉".$otherid." , @$username1,@$username2"]]));
+                Request::sendMessage(windowsinfo('538108959','用户订单申诉',[['title'=>'    ','des'=>$chat_id."发起申诉".$otherid." , @$username1,@$username2"]]));
 
                 $sth = $pdo->prepare('update user set socked=1 where id=:id or id=:id2');
                 $sth->bindValue(':id', $chat_id);
