@@ -135,7 +135,7 @@ class AdminCommand extends UserCommand
                         }
 
                         $sth=DB::getPdo()->prepare('SELECT first_name,last_name,username,collections from `' . "user" . '` where id=:id');
-                        $sth->bindValue(':id', $value['buyer_id']);
+                        $sth->bindValue(':id', $value['seller_id']);
                         $sth->execute();
                         $temp = $sth->fetchAll(PDO::FETCH_ASSOC);
 
