@@ -200,12 +200,7 @@ class CallbackqueryCommand extends SystemCommand
                    $datamessage = getorder($user_id,$data[1],$data[2]);
                    
                 }else{
-                    if($data[1]!=1){
-                        $des='下面订单远超市场价,暂时屏蔽。';
-                    }else{
-                        $des='没有啦';
-                    }
-                    $datamessage=windowsinfo($sendtomessageid,$DESC[$data[1]],[['title'=>'    ','des'=>$des]]);
+                    $datamessage=windowsinfo($sendtomessageid,$DESC[$data[1]],[['title'=>'    ','des'=>'到顶啦']]);
                 }
                 Request::sendMessage($datamessage);        // Send me
                 

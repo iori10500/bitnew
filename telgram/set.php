@@ -287,7 +287,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
         $sth->execute();
         $order = $sth->fetchAll(PDO::FETCH_ASSOC);
         if(empty($order)){
-             $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'到底啦']]);
+             $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'下面订单远超市场价,暂时屏蔽。']]);
         }else{
             $orderinfo=$order[0];
             $orderinfo['allprice']=round($orderinfo['num']*$orderinfo['price'],2);  
@@ -308,7 +308,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
         $sth->execute();
         $order = $sth->fetchAll(PDO::FETCH_ASSOC);
         if(empty($order)){
-             $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'到底啦']]);
+             $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'下面订单远超市场价,暂时屏蔽。']]);
         }else{
             $orderinfo=$order[0];
             $orderinfo['allprice']=round($orderinfo['num']*$orderinfo['price'],2);
