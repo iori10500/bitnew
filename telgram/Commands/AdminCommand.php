@@ -116,36 +116,36 @@ class AdminCommand extends UserCommand
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($tempinfo as $key => &$value) {
                         $tmp['title']="数量";
-                        $tmp['des']=$value->num;
+                        $tmp['des']=$value['num'];
                         $result[]=$tmp;
 
                         $tmp['title']="单价";
-                        $tmp['des']=$value->price;
+                        $tmp['des']=$value['price'];
                         $result[]=$tmp;
 
                         $sth=DB::getPdo()->prepare('SELECT first_name,last_name,username from `' . "user" . '` where id=:id');
-                        $sth->bindValue(':id', $value->buyer_id);
+                        $sth->bindValue(':id', $value['buyer_id']);
                         $sth->execute();
                         $temp = $sth->fetchAll(PDO::FETCH_ASSOC);
 
                         foreach ($temp as $key_ => $value_) {
                             $tmp['title']="买者";
-                            $tmp['des']="@".$value_->username;
+                            $tmp['des']="@".$value_['username'];
                             $result[]=$tmp;
                         }
 
                         $sth=DB::getPdo()->prepare('SELECT first_name,last_name,username,collections from `' . "user" . '` where id=:id');
-                        $sth->bindValue(':id', $value->buyer_id);
+                        $sth->bindValue(':id', $value['buyer_id']);
                         $sth->execute();
                         $temp = $sth->fetchAll(PDO::FETCH_ASSOC);
 
                         foreach ($temp as $key_ => $value_) {
                             $tmp['title']="卖者联系";
-                            $tmp['des']="@".$value_->username;
+                            $tmp['des']="@".$value_['username'];
                             $result[]=$tmp;
 
                             $tmp['title']="卖者收款";
-                            $tmp['des']="@".$value_->collections;
+                            $tmp['des']="@".$value_['collections'];
                             $result[]=$tmp;
                         }
 
