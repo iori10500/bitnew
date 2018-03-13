@@ -50,27 +50,30 @@ $conn->close();
 $tempbuy=file_get_contents("https://api-otc.huobi.pro/v1/otc/trade/list/public?coinId=1&tradeType=1&currentPage=1&payWay=&country=&merchant=1&online=1&range=0");
 $temp=json_decode($tempbuy,true);
 $price=$temp['data'][0]['price'];
-
+if(!$price && file_exists("curl_price")){
+    $price=file_get_contents("curl_price");
+}
+file_put_contents("curl_price",$price);
 $conn = new mysqli($servername, $username, $password, $dbname);
 // 检测连接
 if ($conn->connect_error) {
     die("连接失败: " . $conn->connect_error);
-} 
+}
 $shoukuanmark=[
     '微信： QP350166483 ',
-    '支付宝：350166483@qq.com  谯鹏',
-    '支付宝：18080520660  杨青山',
+    'jiaojiaoka@gmail.com  支付宝  张娇',
+    '支付宝账号   jiaomei1234@gmail.com   王童童',
     '支付宝：1107969784@qq.com  谢天明',
     '支付宝：15072466127  张武宗',
     '支付宝：18190117297  吴文丰',
-    '支付宝：350166483@qq.com  谯鹏',
-    '招商银行  南京月牙湖支行  谯(qiao)鹏  6214830256968529',
-    '中国银行  南京梅花山庄支行  谯（qiao)鹏  4563511200015916852',
+    'jackshanyeshuzi@gmail.com   支付宝名  李鸣',
+    '支付宝账号  63-9055596065 张悠然',
     '微信：id_tianming',//谢天明
     '微信：zy940814',//杨青山
     '微信：zwz_07',//张武宗
     '微信：wendyfe12478',//吴文丰
 ];
+
 $time=time();
 try {
     $conn->query('BEGIN');
