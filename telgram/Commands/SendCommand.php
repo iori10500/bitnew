@@ -37,8 +37,8 @@ class SendCommand extends UserCommand
             if(count($text) >= 2){
                 $address=$text[0];
                 $remote=$text[1];
-                if($remote<0.01){
-                    return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效金额,最低发送0.01个btc']]));   
+                if($remote<1){
+                    return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效金额,最低发送1个btc']]));   
                 }
                 $pdo  = DB::getPdo();
                 try {
