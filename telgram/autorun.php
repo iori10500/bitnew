@@ -65,7 +65,7 @@ $shoukuanmark=[
     '支付宝账号   jiaomei1234@gmail.com   王童童',
     '支付宝：1107969784@qq.com  谢天明',
     '支付宝：15072466127  张武宗',
-    '支付宝：18190117297  吴文丰',
+    '支付宝:  63-9458149312  柯丰',
     'jackshanyeshuzi@gmail.com   支付宝名  李鸣',
     '支付宝账号  63-9055596065 张悠然',
     '微信：id_tianming',//谢天明
@@ -91,11 +91,11 @@ try {
     $maxprice=0;
     for($i=0;$i<20;$i++){//低
         $temp['buy_sell']=1;
-        $temp['buyer_id']=538108959;
+        $temp['buyer_id']=475543325;
         $temp['price']=rand((int)($price+1000),(int)($price+1200));
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
-        $temp['owner']=538108959;
+        $temp['owner']=475543325;
         $temp['des']='     ';
         $temp['istest']=1;  
         $buyorder[]=$temp;  
@@ -119,11 +119,11 @@ try {
     unset($temp);
     for($i=0;$i<20;$i++){//高
         $temp['buy_sell']=0;
-        $temp['seller_id']=538108959;
+        $temp['seller_id']=475543325;
         $temp['price']=rand((int)($maxprice),(int)($maxprice+300));
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
-        $temp['owner']=538108959;
+        $temp['owner']=475543325;
         $temp['des']=$shoukuanmark[rand(0,8)];
         $temp['istest']=1;   
         $buyorder[]=$temp; 

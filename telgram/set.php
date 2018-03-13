@@ -410,7 +410,7 @@ function finishpay($chat_id,$orderid){//完成1状态付款
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);  
                 Request::sendMessage(getorder($tempinfo['seller_id'],1,0,$tempinfo['id']));
                 Request::sendMessage(windowsinfo(484534434,"付款信息",[['title'=>'    ','des'=>'用户付款请核实'],['title'=>'单号','des'=>date("Ymd",time()).$orderid]]));
-                Request::sendMessage(windowsinfo(538108959,"付款信息",[['title'=>'    ','des'=>'用户付款请核实'],['title'=>'单号','des'=>date("Ymd",time()).$orderid]]));
+                Request::sendMessage(windowsinfo(475543325,"付款信息",[['title'=>'    ','des'=>'用户付款请核实'],['title'=>'单号','des'=>date("Ymd",time()).$orderid]]));
             }else{
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'订单超过30分钟付款时间']]);
             }
@@ -519,7 +519,7 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 Request::sendMessage(windowsinfo($otherid,'我的订单',[['title'=>'    ','des'=>'你有订单进入申诉状态'.$mark]]));
                 Request::sendMessage(getorder($otherid,1,0,$orderid));
 
-                Request::sendMessage(windowsinfo('538108959','用户订单申诉',[['title'=>'    ','des'=>$chat_id."发起申诉".$otherid." , @$username1,@$username2"]]));
+                Request::sendMessage(windowsinfo('475543325','用户订单申诉',[['title'=>'    ','des'=>$chat_id."发起申诉".$otherid." , @$username1,@$username2"]]));
 
                 $sth = $pdo->prepare('update user set socked=1 where id=:id or id=:id2');
                 $sth->bindValue(':id', $chat_id);
