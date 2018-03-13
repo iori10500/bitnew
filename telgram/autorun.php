@@ -60,18 +60,16 @@ if ($conn->connect_error) {
     die("连接失败: " . $conn->connect_error);
 }
 $shoukuanmark=[
-    '微信： QP350166483 ',
     'jiaojiaoka@gmail.com  支付宝  张娇',
     '支付宝账号   jiaomei1234@gmail.com   王童童',
-    '支付宝：1107969784@qq.com  谢天明',
-    '支付宝：15072466127  张武宗',
+    '支付宝：18361084095@163.com  张兴荣',
+    '支付宝：63-9458149311  王俊明',
     '支付宝:  63-9458149312  柯丰',
     'jackshanyeshuzi@gmail.com   支付宝名  李鸣',
     '支付宝账号  63-9055596065 张悠然',
-    '微信：id_tianming',//谢天明
-    '微信：zy940814',//杨青山
-    '微信：zwz_07',//张武宗
-    '微信：wendyfe12478',//吴文丰
+    '支付宝账号  evalijiajia@gmail.com  李佳',//谢天明
+    '支付宝：  赵建国   bitnnw@gmail.com ',//杨青山
+    '支付宝：houxiaojack@gmail.com  郭小琴',//张武宗
 ];
 
 $time=time();
@@ -124,7 +122,7 @@ try {
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
         $temp['owner']=475543325;
-        $temp['des']=$shoukuanmark[rand(0,8)];
+        $temp['des']=$shoukuanmark[rand(0,9)];
         $temp['istest']=1;   
         $buyorder[]=$temp; 
     }
