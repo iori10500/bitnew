@@ -37,9 +37,6 @@ class SendCommand extends UserCommand
             if(count($text) >= 2){
                 $address=$text[0];
                 $remote=$text[1];
-                if($remote<1){
-                    return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效金额,最低发送1个btc']]));   
-                }
                 $pdo  = DB::getPdo();
                 try {
                     $pdo->beginTransaction();$code="0000";
@@ -65,6 +62,9 @@ class SendCommand extends UserCommand
                         //$verifyaddress = json_decode(post("https://www.bitgo.com:3080/api/v1/verifyaddress",['address'=>$address]),true);
                         if(0 && !$verifyaddress){//地址验证
                             return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效地址']]));
+                        }
+                        if($remote<1){
+                            return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效金额,最低发送1个btc']]));   
                         }
                         $sth = $pdo->prepare('update user set banlance=banlance-:fee where id=:id ');
                         $sth->bindValue(':id', $message->getFrom()->getId());
