@@ -142,7 +142,7 @@ class AdminCommand extends UserCommand
                             $result[]=$tmp;
 
                             $tmp['title']="卖者收款";
-                            $tmp['des']="@".$value_['collections'];
+                            $tmp['des']="@".$value['des'];
                             $result[]=$tmp;
 
                             $tmp['title']="db_data";
