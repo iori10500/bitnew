@@ -28,10 +28,9 @@ class NewsCommand extends UserCommand
               $users=json_decode($users,true);
                $news=file_get_contents("news");
                $sendresult=[];
-               for($i=0;$i<20;$i++){
+               for($i=0;$i<50;$i++){
                     $tempuser = array_pop($users);
                     if($tempuser){
-                        sleep(1);
                          /*        $buttoninfo['chat_id']=$tempuser;
                           $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
                           Request::sendPhoto($buttoninfo);        // Send me
@@ -46,7 +45,7 @@ class NewsCommand extends UserCommand
                }
                file_put_contents("failresult", json_encode($failresult));
                file_put_contents("users.js", json_encode($users));
-               if($i==20){
+               if($i==50){
                     $buttoninfo['chat_id']=$chat_id;
                     $buttoninfo['parse_mode']='HTML';
                     $buttoninfo['text']="/news@bitokbitbot";
