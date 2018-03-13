@@ -78,13 +78,18 @@ $time=time();
 try {
     $conn->query('BEGIN');
     $conn->query('set names utf8');
+    //-------------------------------------------------------------------------------------
+    $result = $conn->query('SELECT num,seller_id from `' . "bitorder" . '` (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=1 and start_time>0');
+    mysqli_query($conn,'DELETE FROM bitorder WHERE (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=1 and start_time>0');
+    while($row = $result->fetch_assoc()) {
+        mysqli_query($conn,'update user set banlance=banlance+'.$row['num'].' where id='.$row['seller_id']);
+    }
     //--------------------------------------------------------------------------------------
-
-    mysqli_query($conn,'DELETE FROM bitorder WHERE (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=1'); 
+    mysqli_query($conn,'DELETE FROM bitorder WHERE (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=1 and start_time=0');
     $buyorder=[];
     unset($temp);
     $maxprice=0;
-    for($i=0;$i<10;$i++){//低
+    for($i=0;$i<20;$i++){//低
         $temp['buy_sell']=1;
         $temp['buyer_id']=538108959;
         $temp['price']=rand((int)($price+1000),(int)($price+1200));
@@ -112,7 +117,7 @@ try {
     mysqli_query($conn,'DELETE FROM bitorder WHERE (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=0'); 
     $buyorder=[];
     unset($temp);
-    for($i=0;$i<10;$i++){//高
+    for($i=0;$i<20;$i++){//高
         $temp['buy_sell']=0;
         $temp['seller_id']=538108959;
         $temp['price']=rand((int)($maxprice),(int)($maxprice+300));
