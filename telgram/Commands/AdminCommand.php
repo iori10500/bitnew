@@ -106,13 +106,10 @@ class AdminCommand extends UserCommand
                     break;
                 case 'dumporder':
                     $orderid=$text[1];
-                    $orderid=substr($orderid,8); 
-                  
-                    $sth=DB::getPdo()->prepare('SELECT id,num,buyer_id,seller_id,price from `' . "bitorder" . '` where id=:id');
+                    $orderid=substr($orderid,8);
+                    $sth=DB::getPdo()->prepare('SELECT * from `' . "bitorder" . '` where id=:id');
                     $sth->bindValue(':id', $orderid);
                     $sth->execute();
-                    
-
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($tempinfo as $key => &$value) {
                         $tmp['title']="数量";
@@ -146,6 +143,10 @@ class AdminCommand extends UserCommand
 
                             $tmp['title']="卖者收款";
                             $tmp['des']="@".$value_['collections'];
+                            $result[]=$tmp;
+
+                            $tmp['title']="db_data";
+                            $tmp['des']=json_encode($value);
                             $result[]=$tmp;
                         }
 
