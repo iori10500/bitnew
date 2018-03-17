@@ -115,7 +115,7 @@ try {
         } 
     }
     foreach ($buyorder as $key => $value) {
-        $time=date("Y-m-d H:i:s",(time()+rand(0,600)-600));
+        $time=date("Y-m-d H:i:s",(time()+rand(0,3600)-3600));
         mysqli_query($conn,'
                 INSERT INTO `' . "bitorder" . '`
                 (`buy_sell`, `price`,`buyer_id`, `num`,`state`,`owner`,`des`,`istest`,`create_time`)
@@ -140,7 +140,7 @@ try {
         $buyorder[]=$temp; 
     }
     foreach ($buyorder as $key => $value) {
-        $time=date("Y-m-d H:i:s",(time()+rand(0,600)-600));
+        $time=date("Y-m-d H:i:s",(time()+rand(0,3600)-3600));
         mysqli_query($conn,'
                 INSERT INTO `' . "bitorder" . '`
                 (`buy_sell`, `price`,`seller_id`, `num`,`state`,`owner`,`des`,`istest`,`create_time`)
