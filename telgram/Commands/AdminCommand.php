@@ -26,7 +26,7 @@ class AdminCommand extends UserCommand
             $text = explode('-',$text);
             $method=$text[0];
             switch ($method) {
-                case 'tobuy':
+                case 'tobuy'://买家胜利
                     $orderid=$text[1];
                     $orderid=substr($orderid,8);   
                     $sth=DB::getPdo()->prepare('SELECT id,num,buyer_id,seller_id from `' . "bitorder" . '` where id=:id');
@@ -79,7 +79,7 @@ class AdminCommand extends UserCommand
                     $data = windowsinfo($chat_id,'admin',[['title'=>'    ','des'=>'买者胜诉，订单发放成功']]);
                     # cod...
                     break;
-                 case 'tosell':
+                 case 'tosell'://卖家胜利
                     $orderid=$text[1];
                     $orderid=substr($orderid,8); 
                     $sth = DB::getPdo()->prepare('update bitorder set state=0 where id=:id and state=4');
