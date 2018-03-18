@@ -118,21 +118,21 @@ try {
 }
 $conn->close();
 foreach ($orderinfo as $key => $value) {
-    $orderinfo.="<tr>";
-    $orderinfo.="<th>".$value['orderid']."</th>";
-    $orderinfo.="<th>".$value['time']."</th>";
-    $orderinfo.="<th>".$value['des']."</th>";
-    $orderinfo.="<th>".$value['state']."</th>";
+    $content.="<tr>";
+    $content.="<th>".$value['orderid']."</th>";
+    $content.="<th>".$value['time']."</th>";
+    $content.="<th>".$value['des']."</th>";
+    $content.="<th>".$value['state']."</th>";
     if($value['over']){
         if($value['fuhao'] <0 ){
-            $orderinfo.="<th style='color:red'>".$value['fuhao']."</th>";
+            $content.="<th style='color:red'>".$value['fuhao']."</th>";
         }else{
-            $orderinfo.="<th style='color:green'>".$value['fuhao']."</th>";
+            $content.="<th style='color:green'>".$value['fuhao']."</th>";
         }
     }else{
-        $orderinfo.="<th>".$value['fuhao']."</th>";
+        $content.="<th>".$value['fuhao']."</th>";
     }
-    $orderinfo.="</tr>";
+    $content.="</tr>";
     
 }
 
