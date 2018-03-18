@@ -18,7 +18,7 @@ try {
     $conn->query('BEGIN');
     $conn->query('set names utf8');
     $result = $conn->query("SELECT `first_name`,`last_name`,`username`,`banlance`,`socked`,`walletid` 
-                    FROM `' . TB_USER . '`
+                    FROM user
                     WHERE `id` = $userid 
                     LIMIT 1");
     while($result && $row_ = $result->fetch_assoc()) {
