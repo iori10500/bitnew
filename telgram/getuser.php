@@ -1,4 +1,5 @@
 <?php
+require __DIR__. '/set.php';
 ini_set('date.timezone','Asia/Shanghai');
 $servername = "localhost";
 $username = "jack";
