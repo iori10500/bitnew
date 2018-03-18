@@ -67,7 +67,7 @@ try {
             if($userid == $row['buyer_id']){
                 $temp['des']='买入'.$row['num'];
                 $temp['fuhao']="+".$row['num'];
-                $temp['state']='等待 '.$row['buyer_id'].' 放行';
+                $temp['state']='等待 '.$row['seller_id'].' 放行';
                 $temp['over']=0;
             }else{
                 $temp['des']='卖出'.$row['num'];
