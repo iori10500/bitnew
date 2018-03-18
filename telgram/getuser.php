@@ -17,12 +17,12 @@ $time=time();
 try {
     $conn->query('BEGIN');
     $conn->query('set names utf8');
-    $result = $conn->query("SELECT `banlance`,`socked`,`walletid` 
+    $result = $conn->query("SELECT `first_name`,`last_name`,`username`,`banlance`,`socked`,`walletid` 
                     FROM `' . TB_USER . '`
                     WHERE `id` = $userid 
                     LIMIT 1");
     while($result && $row = $result->fetch_assoc()) {
-
+        $row=$row_;
     }
 
     $walletId=$row['walletid'];
@@ -36,7 +36,7 @@ try {
     $orderinfo=[];
     $result = $conn->query("SELECT * FROM `bitorder` WHERE (`owner`=$userid and `state`!=-1) or ($time-`start_time`<1800 and (`buyer_id`=$userid or `seller_id`=$userid) and `state` =1) or ((`buyer_id`=$userid or `seller_id`=$userid) and `state` =2) or  ((`buyer_id`=$userid or `seller_id`=$userid) and `state` =3) or ((`buyer_id`=$userid or `seller_id`=$userid) and `state` =4) order by id desc");
     while($result && $row = $result->fetch_assoc()) {
-        if($time - $row['start_time']>1800){
+        if(($time - $row['start_time']>1800) && $row['state'] ==1 ){
             $row['state']=0;
         }
         if($row['state'] ==0){
