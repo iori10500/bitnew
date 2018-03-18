@@ -21,7 +21,7 @@ try {
                     FROM `' . TB_USER . '`
                     WHERE `id` = $userid 
                     LIMIT 1");
-    while($result && $row = $result->fetch_assoc()) {
+    while($result && $row_ = $result->fetch_assoc()) {
         $row=$row_;
     }
 
