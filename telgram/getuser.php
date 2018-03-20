@@ -58,23 +58,27 @@ try {
             if($userid == $row['buyer_id']){
                 $temp['des']='买入'.$row['num'];
                 $temp['fuhao']="+".$row['num'];
+                $temp['duifang']=toa($row['seller_id']);
                 $temp['state']='等待您付款';
                 $temp['over']=0;
             }else{
                 $temp['des']='卖出'.$row['num'];
                 $temp['fuhao']="-".$row['num'];
-                $temp['state']='等待 '.toa($row['buyer_id']).' 付款';
+                $temp['duifang']=toa($row['buyer_id']);
+                $temp['state']='等待付款';
                 $temp['over']=0;
             }
         }else if($row['state'] ==2){
             if($userid == $row['buyer_id']){
                 $temp['des']='买入'.$row['num'];
                 $temp['fuhao']="+".$row['num'];
-                $temp['state']='等待 '.toa($row['seller_id']).' 放行';
+                $temp['duifang']=toa($row['seller_id']);
+                $temp['state']='等待放行';
                 $temp['over']=0;
             }else{
                 $temp['des']='卖出'.$row['num'];
                 $temp['fuhao']="-".$row['num'];
+                $temp['duifang']=toa($row['buyer_id']);
                 $temp['state']='等待您放行';
                 $temp['over']=0;
             }
@@ -82,30 +86,34 @@ try {
             if($row['buy_sell'] == 2){
                 $temp['des']='收入'.$row['num'];
                 $temp['fuhao']="+".$row['num'];
-                $temp['state']='交易完成';
+                $temp['duifang']=$row['des'];
+                $temp['state']='下级返利';
                 $temp['over']=1;
-
             }else if($userid == $row['buyer_id']){
                 $temp['des']='买入'.$row['num'];
                 $temp['fuhao']="+".$row['num'];
-                $temp['state']='交易完成 '.toa($row['seller_id']);
+                $temp['duifang']=toa($row['seller_id']);
+                $temp['state']='交易完成';
                 $temp['over']=1;
             }else{
                 $temp['des']='卖出'.$row['num'];
                 $temp['fuhao']="-".$row['num'];
-                $temp['state']='交易完成 '.toa($row['buyer_id']);
+                $temp['duifang']=toa($row['buyer_id']);
+                $temp['state']='交易完成';
                 $temp['over']=1;
             }
         }else if($row['state'] ==4){
             if($userid == $row['buyer_id']){
                 $temp['des']='买入'.$row['num'];
                 $temp['fuhao']="+".$row['num'];
-                $temp['state']='等待审核 '.toa($row['seller_id']);
+                $temp['duifang']=toa($row['seller_id']);
+                $temp['state']='等待审核';
                 $temp['over']=0;
             }else{
                 $temp['des']='卖出'.$row['num'];
                 $temp['fuhao']="-".$row['num'];
-                $temp['state']='等待审核 '.toa($row['buyer_id']);
+                $temp['duifang']=toa($row['buyer_id']);
+                $temp['state']='等待审核';
                 $temp['over']=0;
             }
         }
@@ -126,6 +134,7 @@ foreach ($orderinfo as $key => $value) {
     $content.="<th>".$value['time']."</th>";
     $content.="<th>".$value['des']."</th>";
     $content.="<th>".$value['state']."</th>";
+    $content.="<th>".$value['duifang']."</th>";
     if($value['over']){
         if($value['fuhao'] <0 ){
             $content.="<th style='color:red'>".$value['fuhao']."</th>";
@@ -154,6 +163,7 @@ $html="<html>
     <th>时间</th>
     <th>说明</th>
     <th>状态</th>
+    <th>对方</th>
     <th>数量</th>
   </tr>
  $content
