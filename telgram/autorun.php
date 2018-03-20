@@ -90,7 +90,7 @@ try {
     $conn->query('BEGIN');
     $conn->query('set names utf8');
     //-------------------------------------------------------------------------------------
-    $result = $conn->query('SELECT num,seller_id from `' . "bitorder" . '` (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=1 and start_time>0');
+    $result = $conn->query('SELECT num,seller_id from `' . "bitorder" . '` where (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=1 and start_time>0');
     mysqli_query($conn,'DELETE FROM bitorder WHERE (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=1 and start_time>0');
     while($result && $row = $result->fetch_assoc()) {
         mysqli_query($conn,'update user set banlance=banlance+'.$row['num'].' where id='.$row['seller_id']);
