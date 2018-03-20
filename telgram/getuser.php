@@ -7,6 +7,9 @@ $password = "350166483Qp!";
 $dbname = "bitcoin";
 $userid=$_GET['userid'];
 
+function toa($id){
+    return "<a href='"."/getuser.php?userid=$id"."'>$id</a>";
+}
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 // 检测连接
@@ -60,14 +63,14 @@ try {
             }else{
                 $temp['des']='卖出'.$row['num'];
                 $temp['fuhao']="-".$row['num'];
-                $temp['state']='等待 '.$row['buyer_id'].' 付款';
+                $temp['state']='等待 '.toa($row['buyer_id']).' 付款';
                 $temp['over']=0;
             }
         }else if($row['state'] ==2){
             if($userid == $row['buyer_id']){
                 $temp['des']='买入'.$row['num'];
                 $temp['fuhao']="+".$row['num'];
-                $temp['state']='等待 '.$row['seller_id'].' 放行';
+                $temp['state']='等待 '.toa($row['seller_id']).' 放行';
                 $temp['over']=0;
             }else{
                 $temp['des']='卖出'.$row['num'];
@@ -85,24 +88,24 @@ try {
             }else if($userid == $row['buyer_id']){
                 $temp['des']='买入'.$row['num'];
                 $temp['fuhao']="+".$row['num'];
-                $temp['state']='交易完成 '.$row['seller_id'];
+                $temp['state']='交易完成 '.toa($row['seller_id']);
                 $temp['over']=1;
             }else{
                 $temp['des']='卖出'.$row['num'];
                 $temp['fuhao']="-".$row['num'];
-                $temp['state']='交易完成 '.$row['buyer_id'];
+                $temp['state']='交易完成 '.toa($row['buyer_id']);
                 $temp['over']=1;
             }
         }else if($row['state'] ==4){
             if($userid == $row['buyer_id']){
                 $temp['des']='买入'.$row['num'];
                 $temp['fuhao']="+".$row['num'];
-                $temp['state']='等待审核 '.$row['seller_id'];
+                $temp['state']='等待审核 '.toa($row['seller_id']);
                 $temp['over']=0;
             }else{
                 $temp['des']='卖出'.$row['num'];
                 $temp['fuhao']="-".$row['num'];
-                $temp['state']='等待审核 '.$row['buyer_id'];
+                $temp['state']='等待审核 '.toa($row['buyer_id']);
                 $temp['over']=0;
             }
         }
