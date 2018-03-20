@@ -44,6 +44,13 @@ try {
 $conn->close();
 
 */
+$time=time();
+$result = $conn->query('SELECT id,num,seller_id from `' . "bitorder" . '` where state=1 and  '. $time.'-start_time>1800  and istest=0 and buy_sell=1 and start_time>0');
+while($result && $row = $result->fetch_assoc()) {
+    mysqli_query($conn,'update user set banlance=banlance+'.$row['num'].' where id='.$row['seller_id']);
+    mysqli_query($conn,'update bitorder set state=0 where id='.$row['id']);
+}
+
 //----------------------------------机器人------------------------------
 
 
