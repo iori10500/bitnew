@@ -554,7 +554,9 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
             $pdo->beginTransaction();$code="0000";
             $time=time();
             $sth = $pdo->prepare('
-                SELECT * from `' . "bitorder" . '` where id=:id  and state=2 and :time-start_time<1800 limit 1');
+                SELECT * from `' . "bitorder" . '` where id=:id  and state=2 limit 1');
+//            $sth = $pdo->prepare('
+//                SELECT * from `' . "bitorder" . '` where id=:id  and state=2 and :time-start_time<1800 limit 1');
             $sth->bindValue(':id', $orderid);
             $sth->bindValue(':time', $time);
             $sth->execute();$code=($code | $sth->errorCode());
