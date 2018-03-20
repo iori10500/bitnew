@@ -27,6 +27,7 @@ class NewsCommand extends UserCommand
               $users=file_get_contents("users.js");
               $users=json_decode($users,true);
                $news=file_get_contents("news");
+               $blockuser=file_exists("blockusers.js")?json_decode(file_get_contents("blockusers.js"),true):[];
                $sendresult=[];
                for($i=0;$i<50;$i++){
                     $tempuser = array_pop($users);
@@ -36,7 +37,11 @@ class NewsCommand extends UserCommand
                           Request::sendPhoto($buttoninfo);        // Send me
                         */
                         $temp = Request::sendMessage(windowsinfo($tempuser,'比特快讯',[['title'=>'    ','des'=>$news]]));
-                        $sendresult[]=$temp->ok;
+                        if($temp->ok){
+                            $sendresult[]="1";
+                        }else{
+                            $blockuser[]=$tempuser;
+                        }
                         $failresult[]=$temp->description;
                     }else{
                         break;
@@ -45,6 +50,7 @@ class NewsCommand extends UserCommand
                }
                file_put_contents("failresult", json_encode($failresult));
                file_put_contents("users.js", json_encode($users));
+                file_put_contents("blockusers.js", json_encode($blockuser));
                if($i==50){
                     $buttoninfo['chat_id']=$chat_id;
                     $buttoninfo['parse_mode']='HTML';
@@ -64,7 +70,8 @@ class NewsCommand extends UserCommand
               foreach ($users as $key => $value) {
                 $userss[]=$value['id'];
               }
-              file_put_contents("users.js", json_encode($userss));
+              $blankuser=file_exists("blockusers.js")?json_decode(file_get_contents("blockusers.js"),true):[];
+              file_put_contents("users.js", json_encode(array_diff($userss,$blankuser)));
             }
 
         }
