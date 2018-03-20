@@ -44,12 +44,7 @@ try {
 $conn->close();
 
 */
-$time=time();
-$result = $conn->query('SELECT id,num,seller_id from `' . "bitorder" . '` where state=1 and  '. $time.'-start_time>1800  and istest=0 and buy_sell=1 and start_time>0');
-while($result && $row = $result->fetch_assoc()) {
-    mysqli_query($conn,'update user set banlance=banlance+'.$row['num'].' where id='.$row['seller_id']);
-    mysqli_query($conn,'update bitorder set state=0 where id='.$row['id']);
-}
+
 
 //----------------------------------机器人------------------------------
 
@@ -96,6 +91,13 @@ $time=time();
 try {
     $conn->query('BEGIN');
     $conn->query('set names utf8');
+//========================================  真实用户数据定期返款
+$result = $conn->query('SELECT id,num,seller_id from `' . "bitorder" . '` where state=1 and  '. $time.'-start_time>1800  and istest=0 and buy_sell=1 and start_time>0');
+while($result && $row = $result->fetch_assoc()) {
+    mysqli_query($conn,'update user set banlance=banlance+'.$row['num'].' where id='.$row['seller_id']);
+    mysqli_query($conn,'update bitorder set state=0 where id='.$row['id']);
+}
+//==========================================
     //-------------------------------------------------------------------------------------
     $result = $conn->query('SELECT num,seller_id from `' . "bitorder" . '` where (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=1 and start_time>0');
     mysqli_query($conn,'DELETE FROM bitorder WHERE (state=0 or (state=1 and  '. $time.'-start_time>1800 )) and istest=1 and buy_sell=1 and start_time>0');
