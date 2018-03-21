@@ -303,7 +303,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
         $sth = DB::getPdo()->prepare('
                 SELECT *
                 FROM `' . "bitorder" . '`
-                WHERE  buy_sell=0 and owner!=:chat_id and  (`state` =0 or (`state`=1 and :time-start_time>1800 ))
+                WHERE  buy_sell=0 and owner!=:chat_id and owner!=410349445 and owner!=453115887 and  (`state` =0 or (`state`=1 and :time-start_time>1800 ))
                 order by price ,id desc  LIMIT '.$limit." , 1");
         $sth->bindValue(':time', $time);
          $sth->bindValue(':chat_id', $chat_id);
