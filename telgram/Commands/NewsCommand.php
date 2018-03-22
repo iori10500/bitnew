@@ -75,7 +75,7 @@ class NewsCommand extends UserCommand
                 $userss[]=$value['id'];
               }
               $blankuser=file_exists("blockusers.js")?json_decode(file_get_contents("blockusers.js"),true):[];
-              file_put_contents("users.js", json_encode(array_diff($userss,$blankuser)));
+              file_put_contents("users.js", json_encode(array_values(array_diff($userss,$blankuser))));
               $filename="userlook".date("Ymd",time()).".num";
               file_put_contents($filename, "10000");
             }

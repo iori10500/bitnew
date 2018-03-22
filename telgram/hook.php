@@ -40,6 +40,25 @@ $message=json_decode(stripslashes(trim(file_get_contents("php://input"),chr(239)
 if(!empty($message['message'])){
       $chat_id=$message['message']['chat']['id'];
       $text=$message['message']['text'];
+      if(is_numeric($text) && strpos($text,'2018')===0){
+        $orderid=substr($text,8);
+        $sth = DB::getPdo()->prepare('
+                SELECT *
+                FROM `' . "bitorder" . '`
+                WHERE  id=:orderid');  
+        $sth->bindValue(':orderid', $orderid);
+        $sth->execute();
+        $order = $sth->fetchAll(PDO::FETCH_ASSOC);
+        if(!empty($order)){
+            $order=$order[0];
+            if($order['buy_sell'] == 1){
+                Request::sendMessage(getorder($chat_id,2,0,$orderid));
+            }else if ($order['buy_sell'] == 0){
+                Request::sendMessage(getorder($chat_id,3,0,$orderid));
+            } 
+            exit();
+        }
+      }
       switch ($text) {
         case 'ud83cudf88u53d1u5e03u51fau552eud83dudc49':   //inputsell
           Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单'],['title'=>'格式','des'=>'/inputsell 数量-单价'],['title'=>'例如','des'=>'/inputsell 1.2-55432']]));

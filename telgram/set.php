@@ -277,12 +277,23 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
 
     }else if($whorder == 2){//寻找买入订单  自己卖出
         $time=time();
-        $sth = DB::getPdo()->prepare('
+        if($orderid){
+             $sth = DB::getPdo()->prepare('
+                SELECT *
+                FROM `' . "bitorder" . '`
+                WHERE  buy_sell=1 and owner!=:chat_id and (`state` =0 or  (`state`=1 and  :time-start_time>1800 )) and id=:orderid 
+                order by price desc,id desc   LIMIT '.$limit." , 1");
+            $sth->bindValue(':time', $time);
+            $sth->bindValue(':orderid', $orderid);
+        }else{
+            $sth = DB::getPdo()->prepare('
                 SELECT *
                 FROM `' . "bitorder" . '`
                 WHERE  buy_sell=1 and owner!=:chat_id and (`state` =0 or  (`state`=1 and  :time-start_time>1800 ))
                 order by price desc,id desc   LIMIT '.$limit." , 1");
-        $sth->bindValue(':time', $time);
+            $sth->bindValue(':time', $time);
+        }
+       
         $sth->bindValue(':chat_id', $chat_id);
         $sth->execute();
         $order = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -300,12 +311,22 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
 
     }else if($whorder == 3){//寻找卖出订单  自己买入
          $time=time();
-        $sth = DB::getPdo()->prepare('
+         if($orderid){
+            $sth = DB::getPdo()->prepare('
                 SELECT *
                 FROM `' . "bitorder" . '`
-                WHERE  buy_sell=0 and owner!=:chat_id and  (`state` =0 or (`state`=1 and :time-start_time>1800 ))
+                WHERE  buy_sell=0 and owner!=:chat_id and owner!=410349445 and owner!=453115887 and  (`state` =0 or (`state`=1 and :time-start_time>1800 )) and id=:orderid 
                 order by price ,id desc  LIMIT '.$limit." , 1");
-        $sth->bindValue(':time', $time);
+            $sth->bindValue(':time', $time);
+            $sth->bindValue(':orderid', $orderid);
+         }else{
+            $sth = DB::getPdo()->prepare('
+                SELECT *
+                FROM `' . "bitorder" . '`
+                WHERE  buy_sell=0 and owner!=:chat_id and owner!=410349445 and owner!=453115887 and  (`state` =0 or (`state`=1 and :time-start_time>1800 ))
+                order by price ,id desc  LIMIT '.$limit." , 1");
+            $sth->bindValue(':time', $time);
+         }
          $sth->bindValue(':chat_id', $chat_id);
         $sth->execute();
         $order = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -461,11 +482,6 @@ function cancelpay($chat_id,$orderid){//取消1状态付款
                     $sth = $pdo->prepare('update bitorder set state=0 where id=:id and buyer_id=:buyer_id and state=1');
                     $sth->bindValue(':id', $orderid);
                     $sth->bindValue(':buyer_id', $chat_id);
-                    $sth->execute();$code=($code | $sth->errorCode());
-
-                    $sth = $pdo->prepare('update user set banlance=banlance+:num where id=:id');
-                    $sth->bindValue(':id', $orderid);
-                    $sth->bindValue(':num', $tempinfo['num']);
                     $sth->execute();$code=($code | $sth->errorCode());
 
                     $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'已取消支付']]);
