@@ -277,12 +277,23 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
 
     }else if($whorder == 2){//寻找买入订单  自己卖出
         $time=time();
-        $sth = DB::getPdo()->prepare('
+        if($orderid){
+             $sth = DB::getPdo()->prepare('
+                SELECT *
+                FROM `' . "bitorder" . '`
+                WHERE  buy_sell=1 and owner!=:chat_id and (`state` =0 or  (`state`=1 and  :time-start_time>1800 )) and id=:orderid 
+                order by price desc,id desc   LIMIT '.$limit." , 1");
+            $sth->bindValue(':time', $time);
+            $sth->bindValue(':orderid', $orderid);
+        }else{
+            $sth = DB::getPdo()->prepare('
                 SELECT *
                 FROM `' . "bitorder" . '`
                 WHERE  buy_sell=1 and owner!=:chat_id and (`state` =0 or  (`state`=1 and  :time-start_time>1800 ))
                 order by price desc,id desc   LIMIT '.$limit." , 1");
-        $sth->bindValue(':time', $time);
+            $sth->bindValue(':time', $time);
+        }
+       
         $sth->bindValue(':chat_id', $chat_id);
         $sth->execute();
         $order = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -300,12 +311,22 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
 
     }else if($whorder == 3){//寻找卖出订单  自己买入
          $time=time();
-        $sth = DB::getPdo()->prepare('
+         if($orderid){
+            $sth = DB::getPdo()->prepare('
+                SELECT *
+                FROM `' . "bitorder" . '`
+                WHERE  buy_sell=0 and owner!=:chat_id and owner!=410349445 and owner!=453115887 and  (`state` =0 or (`state`=1 and :time-start_time>1800 )) and id=:orderid 
+                order by price ,id desc  LIMIT '.$limit." , 1");
+            $sth->bindValue(':time', $time);
+            $sth->bindValue(':orderid', $orderid);
+         }else{
+            $sth = DB::getPdo()->prepare('
                 SELECT *
                 FROM `' . "bitorder" . '`
                 WHERE  buy_sell=0 and owner!=:chat_id and owner!=410349445 and owner!=453115887 and  (`state` =0 or (`state`=1 and :time-start_time>1800 ))
                 order by price ,id desc  LIMIT '.$limit." , 1");
-        $sth->bindValue(':time', $time);
+            $sth->bindValue(':time', $time);
+         }
          $sth->bindValue(':chat_id', $chat_id);
         $sth->execute();
         $order = $sth->fetchAll(PDO::FETCH_ASSOC);
