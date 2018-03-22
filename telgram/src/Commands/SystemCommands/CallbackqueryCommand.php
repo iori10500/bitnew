@@ -305,7 +305,7 @@ class CallbackqueryCommand extends SystemCommand
                 break;
             case 'contentus'://联系我们
 
-                $datamessage=windowsinfo($sendtomessageid,'联系我们',[['title'=>'联系邮箱','des'=>'bitneworld@gmail.com'],['title'=>'联系客服1','des'=>'@earthmoon'],['title'=>'联系客服2','des'=>'@dianbi'],['title'=>'联系客服3','des'=>'@JJJJJack ']]);
+                $datamessage=windowsinfo($sendtomessageid,'联系我们',[['title'=>'联系邮箱','des'=>'bitneworld@gmail.com'],['title'=>'联系客服1','des'=>'@earthmoon'],['title'=>'联系客服2','des'=>'@JJJJJack'],['title'=>'联系客服3','des'=>'@dianbi ']]);
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
