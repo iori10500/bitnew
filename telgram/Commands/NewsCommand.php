@@ -39,7 +39,7 @@ class NewsCommand extends UserCommand
                           Request::sendPhoto($buttoninfo);        // Send me
                         */
                          $num+=rand(50,100);
-                        $temp = Request::sendMessage(windowsinfo($tempuser,'比特快讯',[['title'=>'    ','des'=>$news]],[[['text'=>'👀'.$num]]]));
+                        $temp = Request::sendMessage(windowsinfo($tempuser,'比特快讯',[['title'=>'    ','des'=>$news]],[[['text'=>"👀$num",'callback_data'=>"1"]]]));
                         if($temp->ok){
                             $sendresult[]="1";
                         }else{
