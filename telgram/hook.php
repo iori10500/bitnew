@@ -91,42 +91,12 @@ if(!empty($message['message'])){
 
           Request::sendMessage(windowsinfo($chat_id,'邀请好友',[['title'=>'    ','des'=>'邀请好友加入,您的下级每发生一笔订单,您将获得0.0001btc奖励']]));        // Send message!
           $time=time(); 
-          if($chat_id == 475543325){
-              Request::sendMessage( windowsinfo($chat_id,'邀请链接    @bitokbitbot',[['title'=>$username,'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>电币比特币c2c交易平台</a>"],['title'=>'    ','des'=>' @bitokbitbot ']]));
+          if($chat_id == 468426414){
+              Request::sendMessage( windowsinfo($chat_id,'邀请链接',[['title'=>$username,'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>邀请好友就送0.0001btc</a>"],['title'=>'    ','des'=>' @bitokbitbot ']]));
           }else{
-             Request::sendMessage( windowsinfo($chat_id,'邀请链接    @bitokbitbot',[['title'=>$username,'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>电币比特币c2c交易平台</a>"]]));
+             Request::sendMessage( windowsinfo($chat_id,'邀请链接',[['title'=>$username,'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>邀请好友就送0.0001btc</a>"]]));
           }
                  // Send message!
-          if(0 && $chat_id == 475543325){
-           // Request::sendMessage(windowsinfo(361550111,'订单信息',[['title'=>'    ','des'=>'尊敬的用户您好！我们发现您存在伪交易，现已回退您的订单至投诉状态，如有任何问题请邮件告知我们，邮件内容>请详细备注订单号，问题说明。我们将在2个工作日内尽快给与答复，祝你交易愉快！谢谢']]));
-            if(file_exists("users.js")){
-              $users=file_get_contents("users.js");
-              $users=json_decode($users,true);
-               $news=file_get_contents("news");
-               for($i=0;$i<10;$i++){
-                    $tempuser = array_pop($users);
-                     /*        $buttoninfo['chat_id']=$tempuser;
-                      $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
-                      Request::sendPhoto($buttoninfo);        // Send me
-                    */
-                    Request::sendMessage(windowsinfo($tempuser,'比特快讯',[['title'=>'    ','des'=>$news]]));
-               }
-               file_put_contents("users.js", json_encode($users));
-
-            }else{
-               $sth = DB::getPdo()->prepare('
-                    SELECT id
-                    FROM `' . "user" . '`
-                    WHERE  1 ');
-              $sth->execute();
-              $users = $sth->fetchAll(PDO::FETCH_ASSOC);
-              $userss=[];
-              foreach ($users as $key => $value) {
-                $userss[]=$value['id'];
-              }
-              file_put_contents("users.js", json_encode($userss));
-            }
-          }
           break;
         default:
           $pdo  = DB::getPdo();
