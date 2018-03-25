@@ -107,6 +107,25 @@ function windowsinfo($chat_id,$title,$data,$button=false){
     return $buttoninfo;
     
 }
+function wactivity($chat_id,$title,$data,$button=false){
+    $buttoninfo['chat_id']=$chat_id;
+    $buttoninfo['parse_mode']='HTML';
+    $text="<strong>$title</strong><pre>
+    \n</pre>";
+    foreach($data as $one){
+        $flag=empty(trim($one['title']))?"":":";
+        $text.=("<b color='red'>".$one['title']."</b>".$flag."<pre> </pre>".$one['des']."<pre>
+    \n</pre>");
+    }
+    $buttoninfo['text']=$text;
+    if($button){
+       $inline_keyboard=['inline_keyboard'=>$button]; 
+        $buttoninfo['reply_markup']=$inline_keyboard;
+    }
+   
+    return $buttoninfo;
+    
+}
 function startwindows($chat_id,$title,$button=false){
     $buttoninfo['chat_id']=$chat_id;
     $buttoninfo['text']="欢迎加入电币c2c交易平台";
