@@ -110,11 +110,11 @@ function windowsinfo($chat_id,$title,$data,$button=false){
 function wactivity($chat_id,$title,$data,$button=false){
     $buttoninfo['chat_id']=$chat_id;
     $buttoninfo['parse_mode']='HTML';
-    $text="<strong>$title</strong><pre>
+    $text="<code color='red'>$title</code><pre>
     \n</pre>";
     foreach($data as $one){
         $flag=empty(trim($one['title']))?"":":";
-        $text.=("<b color='red'>".$one['title']."</b>".$flag."<pre> </pre>".$one['des']."<pre>
+        $text.=("<b>".$one['title']."</b>".$flag."<pre> </pre>".$one['des']."<pre>
     \n</pre>");
     }
     $buttoninfo['text']=$text;
