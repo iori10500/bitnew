@@ -27,9 +27,13 @@ class GoodluckCommand extends UserCommand
         }else{
             $num=10000;
         }
-        $num+=rand(50,100);
+        $time=time();
+        $tem=date("i",$time);
+        if($tem % 2){
+           $num+=rand(50,100); 
+        }
         file_put_contents($filename, $num);
-        $time=date("Y-m-d H:i:s");
+        $time=date("Y-m-d H:i:s",$time);
         if($time >"2018-04-05 10:00:00" && $time < "2018-04-05 10:30:00"){
             $buttoninfo['chat_id']=$chat_id;
             $buttoninfo['parse_mode']='HTML';
