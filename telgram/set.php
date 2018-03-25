@@ -452,6 +452,7 @@ function finishpay($chat_id,$orderid){//完成1状态付款
                 $sth->bindValue(':buyer_id', $chat_id);
                 $sth->execute();$code=($code | $sth->errorCode());
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);  
+                Request::sendMessage(getorder($chat_id,1,0,$tempinfo['id']));
                 Request::sendMessage(getorder($tempinfo['seller_id'],1,0,$tempinfo['id']));
                 Request::sendMessage(windowsinfo(484534434,"付款信息",[['title'=>'    ','des'=>'用户付款请核实'],['title'=>'单号','des'=>date("Ymd",time()).$orderid]]));
                 Request::sendMessage(windowsinfo(475543325,"付款信息",[['title'=>'    ','des'=>'用户付款请核实'],['title'=>'单号','des'=>date("Ymd",time()).$orderid]]));
