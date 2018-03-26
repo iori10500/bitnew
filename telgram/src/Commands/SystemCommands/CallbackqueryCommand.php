@@ -219,8 +219,15 @@ class CallbackqueryCommand extends SystemCommand
                 break;
             case 'finishpay':
                 $orderid=$data[1];
-                Request::sendMessage(finishpay($user_id,$orderid));        // Send me me
+                Request::sendMessage(windowsinfo($user_id,"温馨提示",[['title'=>'        ','des'=>"请确保您已将指定款项汇入卖家指定收款账号,否则卖家将发起申诉"]],[[['text'=>'我点错了','callback_data'=>"myerror"]],[['text'=>'确定','callback_data'=>"finishpaycom-".$orderid]]]));        // Send me me
 
+                break;
+            case 'finishpaycom':
+                $orderid=$data[1];
+               Request::sendMessage(finishpay($user_id,$orderid));        // Send me me
+                break;
+            case 'myerror':
+                Request::sendMessage(windowsinfo($user_id,"温馨提示",[['title'=>'        ','des'=>"请重新操作订单"]]));        // Send me me
                 break;
             case 'adminorder':
                 $orderid=$data[1];
