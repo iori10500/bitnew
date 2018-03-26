@@ -64,7 +64,7 @@ class SendCommand extends UserCommand
                             return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效地址']]));
                         }
                         if($remote<1){
-                            return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效金额,最低发送1个btc']]));   
+                            return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效金额,最低发送1个BTC']]));   
                         }
                         $sth = $pdo->prepare('update user set banlance=banlance-:fee where id=:id ');
                         $sth->bindValue(':id', $message->getFrom()->getId());

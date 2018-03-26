@@ -51,8 +51,8 @@ class AdminCommand extends UserCommand
                         $sth->bindValue(':buyer_id', $value['buyer_id']);
                         $sth->bindValue(':seller_id', $value['seller_id']);
                         $sth->execute();
-                        Request::sendMessage(windowsinfo($value['buyer_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单的btc已发放到您的账户']]));
-                        Request::sendMessage(windowsinfo($value['seller_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单的btc已放行，信用值减-']]));
+                        Request::sendMessage(windowsinfo($value['buyer_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单的BTC已发放到您的账户']]));
+                        Request::sendMessage(windowsinfo($value['seller_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单的BTC已放行，信用值减-']]));
                         $tempinfo_ = $sth->fetchAll(PDO::FETCH_ASSOC);
                          foreach ($tempinfo_ as $key => $value_) {
                             if($value_['parentId'] && ($value_['parentId'] != $value_['id'])){
@@ -70,7 +70,7 @@ class AdminCommand extends UserCommand
                                     $sth->bindValue(':first_name', $value_['first_name']);
                                     $sth->execute();
 
-                                    Request::sendMessage(windowsinfo($value_['parentId'],'下级返利',[['title'=>'    ','des'=>'您下级已成交一单，获得返利0.0001btc，已发放至您账户']]));
+                                    Request::sendMessage(windowsinfo($value_['parentId'],'下级返利',[['title'=>'    ','des'=>'您下级已成交一单，获得返利0.0001BTC，已发放至您账户']]));
                             }
 
                          }

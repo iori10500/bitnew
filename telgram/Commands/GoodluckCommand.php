@@ -54,10 +54,10 @@ class GoodluckCommand extends UserCommand
         $temp['des']="2018-04-05 10:00 AM 至 2018-04-05 10:30 AM";
         $info[]=$temp;
         $temp['title']="抽奖条件";
-        $temp['des']="截止2018年4月5日10:00 AM时,下级人数大于5,且交易次数大于20次,且账户流动余额大于3btc";
+        $temp['des']="截止2018年4月5日10:00 AM时,下级人数大于5,且交易次数大于20次,且账户流动余额大于3BTC";
         $info[]=$temp;
         $temp['title']="活动奖品";
-        $temp['des']="0.01btc , 0.1btc , 1btc , 2btc";
+        $temp['des']="0.01BTC , 0.1BTC , 1BTC , 2BTC";
         $info[]=$temp;
         $temp['title']="参与方式";
         $temp['des']="直接回复命令  /goodluck 即可参与";

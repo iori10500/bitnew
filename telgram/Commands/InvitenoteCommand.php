@@ -23,7 +23,7 @@ class InvitenoteCommand extends UserCommand
 
         $data = [                                  // Set up the new message data
             'chat_id' => $chat_id,                 // Set Chat ID to send the message to
-            'text'    => '<code style="background-color:#f80;color:#0000FF;width:100px">邀请好友                                            </code><b>邀请好友加入,您的下级每发生一笔订单,您将获得0.00001btc奖励</b>', // Set message to send
+            'text'    => '<code style="background-color:#f80;color:#0000FF;width:100px">邀请好友                                            </code><b>邀请好友加入,您的下级每发生一笔订单,您将获得0.00001BTC奖励</b>', // Set message to send
 	    'parse_mode' => 'HTML',
 	   // 'reply_markup'=>['keyboard'=>[[['text'=>'获得邀请链接','switch_inline_query'=>'t.me/bitokbitbot']]]]   
 ];
