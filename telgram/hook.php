@@ -51,6 +51,7 @@ if(!empty($message['message'])){
         $order = $sth->fetchAll(PDO::FETCH_ASSOC);
         if(!empty($order)){
             $order=$order[0];
+            Request::sendMessage(getorder($chat_id,1,0,$orderid));
             if($order['buy_sell'] == 1){
                 Request::sendMessage(getorder($chat_id,2,0,$orderid));
             }else if ($order['buy_sell'] == 0){
