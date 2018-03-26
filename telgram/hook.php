@@ -89,12 +89,12 @@ if(!empty($message['message'])){
          $sth->execute();
          $username = $sth->fetchColumn();
 
-          Request::sendMessage(windowsinfo($chat_id,'邀请好友',[['title'=>'    ','des'=>'邀请好友加入,您的下级每发生一笔订单,您将获得0.0001btc奖励']]));        // Send message!
+          Request::sendMessage(windowsinfo($chat_id,'邀请好友',[['title'=>'    ','des'=>'邀请好友加入,您的下级每发生一笔订单,您将获得0.0001BTC奖励']]));        // Send message!
           $time=time(); 
           if($chat_id == 468426414){
-              Request::sendMessage( windowsinfo($chat_id,'邀请链接',[['title'=>$username,'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>邀请好友就送0.0001btc</a>"],['title'=>'    ','des'=>' @bitokbitbot ']]));
+              Request::sendMessage( windowsinfo($chat_id,'邀请链接',[['title'=>$username,'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>我刚刚在电币领到了BTC，现在您每个下级发生一笔订单，您将收到0.0001BTC，发生100单将收到0.01BTC，邀请人数不设上限，快，一起来赚BTC！</a>"],['title'=>'    ','des'=>' @bitokbitbot ']]));
           }else{
-             Request::sendMessage( windowsinfo($chat_id,'邀请链接',[['title'=>$username,'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>邀请好友就送0.0001btc</a>"]]));
+             Request::sendMessage( windowsinfo($chat_id,'邀请链接',[['title'=>$username,'des'=>"<a href='https://t.me/bitokbitbot?start=$chat_id&time=$time'>我刚刚在电币领到了BTC，现在您每个下级发生一笔订单，您将收到0.0001BTC，发生100单将收到0.01BTC，邀请人数不设上限，快，一起来赚BTC！</a>"]]));
           }
                  // Send message!
           break;
