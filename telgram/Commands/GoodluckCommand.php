@@ -34,27 +34,27 @@ class GoodluckCommand extends UserCommand
         }
         file_put_contents($filename, $num);
         $time=date("Y-m-d H:i:s",$time);
-        if($time >"2018-04-05 10:00:00" && $time < "2018-04-05 10:30:00"){
+        if($time >"2018-04-30 10:00:00" && $time < "2018-04-30 10:30:00"){
             $buttoninfo['chat_id']=$chat_id;
             $buttoninfo['parse_mode']='HTML';
             $buttoninfo['text']="对不起！您不满足本次活动条件,期待下次活动吧！";
             Request::sendMessage($buttoninfo);        // 
-        }else if($time >"2018-04-05 10:00:00"){
+        }else if($time >"2018-04-30 10:00:00"){
             $buttoninfo['chat_id']=$chat_id;
             $buttoninfo['parse_mode']='HTML';
             $buttoninfo['text']="对不起！本次活动结束,期待下次活动吧！";
             Request::sendMessage($buttoninfo);        // 
-        }else if($time < "2018-04-05 10:30:00"){
+        }else if($time < "2018-04-30 10:30:00"){
             $buttoninfo['chat_id']=$chat_id;
             $buttoninfo['parse_mode']='HTML';
             $buttoninfo['text']="活动即将开始，敬请期待吧!";
             Request::sendMessage($buttoninfo);        // 
         }
         $temp['title']="活动时间";
-        $temp['des']="2018-04-05 10:00 AM 至 2018-04-05 10:30 AM";
+        $temp['des']="2018-04-30 10:00 AM 至 2018-04-30 10:30 AM";
         $info[]=$temp;
         $temp['title']="抽奖条件";
-        $temp['des']="截止2018年4月5日10:00 AM时,下级人数大于5,且交易次数大于20次,且账户流动余额大于3BTC";
+        $temp['des']="截止2018年4月30日10:00 AM时,下级人数大于5,且交易次数大于20次,且账户流动余额大于3BTC";
         $info[]=$temp;
         $temp['title']="活动奖品";
         $temp['des']="0.01BTC , 0.1BTC , 1BTC , 2BTC";
