@@ -85,6 +85,7 @@ $shoukuanmark=[
     '微信：wendyfe12478 备注订单号码，5万以上分开转',//吴文丰
     '微信：zy940814  人一直在',//杨青山
     '支付宝：18080520660  杨青山  到账立马放行',
+    '中国银行 6216603200001253387  谢天明 '
 ];
 
 $time=time();
@@ -144,7 +145,8 @@ while($result && $row = $result->fetch_assoc()) {
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
         $temp['owner']=475543325;
-        $temp['des']=$shoukuanmark[rand(0,16)];
+        $count=count($shoukuanmark)-1;
+        $temp['des']=$shoukuanmark[rand(0,$count)];
         $temp['istest']=1;   
         $buyorder[]=$temp; 
     }
