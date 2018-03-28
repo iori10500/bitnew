@@ -62,6 +62,6 @@ class GoodluckCommand extends UserCommand
         $temp['title']="参与方式";
         $temp['des']="直接回复命令  /goodluck 即可参与";
         $info[]=$temp;
-        return Request::sendMessage(wactivity($chat_id,'幸运大转盘',$info,[[['text'=>"👀$num",'callback_data'=>"1"]]]));        // Send message!
+        return Request::sendMessage(wactivity($chat_id,'幸运大抽奖',$info,[[['text'=>"👀$num",'callback_data'=>"1"]]]));        // Send message!
     }
 }

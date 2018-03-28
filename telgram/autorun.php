@@ -68,11 +68,11 @@ $shoukuanmark=[
    // '支付宝：18361084095@163.com  张兴荣  大于5万分开转',
    // 'jackshanyeshuzi@gmail.com   支付宝名  李鸣 备注订单号',
    // '支付宝：  赵建国   bitnnw@gmail.com 大于5万分开转',
-        //#'支付宝：63-9458149311  王俊明',-
-        //#'支付宝:  63-9458149312  柯丰',-
-        //#'支付宝账号  63-9055596065 张悠然', -
-        //#'支付宝账号  evalijiajia@gmail.com  李佳',//谢天明 --
-        //#'支付宝：houxiaojack@gmail.com  郭小琴',//张武宗 -
+        //#'支付宝：63-9458149311  王俊明',
+        //#'支付宝:  63-9458149312  柯丰',
+        //#'支付宝账号  63-9055596065 张悠然',
+        //#'支付宝账号  evalijiajia@gmail.com  李佳',
+        //#'支付宝：houxiaojack@gmail.com  郭小琴',
     //-----------------------------------------------------------------------
     '微信： QP350166483 大于5万分开转账，量大私下联系，平台交易',
     '支付宝：1107969784@qq.com  谢天明  大于5万分多次转账',
@@ -96,10 +96,10 @@ try {
     $conn->query('BEGIN');
     $conn->query('set names utf8');
 //========================================  真实用户数据定期返款
-$result = $conn->query('SELECT id,num,seller_id from `' . "bitorder" . '` where state=1 and  '. $time.'-start_time>1800  and istest=0 and buy_sell=1 and start_time>0');
+$result = $conn->query('SELECT id,num,seller_id from `' . "bitorder" . '` where state=1 and  '. $time.'-start_time>1800   and buy_sell=1 and start_time>0');
 while($result && $row = $result->fetch_assoc()) {
     mysqli_query($conn,'update user set banlance=banlance+'.$row['num'].' where id='.$row['seller_id']);
-    mysqli_query($conn,'update bitorder set state=0 where id='.$row['id']);
+    mysqli_query($conn,'update bitorder set state=-1 where id='.$row['id']);
 }
 //==========================================
     //-------------------------------------------------------------------------------------
