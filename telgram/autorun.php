@@ -48,6 +48,14 @@ $conn->close();
 
 //----------------------------------机器人------------------------------
 
+$time=time();
+$hour=date("H",$time);
+$min=date("i",$time);
+if($hour >2 && $hour <6){
+    if($min/10 < 5){
+        exit();
+    }
+}
 
 $tempbuy=file_get_contents("https://api-otc.huobi.pro/v1/otc/trade/list/public?coinId=1&tradeType=1&currentPage=1&payWay=&country=&merchant=1&online=1&range=0");
 $temp=json_decode($tempbuy,true);
