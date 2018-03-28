@@ -56,7 +56,7 @@ class SendCommand extends UserCommand
                     if(($yuefromwallet + $userinfo[0]['banlance'])>=($remote+$this->minerfee)){
                         file_put_contents("tikuan",json_encode([$yuefromwallet,$userinfo[0]['banlance'],$remote,$this->minerfee]));
                         //$verifyaddress = json_decode(post("https://www.bitgo.com:3080/api/v1/verifyaddress",['address'=>$address]),true);
-                        if(strlen($address) != 34 ){//地址验证
+                        if(!preg_match("/^[A-Za-z0-9]{34,34}$/",$address)){//地址验证
                             return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效地址']]));
                         }
                         if($remote<1 && in_array($chat_id,[410349445,453115887])){
