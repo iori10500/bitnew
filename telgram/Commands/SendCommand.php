@@ -49,10 +49,6 @@ class SendCommand extends UserCommand
                     $sth->bindValue(':id', $message->getFrom()->getId());
                     $sth->execute();$code=($code | $sth->errorCode());
                     $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
-                    if($userinfo[0]['socked']){
-                        $datamessage=windowsinfo($message->getFrom()->getId(),'发送比特币',[['title'=>'    ','des'=>'对不起您有投诉订单等待处理，暂时无法提币']]);
-                        return Request::sendMessage($datamessage);        // Send me
-                    }
                     $walletId=$userinfo[0]['walletId'];
                     $yueinfo = yue($walletId);
                     $yuefromwallet=(float)$yueinfo['balance'];
@@ -63,9 +59,25 @@ class SendCommand extends UserCommand
                         if(0 && !$verifyaddress){//地址验证
                             return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效地址']]));
                         }
-                        if($remote<1 && in_array($chat_id,[410349445,453115887,475543325])){
+                        if($remote<1 && in_array($chat_id,[410349445,453115887])){
                             return Request::sendMessage(windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'无效金额,最低发送1个BTC']]));   
                         }
+                        //////////验证投诉单start
+
+                        $sth = $pdo->prepare('
+                            SELECT id 
+                            FROM `bitorder`
+                            WHERE state=4 and (owner=:userid or seller_id=:userid or buyer_id=:userid)
+                            LIMIT 1
+                        ');
+                        $sth->bindValue(':userid', $message->getFrom()->getId());
+                        $sth->execute();$code=($code | $sth->errorCode());
+                        $tousuorder = $sth->fetchAll(PDO::FETCH_ASSOC);
+                        if(!empty($tousuorder)){
+                            $datamessage=windowsinfo($message->getFrom()->getId(),'发送比特币',[['title'=>'    ','des'=>'对不起您有投诉订单等待处理，暂时无法提币']]);
+                            return Request::sendMessage($datamessage);        // Send me
+                        }
+                        //////////验证投诉单end
                         $sth = $pdo->prepare('update user set banlance=banlance-:fee where id=:id ');
                         $sth->bindValue(':id', $message->getFrom()->getId());
                         $fee=$remote+$this->minerfee;
