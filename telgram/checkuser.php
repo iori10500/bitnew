@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 ini_set('date.timezone','Asia/Shanghai');
 $servername = "localhost";
 $username = "jack";
@@ -14,15 +15,15 @@ try {
     $conn->query('BEGIN');
     $conn->query('set names utf8');
     $id=!empty($_GET['id'])?$_GET['id']:0;
+    $result_['id']=$id;
     $result = $conn->query('SELECT id from user where id='.$id);
     while($result && $row = $result->fetch_assoc()) {
-       echo 1;die;
+       $result_['check']=1;
+       echo json_encode($result_);die;
     }
+    $result_['check']=0;
+    echo json_encode($result_);
     
 } catch (Exception $e) {
 }
 $conn->close();
-
-
-
-
