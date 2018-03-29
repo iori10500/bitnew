@@ -300,7 +300,7 @@ class CallbackqueryCommand extends SystemCommand
                     $dongjieb=$dongjie[0]['dongjie'];
                 }
                 $dongjieb=$dongjieb?$dongjieb:0;
-                $datamessage=windowsinfo($sendtomessageid,'地址余额',[['title'=>'账户余额','des'=>($yueinfo['balance']+$userinfo[0]['banlance'])." BTC"],['title'=>'冻结资金','des'=>$dongjieb." BTC"],['title'=>'接收地址','des'=>$yueinfo['address']],['title'=>'充值说明','des'=>"充值1个交易确认即到账,充值无上下限值"]]);    
+                $datamessage=windowsinfo($sendtomessageid,'地址余额',[['title'=>'账户余额','des'=>($yueinfo['balance']+$userinfo[0]['banlance'])." BTC"],['title'=>'冻结资金','des'=>$dongjieb." BTC"],['title'=>'接收地址','des'=>$yueinfo['address']],['title'=>'充值说明','des'=>"充值1个交易确认即到账,充值无上下限值,充值地址永久不变"]]);    
                 Request::sendMessage($datamessage);        // Send me
                 $buttoninfo['chat_id']=$sendtomessageid;
                 $buttoninfo['photo']='http://chart.apis.google.com/chart?chs=150x150&cht=qr&chld=L|0&chl='.urlencode($yueinfo['address']);
