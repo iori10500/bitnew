@@ -290,7 +290,16 @@ class CallbackqueryCommand extends SystemCommand
                 $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                 $walletId=$userinfo[0]['walletid'];
                 $yueinfo = yue($walletId);
-                $datamessage=windowsinfo($sendtomessageid,'地址余额',[['title'=>'账户余额','des'=>$yueinfo['balance']+$userinfo[0]['banlance']],['title'=>'接收地址','des'=>$yueinfo['address']],['title'=>'充值说明','des'=>"充值1个交易确认即到账,充值无上下限值"]]);    
+
+                $sth = DB::getPdo()->prepare('SELECT sum(num) as dongjie FROM  `bitorder` WHERE seller_id =:id AND state NOT IN (-1, 3)');
+                $sth->bindValue(':id', $user_id);
+                $sth->execute();
+                $dongjie = $sth->fetchAll(PDO::FETCH_ASSOC);
+                $dongjieb=0;
+                if(!empty($dongjie)){
+                    $dongjieb=$dongjie[0]['dongjie'];
+                }
+                $datamessage=windowsinfo($sendtomessageid,'地址余额',[['title'=>'账户余额','des'=>$yueinfo['balance']+$userinfo[0]['banlance']],['title'=>'冻结资金','des'=>$dongjieb],['title'=>'接收地址','des'=>$yueinfo['address']],['title'=>'充值说明','des'=>"充值1个交易确认即到账,充值无上下限值"]]);    
                 Request::sendMessage($datamessage);        // Send me
                 $buttoninfo['chat_id']=$sendtomessageid;
                 $buttoninfo['photo']='http://chart.apis.google.com/chart?chs=150x150&cht=qr&chld=L|0&chl='.urlencode($yueinfo['address']);
