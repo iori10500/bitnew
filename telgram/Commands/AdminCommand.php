@@ -98,7 +98,7 @@ class AdminCommand extends UserCommand
 
 
                         Request::sendMessage(windowsinfo($value['seller_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单已回到待交易状态']]));
-                        Request::sendMessage(windowsinfo($value['buyer_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单已回到待交易状态，信用值减-。如有任何异议，请及时联系售后  bitneworld@gmail.com']]));
+                        Request::sendMessage(windowsinfo($value['buyer_id'],'投诉订单',[['title'=>'    ','des'=>'经平台协商，您投诉订单已回到待交易状态，信用值减-。如有任何异议，请及时联系售后  bitneworld@gmail.com (为方便客服及时联系您，请设置自己电报的用户名Username )']]));
 
                     }
                     $data = windowsinfo($chat_id,'admin',[['title'=>'    ','des'=>'卖者胜诉，订单回滚到待交易状态']]);
