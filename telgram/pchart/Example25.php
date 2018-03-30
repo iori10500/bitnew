@@ -20,10 +20,10 @@
  $DataSet->AddAllSeries();
  $DataSet->RemoveSerie("Serie3");
  $DataSet->SetAbsciseLabelSerie("Serie3");
- $DataSet->SetSerieName("January","Serie1");
- $DataSet->SetYAxisName("Temperature");
- $DataSet->SetYAxisUnit("�C");
- $DataSet->SetXAxisUnit("h");
+ $DataSet->SetSerieName("BTC 价格","Serie1");
+ $DataSet->SetYAxisName("BTC 价格");
+ $DataSet->SetYAxisUnit("元");
+ $DataSet->SetXAxisUnit("");
 
  // Initialise the graph
  $Test = new pChart(700,230);
@@ -47,7 +47,7 @@
  // Write the title
  $Test->setFontProperties("Fonts/MankSans.ttf",18);
  $Test->setShadowProperties(1,1,0,0,0);
- $Test->drawTitle(0,0,"Average temperatures",255,255,255,700,30,TRUE);
+ $Test->drawTitle(0,0,"电币BTC交易实时价格(China)",255,255,255,700,30,TRUE);
  $Test->clearShadow();
 
  // Draw the legend
