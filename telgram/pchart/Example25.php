@@ -26,7 +26,7 @@
  $DataSet->SetXAxisUnit("");
 
  // Initialise the graph
- $Test = new pChart(700,230);
+ $Test = new pChart(700,1500);
  $Test->drawGraphAreaGradient(90,90,90,90,TARGET_BACKGROUND);
  $Test->setFixedScale($min,$max,10);
 
@@ -35,8 +35,8 @@
  $Test->setGraphArea(60,40,680,200);
  $Test->drawGraphArea(200,200,200,FALSE);
  $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,200,200,200,TRUE,0,2);
- $Test->drawGraphAreaGradient(40,40,40,-50);
- $Test->drawGrid(4,TRUE,230,230,230,10);
+ $Test->drawGraphAreaGradient(24,27,42);
+ $Test->drawGrid(4,TRUE,24,27,42,10);
 
  // Draw the line chart
  $Test->setShadowProperties(3,3,0,0,0,30,4);
