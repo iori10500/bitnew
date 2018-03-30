@@ -34,10 +34,10 @@ class NewsCommand extends UserCommand
                for($i=0;$i<50;$i++){
                     $tempuser = array_pop($users);
                     if($tempuser){
-                         /*        $buttoninfo['chat_id']=$tempuser;
-                          $buttoninfo['photo']='http://telgram.bitneworld.com/app/xuanchuan.png';
+                          $buttoninfo['chat_id']=$tempuser;
+                          $buttoninfo['photo']='http://telgram.bitneworld.com/app/goodluck.png';
                           Request::sendPhoto($buttoninfo);        // Send me
-                        */
+                        
                          $num+=rand(50,100);
                         $temp = Request::sendMessage(windowsinfo($tempuser,'比特快讯',[['title'=>'    ','des'=>$news]],[[['text'=>"👀$num",'callback_data'=>"1"]]]));
                         if($temp->ok){
