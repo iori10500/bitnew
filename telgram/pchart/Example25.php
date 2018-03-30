@@ -13,6 +13,8 @@
  	if($value <$min)$min=$value;
  	if($value >$max)$max=$value;
  }
+ $min-=1000;
+ $max+=1000;
  // Dataset definition 
  $DataSet = new pData;
  $DataSet->AddPoint($timeprice['price'],"Serie1");
@@ -26,20 +28,20 @@
  $DataSet->SetXAxisUnit("");
 
  // Initialise the graph
- $Test = new pChart(700,1500);
+ $Test = new pChart(700,1300);
  $Test->drawGraphAreaGradient(90,90,90,90,TARGET_BACKGROUND);
  $Test->setFixedScale($min,$max,10);
 
  // Graph area setup
  $Test->setFontProperties("Fonts/china.ttf",6);
- $Test->setGraphArea(60,40,680,200);
- $Test->drawGraphArea(200,200,200,FALSE);
+ $Test->setGraphArea(60,40,680,1250);
+ $Test->drawGraphArea(24,27,42,FALSE);
  $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,200,200,200,TRUE,0,2);
  $Test->drawGraphAreaGradient(24,27,42);
- $Test->drawGrid(4,TRUE,24,27,42,10);
+ $Test->drawGrid(4,FALSE,24,27,42,10);
 
  // Draw the line chart
- $Test->setShadowProperties(3,3,0,0,0,30,4);
+ $Test->setShadowProperties(3,3,0,0,0,200,4);
  $Test->drawCubicCurve($DataSet->GetData(),$DataSet->GetDataDescription());
  $Test->clearShadow();
  $Test->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),3,0,-1,-1,-1,TRUE);
