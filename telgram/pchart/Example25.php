@@ -31,7 +31,7 @@
  $Test->setFixedScale($min,$max,10);
 
  // Graph area setup
- $Test->setFontProperties("Fonts/pf_arma_five.ttf",6);
+ $Test->setFontProperties("Fonts/china.ttf",6);
  $Test->setGraphArea(60,40,680,200);
  $Test->drawGraphArea(200,200,200,FALSE);
  $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,200,200,200,TRUE,0,2);
@@ -45,13 +45,13 @@
  $Test->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),3,0,-1,-1,-1,TRUE);
 
  // Write the title
- $Test->setFontProperties("Fonts/MankSans.ttf",18);
+ $Test->setFontProperties("Fonts/china.ttf",18);
  $Test->setShadowProperties(1,1,0,0,0);
  $Test->drawTitle(0,0,"电币BTC交易实时价格(China)",255,255,255,700,30,TRUE);
  $Test->clearShadow();
 
  // Draw the legend
- $Test->setFontProperties("Fonts/tahoma.ttf",8);
+ $Test->setFontProperties("Fonts/china.ttf",8);
  $Test->drawLegend(610,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,255,255,255,FALSE);
 
  // Render the picture
