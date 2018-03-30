@@ -61,7 +61,7 @@
  $Test->drawTitle(60,22,"example 15",50,50,50,585);
 
  // Add an image
- $Test->drawFromPNG("Sample/logo.png",584,35);
+ $Test->drawFromPNG("Sample/logo.png",800,30);
 
  // Render the chart
  $Test->Render("example15.png");   

@@ -28,13 +28,13 @@
  $DataSet->SetXAxisUnit("");
 
  // Initialise the graph
- $Test = new pChart(700,1300);
+ $Test = new pChart(1300,700);
  $Test->drawGraphAreaGradient(90,90,90,90,TARGET_BACKGROUND);
  $Test->setFixedScale($min,$max,20);
 
  // Graph area setup
  $Test->setFontProperties("Fonts/china.ttf",6);
- $Test->setGraphArea(80,100,620,1250);
+ $Test->setGraphArea(80,100,1250,620);
  $Test->drawGraphArea(24,27,42,FALSE);
  $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,200,200,200,TRUE,0,2);
  $Test->drawGraphAreaGradient(24,27,42);
@@ -49,7 +49,7 @@
  // Write the title
  $Test->setFontProperties("Fonts/china.ttf",30);
  $Test->setShadowProperties(1,1,0,0,0);
- $Test->drawTitle(0,0,"电币BTC交易实时价格(China)",78,180,229,700,30,TRUE);
+ $Test->drawTitle(600,50,"电币BTC交易实时价格(China)",78,180,229,700,30,TRUE);
  $Test->clearShadow();
 
  // Draw the legend
