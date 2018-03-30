@@ -50,11 +50,8 @@
  $Test->setFontProperties("Fonts/china.ttf",30);
  $Test->setShadowProperties(1,1,0,0,0);
  $Test->drawTitle(600,50,"电币BTC交易实时价格(China)",78,180,229,700,30,TRUE);
+ $Test->drawTitle(1000,100,date("Y年m月d日 H时i分s秒",time()),163,163,163,700,30,TRUE);
  $Test->clearShadow();
-
- // Draw the legend
- //$Test->setFontProperties("Fonts/china.ttf",8);
- //$Test->drawLegend(610,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,0,0,0,FALSE);
  $Test->drawFromPNG("Sample/logo.png",550,250,1);
  // Render the picture
  $Test->Render("example25.png");
