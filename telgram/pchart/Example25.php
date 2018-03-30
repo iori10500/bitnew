@@ -6,17 +6,21 @@
  // Standard inclusions   
  include("pChart/pData.class");
  include("pChart/pChart.class");
-
+ $timeprice=file_exists("../timeprice.dat")?json_decode(file_get_contents("../timeprice.dat"),true):["price"=>[],"time"=>[]];
+ $min=$timeprice['price'][0];
+ $max=$timeprice['price'][0];
+ foreach ($timeprice['price'] as $key => $value) {
+ 	if($value <$min)$min=$value;
+ 	if($value >$max)$max=$value;
+ }
  // Dataset definition 
  $DataSet = new pData;
- $DataSet->AddPoint(array(9,9,9,10,10,11,12,14,16,17,18,18,19,19,18,15,12,10,9),"Serie1");
- $DataSet->AddPoint(array(10,11,11,12,12,13,14,15,17,19,22,24,23,23,22,20,18,16,14),"Serie2");
- $DataSet->AddPoint(array(4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22),"Serie3");
+ $DataSet->AddPoint($timeprice['price'],"Serie1");
+ $DataSet->AddPoint($timeprice['time'],"Serie3");
  $DataSet->AddAllSeries();
  $DataSet->RemoveSerie("Serie3");
  $DataSet->SetAbsciseLabelSerie("Serie3");
  $DataSet->SetSerieName("January","Serie1");
- $DataSet->SetSerieName("February","Serie2");
  $DataSet->SetYAxisName("Temperature");
  $DataSet->SetYAxisUnit("°C");
  $DataSet->SetXAxisUnit("h");
@@ -24,7 +28,7 @@
  // Initialise the graph
  $Test = new pChart(700,230);
  $Test->drawGraphAreaGradient(90,90,90,90,TARGET_BACKGROUND);
- $Test->setFixedScale(0,40,4);
+ $Test->setFixedScale($min,$max,10);
 
  // Graph area setup
  $Test->setFontProperties("Fonts/pf_arma_five.ttf",6);

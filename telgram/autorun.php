@@ -70,8 +70,8 @@ if(count($timeprice['price']) < 20){
     $timeprice['price'][]=$price;
     $timeprice['time'][]=$timepriceT; 
 }
-$timeprice['price']=array_value($timeprice['price']);
-$timeprice['time']=array_value($timeprice['time']);
+$timeprice['price']=array_values($timeprice['price']);
+$timeprice['time']=array_values($timeprice['time']);
 file_put_contents("timeprice.dat",json_encode($timeprice));
 
 $hour=date("H",$time);
