@@ -73,7 +73,7 @@ if(count($timeprice['price']) < 20){
 $timeprice['price']=array_values($timeprice['price']);
 $timeprice['time']=array_values($timeprice['time']);
 file_put_contents("timeprice.dat",json_encode($timeprice));
-
+file_get_contents("http://telgram.bitneworld.com/pchart/Example25.php");
 $hour=date("H",$time);
 $min=date("i",$time);
 if($hour >2 && $hour <6){

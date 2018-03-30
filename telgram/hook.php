@@ -64,6 +64,13 @@ if(!empty($message['message'])){
         }
       }
       switch ($text) {
+        case 'ud83cudf88u53d1u5e03u51fau552eud83dudc491':   //inputsell
+            $buttoninfo['chat_id']=$chat_id;
+            $buttoninfo['photo']='http://telgram.bitneworld.com/pchart/example25.png?token='.md5(date("Y-m-d H:i"),time());
+            Request::sendPhoto($buttoninfo);
+
+        break;
+
         case 'ud83cudf88u53d1u5e03u51fau552eud83dudc49':   //inputsell
           Request::sendMessage(windowsinfo($chat_id,'发布出售',[['title'=>'    ','des'=>'请按照格式输入发布订单'],['title'=>'格式','des'=>'/inputsell 数量-单价'],['title'=>'例如','des'=>'/inputsell 1.2-55432']]));
 
