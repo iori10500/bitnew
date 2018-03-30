@@ -3,7 +3,8 @@
      Example25 : Playing with shadow
  */
 
- // Standard inclusions   
+ // Standard inclusions  
+ ini_set('date.timezone','Asia/Shanghai'); 
  include("pChart/pData.class");
  include("pChart/pChart.class");
  $timeprice=file_exists("../app/timeprice.dat")?json_decode(file_get_contents("../app/timeprice.dat"),true):["price"=>[],"time"=>[]];
