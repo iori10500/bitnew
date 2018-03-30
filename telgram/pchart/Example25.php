@@ -55,7 +55,7 @@
  // Draw the legend
  $Test->setFontProperties("Fonts/china.ttf",8);
  $Test->drawLegend(610,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,0,0,0,FALSE);
-
+ $Test->drawFromPNG("Sample/logo.png",800,30);
  // Render the picture
  $Test->Render("example25.png");
 ?>
