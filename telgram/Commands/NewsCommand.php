@@ -34,12 +34,12 @@ class NewsCommand extends UserCommand
                for($i=0;$i<50;$i++){
                     $tempuser = array_pop($users);
                     if($tempuser){
-                          /*$buttoninfo['chat_id']=$tempuser;
+                          $buttoninfo['chat_id']=$tempuser;
                           $buttoninfo['photo']='http://telgram.bitneworld.com/app/goodluck.png';
                           Request::sendPhoto($buttoninfo);        // Send me
-                        */
-                         //$num+=rand(50,100);
-                         /*
+                        
+                         $num+=rand(50,100);
+                         
                         $temp = Request::sendMessage(windowsinfo($tempuser,'比特快讯',[['title'=>'    ','des'=>$news]],[[['text'=>"👀$num",'callback_data'=>"1"]]]));
                         if($temp->ok){
                             $sendresult[]="1";
@@ -47,10 +47,10 @@ class NewsCommand extends UserCommand
                             $blockuser[]=$tempuser;
                         }
                         $failresult[]=$temp->description;
-                        */
+                        
 
-                    $data=startwindows($tempuser,"start",[[['text'=>'🔥价格行情🔥','callback_data'=>"nextmyorder"]],[['text'=>'🎈发布出售👉','callback_data'=>"nextmyorder"],['text'=>'🎈发布购买👈','callback_data'=>"nextmyorder"]],[['text'=>'🔄我要出售👉','callback_data'=>"nextmyorder"],['text'=>'🔄我要购买👈','callback_data'=>"nextmyorder"]],[['text'=>'👱‍♂️个人中心👱‍♂️','callback_data'=>"nextmyorder"],['text'=>'🙍邀请好友🙍','callback_data'=>"nextmyorder"]]]);
-                    Request::sendMessage($data);
+                  //  $data=startwindows($tempuser,"start",[[['text'=>'🔥价格行情🔥','callback_data'=>"nextmyorder"]],[['text'=>'🎈发布出售👉','callback_data'=>"nextmyorder"],['text'=>'🎈发布购买👈','callback_data'=>"nextmyorder"]],[['text'=>'🔄我要出售👉','callback_data'=>"nextmyorder"],['text'=>'🔄我要购买👈','callback_data'=>"nextmyorder"]],[['text'=>'👱‍♂️个人中心👱‍♂️','callback_data'=>"nextmyorder"],['text'=>'🙍邀请好友🙍','callback_data'=>"nextmyorder"]]]);
+                   // Request::sendMessage($data);
 
 
 
