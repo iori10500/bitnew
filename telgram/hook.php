@@ -64,7 +64,7 @@ if(!empty($message['message'])){
         }
       }
       switch ($text) {
-        case 'ud83cudf88u53d1u5e03u51fau552eud83dudc491':   //inputsell
+        case 'ud83dudd25u4ef7u683cu884cu60c5ud83dudd25':   //inputsell
             $buttoninfo['chat_id']=$chat_id;
             $buttoninfo['photo']='http://telgram.bitneworld.com/pchart/example25.png?token='.md5(date("Y-m-d H:i"),time());
             Request::sendPhoto($buttoninfo);
