@@ -41,7 +41,7 @@
  $Test->drawGrid(4,FALSE,38,42,65,10);
 
  // Draw the line chart
- $Test->setShadowProperties(0,0,0,0,0,200,10);
+ $Test->setShadowProperties(0,0,0,255,0,20,10);
  $Test->drawCubicCurve($DataSet->GetData(),$DataSet->GetDataDescription());
  $Test->clearShadow();
  $Test->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),3,0,-1,-1,-1,TRUE);
