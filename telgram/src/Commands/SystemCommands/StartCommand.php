@@ -69,7 +69,7 @@ class StartCommand extends SystemCommand
         Request::sendMessage($data);        // Send message!
 
 
-        $data= startwindows($chat_id,"start",[[['text'=>'🎈发布出售👉','callback_data'=>"nextmyorder"],['text'=>'🎈发布购买👈','callback_data'=>"nextmyorder"]],[['text'=>'🔄我要出售👉','callback_data'=>"nextmyorder"],['text'=>'🔄我要购买👈','callback_data'=>"nextmyorder"]],[['text'=>'👱‍♂️个人中心👱‍♂️','callback_data'=>"nextmyorder"],['text'=>'🙍邀请好友🙍','callback_data'=>"nextmyorder"]]]);
+        $data= startwindows($chat_id,"start",[[['text'=>'🔥价格行情🔥','callback_data'=>"nextmyorder"]],[['text'=>'🎈发布出售👉','callback_data'=>"nextmyorder"],['text'=>'🎈发布购买👈','callback_data'=>"nextmyorder"]],[['text'=>'🔄我要出售👉','callback_data'=>"nextmyorder"],['text'=>'🔄我要购买👈','callback_data'=>"nextmyorder"]],[['text'=>'👱‍♂️个人中心👱‍♂️','callback_data'=>"nextmyorder"],['text'=>'🙍邀请好友🙍','callback_data'=>"nextmyorder"]]]);
          Request::sendMessage($data);        // Send message!
 
         return parent::execute();
