@@ -20,7 +20,7 @@
  $DataSet->AddAllSeries();
  $DataSet->RemoveSerie("Serie3");
  $DataSet->SetAbsciseLabelSerie("Serie3");
- $DataSet->SetSerieName("BTC 价格","Serie1");
+ $DataSet->SetSerieName("BTC ","Serie1");
  $DataSet->SetYAxisName("BTC 价格");
  $DataSet->SetYAxisUnit("元");
  $DataSet->SetXAxisUnit("");
@@ -47,7 +47,7 @@
  // Write the title
  $Test->setFontProperties("Fonts/china.ttf",18);
  $Test->setShadowProperties(1,1,0,0,0);
- $Test->drawTitle(0,0,"电币BTC交易实时价格(China)",255,255,255,700,30,TRUE);
+ $Test->drawTitle(0,0,"电币BTC交易实时价格(China)",0,0,0,700,30,TRUE);
  $Test->clearShadow();
 
  // Draw the legend
