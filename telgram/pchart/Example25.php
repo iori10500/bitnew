@@ -41,7 +41,7 @@
  $Test->drawGrid(4,FALSE,38,42,65,10);
 
  // Draw the line chart
- $Test->setShadowProperties(3,3,0,0,0,200,4);
+ $Test->setShadowProperties(0,0,0,0,0,200,10);
  $Test->drawCubicCurve($DataSet->GetData(),$DataSet->GetDataDescription());
  $Test->clearShadow();
  $Test->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),3,0,-1,-1,-1,TRUE);
@@ -53,9 +53,9 @@
  $Test->clearShadow();
 
  // Draw the legend
- $Test->setFontProperties("Fonts/china.ttf",8);
- $Test->drawLegend(610,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,0,0,0,FALSE);
- $Test->drawFromPNG("Sample/logo.png",800,30);
+ //$Test->setFontProperties("Fonts/china.ttf",8);
+ //$Test->drawLegend(610,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,0,0,0,FALSE);
+ $Test->drawFromPNG("Sample/logo.png",550,250,1);
  // Render the picture
  $Test->Render("example25.png");
 ?>
