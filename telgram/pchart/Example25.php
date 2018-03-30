@@ -6,7 +6,7 @@
  // Standard inclusions   
  include("pChart/pData.class");
  include("pChart/pChart.class");
- $timeprice=file_exists("../timeprice.dat")?json_decode(file_get_contents("../timeprice.dat"),true):["price"=>[],"time"=>[]];
+ $timeprice=file_exists("../app/timeprice.dat")?json_decode(file_get_contents("../app/timeprice.dat"),true):["price"=>[],"time"=>[]];
  $min=$timeprice['price'][0];
  $max=$timeprice['price'][0];
  foreach ($timeprice['price'] as $key => $value) {
@@ -52,7 +52,7 @@
 
  // Draw the legend
  $Test->setFontProperties("Fonts/china.ttf",8);
- $Test->drawLegend(610,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,255,255,255,FALSE);
+ $Test->drawLegend(610,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,0,0,0,FALSE);
 
  // Render the picture
  $Test->Render("example25.png");
