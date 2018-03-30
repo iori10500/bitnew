@@ -48,14 +48,7 @@ $conn->close();
 
 //----------------------------------机器人------------------------------
 
-$time=time();
-$hour=date("H",$time);
-$min=date("i",$time);
-if($hour >2 && $hour <6){
-    if($min/10 < 5){
-        exit();
-    }
-}
+
 
 $tempbuy=file_get_contents("https://api-otc.huobi.pro/v1/otc/trade/list/public?coinId=1&tradeType=1&currentPage=1&payWay=&country=&merchant=1&online=1&range=0");
 $temp=json_decode($tempbuy,true);
@@ -64,6 +57,31 @@ if(!$price && file_exists("curl_price")){
     $price=file_get_contents("curl_price");
 }
 file_put_contents("curl_price",$price);
+
+$time=time();
+$timepriceT=date("H:i",$time);
+$timeprice=file_exists("timeprice.dat")?json_decode(file_get_contents("timeprice.dat"),true):["price"=>[],"time"=>[]];
+if(count($timeprice['price']) < 20){
+    $timeprice['price'][]=$price;
+    $timeprice['time'][]=$timepriceT; 
+}else{
+    unset($timeprice['price'][0]);
+    unset($timeprice['time'][0]);
+    $timeprice['price'][]=$price;
+    $timeprice['time'][]=$timepriceT; 
+}
+$timeprice['price']=array_value($timeprice['price']);
+$timeprice['time']=array_value($timeprice['time']);
+file_put_contents("timeprice.dat",json_encode($timeprice));
+
+$hour=date("H",$time);
+$min=date("i",$time);
+if($hour >2 && $hour <6){
+    if($min/10 < 5){
+        exit();
+    }
+}
+//////////////////////////////////////////////////////////////////////
 $conn = new mysqli($servername, $username, $password, $dbname);
 // 检测连接
 if ($conn->connect_error) {
