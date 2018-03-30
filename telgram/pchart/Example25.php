@@ -38,7 +38,7 @@
  $Test->drawGraphArea(24,27,42,FALSE);
  $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,200,200,200,TRUE,0,2);
  $Test->drawGraphAreaGradient(24,27,42);
- $Test->drawGrid(4,FALSE,24,27,42,10);
+ $Test->drawGrid(4,FALSE,38,42,65,10);
 
  // Draw the line chart
  $Test->setShadowProperties(3,3,0,0,0,200,4);
