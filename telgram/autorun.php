@@ -48,14 +48,7 @@ $conn->close();
 
 //----------------------------------机器人------------------------------
 
-$time=time();
-$hour=date("H",$time);
-$min=date("i",$time);
-if($hour >2 && $hour <6){
-    if($min/10 < 5){
-        exit();
-    }
-}
+
 
 $tempbuy=file_get_contents("https://api-otc.huobi.pro/v1/otc/trade/list/public?coinId=1&tradeType=1&currentPage=1&payWay=&country=&merchant=1&online=1&range=0");
 $temp=json_decode($tempbuy,true);
@@ -64,6 +57,31 @@ if(!$price && file_exists("curl_price")){
     $price=file_get_contents("curl_price");
 }
 file_put_contents("curl_price",$price);
+
+$time=time();
+$timepriceT=date("H:i",$time);
+$timeprice=file_exists("timeprice.dat")?json_decode(file_get_contents("timeprice.dat"),true):["price"=>[],"time"=>[]];
+if(count($timeprice['price']) < 20){
+    $timeprice['price'][]=$price;
+    $timeprice['time'][]=$timepriceT; 
+}else{
+    unset($timeprice['price'][0]);
+    unset($timeprice['time'][0]);
+    $timeprice['price'][]=$price;
+    $timeprice['time'][]=$timepriceT; 
+}
+$timeprice['price']=array_values($timeprice['price']);
+$timeprice['time']=array_values($timeprice['time']);
+file_put_contents("timeprice.dat",json_encode($timeprice));
+file_get_contents("http://telgram.bitneworld.com/pchart/Example25.php");
+$hour=date("H",$time);
+$min=date("i",$time);
+if($hour >2 && $hour <6){
+    if($min/10 < 5){
+        exit();
+    }
+}
+//////////////////////////////////////////////////////////////////////
 $conn = new mysqli($servername, $username, $password, $dbname);
 // 检测连接
 if ($conn->connect_error) {
@@ -71,18 +89,18 @@ if ($conn->connect_error) {
 }
 $shoukuanmark=[
     //-----------------------------------------------------------------------
-   // 'jiaojiaoka@gmail.com  支付宝  张娇 备注单号',
-   // '支付宝账号   jiaomei1234@gmail.com   王童童  别填写明感词汇',
-   // '支付宝：18361084095@163.com  张兴荣  大于5万分开转',
-   // 'jackshanyeshuzi@gmail.com   支付宝名  李鸣 备注订单号',
-   // '支付宝：  赵建国   bitnnw@gmail.com 大于5万分开转',
+    'jiaojiaoka@gmail.com  支付宝  张娇 备注单号',
+    '支付宝账号   jiaomei1234@gmail.com   王童童  别填写明感词汇',
+    '支付宝：18361084095@163.com  张兴荣  大于5万分开转',
+    'jackshanyeshuzi@gmail.com   支付宝名  李鸣 备注订单号',
+    '支付宝：  赵建国   bitnnw@gmail.com 大于5万分开转',
         //#'支付宝：63-9458149311  王俊明',
         //#'支付宝:  63-9458149312  柯丰',
         //#'支付宝账号  63-9055596065 张悠然',
         //#'支付宝账号  evalijiajia@gmail.com  李佳',
         //#'支付宝：houxiaojack@gmail.com  郭小琴',
     //-----------------------------------------------------------------------
-    '微信： QP350166483 大于5万分开转账，量大私下联系，平台交易',
+    /*'微信： QP350166483 大于5万分开转账，量大私下联系，平台交易',
     '支付宝：1107969784@qq.com  谢天明  大于5万分多次转账',
     '支付宝：15072466127  张武宗 人一直都在，转账备注好订单号',
     '支付宝：18190117297  吴文丰  备注好订单号',
@@ -96,7 +114,7 @@ $shoukuanmark=[
     '支付宝：18080520660  杨青山  到账立马放行',
     '一定要备注订单号  中国银行 6216603200001253387  谢天明 ',
     '工商银行   6222020302075907824   杨青山 火速放行',
-    '张武宗  6222023202055255953 工商银行  火速放行'
+    '张武宗  6222023202055255953 工商银行  火速放行'*/
 ];
 
 $time=time();

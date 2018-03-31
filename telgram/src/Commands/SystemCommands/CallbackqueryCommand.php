@@ -290,7 +290,17 @@ class CallbackqueryCommand extends SystemCommand
                 $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                 $walletId=$userinfo[0]['walletid'];
                 $yueinfo = yue($walletId);
-                $datamessage=windowsinfo($sendtomessageid,'地址余额',[['title'=>'账户余额','des'=>$yueinfo['balance']+$userinfo[0]['banlance']],['title'=>'接收地址','des'=>$yueinfo['address']]]);    
+
+                $sth = DB::getPdo()->prepare('SELECT sum(num) as dongjie FROM  `bitorder` WHERE seller_id =:id AND state NOT IN (-1, 3)');
+                $sth->bindValue(':id', $user_id);
+                $sth->execute();
+                $dongjie = $sth->fetchAll(PDO::FETCH_ASSOC);
+                $dongjieb=0;
+                if(!empty($dongjie)){
+                    $dongjieb=$dongjie[0]['dongjie'];
+                }
+                $dongjieb=$dongjieb?$dongjieb:0;
+                $datamessage=windowsinfo($sendtomessageid,'地址余额',[['title'=>'账户余额','des'=>($yueinfo['balance']+$userinfo[0]['banlance'])." BTC"],['title'=>'冻结资金','des'=>$dongjieb." BTC"],['title'=>'接收地址','des'=>$yueinfo['address']],['title'=>'充值说明','des'=>"充值1个交易确认即到账,充值无上下限值,充值地址永久不变"]]);    
                 Request::sendMessage($datamessage);        // Send me
                 $buttoninfo['chat_id']=$sendtomessageid;
                 $buttoninfo['photo']='http://chart.apis.google.com/chart?chs=150x150&cht=qr&chld=L|0&chl='.urlencode($yueinfo['address']);
@@ -312,7 +322,7 @@ class CallbackqueryCommand extends SystemCommand
                 break;
             case 'contentus'://联系我们
 
-                $datamessage=windowsinfo($sendtomessageid,'联系我们',[['title'=>'联系邮箱','des'=>'bitneworld@gmail.com'],['title'=>'联系客服1','des'=>'@earthmoon'],['title'=>'联系客服2','des'=>'@JJJJJack'],['title'=>'联系客服3','des'=>'@dianbi ']]);
+                $datamessage=windowsinfo($sendtomessageid,'联系我们',[['title'=>'联系邮箱','des'=>'bitneworld@gmail.com'],['title'=>'联系客服1','des'=>'@earthmoon'],['title'=>'联系客服2','des'=>'@dianbikefu'],['title'=>'联系客服3','des'=>'@dianbi ']]);
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
