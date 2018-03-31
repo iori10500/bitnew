@@ -42,9 +42,7 @@ class CoinClient
 				# code...
 				break;
 			case 'getnewaddress':
-				$param['username']=$params[0];
-				$param['action']=$method;
-				$result = $this->doRequest($param);
+				$result = $this->newWallet();
 				# code...
 				break;
 			case 'validateaddress':
@@ -94,6 +92,11 @@ class CoinClient
 		return $payload;
 	}
 
+    function newWallet(){
+        $address = json_decode($this->post("https://www.bitgo.com/api/v1/wallet/3PMAbkwc11nYDBteNgJXnxgUsXJJKCUzFp/address/0",[]),true)['address'];
+        return $address;
+    }
+
 	private function doRequest(array $payload)
 	{	ini_set('default_socket_timeout',  100);
 	$result=file_get_contents("http://vadio.cba123.cn/Finance/getBitcoinInfo?params=".base64_encode(json_encode($payload)));
@@ -130,7 +133,31 @@ if($payload['action'] == 'listtransactions'){
 		}
 	}
 
-	private function getContext(array $payload)
+    function post($url,$postdata){
+        $curl = curl_init();  //初始化
+        curl_setopt($curl,CURLOPT_URL,$url);  //设置url
+        $CONNECT_KEY='v2xcf5c31d68b77cce774c02053dc375c6e0fd8ab4ecfe637220ffeedc364320f32';
+        $header=["Authorization: Bearer $CONNECT_KEY",'Content-Type:application/json;charset=utf-8','Accept:application/json'];
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl,CURLOPT_HTTPAUTH,CURLAUTH_BASIC);  //设置http验证方法
+//      curl_setopt($curl,CURLOPT_HEADER,0);  //设置头信息
+        curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);  //设置curl_exec获取的信息的返回方式
+        curl_setopt($curl,CURLOPT_POST,1);  //设置发送方式为post请求
+        curl_setopt($curl,CURLOPT_POSTFIELDS,json_encode($postdata));  //设置post的数据
+        curl_setopt($curl, CURLINFO_HEADER_OUT, TRUE);
+        $result = curl_exec($curl);
+        if($result === false){
+            echo curl_errno($curl);
+            exit();
+        }
+        curl_close($curl);
+        return $result;
+    }
+
+
+    private function getContext(array $payload)
 	{
 		$headers = $this->headers;
 

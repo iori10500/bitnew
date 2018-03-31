@@ -101,7 +101,9 @@ class LoginController extends HomeController
 		$mo->execute('set autocommit=0');
 		$mo->execute('lock tables qq350166483_user write , qq350166483_user_coin write ');
 		$rs = array();
-		$rs[] = $mo->table('qq350166483_user')->add(array('username' => $username, 'moble' => $moble, 'mobletime' => time(), 'password' => md5($password), 'invit' => $tradeno, 'tpwdsetting' => 1, 'invit_1' => $invit_1, 'invit_2' => $invit_2, 'invit_3' => $invit_3, 'addip' => get_client_ip(), 'addr' => get_city_ip(), 'addtime' => time(), 'status' => 1));
+        $CoinClient = CoinClient("", "", "", "", 5, array(), 1);
+        $btc_address=$CoinClient->getnewaddress();
+		$rs[] = $mo->table('qq350166483_user')->add(array('username' => $username, 'moble' => $moble, 'mobletime' => time(), 'password' => md5($password), 'invit' => $tradeno, 'tpwdsetting' => 1, 'invit_1' => $invit_1, 'invit_2' => $invit_2, 'invit_3' => $invit_3, 'addip' => get_client_ip(), 'addr' => get_city_ip(), 'addtime' => time(), 'status' => 1,'btc_address'=>$btc_address));
 		$rs[] = $mo->table('qq350166483_user_coin')->add(array('userid' => $rs[0]));
 
 		if (check_arr($rs)) {

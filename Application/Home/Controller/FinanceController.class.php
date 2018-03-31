@@ -754,8 +754,7 @@ class FinanceController extends HomeController
 
 
 							if (!is_array($qianbao_addr)) {
-								$qianbao_ad = $CoinClient->getnewaddress(userid()."_".username());
-								$qianbao_ad=$qianbao_ad['address'];
+                                $qianbao_ad = M('User')->where(array('id' => userid()))->getField('btc_address');
 								if (!$qianbao_ad) {
 									$this->error('生成钱包地址出错,请稍后再试！');
 								}
