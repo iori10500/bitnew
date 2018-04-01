@@ -316,7 +316,7 @@ class CallbackqueryCommand extends SystemCommand
                 break;
             case 'myorder'://我的订单
 
-                 $data = getorder($user_id,1,0);
+                 $data = getorder($user_id,4,0);
                 Request::sendMessage($data);        // Send me
 
                 break;
