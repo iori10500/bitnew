@@ -145,7 +145,7 @@ function startwindows($chat_id,$title,$button=false){
 
 
 
-//myorder=1 buy=2  sell=3
+//myorder=1 buy=2  sell=3  myorder=4(有下一条)
 function getorder($chat_id,$whorder,$limit,$orderid=0){
    $DESCREBACTION=[
         '-1'=>'取消订单',
@@ -164,7 +164,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
     if($limit<0){
         return  $data=windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'到顶啦']]);
     }
-    if($whorder == 1){//我的订单
+    if($whorder == 1 || $whorder == 4){//我的订单
         //我的订单分为   发布订单   市场购买订单非支付等待状态 市场销售订单非支付等待状态 市场购买等待支付30分钟内 市场销售等待支付30分钟内
         $time=time();
         if(!$orderid){
@@ -192,6 +192,11 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                  return  windowsinfo($chat_id,$DESC[$whorder],[['title'=>'    ','des'=>'订单丢失']]);
             }
         }
+        if($whorder == 4){
+            $nextOrder=[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]];
+        }else{
+            $nextOrder=[];
+        }
        
 
         foreach ($order as $key => $one) {
@@ -201,7 +206,7 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                 $orderinfo['num']=$one['num'];
                 $orderinfo['username']=$one['des'];
                 $orderinfo['datetime']=$one['create_time'];
-                $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'返利数量','des'=>$orderinfo['num']],['title'=>'下级名称','des'=>$orderinfo['username']],['title'=>'返利时间','des'=>$orderinfo['datetime']]],[[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'返利数量','des'=>$orderinfo['num']],['title'=>'下级名称','des'=>$orderinfo['username']],['title'=>'返利时间','des'=>$orderinfo['datetime']]],[$nextOrder]);
             }else{
                 if((time()-$one['start_time'] > 1800 )&& ($one['state'] == 1 )){
                     $one['state']=0;
@@ -222,11 +227,11 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                     $orderinfo['orderclass']='我要购买Bitcoin';
                     switch ($one['state']) {
                         case '0':
-                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'建时','des'=>$orderinfo['create_time']]],[[['text'=>'取消订单','callback_data'=>"cancelorder-".$orderinfo['orderid']]],[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'建时','des'=>$orderinfo['create_time']]],[[['text'=>'取消订单','callback_data'=>"cancelorder-".$orderinfo['orderid']]],$nextOrder]);
                             
                             break;
                         case '1':
-                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'提示','des'=>"请在 ".$orderinfo['remain_time']." 分钟内完成支付"]],[[['text'=>'取消付款','callback_data'=>"cancelpay-".$orderinfo['orderid']],['text'=>'付款完成','callback_data'=>"finishpay-".$orderinfo['orderid']]],[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'提示','des'=>"请在 ".$orderinfo['remain_time']." 分钟内完成支付"]],[[['text'=>'取消付款','callback_data'=>"cancelpay-".$orderinfo['orderid']],['text'=>'付款完成','callback_data'=>"finishpay-".$orderinfo['orderid']]],$nextOrder]);
 
                             
                             break;
@@ -237,16 +242,16 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                                 $fangxingmark="放行将在 ".$orderinfo['remain_time']." 分钟内完成";
                             }
                            
-                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'提示','des'=>$fangxingmark]],[[['text'=>'申诉','callback_data'=>"adminorder-".$orderinfo['orderid']]],[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'提示','des'=>$fangxingmark]],[[['text'=>'申诉','callback_data'=>"adminorder-".$orderinfo['orderid']]],$nextOrder]);
                             
                             break;
                         case '3':
                         case '5':
-                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[$nextOrder]);
                             
                             break;
                         case '4':
-                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[$nextOrder]);
                             
                             break;
                         default:
@@ -257,11 +262,11 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                     $orderinfo['orderclass']='我要出售Bitcoin';
                     switch ($one['state']) {
                         case '0':
-                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'建时','des'=>$orderinfo['create_time']]],[[['text'=>'取消订单','callback_data'=>"cancelorder-".$orderinfo['orderid']]],[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'建时','des'=>$orderinfo['create_time']]],[[['text'=>'取消订单','callback_data'=>"cancelorder-".$orderinfo['orderid']]],$nextOrder]);
                             
                             break;
                         case '1':
-                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'提示','des'=>"将在 ".$orderinfo['remain_time']." 分钟内完成支付"]],[[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'提示','des'=>"将在 ".$orderinfo['remain_time']." 分钟内完成支付"]],[$nextOrder]);
 
                             
                             break;
@@ -272,16 +277,16 @@ function getorder($chat_id,$whorder,$limit,$orderid=0){
                                 $fangxingmark="放行将在 ".$orderinfo['remain_time']." 分钟内完成";
                             }
                            
-                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'提示','des'=>$fangxingmark]],[[['text'=>'申诉','callback_data'=>"adminorder-".$orderinfo['orderid']],['text'=>'放行','callback_data'=>"fangxingorder-".$orderinfo['orderid']] ],[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']],['title'=>'提示','des'=>$fangxingmark]],[[['text'=>'申诉','callback_data'=>"adminorder-".$orderinfo['orderid']],['text'=>'放行','callback_data'=>"fangxingorder-".$orderinfo['orderid']] ],$nextOrder]);
                             
                             break;
                         case '3':
                         case '5':
-                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[$nextOrder]);
                             
                             break;
                         case '4':
-                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[[['text'=>'上一条👆','callback_data'=>"nextmyorder-$whorder-".($limit-1)],['text'=>'下一条👇','callback_data'=>"nextmyorder-$whorder-".($limit+1)]]]);
+                            $data=windowsinfo($chat_id,$orderinfo['orderclass'],[['title'=>'编号','des'=>date("Ymd",strtotime($orderinfo['create_time'])).$orderinfo['orderid']],['title'=>'单价','des'=>"￥ ".$orderinfo['price']],['title'=>'数量','des'=>$orderinfo['num']." BTC"],['title'=>'总价','des'=>"￥ ".$orderinfo['allprice']],['title'=>'状态','des'=>$orderinfo['statedec']],['title'=>'支付','des'=>$orderinfo['mark']]],[$nextOrder]);
                             
                             break;
 
