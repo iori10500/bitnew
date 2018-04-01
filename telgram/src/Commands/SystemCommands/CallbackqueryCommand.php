@@ -124,6 +124,7 @@ class CallbackqueryCommand extends SystemCommand
                         $sth = DB::getPdo()->prepare('update bitorder_temp set processed=1 where id=:id');
                         $sth->bindValue(':id', $data[1]);
                         $sth->execute();
+                        adminMessage($tempinfo['buyer_id']."   发布了一个买单");
 
                         $result=true;
 
@@ -199,6 +200,7 @@ class CallbackqueryCommand extends SystemCommand
                         $sth->bindValue(':num', $tempinfo['num']);
                         $sth->execute();$code=($code | $sth->errorCode());
                         $result=true;
+                        adminMessage($tempinfo['seller_id']."   发布了一个卖单");
                     }
                      ($code=="0000")?$pdo->commit():$pdo->rollBack();   
 
