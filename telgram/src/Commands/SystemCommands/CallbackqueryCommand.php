@@ -153,6 +153,27 @@ class CallbackqueryCommand extends SystemCommand
                     $tempinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
                     if(!empty($tempinfo)){
                         $tempinfo=$tempinfo[0];
+
+                        /////////////////////////////////
+                        $myuser = $pdo->prepare('
+                                SELECT `walletId`,`socked`,`banlance`
+                                FROM `' . TB_USER . '`
+                                WHERE `id` = :id 
+                                LIMIT 1
+                            ');
+
+                        $myuser->bindValue(':id', $user_id);
+                        $myuser->execute();$code=($code | $myuser->errorCode());
+                        $User = $myuser->fetchAll(PDO::FETCH_ASSOC);
+                        $yueinfo = yue($User[0]['walletId']);
+                        $walletbanlance=$yueinfo['balance']+$User[0]['banlance'];
+                        if($walletbanlance < $tempinfo['num']){
+                            $datamessage=windowsinfo($sendtomessageid,'发布销售',[['title'=>'    ','des'=>'余额不足,发布失败']]);
+                            Request::sendMessage($datamessage); 
+                            exit();
+                        }
+
+                        /////////////////////////////////
                         $sth = $pdo->prepare('
                             INSERT INTO `' . "bitorder" . '`
                             (`buy_sell`, `seller_id`, `price`, `num`,`state`,`create_time`,`owner`,`des`)
