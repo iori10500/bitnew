@@ -573,11 +573,11 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
 
                 adminMessage($chat_id."发起申诉".$otherid." , @$username1,@$username2");
 
-                $sth = $pdo->prepare('update user set socked=1 where id=:id or id=:id2');
+/*                $sth = $pdo->prepare('update user set socked=1 where id=:id or id=:id2');
                 $sth->bindValue(':id', $chat_id);
                 $sth->bindValue(':id2', $otherid);
                 $sth->execute();$code=($code | $sth->errorCode());
-
+*/
             }else{
                 $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可申诉状态']]);
             }
