@@ -45,8 +45,9 @@ class NewsCommand extends UserCommand
                             $sendresult[]="1";
                         }else{
                             $blockuser[]=$tempuser;
+                            $failresult[]=$temp->description;
                         }
-                        $failresult[]=$temp->description;
+                        
                         
 
                   //  $data=startwindows($tempuser,"start",[[['text'=>'🔥价格行情🔥','callback_data'=>"nextmyorder"]],[['text'=>'🎈发布出售👉','callback_data'=>"nextmyorder"],['text'=>'🎈发布购买👈','callback_data'=>"nextmyorder"]],[['text'=>'🔄我要出售👉','callback_data'=>"nextmyorder"],['text'=>'🔄我要购买👈','callback_data'=>"nextmyorder"]],[['text'=>'👱‍♂️个人中心👱‍♂️','callback_data'=>"nextmyorder"],['text'=>'🙍邀请好友🙍','callback_data'=>"nextmyorder"]]]);
