@@ -459,8 +459,8 @@ function finishpay($chat_id,$orderid){//完成1状态付款
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'完成付款,等待对方30分钟内完成放行']]);  
                 Request::sendMessage(getorder($chat_id,1,0,$tempinfo['id']));
                 Request::sendMessage(getorder($tempinfo['seller_id'],1,0,$tempinfo['id']));
-                Request::sendMessage(windowsinfo(484534434,"付款信息",[['title'=>'    ','des'=>'用户付款请核实'],['title'=>'单号','des'=>date("Ymd",time()).$orderid]]));
-                Request::sendMessage(windowsinfo(475543325,"付款信息",[['title'=>'    ','des'=>'用户付款请核实'],['title'=>'单号','des'=>date("Ymd",time()).$orderid]]));
+
+                adminMessage('用户付款请核实    '.date("Ymd",time()).$orderid);
             }else{
                 $data=windowsinfo($chat_id,"我要购买",[['title'=>'    ','des'=>'订单超过30分钟付款时间']]);
             }
@@ -813,6 +813,16 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
 
 
 
+
+function adminMessage($message){
+    $admin=[
+        484534434,//Jack
+        475543325//Eva
+    ];
+    foreach ($admin as $key => $value) {
+         Request::sendMessage(windowsinfo($value,"管理员信息",[['title'=>'时间','des'=>date("Y-m-d H:i",time())],['title'=>'信息','des'=>$message]]));
+    }
+}
 
 
 
