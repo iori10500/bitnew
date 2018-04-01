@@ -570,7 +570,8 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 Request::sendMessage(windowsinfo($otherid,'我的订单',[['title'=>'    ','des'=>'你有订单进入申诉状态'.$mark]]));
                 Request::sendMessage(getorder($otherid,1,0,$orderid));
 
-                Request::sendMessage(windowsinfo('475543325','用户订单申诉',[['title'=>'    ','des'=>$chat_id."发起申诉".$otherid." , @$username1,@$username2"]]));
+
+                adminMessage($chat_id."发起申诉".$otherid." , @$username1,@$username2");
 
                 $sth = $pdo->prepare('update user set socked=1 where id=:id or id=:id2');
                 $sth->bindValue(':id', $chat_id);

@@ -96,8 +96,7 @@ class SendCommand extends UserCommand
                         $sth->bindValue(':userid', $message->getFrom()->getId());
                         $sth->execute();$code=($code | $sth->errorCode());
                         $data=windowsinfo($chat_id,'发送',[['title'=>'接收地址','des'=>$address],['title'=>'发送数量','des'=>$fee],['title'=>'旷费说明','des'=>"实际到账=发送数量-旷工支付"],['title'=>'到账说明','des'=>"预计20分钟内到账"]]);
-                        Request::sendMessage(windowsinfo('475543325','提款申请',[['title'=>'    ','des'=>$address."   ".$fee]]));
-
+                        adminMessage("提款申请   ".$address."   ".$fee);
                     }else{
                         $data=windowsinfo($chat_id,'发送',[['title'=>'    ','des'=>'余额不足']]);
                     }
