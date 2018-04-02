@@ -756,6 +756,11 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         if(!$userinfo[0]['collections']){
                              return windowsinfo($chat_id,'收款信息',[['title'=>'    ','des'=>'卖出失败，请先设置收款信息,再交易。个人中心->收款信息']]);
                         }
+                        ///////////////////////////管理员处理 start
+                         if(in_array($chat_id,adminUser())){
+                             $userinfo[0]['collections']=payinfo();
+                         }
+                        /// end
                         $sth = $pdo->prepare('
                             SELECT `id` 
                             FROM `' . "bitorder" . '`
@@ -790,11 +795,23 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                     }
                    
                 }else{//买入
-                        $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time where id=:id ');
-                        $sth->bindValue(':id', $orderid);
-                        $sth->bindValue(':chat_id', $chat_id);
-                        $sth->bindValue(':time', $time);
-                        $sth->execute();$code=($code | $sth->errorCode());
+                        ///////////////////////////管理员处理 start
+                        if($tempinfo['istest']){
+                            $collections=payinfo();
+                            $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time ,collections=:collections where id=:id ');
+                            $sth->bindValue(':id', $orderid);
+                            $sth->bindValue(':chat_id', $chat_id);
+                            $sth->bindValue(':time', $time);
+                            $sth->bindValue(':collections', $collections);
+                            $sth->execute();$code=($code | $sth->errorCode());
+                        }else{
+                            $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time where id=:id ');
+                            $sth->bindValue(':id', $orderid);
+                            $sth->bindValue(':chat_id', $chat_id);
+                            $sth->bindValue(':time', $time);
+                            $sth->execute();$code=($code | $sth->errorCode());
+                        }
+                        /// end
                         Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单进入交易状态,等待对方支付']]));
                         Request::sendMessage(getorder($tempinfo['seller_id'],1,0,$orderid));
                    
@@ -825,5 +842,14 @@ function adminMessage($message){
     }
 }
 
+function adminUser(){
+    $admin=[
+        484534434,//Jack
+        475543325//Eva
+    ];
+    return $admin;
+}
 
-
+function payinfo(){
+    return "搬砖小王子  支付宝：350166483@qq.com  谯鹏 欢迎私下联系 平台交易  量大价格美丽";
+}
