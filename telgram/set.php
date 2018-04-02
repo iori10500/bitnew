@@ -757,7 +757,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                              return windowsinfo($chat_id,'收款信息',[['title'=>'    ','des'=>'卖出失败，请先设置收款信息,再交易。个人中心->收款信息']]);
                         }
                         ///////////////////////////管理员处理 start
-                         if(0 && in_array($chat_id,adminUser())){
+                         if(in_array($chat_id,adminUser())){
                              $userinfo[0]['collections']=payinfo();
                          }
                         /// end
@@ -796,7 +796,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                    
                 }else{//买入
                         ///////////////////////////管理员处理 start
-                        if(0 && $tempinfo['istest']){
+                        if( $tempinfo['istest']){
                             $collections=payinfo();
                             $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time ,des=:des where id=:id ');
                             $sth->bindValue(':id', $orderid);
@@ -851,5 +851,20 @@ function adminUser(){
 }
 
 function payinfo(){
-    return "搬砖小王子  支付宝：350166483@qq.com  谯鹏 欢迎私下联系 平台交易  量大价格美丽";
+    $paynum="paynum";
+    $num=file_exists($paynum)?file_get_contents($paynum):0;
+    $num++;
+    file_put_contents($paynum,$num);
+    switch ($num%2){
+        case 0:
+            $paydes="支付宝：1107969784@qq.com  谢天明  大于5万分多次转账";
+            break;
+        case 1:
+            $paydes=FirstPay();
+            break;
+    }
+    return $paydes;
+}
+function FirstPay(){
+    return '支付宝：15072466127  张武宗 人一直都在，转账备注好订单号';
 }
