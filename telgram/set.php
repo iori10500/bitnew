@@ -57,7 +57,45 @@ function post($url,$postdata){
         return $result;
 }
 
-
+function payGet($url){
+    $curl = curl_init();  //初始化
+    curl_setopt($curl,CURLOPT_URL,$url);  //设置url
+    $header=[];
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curl,CURLOPT_HTTPAUTH,CURLAUTH_BASIC);  //设置http验证方法
+    curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);  //设置curl_exec获取的信息的返回方式
+    curl_setopt($curl, CURLINFO_HEADER_OUT, TRUE);
+    $result = curl_exec($curl);
+    if($result === false){
+        echo curl_errno($curl);
+        exit();
+    }
+    curl_close($curl);
+    return $result;
+}
+function payPost($url,$postdata){
+    $curl = curl_init();  //初始化
+    curl_setopt($curl,CURLOPT_URL,$url);  //设置url
+    $CONNECT_KEY=getConnectKey();
+    $header=[];
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curl,CURLOPT_HTTPAUTH,CURLAUTH_BASIC);  //设置http验证方法
+    curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);  //设置curl_exec获取的信息的返回方式
+    curl_setopt($curl,CURLOPT_POST,1);  //设置发送方式为post请求
+    curl_setopt($curl,CURLOPT_POSTFIELDS,json_encode($postdata));  //设置post的数据
+    curl_setopt($curl, CURLINFO_HEADER_OUT, TRUE);
+    $result = curl_exec($curl);
+    if($result === false){
+        echo curl_errno($curl);
+        exit();
+    }
+    curl_close($curl);
+    return $result;
+}
 
 //$temp=post("https://www.bitgo.com/api/v1/wallet",['label'=>'jack','m'=>2,'n'=>3,'keychains'=>[['xpub'=>'xpub661MywAqRbcGJqvexUHEVce9aiRkYYBeAiZnDSjSGZ93jFMfpcSDp36RPgBF5N1W9hFXVJdBaSAwHWHr5zJ6NTQqKKLRzfKg1saoUPmd5T'],['xpub'=>'xpub6GiRC55CSBpR3Lj2GRNGVxBj4r3fionThEEThPpvdMsPEafNArDvnnghKUuEARb1XZatVhc9oj21UddkKzmqbycxbzLsdFoBrw3LuVNzkmL'],['xpub'=>'xpub661MyMwAqRbcFtrRQTDRcQqacpyKwAPEWePfgAHV6BQEXsyvWBAzHA3B1AwzsiXad7S59ienmLCsPYdLKYyNhruxk3CBv3SrRMTR9VeM935']]]);
 //$temp=post("https://nanxiao.cba123.cn",['ok'=>'ok']);
@@ -757,7 +795,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                              return windowsinfo($chat_id,'收款信息',[['title'=>'    ','des'=>'卖出失败，请先设置收款信息,再交易。个人中心->收款信息']]);
                         }
                         ///////////////////////////管理员处理 start
-                         if(0 && in_array($chat_id,adminUser())){
+                         if(1 && in_array($chat_id,adminUser())){
                              $userinfo[0]['collections']=payinfo($orderid);
                          }
                         /// end
@@ -796,7 +834,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                    
                 }else{//买入
                         ///////////////////////////管理员处理 start
-                        if(0 && $tempinfo['istest']){
+                        if(1 && $tempinfo['istest']){
                             $collections=payinfo($orderid);
                             $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time ,des=:des where id=:id ');
                             $sth->bindValue(':id', $orderid);
