@@ -758,7 +758,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         }
                         ///////////////////////////管理员处理 start
                          if(0 && in_array($chat_id,adminUser())){
-                             $userinfo[0]['collections']=payinfo();
+                             $userinfo[0]['collections']=payinfo($orderid);
                          }
                         /// end
                         $sth = $pdo->prepare('
@@ -797,7 +797,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                 }else{//买入
                         ///////////////////////////管理员处理 start
                         if(0 && $tempinfo['istest']){
-                            $collections=payinfo();
+                            $collections=payinfo($orderid);
                             $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time ,des=:des where id=:id ');
                             $sth->bindValue(':id', $orderid);
                             $sth->bindValue(':chat_id', $chat_id);
@@ -850,12 +850,8 @@ function adminUser(){
     return $admin;
 }
 
-function payinfo(){
-    $paynum="paynum";
-    $num=file_exists($paynum)?file_get_contents($paynum):0;
-    $num++;
-    file_put_contents($paynum,$num);
-    switch ($num%2){
+function payinfo($orderid){
+    switch ($orderid%2){
         case 0:
             $paydes="支付宝：1107969784@qq.com  谢天明  大于5万分多次转账";
             break;
