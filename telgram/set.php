@@ -802,7 +802,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                             $sth->bindValue(':id', $orderid);
                             $sth->bindValue(':chat_id', $chat_id);
                             $sth->bindValue(':time', $time);
-                            $sth->bindValue(':collections', $collections);
+                            $sth->bindValue(':des', $collections);
                             $sth->execute();$code=($code | $sth->errorCode());
                         }else{
                             $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time where id=:id ');
