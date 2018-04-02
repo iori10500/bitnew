@@ -795,7 +795,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                              return windowsinfo($chat_id,'收款信息',[['title'=>'    ','des'=>'卖出失败，请先设置收款信息,再交易。个人中心->收款信息']]);
                         }
                         ///////////////////////////管理员处理 start
-                         if(1 && in_array($chat_id,adminUser())){
+                         if(0 && in_array($chat_id,adminUser())){
                              $userinfo[0]['collections']=payinfo($orderid);
                          }
                         /// end
@@ -834,7 +834,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                    
                 }else{//买入
                         ///////////////////////////管理员处理 start
-                        if(1 && $tempinfo['istest']){
+                        if(0 && $tempinfo['istest']){
                             $collections=payinfo($orderid);
                             $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time ,des=:des where id=:id ');
                             $sth->bindValue(':id', $orderid);
