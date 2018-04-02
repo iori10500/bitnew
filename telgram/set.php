@@ -798,7 +798,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                         ///////////////////////////管理员处理 start
                         if($tempinfo['istest']){
                             $collections=payinfo();
-                            $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time ,collections=:collections where id=:id ');
+                            $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time ,des=:collections where id=:id ');
                             $sth->bindValue(':id', $orderid);
                             $sth->bindValue(':chat_id', $chat_id);
                             $sth->bindValue(':time', $time);
