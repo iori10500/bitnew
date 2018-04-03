@@ -891,7 +891,7 @@ function adminUser(){
 function payinfo($orderid){
     switch ($orderid%2){
         case 0:
-            $paydes="支付宝：1107969784@qq.com  谢天明  大于5万分多次转账";
+            $paydes="中国建设银行  6236 6820 0002 4314 246  张训  大于5万分开转，单在人在，10分钟内放行";
             break;
         case 1:
             $paydes=FirstPay();
