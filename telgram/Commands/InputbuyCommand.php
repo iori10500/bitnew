@@ -22,11 +22,25 @@ class InputbuyCommand extends UserCommand
         $chat_id = $message->getChat()->getId();   // Get the current Chat ID
         $text=json_decode(json_encode($message),true)['text'];
         $text=trim(str_replace("/inputbuy","",$text));
+        $pdo  = DB::getPdo();
         if(empty($text)){
             $data=windowsinfo($chat_id,'发布购买',[['title'=>'    ','des'=>'请按照格式输入发布订单'],['title'=>'格式','des'=>'/inputbuy 数量-单价'],['title'=>'例如','des'=>'/inputbuy 1.2-55432']]);
         }else{
             $text = explode('-',$text);
             if(count($text) >= 2){
+                $sth = $pdo->prepare('
+                        SELECT `banlance`,`socked`,`walletid`,`collections`,`complain` 
+                        FROM `' . TB_USER . '`
+                        WHERE `id` = :id 
+                        LIMIT 1
+                    ');
+                $sth->bindValue(':id', $chat_id);
+                $sth->execute();
+                $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                if($userinfo[0]['complain'] >=3 ){
+                    return Request::sendMessage(windowsinfo($chat_id,'系统信息',[['title'=>'    ','des'=>'您好! 系统发现你存在恶意占单，请联系客服解封。']]));
+                }
+                //////////////////////////////////////////////
                 $num = round((float)$text[0],8);
                 $price = round((float)$text[1],2);
                 $allprice=round($num*$price,2);
@@ -54,7 +68,7 @@ class InputbuyCommand extends UserCommand
                 $orderinfo['des']=$des;
                 $orderinfo['chat_id']=$chat_id;
 
-                $pdo  = DB::getPdo();
+
                 try {
                     $pdo->beginTransaction();$code="0000";
                     $sth = $pdo->prepare('

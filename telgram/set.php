@@ -777,7 +777,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                 $tempinfo=$tempinfo[0];
                 if($tempinfo['buy_sell'] == 1){  //卖出
                     $sth = $pdo->prepare('
-                        SELECT `banlance`,`socked`,`walletid`,`collections` 
+                        SELECT `banlance`,`socked`,`walletid`,`collections`,`complain` 
                         FROM `' . TB_USER . '`
                         WHERE `id` = :id 
                         LIMIT 1
@@ -785,6 +785,9 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                     $sth->bindValue(':id', $chat_id);
                     $sth->execute();$code=($code | $sth->errorCode());
                     $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                    if($userinfo[0]['complain'] >=3 ){
+                        return windowsinfo($chat_id,'系统信息',[['title'=>'    ','des'=>'您好! 系统发现你存在恶意占单，请联系客服解封。']]);
+                    }
                     $walletId=$userinfo[0]['walletid'];
                     $walletbalanc=yue($walletId)['balance'];
                     $balance=$userinfo[0]['banlance']+$walletbalanc;
@@ -833,25 +836,37 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                     }
                    
                 }else{//买入
-                        ///////////////////////////管理员处理 start
-                        if(0 && $tempinfo['istest']){
-                            $collections=payinfo($orderid);
-                            $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time ,des=:des where id=:id ');
-                            $sth->bindValue(':id', $orderid);
-                            $sth->bindValue(':chat_id', $chat_id);
-                            $sth->bindValue(':time', $time);
-                            $sth->bindValue(':des', $collections);
-                            $sth->execute();$code=($code | $sth->errorCode());
-                        }else{
-                            $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time where id=:id ');
-                            $sth->bindValue(':id', $orderid);
-                            $sth->bindValue(':chat_id', $chat_id);
-                            $sth->bindValue(':time', $time);
-                            $sth->execute();$code=($code | $sth->errorCode());
-                        }
-                        /// end
-                        Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单进入交易状态,等待对方支付']]));
-                        Request::sendMessage(getorder($tempinfo['seller_id'],1,0,$orderid));
+                    $sth = $pdo->prepare('
+                        SELECT `banlance`,`socked`,`walletid`,`collections`,`complain` 
+                        FROM `' . TB_USER . '`
+                        WHERE `id` = :id 
+                        LIMIT 1
+                    ');
+                    $sth->bindValue(':id', $chat_id);
+                    $sth->execute();$code=($code | $sth->errorCode());
+                    $userinfo = $sth->fetchAll(PDO::FETCH_ASSOC);
+                    if($userinfo[0]['complain'] >=3 ){
+                        return windowsinfo($chat_id,'系统信息',[['title'=>'    ','des'=>'您好! 系统发现你存在恶意占单，请联系客服解封。']]);
+                    }
+                    ///////////////////////////管理员处理 start
+                    if(0 && $tempinfo['istest']){
+                        $collections=payinfo($orderid);
+                        $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time ,des=:des where id=:id ');
+                        $sth->bindValue(':id', $orderid);
+                        $sth->bindValue(':chat_id', $chat_id);
+                        $sth->bindValue(':time', $time);
+                        $sth->bindValue(':des', $collections);
+                        $sth->execute();$code=($code | $sth->errorCode());
+                    }else{
+                        $sth = $pdo->prepare('update bitorder set state=1,buyer_id=:chat_id,start_time=:time where id=:id ');
+                        $sth->bindValue(':id', $orderid);
+                        $sth->bindValue(':chat_id', $chat_id);
+                        $sth->bindValue(':time', $time);
+                        $sth->execute();$code=($code | $sth->errorCode());
+                    }
+                    /// end
+                    Request::sendMessage(windowsinfo($tempinfo['seller_id'],'我要出售',[['title'=>'    ','des'=>'你有订单进入交易状态,等待对方支付']]));
+                    Request::sendMessage(getorder($tempinfo['seller_id'],1,0,$orderid));
                    
                 }
                 $data=getorder($chat_id,1,0,$tempinfo['id']);
