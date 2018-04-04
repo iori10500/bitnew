@@ -54,7 +54,9 @@
  $Test->setFontProperties("Fonts/china.ttf",15);
  $Test->drawTitle(1500,130,date("Y年m月d日 H时i分s秒",time()),163,163,163,700,30,TRUE);
  $Test->setFontProperties("Fonts/china.ttf",10);
- $Test->drawTitle(620,130,"今日成交量:   240 BTC",163,163,163,700,30,TRUE);
+ $time=time();
+ $num=file_exists("../app/finishedBtcNum/".date("Y-m-d",$time).".dat")?file_get_contents("../app/finishedBtcNum/".date("Y-m-d",$time).".dat"):0;
+ //$Test->drawTitle(620,130,"今日成交量:   ".$num." BTC",163,163,163,700,30,TRUE);
  $Test->clearShadow();
  $Test->drawFromPNG("Sample/logo.png",550,250,1);
  // Render the picture
