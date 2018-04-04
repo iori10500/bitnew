@@ -798,7 +798,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                              return windowsinfo($chat_id,'收款信息',[['title'=>'    ','des'=>'卖出失败，请先设置收款信息,再交易。个人中心->收款信息']]);
                         }
                         ///////////////////////////管理员处理 start
-                         if(0 && in_array($chat_id,adminUser())){
+                         if(in_array($chat_id,adminUser())){
                              $userinfo[0]['collections']=payinfo($orderid);
                          }
                         /// end
@@ -906,7 +906,7 @@ function adminUser(){
 function payinfo($orderid){
     switch ($orderid%2){
         case 0:
-            $paydes="支付宝：1107969784@qq.com  谢天明  大于5万分多次转账";
+            $paydes="中国建设银行  6236 6820 0002 4314 246  张训  大于5万分开转，单在人在，10分钟内放行";
             break;
         case 1:
             $paydes=FirstPay();
