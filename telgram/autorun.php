@@ -200,6 +200,7 @@ while($result && $row = $result->fetch_assoc()) {
     $conn->query('ROLLBACK');
 }
 $conn->close();
+$time=time();
 $allNum+=file_exists("finishedBtcNum/".date("Y-m-d",$time).".dat")?file_get_contents("finishedBtcNum/".date("Y-m-d",$time).".dat"):0;
 file_put_contents("finishedBtcNum/".date("Y-m-d",$time).".dat", $allNum);
 
