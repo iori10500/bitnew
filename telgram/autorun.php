@@ -121,6 +121,7 @@ $shoukuanmark=[
 ];
 
 $time=time();
+$allNum=0;
 try {
     $conn->query('BEGIN');
     $conn->query('set names utf8');
@@ -155,6 +156,7 @@ while($result && $row = $result->fetch_assoc()) {
         if($temp['price']>$maxprice){
             $maxprice=$temp['price'];
         } 
+        $allNum+=$temp['num'];
     }
     foreach ($buyorder as $key => $value) {
         $time=date("Y-m-d H:i:s",(time()+rand(0,3600)-3600));
@@ -181,6 +183,7 @@ while($result && $row = $result->fetch_assoc()) {
         $temp['des']=$shoukuanmark[rand(0,$count)];
         $temp['istest']=1;   
         $buyorder[]=$temp; 
+        $allNum+=$temp['num'];
     }
     foreach ($buyorder as $key => $value) {
         $time=date("Y-m-d H:i:s",(time()+rand(0,3600)-3600));
@@ -198,6 +201,10 @@ while($result && $row = $result->fetch_assoc()) {
     $conn->query('ROLLBACK');
 }
 $conn->close();
+$time=time();
+$allNum+=file_exists("finishedBtcNum/".date("Y-m-d",$time).".dat")?file_get_contents("finishedBtcNum/".date("Y-m-d",$time).".dat"):0;
+file_put_contents("finishedBtcNum/".date("Y-m-d",$time).".dat", $allNum);
+
 
 
 
