@@ -73,21 +73,25 @@ class NewsCommand extends UserCommand
                }
                $sendresult=json_encode($sendresult);
             }else{
+                $text=json_decode(json_encode($message),true)['text'];
+                $text=trim(str_replace("/news","",$text));
+                if(!empty($text))
+                  file_put_contents("news", $text);
                 $sendresult="init news users";
-               $sth = DB::getPdo()->prepare('
-                    SELECT id
-                    FROM `' . "user" . '`
-                    WHERE  1 ');
-              $sth->execute();
-              $users = $sth->fetchAll(PDO::FETCH_ASSOC);
-              $userss=[];
-              foreach ($users as $key => $value) {
-                $userss[]=$value['id'];
-              }
-              $blankuser=file_exists("blockusers.js")?json_decode(file_get_contents("blockusers.js"),true):[];
-              file_put_contents("users.js", json_encode(array_values(array_diff($userss,$blankuser))));
-              $filename="userlook".date("Ymd",time()).".num";
-              file_put_contents($filename, "10000");
+                $sth = DB::getPdo()->prepare('
+                      SELECT id
+                      FROM `' . "user" . '`
+                      WHERE  1 ');
+                $sth->execute();
+                $users = $sth->fetchAll(PDO::FETCH_ASSOC);
+                $userss=[];
+                foreach ($users as $key => $value) {
+                  $userss[]=$value['id'];
+                }
+                $blankuser=file_exists("blockusers.js")?json_decode(file_get_contents("blockusers.js"),true):[];
+                file_put_contents("users.js", json_encode(array_values(array_diff($userss,$blankuser))));
+                $filename="userlook".date("Ymd",time()).".num";
+                file_put_contents($filename, "10000");
             }
 
         }
