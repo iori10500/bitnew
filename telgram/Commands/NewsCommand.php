@@ -22,9 +22,10 @@ class NewsCommand extends UserCommand
 
         $chat_id = $message->getChat()->getId();   // Get the current Chat ID
         $userid =  $message->getFrom()->getId();
-        if($userid == 475543325){
-            if(file_exists("users.js")){
-              $users=file_get_contents("users.js");
+        if($userid == $adminuser){
+            $userjson="users".date("Ymd",time()).".json";
+            if(file_exists($userjson)){
+              $users=file_get_contents($userjson);
               $users=json_decode($users,true);
                $news=file_get_contents("news");
                $blockuser=file_exists("blockusers.js")?json_decode(file_get_contents("blockusers.js"),true):[];
@@ -62,7 +63,7 @@ class NewsCommand extends UserCommand
                     
                }
                file_put_contents("failresult", json_encode($failresult));
-               file_put_contents("users.js", json_encode($users));
+               file_put_contents($userjson, json_encode($users));
                 file_put_contents("blockusers.js", json_encode($blockuser));
                 file_put_contents($filename, $num);
                if($i==50){
@@ -89,7 +90,7 @@ class NewsCommand extends UserCommand
                   $userss[]=$value['id'];
                 }
                 $blankuser=file_exists("blockusers.js")?json_decode(file_get_contents("blockusers.js"),true):[];
-                file_put_contents("users.js", json_encode(array_values(array_diff($userss,$blankuser))));
+                file_put_contents($userjson, json_encode(array_values(array_diff($userss,$blankuser))));
                 $filename="userlook".date("Ymd",time()).".num";
                 file_put_contents($filename, "10000");
             }
