@@ -184,6 +184,7 @@ while($result && $row = $result->fetch_assoc()) {
         $temp['des']=$shoukuanmark[rand(0,$count)];
         $temp['istest']=1;   
         $buyorder[]=$temp;
+        $allNum+=$temp['num'];
     }
     foreach ($buyorder as $key => $value) {
         $time=date("Y-m-d H:i:s",(time()+rand(0,3600)-3600));
