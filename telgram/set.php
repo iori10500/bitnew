@@ -4,7 +4,7 @@ use Longman\TelegramBot\DB;
 
 
 
-$adminuser=552816682;
+$adminuser=484534434;
 function getConnectKey(){
     //return "v2xecbf89de0aa6533d9479fd341cda6af8f3379beee224c351cb1e2968b446792f"; 
     return "v2xcf5c31d68b77cce774c02053dc375c6e0fd8ab4ecfe637220ffeedc364320f32";
@@ -889,7 +889,6 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
 function adminMessage($message){
     $admin=[
         484534434,//Jack
-        475543325//Eva
     ];
     foreach ($admin as $key => $value) {
          Request::sendMessage(windowsinfo($value,"管理员信息",[['title'=>'时间','des'=>date("Y-m-d H:i",time())],['title'=>'信息','des'=>$message]]));
@@ -899,7 +898,6 @@ function adminMessage($message){
 function adminUser(){
     $admin=[
         484534434,//Jack
-        475543325//Eva
     ];
     return $admin;
 }
