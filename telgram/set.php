@@ -2,9 +2,6 @@
 use Longman\TelegramBot\Request;
 use Longman\TelegramBot\DB;
 
-
-
-$adminuser=478532432;
 function getConnectKey(){
     //return "v2xecbf89de0aa6533d9479fd341cda6af8f3379beee224c351cb1e2968b446792f"; 
     return "v2xcf5c31d68b77cce774c02053dc375c6e0fd8ab4ecfe637220ffeedc364320f32";
