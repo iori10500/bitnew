@@ -4,7 +4,7 @@ $servername = "localhost";
 $username = "jack";
 $password = "350166483Qp!";
 $dbname = "bitcoin";
-$adminuser=475543325;
+$adminuser=552816682;
 // 创建连接
 /*
 $conn = new mysqli($servername, $username, $password, $dbname);
