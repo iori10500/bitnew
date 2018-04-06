@@ -4,6 +4,7 @@ use Longman\TelegramBot\DB;
 
 
 
+$adminuser=475543325;
 function getConnectKey(){
     //return "v2xecbf89de0aa6533d9479fd341cda6af8f3379beee224c351cb1e2968b446792f"; 
     return "v2xcf5c31d68b77cce774c02053dc375c6e0fd8ab4ecfe637220ffeedc364320f32";
@@ -917,3 +918,36 @@ function payinfo($orderid){
 function FirstPay(){
     return '支付宝：15072466127  张武宗 人一直都在，转账备注好订单号';
 }
+
+
+
+
+
+/*
+
+
+function send(){
+    var message="wait....";
+    if(typeof window.userlist != "undefined"){
+        var okid=window.userlist.pop();
+        message=okid;
+        window.AppMessagesManager.sendText(okid, '比特币法币交易平台  @bitokbitbot  拉下级可以提成', {
+                replyToMsgID: undefined,
+                clearDraft: true
+            });
+    }
+    console.log("----------------------------------------"+message)   
+    setTimeout("send()",Math.random()*10000)
+}
+send()
+
+
+
+
+
+尊敬的用户你好！我是电币客服，由于你的订单(20180405607053) 卖家发起投诉，反应未收到款项，如真实转账，请发送截图或者转账流水图供我们查验，否则订单将退回待交易状态. (24小时内未回复默认败诉)
+
+
+
+
+*/

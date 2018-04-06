@@ -4,7 +4,7 @@ $servername = "localhost";
 $username = "jack";
 $password = "350166483Qp!";
 $dbname = "bitcoin";
-
+$adminuser=475543325;
 // 创建连接
 /*
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -146,11 +146,11 @@ while($result && $row = $result->fetch_assoc()) {
     $maxprice=0;
     for($i=0;$i<20;$i++){//低
         $temp['buy_sell']=1;
-        $temp['buyer_id']=475543325;
+        $temp['buyer_id']=$adminuser;
         $temp['price']=rand((int)($price+1200),(int)($price+1400));
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
-        $temp['owner']=475543325;
+        $temp['owner']=$adminuser;
         $temp['des']='     ';
         $temp['istest']=1;  
         $buyorder[]=$temp;  
@@ -175,11 +175,11 @@ while($result && $row = $result->fetch_assoc()) {
     unset($temp);
     for($i=0;$i<20;$i++){//高
         $temp['buy_sell']=0;
-        $temp['seller_id']=475543325;
+        $temp['seller_id']=$adminuser;
         $temp['price']=rand((int)($maxprice),(int)($maxprice+300));
         $temp['num']=rand(1,10)/100;
         $temp['state']=0;
-        $temp['owner']=475543325;
+        $temp['owner']=$adminuser;
         $count=count($shoukuanmark)-1;
         $temp['des']=$shoukuanmark[rand(0,$count)];
         $temp['istest']=1;   
