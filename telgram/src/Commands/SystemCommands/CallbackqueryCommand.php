@@ -323,14 +323,14 @@ class CallbackqueryCommand extends SystemCommand
                     $dongjieb=$dongjie[0]['dongjie'];
                 }
                 $dongjieb=$dongjieb?$dongjieb:0;
-                $datamessage=windowsinfo($sendtomessageid,'地址余额',[['title'=>'账户余额','des'=>($yueinfo['balance']+$userinfo[0]['banlance'])." BTC"],['title'=>'冻结资金','des'=>$dongjieb." BTC"],['title'=>'接收地址','des'=>$yueinfo['address']],['title'=>'充值说明','des'=>"充值1个交易确认即到账,充值无上下限值,充值地址永久不变"]]);    
+                $datamessage=windowsinfo($sendtomessageid,'地址余额',[['title'=>'账户余额','des'=>($yueinfo['balance']+$userinfo[0]['banlance'])." BTC"],['title'=>'冻结资金','des'=>$dongjieb." BTC"],['title'=>'接收地址','des'=>$yueinfo['address']],['title'=>'充值说明','des'=>"充值1个交易确认即到账。充值无上下限值。充值地址永久不变。任何因个人输入错误收款地址，而导致充值不到账。平台均概不负责"]]);
                 Request::sendMessage($datamessage);        // Send me
                 $buttoninfo['chat_id']=$sendtomessageid;
                 $buttoninfo['photo']='http://chart.apis.google.com/chart?chs=150x150&cht=qr&chld=L|0&chl='.urlencode($yueinfo['address']);
                 Request::sendPhoto($buttoninfo);        // Send me
                 break;
             case 'sendbitcoin'://发送比特币
-                $datamessage=windowsinfo($sendtomessageid,'发送比特币',[['title'=>'    ','des'=>'请按照如下格式输入接收地址以及发送金额'],['title'=>'格式','des'=>'/send 接收地址-金额'],['title'=>'例如','des'=>'/send 3DDHFN1pgt9ccuHN5veeBDJXxpKsYSX2cu-1.2']]);
+                $datamessage=windowsinfo($sendtomessageid,'发送比特币',[['title'=>'    ','des'=>'请按照如下格式输入接收地址以及发送金额'],['title'=>'格式','des'=>'/send 接收地址-金额'],['title'=>'例如','des'=>'/send 3DDHFN1pgt9ccuHN5veeBDJXxpKsYSX2cu-1.2'],['title'=>'提示','des'=>'任何因个人输入错误收款地址，而导致收款不到账。平台均概不负责']]);
                 Request::sendMessage($datamessage);        // Send me
 //                $buttoninfo['chat_id']=$user_id;
 //                $buttoninfo['photo']='http://telgram.bitneworld.com/app/send.png';
@@ -345,7 +345,15 @@ class CallbackqueryCommand extends SystemCommand
                 break;
             case 'contentus'://联系我们
 
-                $datamessage=windowsinfo($sendtomessageid,'联系我们',[['title'=>'联系邮箱','des'=>'bitneworld@gmail.com'],['title'=>'联系客服1','des'=>'@Hooman14657'],['title'=>'联系客服2','des'=>'@dianbikefu'],['title'=>'联系客服3','des'=>'@dianbi ']]);
+                $datamessage=windowsinfo($sendtomessageid,'联系我们',[
+                    ['title'=>'联系邮箱','des'=>'bitneworld@gmail.com'],
+                    ['title'=>'联系客服1','des'=>'@Hooman14657'],
+                    ['title'=>'联系客服2','des'=>'@dianbikefu'],
+                    ['title'=>'联系客服3','des'=>'@dianbi '],
+                    ['title'=>'近期告示','des'=>'任何客服要求提供电报sms验证码进行登陆协助处理，此类行为均属于诈骗，如有遇到请邮件有奖(0.0001 BTC)举报，官方邮箱  bitneworld@gmail.com
+客服请认准本信息以上所列出的客服，为了防止他人冒充登陆你电报，请设置Two-Step Verification,具体操作： 设置->隐私与安全->第二步验证
+为了客服能在投诉期间及时联系上您，请设置自己的username,具体操作:  设置->点击昵称->用户名']
+                ]);
                 Request::sendMessage($datamessage);        // Send me
 
                 break;
