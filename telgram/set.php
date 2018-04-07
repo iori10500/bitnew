@@ -615,7 +615,7 @@ function adminorder($chat_id,$orderid){//申诉2状态订单
                 $sth->execute();$code=($code | $sth->errorCode());
 */
             }else{
-                $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可申诉状态']]);
+                $data=windowsinfo($chat_id,"我的订单",[['title'=>'    ','des'=>'当前订单禁止此操作']]);
             }
             ($code=="0000")?$pdo->commit():$pdo->rollBack();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
@@ -739,7 +739,7 @@ function fangxingorder($chat_id,$orderid){//放行2状态订单
                 }                
                 $data=windowsinfo($chat_id,"我要出售",[['title'=>'    ','des'=>'订单完成,账户余额将发生变化']]);
             }else{
-                $data=windowsinfo($chat_id,"我要出售",[['title'=>'    ','des'=>'订单不存在,或者订单未到达可放行状态']]);
+                $data=windowsinfo($chat_id,"我要出售",[['title'=>'    ','des'=>'当前订单禁止此操作']]);
             }
             ($code=="0000")?$pdo->commit():$pdo->rollBack();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
@@ -869,7 +869,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
                 }
                 $data=getorder($chat_id,1,0,$tempinfo['id']);
             }else{
-                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'订单不存在,或者订单正在交易状态']]);
+                $data=windowsinfo($chat_id,"交易信息",[['title'=>'    ','des'=>'当前订单禁止此操作']]);
             }
             ($code=="0000")?$pdo->commit():$pdo->rollBack();     // commit changes to the database and end transaction
         } catch (PDOException $e) {
@@ -945,6 +945,7 @@ send()
 尊敬的用户你好！我是电币客服，由于你的订单(20180405607053) 卖家发起投诉，反应未收到款项，如真实转账，请发送截图或者转账流水图供我们查验，否则订单将退回待交易状态. (24小时内未回复默认败诉)
 
 
+$.get("https://api.telegram.org/bot559964199:AAH_38PAcN7uz4ymke5vpN79pTU-4DUA0vU/setWebhook?url=https://telgram.bitneworld.com/testhook.php",function(a){console.log(a)});
 
 
 */
