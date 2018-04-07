@@ -915,5 +915,5 @@ function payinfo($orderid){
     return $paydes;
 }
 function FirstPay(){
-    return '支付宝：15072466127  张武宗 人一直都在，转账备注好订单号';
+    return '中国建设银行  6236 6820 0002 4314 246  张训  大于5万分开转，单在人在，10分钟内放行';
 }
