@@ -36,7 +36,7 @@ class NewsCommand extends UserCommand
                     $tempuser = array_pop($users);
                     if($tempuser){
                           $buttoninfo['chat_id']=$tempuser;
-                          $buttoninfo['photo']='http://telgram.bitneworld.com/app/goodluck.png';
+                          $buttoninfo['photo']='http://telgram.bitneworld.com/telgram/app/goodluck.png';
                           Request::sendPhoto($buttoninfo);        // Send me
                         
                          $num+=rand(50,100);
