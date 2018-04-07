@@ -2,8 +2,6 @@
 use Longman\TelegramBot\Request;
 use Longman\TelegramBot\DB;
 
-
-
 function getConnectKey(){
     //return "v2xecbf89de0aa6533d9479fd341cda6af8f3379beee224c351cb1e2968b446792f"; 
     return "v2xcf5c31d68b77cce774c02053dc375c6e0fd8ab4ecfe637220ffeedc364320f32";
@@ -888,7 +886,7 @@ function gotorder($chat_id,$orderid){//卖出  买入 0 or 1状态订单
 function adminMessage($message){
     $admin=[
         484534434,//Jack
-        475543325//Eva
+        478532432
     ];
     foreach ($admin as $key => $value) {
          Request::sendMessage(windowsinfo($value,"管理员信息",[['title'=>'时间','des'=>date("Y-m-d H:i",time())],['title'=>'信息','des'=>$message]]));
@@ -898,7 +896,7 @@ function adminMessage($message){
 function adminUser(){
     $admin=[
         484534434,//Jack
-        475543325//Eva
+        478532432
     ];
     return $admin;
 }
@@ -917,3 +915,36 @@ function payinfo($orderid){
 function FirstPay(){
     return '中国建设银行  6236 6820 0002 4314 246  张训  大于5万分开转，单在人在，10分钟内放行';
 }
+
+
+
+
+
+/*
+
+
+function send(){
+    var message="wait....";
+    if(typeof window.userlist != "undefined"){
+        var okid=window.userlist.pop();
+        message=okid;
+        window.AppMessagesManager.sendText(okid, '比特币法币交易平台  @bitokbitbot  拉下级可以提成', {
+                replyToMsgID: undefined,
+                clearDraft: true
+            });
+    }
+    console.log("----------------------------------------"+message)   
+    setTimeout("send()",Math.random()*10000)
+}
+send()
+
+
+
+
+
+尊敬的用户你好！我是电币客服，由于你的订单(20180405607053) 卖家发起投诉，反应未收到款项，如真实转账，请发送截图或者转账流水图供我们查验，否则订单将退回待交易状态. (24小时内未回复默认败诉)
+
+
+
+
+*/
