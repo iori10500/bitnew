@@ -1,1 +1,0 @@
-{"queryString":"\n                SELECT `walletId`\n                FROM `user`\n                WHERE `id` = :id \n                LIMIT 1\n            "}
